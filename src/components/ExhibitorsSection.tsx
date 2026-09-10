@@ -1,12 +1,9 @@
 import { EXHIBITORS } from "../data/exhibitorsData";
 
 export default function ExhibitorsSection() {
-  const row1 = EXHIBITORS.slice(0, Math.ceil(EXHIBITORS.length / 2));
-  const row2 = EXHIBITORS.slice(Math.ceil(EXHIBITORS.length / 2));
-
   return (
-    <section className="py-16 sm:py-20 bg-gray-50/50 overflow-hidden border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
+    <section className="py-16 sm:py-24 bg-gray-50/50 overflow-hidden border-b border-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16 text-center">
         <div className="inline-block relative">
           <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight pb-3">
             Part of Exhibitors
@@ -18,37 +15,21 @@ export default function ExhibitorsSection() {
         </p>
       </div>
 
-      {/* Marquee Row 1 */}
-      <div className="relative w-full overflow-hidden mb-6 sm:mb-8">
-        <div className="animate-marquee flex items-center space-x-3 sm:space-x-5">
-          {[...row1, ...row1].map((exhibitor, idx) => (
+      {/* Single Line Marquee with Big Logos */}
+      <div className="relative w-full overflow-hidden py-4">
+        <div 
+          className="animate-marquee flex items-center space-x-3 sm:space-x-5"
+          style={{ animationDuration: "50s" }}
+        >
+          {[...EXHIBITORS, ...EXHIBITORS].map((exhibitor, idx) => (
             <div
               key={idx}
-              className="flex-shrink-0 w-36 sm:w-44 h-24 sm:h-28 flex items-center justify-center px-1 group"
+              className="flex-shrink-0 w-44 sm:w-56 md:w-64 h-32 sm:h-40 md:h-44 flex items-center justify-center px-2 group"
             >
               <img
                 src={exhibitor.logo}
                 alt={exhibitor.name}
-                className="max-h-20 sm:max-h-24 max-w-full object-contain filter group-hover:scale-110 transition-transform duration-300 drop-shadow-xs"
-                title={exhibitor.name}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Marquee Row 2 (Reverse) */}
-      <div className="relative w-full overflow-hidden">
-        <div className="animate-marquee-reverse flex items-center space-x-3 sm:space-x-5">
-          {[...row2, ...row2].map((exhibitor, idx) => (
-            <div
-              key={idx}
-              className="flex-shrink-0 w-36 sm:w-44 h-24 sm:h-28 flex items-center justify-center px-1 group"
-            >
-              <img
-                src={exhibitor.logo}
-                alt={exhibitor.name}
-                className="max-h-20 sm:max-h-24 max-w-full object-contain filter group-hover:scale-110 transition-transform duration-300 drop-shadow-xs"
+                className="max-h-28 sm:max-h-36 md:max-h-40 max-w-full object-contain filter group-hover:scale-110 transition-transform duration-300 drop-shadow-xs"
                 title={exhibitor.name}
               />
             </div>

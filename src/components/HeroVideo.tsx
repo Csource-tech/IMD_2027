@@ -12,7 +12,7 @@ export default function HeroVideo() {
           loop
           muted
           playsInline
-          poster="https://oss.matchpages.cn/matchpages/common/2026/0612/8189/6a2baf1f9ac8e/20260612150255648.jpg"
+          poster="/imdgallery/imd-2024-002-inauguration.png"
         >
           <source
             src="https://oss.matchpages.cn/matchpages/common/2026/0612/4687/6a2baf1fd483e/%E5%B1%95%E4%BD%8D_x264.mp4"
@@ -29,11 +29,12 @@ export default function HeroVideo() {
           {/* Main Title */}
           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[64px] font-bold text-white tracking-tight leading-[1.12] mb-6 drop-shadow-md">
             Indian Mushroom Days 2027 <br />
+            <span className="text-[#0084ff]">&amp; Shroom Connect</span>
           </h1>
 
           {/* 3-Line Subtitle */}
           <div className="text-base sm:text-xl md:text-2xl text-white font-normal leading-relaxed space-y-1 drop-shadow-sm">
-            <p>19-20-21 February 2027, Bharat Mandapam, New Delhi, India</p>
+            <p>19-20-21 February 2027, Delhi, India</p>
             <p>A must-attend mushroom event.</p>
             <p>Cover All Section of Mushroom</p>
           </div>

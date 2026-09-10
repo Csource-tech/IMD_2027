@@ -5,8 +5,8 @@ export default function AboutEvent() {
     <section id="about" className="bg-white py-16 sm:py-24">
       <div className="mx-auto grid max-w-[1180px] grid-cols-1 items-center gap-12 px-5 sm:px-8 lg:grid-cols-[474px_minmax(0,1fr)] lg:gap-16">
         <img
-          src="https://oss.matchpages.cn/matchpages/common/2026/0827/4186/6a8fe7759500c/FTZI1116_1370672142-3571462230.png"
-          alt="Visitors at International Mushroom Days"
+          src="/imdgallery/imd-2024-002-inauguration.png"
+          alt="Inauguration Ceremony at Indian Mushroom Days"
           className="mx-auto h-[420px] w-full max-w-[474px] rounded-[20px] object-cover object-center shadow-sm sm:h-[500px] lg:h-[528px]"
         />
 
@@ -32,12 +32,7 @@ export default function AboutEvent() {
             <InfoItem
               icon={<MapPin className="h-8 w-8 stroke-[#ff5b3c]" aria-hidden="true" />}
               label="Venue"
-              value={
-                <>
-                  Bharat Mandapam, Pragati Maidan,<br />
-                  New Delhi – 110001, India
-                </>
-              }
+              value="Delhi, India"
             />
           </div>
         </div>

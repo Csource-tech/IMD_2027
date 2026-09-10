@@ -22,7 +22,7 @@ export default function FooterSection() {
             {/* Col 1: About Organizers (4 cols) */}
             <div className="lg:col-span-4 space-y-4">
               <h5 className="text-white text-base sm:text-lg font-bold leading-snug">
-                Indian Mushroom Days 2027 (IMD 2027) will be held from February 19 to 21, 2027 at Bharat Mandapam, Pragati Maidan, New Delhi, India.
+                Indian Mushroom Days 2027 (IMD 2027) will be held from February 19 to 21, 2027 in Delhi, India.
               </h5>
               <div className="text-sm text-gray-400 leading-relaxed space-y-2">
                 <p>
@@ -51,7 +51,7 @@ export default function FooterSection() {
               <ul className="space-y-2.5 text-xs sm:text-sm">
                 <li className="flex items-start space-x-3">
                   <MapPin className="w-4 h-4 text-[#f28822] mt-0.5 flex-shrink-0" />
-                  <span>Pragati Maidan, Bharat Mandapam, New Delhi – 110001, India</span>
+                  <span>Delhi, India</span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <Phone className="w-4 h-4 text-[#f28822] flex-shrink-0" />
@@ -85,12 +85,12 @@ export default function FooterSection() {
               </h5>
               <div className="bg-white p-2 rounded-xl shadow-md w-32 h-32 flex items-center justify-center">
                 <img
-                  src="https://oss.matchpages.cn/matchpages/common/2024/0205/5210/65c0867ece4b2/image.png"
-                  alt="QR Code"
+                  src="/imdgallery/imd-logo.png"
+                  alt="India Mushroom Days Logo"
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="text-xs text-gray-400">Scan to follow official updates</span>
+              <span className="text-xs text-gray-400">Official Exhibition Updates</span>
             </div>
           </div>
 

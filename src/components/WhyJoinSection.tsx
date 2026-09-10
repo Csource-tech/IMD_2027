@@ -5,10 +5,10 @@ import { useState } from "react";
 interface TabItem { title: string; desc: string; image: string }
 
 const TABS: TabItem[] = [
-  { title: "GROW YOUR BUSINESS", desc: "Unlock opportunities and expand your presence in the fast-growing Indian and global edible fungi market.", image: "https://oss.matchpages.cn/matchpages/common/2026/0706/9398/6a4b50613df13/FTZI1184_1370672142-3571460944.png" },
-  { title: "DISCOVER THE LATEST INNOVATIONS", desc: "Explore new technologies, materials, and smart solutions shaping the future of mushroom and food industry.", image: "https://oss.matchpages.cn/matchpages/common/2026/0706/6372/6a4b5253bf73a/FTZI1830_1370672142-3571554229.png" },
-  { title: "BUILD YOUR NETWORK", desc: "Connect with international suppliers, buyers, distributors, and industry professionals. Expand your business network and develop valuable partnerships in India and globally.", image: "https://oss.matchpages.cn/matchpages/common/2026/0706/3047/6a4b5270854cc/FTZI1111_1370672142-3571462321.png" },
-  { title: "ENGAGE GLOBAL", desc: "Gain insights from industry leaders and exchange ideas that could lead to the next big breakthrough.", image: "https://oss.matchpages.cn/matchpages/common/2026/0703/8817/6a478cf84276e/%E9%9B%86%E7%BE%A4%E4%B8%89%EF%BC%9A%E5%8C%BA%E5%9F%9F%E7%89%B9%E8%89%B2%E4%B8%8E%E5%85%A8%E7%90%83%E8%B4%B8%E6%98%93%E9%9B%86%E7%BE%A402-min.png" },
+  { title: "GROW YOUR BUSINESS", desc: "Unlock opportunities and expand your presence in the fast-growing Indian and global edible fungi market.", image: "/imdgallery/imd-2024-001.jpg" },
+  { title: "DISCOVER THE LATEST INNOVATIONS", desc: "Explore new technologies, materials, and smart solutions shaping the future of mushroom and food industry.", image: "/imdgallery/imd-2024-004.jpg" },
+  { title: "BUILD YOUR NETWORK", desc: "Connect with international suppliers, buyers, distributors, and industry professionals. Expand your business network and develop valuable partnerships in India and globally.", image: "/imdgallery/imd-2024-015.jpg" },
+  { title: "ENGAGE GLOBAL", desc: "Gain insights from industry leaders and exchange ideas that could lead to the next big breakthrough.", image: "/imdgallery/imd-2024-011.jpg" },
 ];
 
 export default function WhyJoinSection() {

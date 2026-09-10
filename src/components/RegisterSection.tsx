@@ -174,7 +174,7 @@ export default function RegisterSection() {
                     India Mushroom Days (IMD 2027)
                   </h4>
                   <p className="text-xs sm:text-sm text-gray-600 mt-1 font-medium leading-relaxed">
-                    Pragati Maidan, Bharat Mandapam, New Delhi – 110001, India
+                    Delhi, India
                   </p>
                 </div>
               </div>

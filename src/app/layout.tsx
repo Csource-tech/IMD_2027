@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "India Mushroom Days 2027 | IMD 2027 | New Delhi, India",
   description:
-    "India Mushroom Days 2027 (IMD 2027) official website. Join the premier international edible fungi expo on 19-20-21 February 2027 at Bharat Mandapam, Pragati Maidan, New Delhi, India. Explore exhibitors, register as visitor or book your booth.",
+    "India Mushroom Days 2027 (IMD 2027) official website. Join the premier international edible fungi expo on 19-20-21 February 2027 in Delhi, India. Explore exhibitors, register as visitor or book your booth.",
   keywords: [
     "Indian Mushroom Days 2027",
     "IMD 2027",

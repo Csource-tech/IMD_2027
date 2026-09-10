@@ -1,3 +1,5 @@
+import { Sprout, Globe, PackageCheck } from "lucide-react";
+
 export default function FullIndustryChain() {
   return (
     <section id="industry-chain" className="py-16 sm:py-24 bg-white">
@@ -19,7 +21,7 @@ export default function FullIndustryChain() {
             <div className="lg:col-span-6">
               <div className="overflow-hidden rounded-2xl shadow-lg border border-gray-100 group">
                 <img
-                  src="https://oss.matchpages.cn/matchpages/common/2026/0622/6819/6a38990d48770/FTZI1346_1370672142-3571473851.png"
+                  src="/imdgallery/imd-2024-003.jpg"
                   alt="Production"
                   className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -27,11 +29,9 @@ export default function FullIndustryChain() {
             </div>
             <div className="lg:col-span-6 space-y-4">
               <div className="flex items-center space-x-3">
-                <img
-                  src="https://oss.matchpages.cn/matchpages/common/2020/0514/5ebcab1ee50cf.png"
-                  alt="Production Icon"
-                  className="w-8 h-8 object-contain"
-                />
+                <div className="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center text-[#f28822]">
+                  <Sprout className="w-6 h-6 stroke-[2.2]" />
+                </div>
                 <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
                   Production
                 </h3>
@@ -49,11 +49,9 @@ export default function FullIndustryChain() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div className="lg:col-span-6 order-2 lg:order-1 space-y-4">
               <div className="flex items-center space-x-3">
-                <img
-                  src="https://oss.matchpages.cn/matchpages/common/2020/0513/5ebb605c9931b.png"
-                  alt="International Trading Icon"
-                  className="w-8 h-8 object-contain"
-                />
+                <div className="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center text-[#f28822]">
+                  <Globe className="w-6 h-6 stroke-[2.2]" />
+                </div>
                 <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
                   International Trading
                 </h3>
@@ -68,7 +66,7 @@ export default function FullIndustryChain() {
             <div className="lg:col-span-6 order-1 lg:order-2">
               <div className="overflow-hidden rounded-2xl shadow-lg border border-gray-100 group">
                 <img
-                  src="https://oss.matchpages.cn/matchpages/common/2026/0622/4317/6a38998d6e9d1/FTZI1111_1370672142-3571462321.png"
+                  src="/imdgallery/imd-2024-008.jpg"
                   alt="International Trading"
                   className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -81,7 +79,7 @@ export default function FullIndustryChain() {
             <div className="lg:col-span-6">
               <div className="overflow-hidden rounded-2xl shadow-lg border border-gray-100 group">
                 <img
-                  src="https://oss.matchpages.cn/matchpages/common/2026/0622/3613/6a389a1dcaf46/LHAO9366.png"
+                  src="/imdgallery/imd-2024-014.jpg"
                   alt="Deep Processing"
                   className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -89,11 +87,9 @@ export default function FullIndustryChain() {
             </div>
             <div className="lg:col-span-6 space-y-4">
               <div className="flex items-center space-x-3">
-                <img
-                  src="https://oss.matchpages.cn/matchpages/common/2020/0513/5ebb605c9931b.png"
-                  alt="Deep Processing Icon"
-                  className="w-8 h-8 object-contain"
-                />
+                <div className="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center text-[#f28822]">
+                  <PackageCheck className="w-6 h-6 stroke-[2.2]" />
+                </div>
                 <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
                   Deep Processing
                 </h3>

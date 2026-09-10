@@ -12,53 +12,53 @@ interface GalleryItem {
 const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: 1,
-    url: "https://oss.matchpages.cn/matchpages/common/2025/0317/2784/67d82869e5bad/Frame-17.jpg",
-    title: "Grand Opening Ceremony & Main Exhibition Hall",
+    url: "/imdgallery/imd-2024-002-inauguration.png",
+    title: "Inauguration Ceremony & Lamp Lighting",
   },
   {
     id: 2,
-    url: "https://oss.matchpages.cn/matchpages/common/2025/0317/9650/67d8286980878/Frame-11.jpg",
-    title: "Advanced Mushroom Cultivation & Substrate Showcase",
+    url: "/imdgallery/imd-2024-001.jpg",
+    title: "Main Exhibition Pavilion & Commercial Stalls",
   },
   {
     id: 3,
-    url: "https://oss.matchpages.cn/matchpages/common/2025/0317/6571/67d8286937017/Frame-12.jpg",
-    title: "Smart Automated Industrial Harvesting Machinery",
+    url: "/imdgallery/imd-2024-005.jpg",
+    title: "B2B Buyer Networking & Business Stalls",
   },
   {
     id: 4,
-    url: "https://oss.matchpages.cn/matchpages/common/2025/0317/7508/67d8286a25346/Frame-21.jpg",
-    title: "International Buyers & Exhibitor Matchmaking",
+    url: "/imdgallery/imd-2024-006.jpg",
+    title: "Advanced Substrate & Cultivation Technology",
   },
   {
     id: 5,
-    url: "https://oss.matchpages.cn/matchpages/common/2025/0317/5310/67d82869bdb54/Frame-20.jpg",
-    title: "Global Industry Leaders & Scientific Summit Dialogues",
+    url: "/imdgallery/imd-2024-007.jpg",
+    title: "Commercial Spawn & Farm Infrastructure Showcase",
   },
   {
     id: 6,
-    url: "https://oss.matchpages.cn/matchpages/common/2025/0317/5474/67d82869b2483/Frame-18.jpg",
-    title: "Gourmet & Medicinal Mushroom Extracts Showcase",
+    url: "/imdgallery/imd-2024-010.jpg",
+    title: "Global Delegates & Technical Presentation",
   },
   {
     id: 7,
-    url: "https://oss.matchpages.cn/matchpages/common/2025/0317/1108/67d8286992d87/Frame-16.jpg",
-    title: "Smart Packaging & Cold Chain Logistics Demo",
+    url: "/imdgallery/imd-2024-011.jpg",
+    title: "Industry Conference & Scientific Summit Dialogues",
   },
   {
     id: 8,
-    url: "https://oss.matchpages.cn/matchpages/common/2025/0317/1107/67d8286944b33/Frame-14.jpg",
-    title: "High-Value B2B Business Deal Signing Sessions",
+    url: "/imdgallery/imd-2024-012.jpg",
+    title: "Exhibitor & Sourcing Buyer Matchmaking",
   },
   {
     id: 9,
-    url: "https://oss.matchpages.cn/matchpages/common/2025/0317/4260/67d82869cf68c/Frame-19.jpg",
-    title: "Energy-Efficient Climate-Controlled Growing Chambers",
+    url: "/imdgallery/imd-2024-013.jpg",
+    title: "High-Yield Fungi Cultivation Equipment",
   },
   {
     id: 10,
-    url: "https://oss.matchpages.cn/matchpages/common/2025/0317/4490/67d8286945331/Frame-15.jpg",
-    title: "Global Fungi Industry Leaders & VIP Delegations",
+    url: "/imdgallery/imd-2024-015.jpg",
+    title: "Distinguished Industry Guests & VIP Delegations",
   },
 ];
 
