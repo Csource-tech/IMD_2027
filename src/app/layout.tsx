@@ -16,7 +16,11 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Indian Mushroom Days" }],
   icons: {
-    icon: "/reallogo.png",
+    icon: [
+      { url: "/reallogo.png" },
+      { url: "/reallogo.png", type: "image/png" },
+    ],
+    shortcut: "/reallogo.png",
     apple: "/reallogo.png",
   },
   openGraph: {
@@ -36,6 +40,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="icon" href="/reallogo.png" type="image/png" sizes="any" />
+      </head>
       <body className="antialiased text-[#333333] bg-white min-h-screen flex flex-col selection:bg-[#f28822] selection:text-white">
         {children}
       </body>

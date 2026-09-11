@@ -1,8 +1,10 @@
+import Link from "next/link";
+
 export default function HeroVideo() {
   return (
     <section
       id="home"
-      className="relative w-full min-h-[750px] sm:min-h-[840px] md:min-h-[900px] lg:min-h-[90vh] flex items-center justify-start overflow-hidden"
+      className="relative w-full min-h-[750px] sm:min-h-[840px] md:min-h-[900px] lg:min-h-[94vh] flex items-center justify-start overflow-hidden"
     >
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
@@ -23,20 +25,29 @@ export default function HeroVideo() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-black/20" />
       </div>
 
-      {/* Hero Content - Strictly Left-Aligned matching the official layout */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full pt-36 pb-24">
-        <div className="max-w-3xl text-left">
-          {/* Main Title */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[64px] font-bold text-white tracking-tight leading-[1.12] mb-6 drop-shadow-md">
-            Indian Mushroom Days 2027 <br />
+      {/* Hero Content - Width aligned exactly with Navbar */}
+      <div className="relative z-10 max-w-8xl mx-auto px-4 sm:px-6 lg:px-24 w-full pt-36 pb-24">
+        <div className="max-w-6xl text-left">
+          {/* Main Title made 2xl */}
+          <h1 className="text-5xl font-bold text-white tracking-tight leading-snug drop-shadow-md mb-6">
+            Indian Mushroom <br /> Days 2027 <br />
             <span className="text-[#0084ff]">&amp; Shroom Connect</span>
           </h1>
 
-          {/* 3-Line Subtitle */}
-          <div className="text-base sm:text-xl md:text-2xl text-white font-normal leading-relaxed space-y-1 drop-shadow-sm">
-            <p>19-20-21 February 2027, Delhi, India</p>
-            <p>A must-attend mushroom event.</p>
-            <p>Cover All Section of Mushroom</p>
+          {/* Two Rounded Glassmorphism Buttons */}
+          <div className="flex flex-wrap items-center gap-4">
+            <Link
+              href="/visitor-register"
+              className="inline-flex items-center justify-center px-6 py-2.5 sm:py-3 rounded-full text-sm font-semibold text-white bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/10 hover:scale-105 active:scale-95 transition-all duration-200"
+            >
+              Visitor Registration
+            </Link>
+            <Link
+              href="/book-your-stall"
+              className="inline-flex items-center justify-center px-6 py-2.5 sm:py-3 rounded-full text-sm font-semibold text-white bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/30 shadow-lg hover:shadow-white/10 hover:scale-105 active:scale-95 transition-all duration-200"
+            >
+              Book Your Stall
+            </Link>
           </div>
         </div>
       </div>

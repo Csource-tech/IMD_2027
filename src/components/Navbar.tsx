@@ -5,14 +5,56 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, Ticket, Store } from "lucide-react";
 
-const NAV_LINKS = [
+interface SubLink {
+  name: string;
+  href: string;
+}
+
+interface NavItem {
+  name: string;
+  href: string;
+  dropdown?: SubLink[];
+}
+
+const NAV_ITEMS: NavItem[] = [
   { name: "Home", href: "/#home" },
-  { name: "About", href: "/#about" },
-  { name: "Why Join", href: "/#why-join" },
-  { name: "Core Values", href: "/#our-strength" },
-  { name: "Full Industry Chain", href: "/#industry-chain" },
-  { name: "Gallery", href: "/#gallery" },
-  { name: "Contact Us", href: "/#contact" },
+  {
+    name: "About",
+    href: "/#about",
+    dropdown: [
+      { name: "About The Event", href: "/#about" },
+      { name: "Shroom Connect Conclave", href: "/#about-shroomconnect" },
+      { name: "Organising Committee", href: "/#organising-committee" },
+      { name: "Our Strength", href: "/#our-strength" },
+    ],
+  },
+  {
+    name: "Program",
+    href: "/#program-agenda",
+    dropdown: [
+      { name: "Schedule & Agenda", href: "/#program-agenda" },
+      { name: "Why Indian Mushroom Days", href: "/#why-join" },
+      { name: "Buyer Club Program", href: "/#buyer-club" },
+    ],
+  },
+  {
+    name: "Expo & Partners",
+    href: "/#industry-chain",
+    dropdown: [
+      { name: "Participating Industries", href: "/#industry-chain" },
+      { name: "Our Past Sponsors & Partners", href: "/#past-sponsors" },
+      { name: "Exhibitors Showcase", href: "/#exhibitors" },
+    ],
+  },
+  {
+    name: "Media & FAQs",
+    href: "/#gallery",
+    dropdown: [
+      { name: "Photo Gallery", href: "/#gallery" },
+      { name: "Industry Testimonials", href: "/#testimonials" },
+    ],
+  },
+  { name: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -21,6 +63,7 @@ export default function Navbar() {
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [registerDropdownOpen, setRegisterDropdownOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("Home");
 
@@ -28,13 +71,27 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
 
-      // Determine active section based on scroll position
-      const sections = NAV_LINKS.map((link) => link.href.split("#")[1]);
-      for (const section of [...sections].reverse()) {
-        const el = document.getElementById(section);
+      const sectionMap: { [key: string]: string } = {
+        home: "Home",
+        about: "About",
+        "about-shroomconnect": "About",
+        "organising-committee": "About",
+        "program-agenda": "Program",
+        "why-join": "Program",
+        "buyer-club": "Program",
+        "our-strength": "About",
+        "industry-chain": "Expo & Partners",
+        "past-sponsors": "Expo & Partners",
+        exhibitors: "Expo & Partners",
+        gallery: "Media & FAQs",
+        testimonials: "Media & FAQs",
+        contact: "Contact",
+      };
+
+      for (const id of Object.keys(sectionMap).reverse()) {
+        const el = document.getElementById(id);
         if (el && window.scrollY >= el.offsetTop - 140) {
-          const match = NAV_LINKS.find((l) => l.href.includes(`#${section}`));
-          if (match) setActiveSection(match.name);
+          setActiveSection(sectionMap[id]);
           break;
         }
       }
@@ -69,30 +126,77 @@ export default function Navbar() {
 
         {/* Centered Desktop Navigation Menu */}
         <nav className="hidden md:flex items-center justify-center space-x-5 lg:space-x-7 absolute inset-x-0 mx-auto w-fit z-0">
-          {NAV_LINKS.map((link) => {
-            const isActive = activeSection === link.name;
-            return (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="relative py-1 text-sm lg:text-base font-medium text-white transition-colors group"
-              >
-                {/* Text is always pure white */}
-                <span className="text-white">{link.name}</span>
+          {NAV_ITEMS.map((item) => {
+            const hasDropdown = Boolean(item.dropdown && item.dropdown.length > 0);
+            const isActive = activeSection === item.name;
 
-                {/* Orange underline on active OR on hover */}
-                <span
-                  className={`absolute -bottom-1 left-0 right-0 h-0.5 bg-[#f28822] rounded-full transition-all duration-200 ${
-                    isActive
-                      ? "opacity-100 scale-x-100"
-                      : "opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100"
-                  }`}
-                />
-              </Link>
+            if (!hasDropdown) {
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="relative py-1 text-sm lg:text-base font-medium text-white transition-colors group"
+                >
+                  <span className="text-white group-hover:text-[#f28822] transition-colors">{item.name}</span>
+                  <span
+                    className={`absolute -bottom-1 left-0 right-0 h-0.5 bg-[#f28822] rounded-full transition-all duration-200 ${
+                      isActive
+                        ? "opacity-100 scale-x-100"
+                        : "opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100"
+                    }`}
+                  />
+                </Link>
+              );
+            }
+
+            return (
+              <div
+                key={item.name}
+                className="relative py-1"
+                onMouseEnter={() => setActiveDropdown(item.name)}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <Link
+                  href={item.href}
+                  className="relative py-1 flex items-center gap-1 text-sm lg:text-base font-medium text-white transition-colors group cursor-pointer focus:outline-none"
+                >
+                  <span className="text-white group-hover:text-[#f28822] transition-colors">{item.name}</span>
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-200 ${
+                      activeDropdown === item.name ? "rotate-180 text-[#f28822]" : "text-white/80"
+                    }`}
+                  />
+                  <span
+                    className={`absolute -bottom-1 left-0 right-0 h-0.5 bg-[#f28822] rounded-full transition-all duration-200 ${
+                      isActive
+                        ? "opacity-100 scale-x-100"
+                        : "opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100"
+                    }`}
+                  />
+                </Link>
+
+                {/* Dropdown Box matching original design */}
+                {activeDropdown === item.name && (
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-60 z-50 animate-in fade-in duration-150">
+                    <div className="rounded-2xl bg-black/90 backdrop-blur-md border border-white/15 shadow-2xl p-2 space-y-1">
+                      {item.dropdown?.map((sub) => (
+                        <Link
+                          key={sub.name}
+                          href={sub.href}
+                          onClick={() => setActiveDropdown(null)}
+                          className="block px-3.5 py-2 rounded-xl text-sm font-medium text-white hover:bg-white/10 hover:text-[#f28822] transition-colors"
+                        >
+                          {sub.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             );
           })}
 
-          {/* Register Dropdown Menu */}
+          {/* Register Dropdown Menu - EXACT INTACT AS SPECIFIED */}
           <div
             className="relative"
             onMouseEnter={() => setRegisterDropdownOpen(true)}
@@ -170,21 +274,36 @@ export default function Navbar() {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-black/95 backdrop-blur-md border-b border-gray-800 shadow-xl px-6 pt-3 pb-6 space-y-3">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              onClick={() => {
-                setActiveSection(link.name);
-                setMobileMenuOpen(false);
-              }}
-              className="block py-2 text-base font-medium text-white hover:text-[#f28822]"
-            >
-              {link.name}
-            </Link>
+          {NAV_ITEMS.map((item) => (
+            <div key={item.name}>
+              <Link
+                href={item.href}
+                onClick={() => {
+                  setActiveSection(item.name);
+                  setMobileMenuOpen(false);
+                }}
+                className="block py-2 text-base font-medium text-white hover:text-[#f28822]"
+              >
+                {item.name}
+              </Link>
+              {item.dropdown && (
+                <div className="pl-4 space-y-1">
+                  {item.dropdown.map((sub) => (
+                    <Link
+                      key={sub.name}
+                      href={sub.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block py-1 text-sm text-gray-300 hover:text-[#f28822]"
+                    >
+                      • {sub.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
 
-          {/* Mobile Registration Options */}
+          {/* Mobile Registration Options - INTACT */}
           <div className="pt-2 border-t border-gray-800 space-y-2">
             <span className="block text-xs font-bold uppercase tracking-wider text-gray-400">
               Registration

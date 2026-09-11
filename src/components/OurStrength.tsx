@@ -75,7 +75,7 @@ function CounterItem({
       <div className="w-10 h-[2px] bg-gray-400 my-4" />
 
       {/* Label */}
-      <div className="text-sm sm:text-base font-normal text-gray-700">
+      <div className="text-sm sm:text-base font-semibold text-gray-700 uppercase tracking-wider">
         {label}
       </div>
     </div>
@@ -85,7 +85,7 @@ function CounterItem({
 export default function OurStrength() {
   return (
     <section id="our-strength" className="bg-white py-20 sm:py-28 border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-24 text-center">
         {/* Title with orange underline matching design */}
         <div className="mb-16 sm:mb-20">
           <h2 className="inline-block border-b-[3px] border-[#f28822] pb-1 text-2xl sm:text-4xl font-medium text-black">
@@ -93,12 +93,12 @@ export default function OurStrength() {
           </h2>
         </div>
 
-        {/* 4 Stat Columns */}
+        {/* 4 Stat Columns with updated values and titles */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 lg:gap-16">
-          <CounterItem target={300} label="Exhibitors" />
-          <CounterItem target={5000} label="Visitors" />
-          <CounterItem target={20} label="Meetings" />
-          <CounterItem target={20} label="Countries & Regions" />
+          <CounterItem target={5000} label="Delegates" />
+          <CounterItem target={100} label="Exhibitors" />
+          <CounterItem target={15} label="Countries" />
+          <CounterItem target={50} label="Speakers" />
         </div>
       </div>
     </section>
