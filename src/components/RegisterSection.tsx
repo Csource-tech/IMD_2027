@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { CheckCircle, AlertCircle, Loader2, Send, Mail, Phone, MapPin } from "lucide-react";
 
 const INQUIRY_TOPICS = [
@@ -60,14 +61,20 @@ export default function RegisterSection() {
   };
 
   return (
-    <section id="register" className="relative py-16 sm:py-24 bg-[#faf9f6] border-b border-gray-300">
+    <section id="register" className="relative py-16 sm:py-24 bg-[#faf9f6] border-b border-gray-300 overflow-hidden">
       {/* Target anchor for navigation */}
       <div id="contact" className="absolute -top-20" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-          {/* Left Column: Official Secretariat Contact Info (Sharp & Edgy) */}
-          <div className="lg:col-span-5 space-y-6">
+          {/* Left Column: Official Secretariat Contact Info - SLIDES IN FROM LEFT */}
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5 space-y-6"
+          >
             <div className="inline-block relative">
               <span className="text-xs font-bold uppercase tracking-widest text-[#f28822]">
                 Get In Touch
@@ -179,10 +186,16 @@ export default function RegisterSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right Column: Send a Direct Message Form (Sharp Edges, Only Requested Fields) */}
-          <div className="lg:col-span-7 bg-white p-6 sm:p-10 border border-gray-300 shadow-sm">
+          {/* Right Column: Send a Direct Message Form - SLIDES IN FROM RIGHT */}
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7 bg-white p-6 sm:p-10 border border-gray-300 shadow-sm"
+          >
             {/* Header: Title on Left, Required Indicator on Right */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-6 mb-6 border-b border-gray-200">
               <h3 className="text-2xl sm:text-3xl font-black text-gray-950 tracking-tight">
@@ -327,7 +340,9 @@ export default function RegisterSection() {
 
                 {/* Row 4: Submit Button (Edgy, Dark Green, Sharp Lines) */}
                 <div className="pt-2">
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.015 }}
+                    whileTap={{ scale: 0.985 }}
                     type="submit"
                     disabled={isSubmitting}
                     className="w-full py-4 px-6 bg-[#163e33] hover:bg-[#0f2c24] text-white font-bold text-sm tracking-wider uppercase flex items-center justify-center space-x-2 border border-transparent hover:border-black transition-all disabled:opacity-60 cursor-pointer shadow-xs"
@@ -343,7 +358,7 @@ export default function RegisterSection() {
                         <span>SUBMIT INQUIRY &amp; SEND EMAIL</span>
                       </>
                     )}
-                  </button>
+                  </motion.button>
                 </div>
 
                 {/* Note at bottom matching screenshot */}
@@ -353,7 +368,7 @@ export default function RegisterSection() {
                 </p>
               </form>
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Star, ChevronLeft, ChevronRight, Quote, Building2, Users2, Award, Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Star, ChevronLeft, ChevronRight, Quote, Award } from "lucide-react";
 
 interface Testimonial {
   quote: string;
@@ -96,52 +97,63 @@ export default function TestimonialsSection() {
         <Quote className="w-[500px] h-[500px] lg:w-[650px] lg:h-[650px]" />
       </div>
 
-      {/* Header */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-
-
+      {/* Header - FADES IN */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+      >
         <h2 className="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
           Our Highlights &amp; Reviews
         </h2>
         <div className="h-1 w-20 bg-[#f28822] mx-auto rounded-full mt-4" />
-      </div>
+      </motion.div>
 
-      {/* Full-Width Main Carousel Content */}
+      {/* Full-Width Main Carousel Content with Framer Motion Transition */}
       <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-12 lg:px-16 my-auto py-10">
-        <div className="flex flex-col items-center text-center">
-          {/* Star Rating */}
-          <div className="flex items-center justify-center gap-1.5 mb-8 text-amber-400">
-            {[...Array(current.rating)].map((_, i) => (
-              <Star key={i} className="w-6 h-6 sm:w-7 sm:h-7 fill-amber-400 stroke-amber-400" />
-            ))}
-          </div>
-
-          {/* Large Quote */}
-          <blockquote className="text-lg sm:text-2xl md:text-3xl lg:text-[30px] font-medium text-gray-900 leading-[1.4] sm:leading-[1.45] font-serif italic max-w-4xl min-h-[160px] sm:min-h-[180px] flex items-center justify-center transition-all duration-300">
-            &ldquo;{current.quote}&rdquo;
-          </blockquote>
-
-
-
-          {/* Author Details */}
-          <div className="text-gray-900 pt-6">
-            <div className="text-lg sm:text-xl font-bold">{current.author}</div>
-            <div className="text-sm sm:text-base text-gray-600 font-normal">
-              {current.role} &bull; <span className="text-gray-800 font-medium">{current.organization}</span>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="flex flex-col items-center text-center"
+          >
+            {/* Star Rating */}
+            <div className="flex items-center justify-center gap-1.5 mb-8 text-amber-400">
+              {[...Array(current.rating)].map((_, i) => (
+                <Star key={i} className="w-6 h-6 sm:w-7 sm:h-7 fill-amber-400 stroke-amber-400" />
+              ))}
             </div>
-            <div className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-green-700 bg-green-50 px-3 py-1 rounded-full border border-green-200">
-              <Award className="w-3.5 h-3.5" />
-              {current.badge}
+
+            {/* Large Quote */}
+            <blockquote className="text-lg sm:text-2xl md:text-3xl lg:text-[30px] font-medium text-gray-900 leading-[1.4] sm:leading-[1.45] font-serif italic max-w-4xl min-h-[160px] sm:min-h-[180px] flex items-center justify-center">
+              &ldquo;{current.quote}&rdquo;
+            </blockquote>
+
+            {/* Author Details */}
+            <div className="text-gray-900 pt-6">
+              <div className="text-lg sm:text-xl font-bold">{current.author}</div>
+              <div className="text-sm sm:text-base text-gray-600 font-normal">
+                {current.role} &bull; <span className="text-gray-800 font-medium">{current.organization}</span>
+              </div>
+              <div className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-green-700 bg-green-50 px-3 py-1 rounded-full border border-green-200">
+                <Award className="w-3.5 h-3.5" />
+                {current.badge}
+              </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Floating Edge Navigation Buttons */}
       <button
         onClick={prevSlide}
         aria-label="Previous testimonial"
-        className="absolute left-3 sm:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-gray-200 flex items-center justify-center text-gray-700 hover:text-[#f28822] hover:scale-110 hover:border-[#f28822]/40 transition-all focus:outline-none"
+        className="absolute left-3 sm:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-gray-200 flex items-center justify-center text-gray-700 hover:text-[#f28822] hover:scale-110 hover:border-[#f28822]/40 transition-all focus:outline-none cursor-pointer"
       >
         <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7" />
       </button>
@@ -149,7 +161,7 @@ export default function TestimonialsSection() {
       <button
         onClick={nextSlide}
         aria-label="Next testimonial"
-        className="absolute right-3 sm:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-gray-200 flex items-center justify-center text-gray-700 hover:text-[#f28822] hover:scale-110 hover:border-[#f28822]/40 transition-all focus:outline-none"
+        className="absolute right-3 sm:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-gray-200 flex items-center justify-center text-gray-700 hover:text-[#f28822] hover:scale-110 hover:border-[#f28822]/40 transition-all focus:outline-none cursor-pointer"
       >
         <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7" />
       </button>
@@ -163,15 +175,14 @@ export default function TestimonialsSection() {
               key={idx}
               onClick={() => setCurrentIndex(idx)}
               aria-label={`Go to slide ${idx + 1}`}
-              className={`h-2.5 rounded-full transition-all duration-300 ${currentIndex === idx
-                ? "w-10 bg-[#f28822]"
-                : "w-2.5 bg-gray-300 hover:bg-gray-400"
-                }`}
+              className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                currentIndex === idx
+                  ? "w-10 bg-[#f28822]"
+                  : "w-2.5 bg-gray-300 hover:bg-gray-400"
+              }`}
             />
           ))}
         </div>
-
-
       </div>
     </section>
   );

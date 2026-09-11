@@ -1,22 +1,37 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Building2, Handshake } from "lucide-react";
 
 export default function AboutEvent() {
   return (
-    <section id="about" className="bg-white py-16 sm:py-24">
+    <section id="about" className="bg-white py-16 sm:py-24 overflow-hidden">
       {/* Container aligned with Navbar and Hero (max-w-8xl) */}
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-24">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-stretch">
-          {/* Left Column: Exactly 40% width on desktop */}
-          <div className="w-full lg:w-[40%] shrink-0 flex">
+          {/* Left Column: Exactly 40% width on desktop - SLIDES IN FROM LEFT */}
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="w-full lg:w-[40%] shrink-0 flex"
+          >
             <img
               src="/imdgallery/imd-2024-002-inauguration.png"
               alt="Inauguration Ceremony at Indian Mushroom Days"
               className="w-full h-full min-h-[380px] sm:min-h-[480px] lg:min-h-[580px] object-cover object-center rounded-[20px] shadow-sm border border-gray-100"
             />
-          </div>
+          </motion.div>
 
-          {/* Right Column: Exactly 60% width on desktop */}
-          <div className="w-full lg:w-[60%] flex flex-col justify-center min-w-0">
+          {/* Right Column: Exactly 60% width on desktop - SLIDES IN FROM RIGHT */}
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="w-full lg:w-[60%] flex flex-col justify-center min-w-0"
+          >
             {/* Section Title with authentic orange SVG arrow */}
             <div className="mb-3 flex items-start gap-1 text-[#f28822]">
               <span className="text-2xl font-bold sm:text-3xl">About The Events</span>
@@ -31,8 +46,15 @@ export default function AboutEvent() {
               <span className="text-[#f28822]">&amp; Shroom Connect 2027</span>
             </h2>
 
-            {/* Event 1 Box: Indian Mushroom Days 2027 */}
-            <div className="rounded-2xl bg-slate-50/90 border border-slate-200/90 p-5 sm:p-6 mb-4">
+            {/* Event 1 Box: Indian Mushroom Days 2027 - POPS IN */}
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", stiffness: 240, damping: 20, delay: 0.15 }}
+              whileHover={{ y: -3, transition: { duration: 0.2 } }}
+              className="rounded-2xl bg-slate-50/90 border border-slate-200/90 p-5 sm:p-6 mb-4 shadow-xs"
+            >
               <div className="flex items-center justify-between flex-wrap gap-2 mb-2.5">
                 <div className="flex items-center gap-2">
                   <Building2 className="w-5 h-5 text-[#2c29e4]" />
@@ -50,12 +72,17 @@ export default function AboutEvent() {
                 pioneers, IMD provides direct access to a targeted audience to solve cultivation challenges, enhance brand visibility,
                 and unlock high-value agribusiness opportunities across India.
               </p>
-            </div>
+            </motion.div>
 
-            {/* Event 2 Box: Shroom Connect 2027 */}
-            <div
+            {/* Event 2 Box: Shroom Connect 2027 - POPS IN */}
+            <motion.div
               id="about-shroomconnect"
-              className="rounded-2xl bg-orange-50/70 border border-orange-200/90 p-5 sm:p-6"
+              initial={{ opacity: 0, y: 20, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", stiffness: 240, damping: 20, delay: 0.25 }}
+              whileHover={{ y: -3, transition: { duration: 0.2 } }}
+              className="rounded-2xl bg-orange-50/70 border border-orange-200/90 p-5 sm:p-6 shadow-xs"
             >
               <div className="flex items-center justify-between flex-wrap gap-2 mb-2.5">
                 <div className="flex items-center gap-2">
@@ -74,8 +101,8 @@ export default function AboutEvent() {
                 The summit highlights state-of-the-art Controlled Environment Agriculture (CEA), certified spawn biotechnology,
                 freeze-drying processing, and National Horticulture Board (NHB) capital subsidy schemes.
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

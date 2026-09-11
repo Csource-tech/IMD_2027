@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { User } from "lucide-react";
 
 interface CommitteeMember {
@@ -44,24 +47,40 @@ const MEMBERS: CommitteeMember[] = [
 
 export default function OrganisingCommittee() {
   return (
-    <section id="organising-committee" className="bg-white py-16 sm:py-24 border-b border-gray-100">
+    <section id="organising-committee" className="bg-white py-16 sm:py-24 border-b border-gray-100 overflow-hidden">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-24 text-center">
-        {/* Section Title */}
-        <div className="mb-12 sm:mb-16">
+        {/* Section Title - FADES IN */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 sm:mb-16"
+        >
           <h2 className="inline-block border-b-[3px] border-[#f28822] pb-1 text-2xl sm:text-4xl font-medium text-black">
             Organising Committee
           </h2>
           <p className="mt-4 text-slate-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
             Guided by visionary founders, spawn innovators, and veteran mycology experts pioneering the future of Indian mushroom cultivation.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 5 Member Cards with Uniform Circular Placeholders */}
+        {/* 5 Member Cards with Staggered Spring Popping Entrance */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-7">
-          {MEMBERS.map((member) => (
-            <div
+          {MEMBERS.map((member, idx) => (
+            <motion.div
               key={member.name}
-              className="bg-white rounded-2xl p-6 border border-gray-200/90 shadow-sm hover:shadow-xl hover:border-orange-300 hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center group"
+              initial={{ opacity: 0, scale: 0.72, y: 35 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                type: "spring",
+                stiffness: 240,
+                damping: 18,
+                delay: idx * 0.1,
+              }}
+              whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.2 } }}
+              className="bg-white rounded-2xl p-6 border border-gray-200/90 shadow-sm hover:shadow-xl hover:border-orange-300 transition-all duration-300 flex flex-col items-center text-center group cursor-default"
             >
               {/* Circular Avatar Placeholder */}
               <div className="relative mb-4">
@@ -100,7 +119,7 @@ export default function OrganisingCommittee() {
               <p className="text-xs text-gray-500 mt-1 leading-relaxed">
                 {member.org}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
