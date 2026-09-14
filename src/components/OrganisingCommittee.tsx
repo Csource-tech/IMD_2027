@@ -1,122 +1,138 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { User } from "lucide-react";
+import { Heart } from "lucide-react";
 
 interface CommitteeMember {
   name: string;
   role: string;
   org: string;
-  image?: string;
-  founderBadge?: boolean;
+  image: string;
+  isFounder?: boolean;
 }
 
 const MEMBERS: CommitteeMember[] = [
   {
     name: "Late Atul Saxena",
     role: "Founder & Visionary",
-    org: "Mushroom Exchange & IMD",
-    image: "", // Placeholder for photo to be added later
-    founderBadge: true,
+    org: "Mushroom Exchange & Indian Mushroom Days",
+    image: "/committee/atul.png",
+    isFounder: true,
   },
   {
     name: "Ms. Pinky Malhotra",
     role: "Core Leadership & Secretariat",
     org: "India Mushroom Days Board",
-    image: "", // Placeholder for photo to be added later
+    image: "/committee/pinky.png",
   },
   {
     name: "Anurag Saxena",
     role: "Chief Advisor",
-    org: "Founder — Milkyway Spawn",
-    image: "", // Placeholder for photo to be added later
+    org: "Founder — Milkyway Spawn Technologies",
+    image: "/committee/anurag.png",
   },
   {
     name: "Dr. Loveleet Rana",
     role: "Technical & Mycology Expert",
-    org: "Mushroom Specialist, HP",
-    image: "", // Placeholder for photo to be added later
+    org: "Veteran Mushroom Specialist, HP",
+    image: "/committee/loveleet.png",
   },
   {
     name: "Er. Sanjeev Verma",
     role: "Agri-Tech & Climate Systems",
-    org: "CEA & Farm Automation Lead",
-    image: "", // Placeholder for photo to be added later
+    org: "CEA Automation & Farm Engineering Lead",
+    image: "/committee/sanjeev.png",
   },
 ];
 
 export default function OrganisingCommittee() {
   return (
-    <section id="organising-committee" className="bg-white py-16 sm:py-24 border-b border-gray-100 overflow-hidden">
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-24 text-center">
-        {/* Section Title - FADES IN */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 sm:mb-16"
-        >
-          <h2 className="inline-block border-b-[3px] border-[#f28822] pb-1 text-2xl sm:text-4xl font-medium text-black">
-            Organising Committee
-          </h2>
-          <p className="mt-4 text-slate-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            Guided by visionary founders, spawn innovators, and veteran mycology experts pioneering the future of Indian mushroom cultivation.
-          </p>
-        </motion.div>
+    <section
+      id="organising-committee"
+      className="relative py-20 sm:py-28 bg-[#faf9f5] border-b border-gray-200/80 overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Heading */}
+        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#f28822]/15 border border-[#f28822]/30 text-xs font-bold text-[#b85b06] uppercase tracking-wider mb-4"
+          >
+            <span>Visionary Leadership</span>
+          </motion.div>
 
-        {/* 5 Member Cards with Staggered Spring Popping Entrance */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-7">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl sm:text-5xl font-black tracking-tight text-gray-950 uppercase font-sans leading-[1.1]"
+          >
+            Organising Committee &amp; <br />
+            <span className="font-serif italic font-normal text-gray-700 capitalize">
+              Advisory Board
+            </span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed font-normal"
+          >
+            Pioneering founders, veteran mycology researchers, and high-tech agricultural engineers charting the future course of India&apos;s mushroom industry.
+          </motion.p>
+        </div>
+
+        {/* 5 Leadership Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-7 items-stretch">
           {MEMBERS.map((member, idx) => (
             <motion.div
               key={member.name}
-              initial={{ opacity: 0, scale: 0.72, y: 35 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{
-                type: "spring",
-                stiffness: 240,
-                damping: 18,
-                delay: idx * 0.1,
-              }}
-              whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.2 } }}
-              className="bg-white rounded-2xl p-6 border border-gray-200/90 shadow-sm hover:shadow-xl hover:border-orange-300 transition-all duration-300 flex flex-col items-center text-center group cursor-default"
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              className={`p-6 rounded-3xl border transition-all duration-300 flex flex-col items-center text-center group cursor-default ${
+                member.isFounder
+                  ? "bg-gradient-to-b from-white via-orange-50/20 to-white border-orange-200/90 shadow-xl"
+                  : "bg-white border-gray-200 shadow-md hover:shadow-xl hover:border-gray-300"
+              }`}
             >
-              {/* Circular Avatar Placeholder */}
-              <div className="relative mb-4">
-                <div className="w-28 h-28 rounded-full flex items-center justify-center bg-gradient-to-b from-slate-50 to-slate-100/90 border-2 border-slate-200 shadow-sm transition-transform duration-300 group-hover:scale-105">
-                  {member.image ? (
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover rounded-full"
-                    />
-                  ) : (
-                    <div className="flex flex-col items-center justify-center text-slate-400 group-hover:text-[#f28822] transition-colors">
-                      <User className="w-11 h-11 stroke-[1.5]" />
-                    </div>
-                  )}
+              {/* Portrait Photo Container */}
+              <div className="relative mb-5">
+                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-2 border-gray-200 group-hover:border-[#f28822] shadow-md transition-all duration-300 group-hover:scale-105 bg-slate-100 flex items-center justify-center">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover object-center group-hover:brightness-105 transition-all"
+                  />
                 </div>
 
-                {member.founderBadge && (
-                  <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-[#f28822] text-white text-[10px] font-bold uppercase tracking-wider shadow whitespace-nowrap flex items-center gap-1">
-                    <span>♥</span> FOUNDER
+                {member.isFounder && (
+                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-[#f28822] text-white text-[10px] font-extrabold uppercase tracking-wider shadow-md whitespace-nowrap flex items-center gap-1">
+                    <Heart className="w-2.5 h-2.5 fill-white" />
+                    <span>FOUNDER</span>
                   </span>
                 )}
               </div>
 
               {/* Name */}
-              <h3 className="text-base sm:text-lg font-bold text-gray-950 mt-2 group-hover:text-[#f28822] transition-colors leading-snug">
+              <h3 className="text-base sm:text-lg font-bold text-gray-950 group-hover:text-[#f28822] transition-colors leading-snug">
                 {member.name}
               </h3>
 
               {/* Role */}
-              <p className="text-xs sm:text-sm font-semibold text-[#84c52c] mt-1.5">
+              <p className="text-xs font-semibold text-[#84c52c] mt-1.5 leading-snug">
                 {member.role}
               </p>
 
               {/* Organization */}
-              <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+              <p className="text-[11px] text-gray-500 mt-2 leading-relaxed">
                 {member.org}
               </p>
             </motion.div>

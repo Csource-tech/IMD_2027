@@ -2,142 +2,216 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 
-interface TabItem {
+interface WhyReason {
+  number: string;
   title: string;
+  subtitle: string;
   desc: string;
   image: string;
+  tag: string;
 }
 
-const TABS: TabItem[] = [
+const REASONS: WhyReason[] = [
   {
-    title: "GROW YOUR BUSINESS",
-    desc: "Unlock opportunities and expand your presence in the fast-growing Indian and global edible fungi market.",
+    number: "01",
+    title: "Accelerate Commercial Enterprise",
+    subtitle: "Direct access to high-volume market channels",
+    desc: "Position your brand at the center of India's surging edible and medicinal mushroom revolution. Expand wholesale distribution pipelines, contract farming agreements, and international buyer linkages.",
     image: "/imdgallery/imd-2024-001.jpg",
+    tag: "Market Expansion",
   },
   {
-    title: "DISCOVER THE LATEST INNOVATIONS",
-    desc: "Explore new technologies, automated CEA climate chambers, and smart solutions shaping the future of mushroom cultivation.",
+    number: "02",
+    title: "Next-Gen CEA Climate Automation",
+    subtitle: "Precision temperature, humidity & CO2 control",
+    desc: "Inspect live cutting-edge Controlled Environment Agriculture (CEA) climate computers, multi-tier shelving infrastructure, compost turning machinery, and automated spawn bagging technologies.",
     image: "/imdgallery/imd-2024-004.jpg",
+    tag: "Agri-Tech & Hardware",
   },
   {
-    title: "BUILD YOUR NETWORK",
-    desc: "Connect with international suppliers, buyers, distributors, and industry professionals across India and globally.",
+    number: "03",
+    title: "International Supply Chain Network",
+    subtitle: "Connect across 15+ participating countries",
+    desc: "Network with verified global equipment manufacturers from the Netherlands, China, and Europe alongside top Indian farm operators, substrate suppliers, and cold-chain logistics providers.",
     image: "/imdgallery/imd-2024-015.jpg",
+    tag: "Global Trade",
   },
   {
-    title: "ENGAGE GLOBAL MYCOLOGISTS",
-    desc: "Gain scientific insights from 50+ world-class mycology experts, spawn researchers, and commercial growers.",
+    number: "04",
+    title: "Engage 50+ Mycology & Biotech Keynotes",
+    subtitle: "Breakthrough science and high-yield genetics",
+    desc: "Gain proprietary technical masterclass insights from leading mycology scientists, spawn laboratory geneticists, substrate composting researchers, and medicinal extract formulators.",
     image: "/imdgallery/imd-2024-011.jpg",
+    tag: "Scientific Masterclasses",
   },
   {
-    title: "SHROOMCONNECT B2B MATCHMAKING",
-    desc: "Dedicated buyer-seller conclave linking commercial cultivators directly to retail supermarket chains and institutional buyers.",
+    number: "05",
+    title: "Shroom Connect B2B Deal-Making",
+    subtitle: "Direct supermarket & HoReCa buyer sourcing",
+    desc: "A dedicated procurement conclave putting progressive growers face-to-face with retail supermarket category heads, freeze-drying processors, and dietary supplement brands.",
     image: "/imdgallery/imd-2024-008.jpg",
+    tag: "Commercial Sourcing",
   },
   {
-    title: "GOVERNMENT SUBSIDIES & FINANCE",
-    desc: "Firsthand guidance on National Horticulture Board (NHB) subsidies, credit schemes, and turnkey commercial farm setup.",
+    number: "06",
+    title: "NHB Subsidies & Project Finance Clinic",
+    subtitle: "Unlock 35%–50% capital support schemes",
+    desc: "Direct guidance on securing National Horticulture Board (NHB) commercial farm setup subsidies, bankable Detailed Project Reports (DPR), and subsidized agro-venture credit.",
     image: "/imdgallery/imd-2024-014.jpg",
+    tag: "Government Financing",
   },
 ];
 
 export default function WhyJoinSection() {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeReason, setActiveReason] = useState(0);
+
+  const current = REASONS[activeReason];
 
   return (
-    <section id="why-join" className="overflow-hidden bg-white pt-16 sm:pt-24">
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mx-auto mb-16 sm:mb-20 max-w-7xl px-4 text-center sm:px-6 lg:px-8"
-      >
-        <h2 className="inline-block border-b-[3px] border-[#f28822] pb-1 text-2xl font-medium text-black sm:text-4xl">
-          Why Indian Mushroom Days (IMD 2027)
-        </h2>
-      </motion.div>
-
-      <div className="bg-[#f7881d]">
-        <div className="mx-auto grid max-w-6xl grid-cols-1 items-stretch lg:grid-cols-[450px_minmax(0,1fr)]">
-          {/* Left Column with Tabs - SLIDES IN FROM LEFT */}
+    <section id="why-join" className="relative py-20 sm:py-28 bg-white border-b border-gray-200/80 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="max-w-3xl mb-14 sm:mb-18">
           <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="bg-white px-6 py-8 sm:px-10 lg:py-8"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#f28822]/15 border border-[#f28822]/30 text-xs font-bold text-[#b85b06] uppercase tracking-wider mb-4"
           >
-            <div className="relative space-y-5">
-              {/* Vertical Dashed Line running exactly through the center of the 25px circles */}
-              <div
-                className="absolute top-3 bottom-5 left-[11.5px] border-l-2 border-dashed border-blue-300 pointer-events-none z-0"
-                aria-hidden="true"
-              />
+            <span>Strategic Imperatives</span>
+          </motion.div>
 
-              {TABS.map((tab, index) => {
-                const selected = activeTab === index;
-                return (
-                  <button
-                    key={tab.title}
-                    type="button"
-                    onClick={() => setActiveTab(index)}
-                    className="group flex w-full items-start gap-4 text-left cursor-pointer relative z-10 transition-transform duration-200 active:scale-[0.98]"
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl sm:text-5xl font-black tracking-tight text-gray-950 uppercase font-sans leading-[1.1]"
+          >
+            Why Participate in <br />
+            <span className="font-serif italic font-normal text-gray-700 capitalize">
+              Indian Mushroom Days 2027
+            </span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed font-normal"
+          >
+            Six distinct strategic advantages that make Indian Mushroom Days the non-negotiable annual gathering for everyone in the fungi economy.
+          </motion.p>
+        </div>
+
+        {/* Asymmetrical 2-Column Chapter Composition */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+          {/* Left Column: 6 Interactive Chapter Triggers (6 Cols) */}
+          <div className="lg:col-span-6 space-y-2">
+            {REASONS.map((reason, index) => {
+              const isSelected = activeReason === index;
+              return (
+                <button
+                  key={reason.number}
+                  type="button"
+                  onClick={() => setActiveReason(index)}
+                  className={`w-full text-left p-4 sm:p-5 rounded-2xl border transition-all duration-200 cursor-pointer flex items-start gap-4 ${
+                    isSelected
+                      ? "bg-[#0c140f] text-white border-[#0c140f] shadow-xl scale-[1.01]"
+                      : "bg-[#faf9f5] text-gray-800 border-gray-200/80 hover:bg-white hover:border-gray-300"
+                  }`}
+                >
+                  {/* Number Box */}
+                  <span
+                    className={`font-sans text-xs font-black px-2.5 py-1 rounded-lg shrink-0 ${
+                      isSelected ? "bg-[#f28822] text-white" : "bg-gray-200 text-gray-700"
+                    }`}
                   >
-                    {/* Circle Indicator */}
-                    <span
-                      className={`relative flex h-[25px] w-[25px] shrink-0 items-center justify-center rounded-full border bg-white shadow-xs transition-colors duration-200 ${
-                        selected ? "border-[#0877ff]" : "border-slate-900"
-                      }`}
-                    >
-                      <span
-                        className={`h-2.5 w-2.5 rounded-full transition-transform duration-200 ${
-                          selected ? "bg-[#0877ff] scale-110" : "bg-slate-900"
-                        }`}
-                      />
-                    </span>
+                    {reason.number}
+                  </span>
 
-                    {/* Text Details */}
-                    <span className="flex-1 min-w-0">
-                      <span
-                        className={`block text-xs sm:text-sm font-bold tracking-tight transition-colors ${
-                          selected ? "text-[#0877ff]" : "text-slate-900 group-hover:text-[#0877ff]"
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-2">
+                      <h3
+                        className={`text-sm sm:text-base font-bold tracking-tight leading-snug ${
+                          isSelected ? "text-white" : "text-gray-900"
                         }`}
                       >
-                        {tab.title}
+                        {reason.title}
+                      </h3>
+                      <span
+                        className={`text-[10px] font-bold uppercase tracking-wider shrink-0 ${
+                          isSelected ? "text-[#84c52c]" : "text-gray-400"
+                        }`}
+                      >
+                        {reason.tag}
                       </span>
-                      <span className="mt-0.5 block text-xs leading-relaxed text-slate-600">
-                        {tab.desc}
-                      </span>
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </motion.div>
+                    </div>
+                    <p
+                      className={`text-xs mt-1 leading-relaxed line-clamp-2 ${
+                        isSelected ? "text-gray-300" : "text-gray-500"
+                      }`}
+                    >
+                      {reason.subtitle}
+                    </p>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
 
-          {/* Right Column: Active Tab Image - SLIDES IN FROM RIGHT + ANIMATES ON TAB CHANGE */}
-          <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative flex items-center justify-center px-5 py-8 lg:px-0 lg:py-0 overflow-hidden"
-          >
+          {/* Right Column: Active Reason Feature Card (6 Cols) */}
+          <div className="lg:col-span-6 flex flex-col justify-center">
             <AnimatePresence mode="wait">
-              <motion.img
-                key={TABS[activeTab].image}
-                src={TABS[activeTab].image}
-                alt={TABS[activeTab].title}
-                initial={{ opacity: 0, scale: 0.94 }}
+              <motion.div
+                key={current.number}
+                initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.94 }}
+                exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
-                className="h-auto w-full max-w-[592px] rounded-[13px] object-cover shadow-xl lg:-my-6 lg:min-h-[560px]"
-              />
+                className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-200 bg-white flex flex-col h-full justify-between"
+              >
+                {/* Photo with Overlay */}
+                <div className="relative h-64 sm:h-80 overflow-hidden bg-slate-900">
+                  <img
+                    src={current.image}
+                    alt={current.title}
+                    className="w-full h-full object-cover object-center brightness-90"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+
+                  <div className="absolute top-5 left-5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-bold uppercase tracking-wider">
+                    Chapter {current.number} • {current.tag}
+                  </div>
+
+                  <div className="absolute bottom-5 left-6 right-6 text-white">
+                    <h4 className="text-xl sm:text-2xl font-black leading-tight">
+                      {current.title}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-amber-200 mt-1 font-medium">
+                      {current.subtitle}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Narrative Body */}
+                <div className="p-6 sm:p-8 space-y-4">
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                    {current.desc}
+                  </p>
+
+                  <div className="pt-2 flex items-center justify-between border-t border-gray-100 text-xs font-semibold text-gray-500">
+                    <span>Indian Mushroom Days 2027 • New Delhi, India</span>
+                    <span className="text-[#f28822] font-bold">Priority Attendance</span>
+                  </div>
+                </div>
+              </motion.div>
             </AnimatePresence>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

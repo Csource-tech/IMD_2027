@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { saveLead } from "@/lib/leadsStore";
 
 export async function POST(req: Request) {
   try {
@@ -62,6 +63,26 @@ export async function POST(req: Request) {
         { error: "PIN code must be a 6-digit number." },
         { status: 400 }
       );
+    }
+
+    // Save lead to Admin Leads Store
+    try {
+      await saveLead("stall", {
+        name,
+        companyName,
+        exhibitorCategory,
+        position,
+        email,
+        phone: cleanedPhone,
+        address,
+        country,
+        city,
+        pinCode,
+        contactPreference,
+        requiredStallSpace,
+      });
+    } catch (storeErr) {
+      console.error("Failed to save stall booking lead to store:", storeErr);
     }
 
     const host = process.env.SMTP_HOST || "smtp.gmail.com";
@@ -267,7 +288,7 @@ export async function POST(req: Request) {
                 </div>
                 <div class="field-row">
                   <div class="field-label">Venue:</div>
-                  <div class="field-val">Delhi, India</div>
+                  <div class="field-val">New Delhi, India</div>
                 </div>
               </div>
 
@@ -277,7 +298,7 @@ export async function POST(req: Request) {
 
               <div class="footer">
                 <strong>Exhibitor Secretariat &bull; India Mushroom Days 2027</strong><br>
-                Official Email: reachout@mushex.in &bull; Helpline: +91 98107 26996 &bull; Delhi, India
+                Official Email: reachout@mushex.in &bull; Helpline: +91 98107 26996 &bull; New Delhi, India
               </div>
             </div>
           </body>

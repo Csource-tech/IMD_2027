@@ -3,71 +3,71 @@ import HeroVideo from "@/components/HeroVideo";
 import CountdownTimer from "@/components/CountdownTimer";
 import SloganBanner from "@/components/SloganBanner";
 import AboutEvent from "@/components/AboutEvent";
-import OrganisingCommittee from "@/components/OrganisingCommittee";
-import ScheduleSection from "@/components/ScheduleSection";
+import FullIndustryChain from "@/components/FullIndustryChain";
 import WhyJoinSection from "@/components/WhyJoinSection";
 import OurStrength from "@/components/OurStrength";
-import PastSponsorsSection from "@/components/PastSponsorsSection";
-import FullIndustryChain from "@/components/FullIndustryChain";
+import ScheduleSection from "@/components/ScheduleSection";
+import OrganisingCommittee from "@/components/OrganisingCommittee";
+import BuyerClubSection from "@/components/BuyerClubSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import GallerySection from "@/components/GallerySection";
+import PastSponsorsSection from "@/components/PastSponsorsSection";
 import ExhibitorsSection from "@/components/ExhibitorsSection";
-import BuyerClubSection from "@/components/BuyerClubSection";
 import RegisterSection from "@/components/RegisterSection";
 import FooterSection from "@/components/FooterSection";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col bg-white relative">
-      {/* 1. Transparent-to-Solid Sticky Navigation Bar */}
+    <main className="min-h-screen flex flex-col bg-[#faf9f5] relative font-sans">
+      {/* 1. Floating Pill Glassmorphism Navigation Bar */}
       <Navbar />
 
-      {/* 2. Hero Video with Left-Aligned Title, Smaller Text & Two CTA Buttons */}
+      {/* 2. Cinematic Macro Mushroom Editorial Hero */}
       <HeroVideo />
 
-      {/* 3. FlipDown Countdown Timer */}
+      {/* 3. Official Live Countdown Split-Flap Ticker */}
       <CountdownTimer />
 
-      {/* 4. Slogan Banner Bar */}
+      {/* 4. Editorial Manifesto Bar: Mushrooms First */}
       <SloganBanner />
 
-      {/* 5. About The Event & Shroom Connect Conclave */}
+      {/* 5. Dual Ecosystem Architecture: IMD 2027 & Shroom Connect */}
       <AboutEvent />
 
-      {/* 8. Why Indian Mushroom Days (6 USPs with Interactive Tabs) */}
-      <WhyJoinSection />
-
-      {/* 8. Our Strength (5000+ Delegates, 100+ Exhibitors, 15+ Countries, 50+ Speakers) */}
-      <OurStrength />
-
-      {/* 9. Our Past Sponsors & Partners (Milkyway, UAS Bangalore, Mushroom Exchange) */}
-      <PastSponsorsSection />
-
-      {/* 10. Full Industry Chain Coverage (Zig-zag) */}
+      {/* 6. Mushroom as Hero: Button Backbone & 6 Specialty Sectors */}
       <FullIndustryChain />
 
-      {/* 6. Organising Committee (Leadership & Advisory Board) */}
-      <OrganisingCommittee />
+      {/* 7. Strategic Imperatives: 6 Interactive Value Chapters */}
+      <WhyJoinSection />
 
-      {/* 7. Schedule & Program Agenda (3 Days Itinerary) */}
+      {/* 8. National Scale & Industry Impact: 5000+ Delegates & 100+ Brands */}
+      <OurStrength />
+
+      {/* 9. 3-Day Program Agenda: Discover • Innovate • Grow */}
       <ScheduleSection />
 
-      {/* 11. Our Highlights / Testimonials Carousel */}
-      <TestimonialsSection />
+      {/* 10. Visionary Leadership & Advisory Council (Real Member Photography) */}
+      <OrganisingCommittee />
 
-      {/* 12. Photo Gallery */}
-      <GallerySection />
-
-      {/* 13. Part of Exhibitors (Continuous Logo Marquee) */}
-      <ExhibitorsSection />
-
-      {/* 14. Buyer Club Program Banner */}
+      {/* 11. Mushroom Exchange & VIP Buyer Club Trade Linkages */}
       <BuyerClubSection />
 
-      {/* 15. Pre-Registration Form */}
+      {/* 12. Industry Endorsements & Dignitary Reviews */}
+      <TestimonialsSection />
+
+      {/* 13. Visual Chronicle: Curated Bento Photo Gallery & Lightbox */}
+      <GallerySection />
+
+      {/* 14. Strategic Alliances & Institutional Partners */}
+      <PastSponsorsSection />
+
+      {/* 15. 100+ Corporate Exhibitors Infinite Marquee */}
+      <ExhibitorsSection />
+
+      {/* 16. Official Secretariat & Direct Inquiry Pavilion */}
       <RegisterSection />
 
-      {/* 16. Footer with CFNA Details & Contacts */}
+      {/* 17. Editorial Grand Finale & Comprehensive Sitemap Footer */}
       <FooterSection />
     </main>
   );

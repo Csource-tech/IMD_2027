@@ -6,7 +6,6 @@ import {
   Calendar,
   Clock,
   MapPin,
-  Sparkles,
   Users,
   Building2,
   Ticket,
@@ -48,7 +47,7 @@ const DAYS_SCHEDULE: Record<string, DayData> = {
         time: "09:00 AM – 10:30 AM",
         title: "Grand Inaugural Ceremony & Welcome Address",
         category: "Ceremony",
-        hall: "Plenary Hall A, Bharat Mandapam",
+        hall: "Plenary Hall A",
         speakers: "Ministry of Agriculture Leaders & Organizing Committee Board",
         desc: "Official ribbon cutting, welcome speeches, and visionary roadmap unveiling for India's mushroom cultivation sector towards 2030.",
       },
@@ -99,7 +98,7 @@ const DAYS_SCHEDULE: Record<string, DayData> = {
         time: "09:30 AM – 11:00 AM",
         title: "Controlled Environment Agriculture (CEA) & Smart Climate Chambers",
         category: "Agri-Tech Panel",
-        hall: "Plenary Hall A, Bharat Mandapam",
+        hall: "Plenary Hall A",
         speakers: "CEA Automation Engineers & Climate Computer Specialists",
         desc: "Precision temperature, humidity (RH), and CO2 control systems. Energy-saving HVAC designs and automated shelving setups.",
       },
@@ -150,7 +149,7 @@ const DAYS_SCHEDULE: Record<string, DayData> = {
         time: "09:30 AM – 11:00 AM",
         title: "Cold-Chain Logistics, Modified Atmosphere Packaging (MAP) & Shelf-Life Extension",
         category: "Supply Chain",
-        hall: "Plenary Hall A, Bharat Mandapam",
+        hall: "Plenary Hall A",
         speakers: "Cold-Chain Infrastructure Leads & Packaging Scientists",
         desc: "Mitigating post-harvest losses, optimal pre-cooling procedures, breathable barrier films, and reefer transportation management.",
       },
@@ -216,7 +215,7 @@ export default async function DaySchedulePage({
 
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#f28822] mb-2">
             <Calendar className="w-4 h-4" />
-            <span>{currentDay.date} • Bharat Mandapam, New Delhi</span>
+            <span>{currentDay.date} • New Delhi, India</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white mb-4">
@@ -331,7 +330,6 @@ export default async function DaySchedulePage({
               {/* Action Banner */}
               <div className="rounded-3xl bg-gradient-to-br from-[#103322] to-[#0a1e14] p-6 sm:p-7 text-white shadow-lg space-y-4">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white/10 text-emerald-300">
-                  <Sparkles className="w-3.5 h-3.5" />
                   <span>Reserve Your Presence</span>
                 </div>
                 <h3 className="text-xl font-bold">

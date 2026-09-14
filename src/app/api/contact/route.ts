@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { saveLead } from "@/lib/leadsStore";
 
 export async function POST(req: Request) {
   try {
@@ -11,6 +12,19 @@ export async function POST(req: Request) {
         { error: "All required fields must be provided." },
         { status: 400 }
       );
+    }
+
+    // Save lead to Admin Leads Store
+    try {
+      await saveLead("contact", {
+        fullName,
+        email,
+        phone,
+        inquiryTopic: inquiryTopic || "General Inquiry",
+        message,
+      });
+    } catch (storeErr) {
+      console.error("Failed to save contact lead to store:", storeErr);
     }
 
     const host = process.env.SMTP_HOST || "smtp.gmail.com";
@@ -151,7 +165,7 @@ export async function POST(req: Request) {
                 <div class="info-box">
                   <div style="font-weight: 700; color: #111; margin-bottom: 8px;">Event &amp; Secretariat Details:</div>
                   <div><strong>Dates:</strong> 19-20-21 February 2027</div>
-                  <div><strong>Venue:</strong> Delhi, India</div>
+                  <div><strong>Venue:</strong> New Delhi, India</div>
                   <div><strong>Official Email:</strong> reachout@mushex.in</div>
                   <div><strong>Helplines &amp; WhatsApp:</strong> +91 98107 26996 / +91 98117 75443 / +91 88601 15588</div>
                   <div><strong>Working Hours:</strong> Monday to Saturday: 09:00 AM – 06:00 PM IST</div>

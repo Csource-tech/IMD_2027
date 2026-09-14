@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import {
-  Sparkles,
+  Ticket,
   User,
   Briefcase,
   Building,
@@ -16,7 +17,12 @@ import {
   AlertCircle,
   Loader2,
   ArrowRight,
+  ShieldCheck,
+  Calendar,
+  Sparkles,
+  Phone,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const INDIAN_STATES = [
   "Andhra Pradesh",
@@ -110,10 +116,10 @@ export default function VisitorRegisterPage() {
       }
       case "email":
         if (!value.trim()) return "Email address is required.";
-        if (!EMAIL_REGEX.test(value.trim())) return "Please enter a valid email address (e.g. name@example.com).";
+        if (!EMAIL_REGEX.test(value.trim())) return "Please enter a valid email address.";
         return "";
       case "postalCode":
-        if (value.trim() && !PIN_REGEX.test(value.trim())) return "PIN code must be a 6-digit number.";
+        if (value.trim() && !PIN_REGEX.test(value.trim())) return "PIN code must be 6 digits.";
         return "";
       default:
         return "";
@@ -129,7 +135,6 @@ export default function VisitorRegisterPage() {
     }
     setFormData((prev) => ({ ...prev, [field]: finalVal }));
 
-    // Instant real-time revalidation if this field currently has an error
     if (errors[field]) {
       const fieldError = validateField(field, finalVal);
       setErrors((prev) => {
@@ -186,7 +191,7 @@ export default function VisitorRegisterPage() {
     setErrorMessage("");
 
     if (!validateForm()) {
-      setErrorMessage("Please fix the highlighted errors below before submitting.");
+      setErrorMessage("Please complete all required fields highlighted in red below.");
       return;
     }
 
@@ -201,7 +206,7 @@ export default function VisitorRegisterPage() {
 
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || "Failed to register. Please try again.");
+        throw new Error(data.error || "Registration failed. Please try again.");
       }
 
       setIsSuccess(true);
@@ -213,43 +218,110 @@ export default function VisitorRegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#fcfbf9]">
+    <div className="min-h-screen flex flex-col bg-[#faf9f5]">
+      {/* 1. Navbar */}
       <Navbar />
 
-      {/* Main Content Area */}
-      <main className="flex-1 pt-28 pb-16 px-4 sm:px-6 lg:px-8">
+      {/* 2. Editorial Hero Header with Website Dark Theme */}
+      <section className="relative pt-36 sm:pt-44 pb-24 sm:pb-32 bg-[#0c140f] text-white overflow-hidden border-b border-white/10">
+        {/* Subtle Ambient Radial Glows */}
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#f28822]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#84c52c]/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#f28822]/20 border border-[#f28822]/35 text-xs font-bold text-[#f28822] uppercase tracking-wider mb-4 shadow-sm"
+          >
+            <Ticket className="w-3.5 h-3.5" />
+            <span>Complimentary Trade Pass</span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase font-sans leading-[1.1]"
+          >
+            Visitor <br />
+            <span className="font-serif italic font-normal text-amber-200 capitalize">
+              Registration
+            </span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-4 text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal"
+          >
+            Register for Indian Mushroom Days 2027 in New Delhi, India. Direct access to 100+ global commercial exhibitors, scientific conferences, and B2B buyer sessions.
+          </motion.p>
+
+          {/* Quick Perks Pill Strip */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm text-gray-300 font-medium"
+          >
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
+              <Sparkles className="w-3.5 h-3.5 text-[#f28822]" /> 100% Free Visitor Pass
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
+              <Calendar className="w-3.5 h-3.5 text-[#84c52c]" /> 3-Day Exhibition Access
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
+              <ShieldCheck className="w-3.5 h-3.5 text-amber-300" /> Instant Digital E-Badge
+            </span>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 3. Main Form Card Area */}
+      <main className="flex-1 -mt-12 sm:-mt-16 pb-20 px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="max-w-4xl mx-auto">
-          {/* Card Container */}
-          <div className="bg-white border border-gray-200/90 rounded-2xl shadow-sm p-6 sm:p-10 lg:p-12">
-            {/* Header */}
-            <div className="flex items-start gap-4 mb-8">
-              <div className="w-12 h-12 rounded-2xl bg-[#eaf7e3] text-[#34a853] flex items-center justify-center shrink-0 shadow-xs">
-                <Sparkles className="w-6 h-6 stroke-[2.2]" />
-              </div>
-
-              <div>
-                <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-950 tracking-tight">
-                  Visitor Registration
-                </h1>
-                <p className="mt-2 text-sm sm:text-base text-gray-600 leading-relaxed">
-                  Register for India Mushroom Days 2027 in Delhi, India. Instant confirmation delivered to your email.
-                </p>
-              </div>
-            </div>
-
+          <div className="bg-white rounded-3xl border border-gray-200/90 shadow-2xl p-6 sm:p-10 lg:p-12 transition-all">
             {isSuccess ? (
-              <div className="py-12 text-center space-y-4 animate-in fade-in">
-                <div className="w-16 h-16 mx-auto bg-green-100 text-green-600 rounded-full flex items-center justify-center shadow-xs">
-                  <CheckCircle2 className="w-9 h-9" />
+              /* Success Confirmation Card */
+              <div className="py-12 text-center space-y-6">
+                <div className="w-20 h-20 mx-auto bg-green-50 text-[#84c52c] rounded-3xl flex items-center justify-center border-2 border-[#84c52c]/30 shadow-md">
+                  <CheckCircle2 className="w-10 h-10 stroke-[2.2]" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
-                  Registration Successful!
-                </h3>
-                <p className="text-gray-600 max-w-md mx-auto text-sm sm:text-base leading-relaxed">
-                  Your registration has been confirmed for <strong>{formData.title} {formData.firstName} {formData.lastName}</strong>.
-                  A confirmation email has been dispatched to <strong>{formData.email}</strong>.
+
+                <div>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-50 border border-green-200 text-xs font-bold text-[#456b14] uppercase tracking-wider mb-2">
+                    Verified Credential
+                  </span>
+                  <h2 className="text-2xl sm:text-4xl font-black text-gray-950 tracking-tight uppercase font-sans">
+                    Registration Confirmed!
+                  </h2>
+                </div>
+
+                <div className="max-w-lg mx-auto p-6 rounded-2xl bg-[#faf9f5] border border-gray-200 text-left space-y-3">
+                  <div className="flex justify-between items-center text-xs text-gray-500 border-b border-gray-200 pb-2">
+                    <span>Registered Visitor</span>
+                    <span className="font-mono text-gray-950 font-bold">IMD-2027</span>
+                  </div>
+                  <div className="text-base font-bold text-gray-950">
+                    {formData.title} {formData.firstName} {formData.lastName}
+                  </div>
+                  <div className="text-xs text-gray-600">
+                    <span className="font-semibold text-gray-800">{formData.designation}</span> • {formData.companyName}
+                  </div>
+                  <div className="text-xs text-gray-600 pt-1 border-t border-gray-100 flex items-center justify-between">
+                    <span>Confirmation Email:</span>
+                    <span className="font-semibold text-gray-900">{formData.email}</span>
+                  </div>
+                </div>
+
+                <p className="text-gray-600 max-w-md mx-auto text-sm leading-relaxed">
+                  Your official pass and entry badge have been dispatched to <strong>{formData.email}</strong>. Please present this QR confirmation upon entry at the registration pavilion.
                 </p>
-                <div className="pt-4">
+
+                <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
                   <button
                     onClick={() => {
                       setIsSuccess(false);
@@ -269,329 +341,399 @@ export default function VisitorRegisterPage() {
                       });
                       setErrors({});
                     }}
-                    className="px-6 py-2.5 bg-gray-900 hover:bg-[#f28822] text-white text-sm font-semibold rounded-full transition-colors cursor-pointer"
+                    className="px-6 py-3 bg-[#0c140f] hover:bg-[#f28822] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer"
                   >
                     Register Another Visitor
                   </button>
+
+                  <Link
+                    href="/#home"
+                    className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-bold uppercase tracking-wider rounded-xl transition-all cursor-pointer"
+                  >
+                    Return to Homepage
+                  </Link>
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} noValidate className="space-y-6">
+              /* Professional Registration Form */
+              <form onSubmit={handleSubmit} noValidate className="space-y-8">
+                {/* Top Section Headline & Instructions */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-6 border-b border-gray-100">
+                  <div>
+                    <h2 className="text-xl sm:text-2xl font-black text-gray-950 tracking-tight">
+                      Visitor Verification Form
+                    </h2>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Complete all fields below for instant electronic accreditation.
+                    </p>
+                  </div>
+                  <span className="text-xs font-bold text-[#f28822] bg-orange-50 border border-orange-200 px-3 py-1 rounded-full w-fit">
+                    * All mandatory fields
+                  </span>
+                </div>
+
                 {errorMessage && (
-                  <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl flex items-center gap-3 text-sm">
-                    <AlertCircle className="w-5 h-5 shrink-0" />
+                  <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl flex items-center gap-3 text-sm font-medium">
+                    <AlertCircle className="w-5 h-5 shrink-0 text-red-600" />
                     <span>{errorMessage}</span>
                   </div>
                 )}
 
-                {/* Row 1: Title, First Name, Last Name, Designation */}
-                <div className="grid grid-cols-1 sm:grid-cols-12 gap-4">
-                  <div className="sm:col-span-2">
-                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                      Title *
-                    </label>
-                    <select
-                      value={formData.title}
-                      onChange={(e) => handleChange("title", e.target.value)}
-                      className="w-full px-3 py-2.5 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 focus:border-[#34a853] focus:ring-1 focus:ring-[#34a853] outline-none transition-all cursor-pointer"
-                    >
-                      <option value="Mr.">Mr.</option>
-                      <option value="Ms.">Ms.</option>
-                      <option value="Mrs.">Mrs.</option>
-                      <option value="Dr.">Dr.</option>
-                    </select>
+                {/* Block 1: Personal & Professional Profile */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-gray-900">
+                    <span className="w-5 h-5 rounded-full bg-[#0c140f] text-white flex items-center justify-center text-[10px]">
+                      1
+                    </span>
+                    <span>Personal &amp; Professional Profile</span>
                   </div>
 
-                  <div className="sm:col-span-3">
-                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                      First Name *
-                    </label>
-                    <div className="relative">
-                      <User className="w-4 h-4 text-gray-400 absolute left-3 top-3.5" />
-                      <input
-                        type="text"
-                        value={formData.firstName}
-                        onChange={(e) => handleChange("firstName", e.target.value)}
-                        onBlur={() => handleBlur("firstName")}
-                        placeholder="First Name"
-                        className={`w-full pl-9 pr-3 py-2.5 bg-white border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                          errors.firstName
-                            ? "border-red-500 bg-red-50/20 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                            : "border-gray-300 focus:border-[#34a853] focus:ring-1 focus:ring-[#34a853]"
-                        }`}
-                      />
+                  {/* Title, First Name, Last Name */}
+                  <div className="grid grid-cols-1 sm:grid-cols-12 gap-4">
+                    {/* Title */}
+                    <div className="sm:col-span-2">
+                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
+                        Title <span className="text-[#f28822]">*</span>
+                      </label>
+                      <select
+                        value={formData.title}
+                        onChange={(e) => handleChange("title", e.target.value)}
+                        className="w-full px-3 py-3 bg-slate-50/80 border border-gray-200 rounded-xl text-sm text-gray-900 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10 outline-none transition-all cursor-pointer font-medium"
+                      >
+                        <option value="Mr.">Mr.</option>
+                        <option value="Ms.">Ms.</option>
+                        <option value="Mrs.">Mrs.</option>
+                        <option value="Dr.">Dr.</option>
+                        <option value="Prof.">Prof.</option>
+                      </select>
                     </div>
-                    {errors.firstName && (
-                      <p className="mt-1 text-xs text-red-500 font-medium">{errors.firstName}</p>
-                    )}
-                  </div>
 
-                  <div className="sm:col-span-3">
-                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                      Last Name *
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.lastName}
-                      onChange={(e) => handleChange("lastName", e.target.value)}
-                      onBlur={() => handleBlur("lastName")}
-                      placeholder="Last Name"
-                      className={`w-full px-3 py-2.5 bg-white border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                        errors.lastName
-                          ? "border-red-500 bg-red-50/20 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                          : "border-gray-300 focus:border-[#34a853] focus:ring-1 focus:ring-[#34a853]"
-                      }`}
-                    />
-                    {errors.lastName && (
-                      <p className="mt-1 text-xs text-red-500 font-medium">{errors.lastName}</p>
-                    )}
-                  </div>
-
-                  <div className="sm:col-span-4">
-                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                      Designation / Role *
-                    </label>
-                    <div className="relative">
-                      <Briefcase className="w-4 h-4 text-gray-400 absolute left-3 top-3.5" />
-                      <input
-                        type="text"
-                        value={formData.designation}
-                        onChange={(e) => handleChange("designation", e.target.value)}
-                        onBlur={() => handleBlur("designation")}
-                        placeholder="e.g. Farm Owner / Manager"
-                        className={`w-full pl-9 pr-3 py-2.5 bg-white border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                          errors.designation
-                            ? "border-red-500 bg-red-50/20 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                            : "border-gray-300 focus:border-[#34a853] focus:ring-1 focus:ring-[#34a853]"
-                        }`}
-                      />
+                    {/* First Name */}
+                    <div className="sm:col-span-5">
+                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
+                        First Name <span className="text-[#f28822]">*</span>
+                      </label>
+                      <div className="relative">
+                        <User className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
+                        <input
+                          type="text"
+                          value={formData.firstName}
+                          onChange={(e) => handleChange("firstName", e.target.value)}
+                          onBlur={() => handleBlur("firstName")}
+                          placeholder="e.g. Ramesh"
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
+                            errors.firstName
+                              ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+                              : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
+                          }`}
+                        />
+                      </div>
+                      {errors.firstName && (
+                        <p className="mt-1 text-xs text-red-600 font-medium">{errors.firstName}</p>
+                      )}
                     </div>
-                    {errors.designation && (
-                      <p className="mt-1 text-xs text-red-500 font-medium">{errors.designation}</p>
-                    )}
+
+                    {/* Last Name */}
+                    <div className="sm:col-span-5">
+                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
+                        Last Name <span className="text-[#f28822]">*</span>
+                      </label>
+                      <div className="relative">
+                        <User className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
+                        <input
+                          type="text"
+                          value={formData.lastName}
+                          onChange={(e) => handleChange("lastName", e.target.value)}
+                          onBlur={() => handleBlur("lastName")}
+                          placeholder="e.g. Patel"
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
+                            errors.lastName
+                              ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+                              : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
+                          }`}
+                        />
+                      </div>
+                      {errors.lastName && (
+                        <p className="mt-1 text-xs text-red-600 font-medium">{errors.lastName}</p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Designation & Company / Farm Name */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
+                        Designation / Role <span className="text-[#f28822]">*</span>
+                      </label>
+                      <div className="relative">
+                        <Briefcase className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
+                        <input
+                          type="text"
+                          value={formData.designation}
+                          onChange={(e) => handleChange("designation", e.target.value)}
+                          onBlur={() => handleBlur("designation")}
+                          placeholder="e.g. Managing Director / Farm Owner"
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
+                            errors.designation
+                              ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+                              : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
+                          }`}
+                        />
+                      </div>
+                      {errors.designation && (
+                        <p className="mt-1 text-xs text-red-600 font-medium">{errors.designation}</p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
+                        Company / Organization / Farm Name <span className="text-[#f28822]">*</span>
+                      </label>
+                      <div className="relative">
+                        <Building className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
+                        <input
+                          type="text"
+                          value={formData.companyName}
+                          onChange={(e) => handleChange("companyName", e.target.value)}
+                          onBlur={() => handleBlur("companyName")}
+                          placeholder="e.g. Apex Fungi Agro Industries"
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
+                            errors.companyName
+                              ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+                              : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
+                          }`}
+                        />
+                      </div>
+                      {errors.companyName && (
+                        <p className="mt-1 text-xs text-red-600 font-medium">{errors.companyName}</p>
+                      )}
+                    </div>
                   </div>
                 </div>
 
-                {/* Row 2: Company / Farm Name & Address */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                      Company / Farm Name *
-                    </label>
-                    <div className="relative">
-                      <Building className="w-4 h-4 text-gray-400 absolute left-3 top-3.5" />
-                      <input
-                        type="text"
-                        value={formData.companyName}
-                        onChange={(e) => handleChange("companyName", e.target.value)}
-                        onBlur={() => handleBlur("companyName")}
-                        placeholder="Company or Farm Name"
-                        className={`w-full pl-9 pr-3 py-2.5 bg-white border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                          errors.companyName
-                            ? "border-red-500 bg-red-50/20 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                            : "border-gray-300 focus:border-[#34a853] focus:ring-1 focus:ring-[#34a853]"
-                        }`}
-                      />
-                    </div>
-                    {errors.companyName && (
-                      <p className="mt-1 text-xs text-red-500 font-medium">{errors.companyName}</p>
-                    )}
+                {/* Block 2: Location & Address */}
+                <div className="space-y-4 pt-4 border-t border-gray-100">
+                  <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-gray-900">
+                    <span className="w-5 h-5 rounded-full bg-[#0c140f] text-white flex items-center justify-center text-[10px]">
+                      2
+                    </span>
+                    <span>Location &amp; Address</span>
                   </div>
 
+                  {/* Street Address */}
                   <div>
                     <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                      Address
+                      Street / Locality Address
                     </label>
                     <div className="relative">
-                      <MapPin className="w-4 h-4 text-gray-400 absolute left-3 top-3.5" />
+                      <MapPin className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
                       <input
                         type="text"
                         value={formData.address}
                         onChange={(e) => handleChange("address", e.target.value)}
-                        placeholder="Street / Locality"
-                        className="w-full pl-9 pr-3 py-2.5 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 focus:border-[#34a853] focus:ring-1 focus:ring-[#34a853] outline-none transition-all placeholder:text-gray-400"
+                        placeholder="Street name, Sector, Industrial Area"
+                        className="w-full pl-10 pr-4 py-3 bg-slate-50/80 border border-gray-200 rounded-xl text-sm text-gray-900 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10 outline-none transition-all placeholder:text-gray-400"
                       />
                     </div>
                   </div>
-                </div>
 
-                {/* Row 3: Country, State, City */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div>
-                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                      Country *
-                    </label>
-                    <div className="relative">
-                      <Globe className="w-4 h-4 text-gray-400 absolute left-3 top-3.5" />
+                  {/* Country, State, City, Postal Code */}
+                  <div className="grid grid-cols-1 sm:grid-cols-12 gap-4">
+                    {/* Country */}
+                    <div className="sm:col-span-3">
+                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
+                        Country <span className="text-[#f28822]">*</span>
+                      </label>
+                      <div className="relative">
+                        <Globe className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
+                        <select
+                          value={formData.country}
+                          onChange={(e) => handleChange("country", e.target.value)}
+                          className="w-full pl-10 pr-3 py-3 bg-slate-50/80 border border-gray-200 rounded-xl text-sm text-gray-900 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10 outline-none transition-all cursor-pointer font-medium"
+                        >
+                          <option value="India">India</option>
+                          <option value="Netherlands">Netherlands</option>
+                          <option value="United States">United States</option>
+                          <option value="China">China</option>
+                          <option value="United Kingdom">United Kingdom</option>
+                          <option value="Germany">Germany</option>
+                          <option value="UAE">UAE</option>
+                          <option value="Other">Other Country</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* State */}
+                    <div className="sm:col-span-3">
+                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
+                        State <span className="text-[#f28822]">*</span>
+                      </label>
                       <select
-                        value={formData.country}
-                        onChange={(e) => handleChange("country", e.target.value)}
-                        className="w-full pl-9 pr-3 py-2.5 bg-white border border-gray-300 rounded-xl text-sm text-gray-900 focus:border-[#34a853] focus:ring-1 focus:ring-[#34a853] outline-none transition-all cursor-pointer"
+                        value={formData.state}
+                        onChange={(e) => handleChange("state", e.target.value)}
+                        onBlur={() => handleBlur("state")}
+                        className={`w-full px-3 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all cursor-pointer font-medium ${
+                          errors.state
+                            ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+                            : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
+                        }`}
                       >
-                        <option value="India">India</option>
-                        <option value="United States">United States</option>
-                        <option value="Netherlands">Netherlands</option>
-                        <option value="China">China</option>
-                        <option value="United Kingdom">United Kingdom</option>
-                        <option value="Germany">Germany</option>
-                        <option value="UAE">UAE</option>
-                        <option value="Other">Other</option>
+                        <option value="">Select State</option>
+                        {INDIAN_STATES.map((s) => (
+                          <option key={s} value={s}>
+                            {s}
+                          </option>
+                        ))}
                       </select>
+                      {errors.state && (
+                        <p className="mt-1 text-xs text-red-600 font-medium">{errors.state}</p>
+                      )}
                     </div>
-                  </div>
 
-                  <div>
-                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                      State *
-                    </label>
-                    <select
-                      value={formData.state}
-                      onChange={(e) => handleChange("state", e.target.value)}
-                      onBlur={() => handleBlur("state")}
-                      className={`w-full px-3 py-2.5 bg-white border rounded-xl text-sm text-gray-900 outline-none transition-all cursor-pointer ${
-                        errors.state
-                          ? "border-red-500 bg-red-50/20 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                          : "border-gray-300 focus:border-[#34a853] focus:ring-1 focus:ring-[#34a853]"
-                      }`}
-                    >
-                      <option value="">Select State</option>
-                      {INDIAN_STATES.map((s) => (
-                        <option key={s} value={s}>
-                          {s}
-                        </option>
-                      ))}
-                    </select>
-                    {errors.state && (
-                      <p className="mt-1 text-xs text-red-500 font-medium">{errors.state}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                      City *
-                    </label>
-                    <div className="relative">
-                      <Building className="w-4 h-4 text-gray-400 absolute left-3 top-3.5" />
-                      <input
-                        type="text"
-                        value={formData.city}
-                        onChange={(e) => handleChange("city", e.target.value)}
-                        onBlur={() => handleBlur("city")}
-                        placeholder="Enter City"
-                        className={`w-full pl-9 pr-3 py-2.5 bg-white border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                          errors.city
-                            ? "border-red-500 bg-red-50/20 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                            : "border-gray-300 focus:border-[#34a853] focus:ring-1 focus:ring-[#34a853]"
-                        }`}
-                      />
+                    {/* City */}
+                    <div className="sm:col-span-3">
+                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
+                        City <span className="text-[#f28822]">*</span>
+                      </label>
+                      <div className="relative">
+                        <Building className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
+                        <input
+                          type="text"
+                          value={formData.city}
+                          onChange={(e) => handleChange("city", e.target.value)}
+                          onBlur={() => handleBlur("city")}
+                          placeholder="e.g. New Delhi"
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
+                            errors.city
+                              ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+                              : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
+                          }`}
+                        />
+                      </div>
+                      {errors.city && (
+                        <p className="mt-1 text-xs text-red-600 font-medium">{errors.city}</p>
+                      )}
                     </div>
-                    {errors.city && (
-                      <p className="mt-1 text-xs text-red-500 font-medium">{errors.city}</p>
-                    )}
+
+                    {/* Postal Code */}
+                    <div className="sm:col-span-3">
+                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
+                        PIN Code
+                      </label>
+                      <div className="relative">
+                        <Hash className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
+                        <input
+                          type="text"
+                          maxLength={6}
+                          value={formData.postalCode}
+                          onChange={(e) => handleChange("postalCode", e.target.value)}
+                          onBlur={() => handleBlur("postalCode")}
+                          placeholder="110001"
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
+                            errors.postalCode
+                              ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+                              : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
+                          }`}
+                        />
+                      </div>
+                      {errors.postalCode && (
+                        <p className="mt-1 text-xs text-red-600 font-medium">{errors.postalCode}</p>
+                      )}
+                    </div>
                   </div>
                 </div>
 
-                {/* Row 4: Postal Code, Mobile Number, Email Address */}
-                <div className="grid grid-cols-1 sm:grid-cols-12 gap-4">
-                  <div className="sm:col-span-3">
-                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                      Postal Code
-                    </label>
-                    <div className="relative">
-                      <Hash className="w-4 h-4 text-gray-400 absolute left-3 top-3.5" />
-                      <input
-                        type="text"
-                        maxLength={6}
-                        value={formData.postalCode}
-                        onChange={(e) => handleChange("postalCode", e.target.value)}
-                        onBlur={() => handleBlur("postalCode")}
-                        placeholder="110001"
-                        className={`w-full pl-9 pr-3 py-2.5 bg-white border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                          errors.postalCode
-                            ? "border-red-500 bg-red-50/20 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                            : "border-gray-300 focus:border-[#34a853] focus:ring-1 focus:ring-[#34a853]"
-                        }`}
-                      />
-                    </div>
-                    {errors.postalCode && (
-                      <p className="mt-1 text-xs text-red-500 font-medium">{errors.postalCode}</p>
-                    )}
+                {/* Block 3: Verification & Contact Details */}
+                <div className="space-y-4 pt-4 border-t border-gray-100">
+                  <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-gray-900">
+                    <span className="w-5 h-5 rounded-full bg-[#0c140f] text-white flex items-center justify-center text-[10px]">
+                      3
+                    </span>
+                    <span>Direct Verification &amp; Credential Delivery</span>
                   </div>
 
-                  <div className="sm:col-span-4">
-                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                      Mobile Number *
-                    </label>
-                    <div className="flex">
-                      <span className="inline-flex items-center px-3 rounded-l-xl border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm font-semibold">
-                        +91
-                      </span>
-                      <input
-                        type="tel"
-                        maxLength={10}
-                        value={formData.mobileNumber}
-                        onChange={(e) => handleChange("mobileNumber", e.target.value)}
-                        onBlur={() => handleBlur("mobileNumber")}
-                        placeholder="9876543210"
-                        className={`w-full px-3 py-2.5 bg-white border rounded-r-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                          errors.mobileNumber
-                            ? "border-red-500 bg-red-50/20 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                            : "border-gray-300 focus:border-[#34a853] focus:ring-1 focus:ring-[#34a853]"
-                        }`}
-                      />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Mobile Number */}
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
+                        Mobile Number <span className="text-[#f28822]">*</span>
+                      </label>
+                      <div className="flex">
+                        <span className="inline-flex items-center px-3.5 rounded-l-xl border border-r-0 border-gray-200 bg-gray-100 text-gray-700 text-sm font-bold">
+                          +91
+                        </span>
+                        <input
+                          type="tel"
+                          maxLength={10}
+                          value={formData.mobileNumber}
+                          onChange={(e) => handleChange("mobileNumber", e.target.value)}
+                          onBlur={() => handleBlur("mobileNumber")}
+                          placeholder="9876543210"
+                          className={`w-full px-4 py-3 bg-slate-50/80 border rounded-r-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
+                            errors.mobileNumber
+                              ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+                              : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
+                          }`}
+                        />
+                      </div>
+                      {errors.mobileNumber && (
+                        <p className="mt-1 text-xs text-red-600 font-medium">{errors.mobileNumber}</p>
+                      )}
                     </div>
-                    {errors.mobileNumber && (
-                      <p className="mt-1 text-xs text-red-500 font-medium">{errors.mobileNumber}</p>
-                    )}
-                  </div>
 
-                  <div className="sm:col-span-5">
-                    <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                      Email Address *
-                    </label>
-                    <div className="relative">
-                      <Mail className="w-4 h-4 text-gray-400 absolute left-3 top-3.5" />
-                      <input
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => handleChange("email", e.target.value)}
-                        onBlur={() => handleBlur("email")}
-                        placeholder="name@example.com"
-                        className={`w-full pl-9 pr-3 py-2.5 bg-white border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                          errors.email
-                            ? "border-red-500 bg-red-50/20 focus:border-red-500 focus:ring-1 focus:ring-red-500"
-                            : "border-gray-300 focus:border-[#34a853] focus:ring-1 focus:ring-[#34a853]"
-                        }`}
-                      />
+                    {/* Email Address */}
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
+                        Official Email Address <span className="text-[#f28822]">*</span>
+                      </label>
+                      <div className="relative">
+                        <Mail className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
+                        <input
+                          type="email"
+                          value={formData.email}
+                          onChange={(e) => handleChange("email", e.target.value)}
+                          onBlur={() => handleBlur("email")}
+                          placeholder="name@company.com"
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
+                            errors.email
+                              ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+                              : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
+                          }`}
+                        />
+                      </div>
+                      {errors.email && (
+                        <p className="mt-1 text-xs text-red-600 font-medium">{errors.email}</p>
+                      )}
                     </div>
-                    {errors.email && (
-                      <p className="mt-1 text-xs text-red-500 font-medium">{errors.email}</p>
-                    )}
                   </div>
                 </div>
 
-                {/* Submit CTA */}
-                <div className="pt-4">
+                {/* Submit Button & Trust Bar */}
+                <div className="pt-6 border-t border-gray-100">
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 px-6 rounded-xl bg-[#2e7d32] hover:bg-[#1b5e20] text-white text-base font-bold shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                    className="w-full py-4 px-8 rounded-xl bg-[#0c140f] hover:bg-[#f28822] text-white text-base font-black uppercase tracking-wider shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed group"
                   >
                     {isSubmitting ? (
                       <>
-                        <Loader2 className="w-5 h-5 animate-spin" />
-                        <span>Submitting Registration...</span>
+                        <Loader2 className="w-5 h-5 animate-spin text-[#f28822]" />
+                        <span>Verifying &amp; Generating Pass...</span>
                       </>
                     ) : (
                       <>
-                        <span>Register as Visitor</span>
-                        <ArrowRight className="w-5 h-5" />
+                        <span>Complete Visitor Registration</span>
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                       </>
                     )}
                   </button>
-                  <p className="text-center text-xs text-gray-500 mt-3">
-                    Your registration confirmation will be sent directly to your registered email address.
-                  </p>
+
+                  <div className="mt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-2">
+                    <span className="inline-flex items-center gap-1.5">
+                      <ShieldCheck className="w-4 h-4 text-[#84c52c]" /> Official Indian Mushroom Days 2027 Secretariat
+                    </span>
+                    <span>Instant confirmation email with QR entry badge</span>
+                  </div>
                 </div>
               </form>
             )}
@@ -599,6 +741,7 @@ export default function VisitorRegisterPage() {
         </div>
       </main>
 
+      {/* 4. Footer */}
       <FooterSection />
     </div>
   );

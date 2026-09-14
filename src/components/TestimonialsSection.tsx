@@ -17,7 +17,7 @@ interface Testimonial {
 const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "More than 5,000 delegates attended the summit, bringing together the absolute vanguard of the mushroom industry. Together, we created an unprecedented platform connecting government, research academia, and commercial enterprise with edible fungi at the center.",
+      "More than 5,000 delegates convened across three intensive days. Indian Mushroom Days has established an unprecedented national benchmark, connecting government ministries, scientific research academia, and progressive commercial growers with fungi at the center.",
     meta: "India's Most Trusted Edible Fungi Exhibition",
     author: "Dr. R. K. Sharma",
     role: "President",
@@ -27,7 +27,7 @@ const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "Indian Mushroom Days 2027 delivers the complete end-to-end value chain—from climate-controlled growing rooms and substrate bagging lines to premium medicinal mushroom extracts. The scale and international networking exceeded all our expectations.",
+      "Indian Mushroom Days delivers the complete end-to-end industrial value chain—from climate-controlled growing rooms and substrate bagging lines to high-margin medicinal mushroom extracts. The scale and international networking exceeded all our expectations.",
     meta: "One-Stop Solutions for Edible Fungi Industry",
     author: "Sunil Patel",
     role: "Managing Director",
@@ -37,7 +37,7 @@ const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "The pre-registration and VIP business matchmaking enabled our international purchasing team to meet vetted suppliers across automated growing equipment, casing soil, spawn technology, and freeze-dried mushroom extracts in one central venue.",
+      "The Shroom Connect B2B matchmaking enabled our international purchasing team to meet vetted suppliers across automated growing equipment, casing soil, spawn technology, and freeze-dried mushroom extracts in one central venue.",
     meta: "International Buyer & Trade Delegations",
     author: "Elena Rostova",
     role: "Director of International Sourcing",
@@ -47,7 +47,7 @@ const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "A groundbreaking initiative that places India firmly on the global mushroom cultivation map. The summit conferences on energy-saving environmental control and high-yield compost preparation provided immense practical value for our operations.",
+      "A groundbreaking initiative that places India firmly on the global mushroom cultivation map. The summit conferences on energy-saving environmental control and high-yield compost preparation provided immense practical value for our commercial farm expansion.",
     meta: "Leading Agro-Tech Innovation Forum",
     author: "Amitabh Verma",
     role: "Chief Technology Officer",
@@ -69,12 +69,11 @@ export default function TestimonialsSection() {
     setCurrentIndex((prev) => (prev === TESTIMONIALS.length - 1 ? 0 : prev + 1));
   };
 
-  // Auto-play interval
   useEffect(() => {
     if (isPaused) return;
     const timer = setInterval(() => {
       nextSlide();
-    }, 7000);
+    }, 7500);
     return () => clearInterval(timer);
   }, [currentIndex, isPaused]);
 
@@ -83,105 +82,114 @@ export default function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="relative w-full min-h-[700px] sm:min-h-[740px] flex flex-col justify-between overflow-hidden bg-[#fafafa] py-20 sm:py-28 select-none"
+      className="relative py-20 sm:py-28 bg-[#faf9f5] border-b border-gray-200/80 overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Background Decorative Accents */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-orange-50/20 to-white pointer-events-none" />
-      <div className="absolute -top-40 -left-40 w-96 h-96 bg-orange-100/40 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-green-100/40 rounded-full blur-3xl pointer-events-none" />
-
-      {/* Massive Background Quote Icon */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black/[0.025] pointer-events-none">
-        <Quote className="w-[500px] h-[500px] lg:w-[650px] lg:h-[650px]" />
-      </div>
-
-      {/* Header - FADES IN */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
-      >
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
-          Our Highlights &amp; Reviews
-        </h2>
-        <div className="h-1 w-20 bg-[#f28822] mx-auto rounded-full mt-4" />
-      </motion.div>
-
-      {/* Full-Width Main Carousel Content with Framer Motion Transition */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 sm:px-12 lg:px-16 my-auto py-10">
-        <AnimatePresence mode="wait">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <motion.div
-            key={currentIndex}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="flex flex-col items-center text-center"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#f28822]/15 border border-[#f28822]/30 text-xs font-bold text-[#b85b06] uppercase tracking-wider mb-4"
           >
-            {/* Star Rating */}
-            <div className="flex items-center justify-center gap-1.5 mb-8 text-amber-400">
-              {[...Array(current.rating)].map((_, i) => (
-                <Star key={i} className="w-6 h-6 sm:w-7 sm:h-7 fill-amber-400 stroke-amber-400" />
+            <span>Industry Endorsements</span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl sm:text-5xl font-black tracking-tight text-gray-950 uppercase font-sans leading-[1.1]"
+          >
+            Voices of the <br />
+            <span className="font-serif italic font-normal text-gray-700 capitalize">
+              Mushroom Industry
+            </span>
+          </motion.h2>
+        </div>
+
+        {/* Testimonial Editorial Card */}
+        <div className="relative rounded-3xl bg-white border border-gray-200 shadow-xl p-8 sm:p-14 md:p-16 flex flex-col items-center text-center overflow-hidden">
+          {/* Subtle Watermark Quote Mark */}
+          <div className="absolute -top-10 -left-10 text-gray-100 pointer-events-none select-none">
+            <Quote className="w-48 h-48 sm:w-64 sm:h-64" />
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="relative z-10 flex flex-col items-center max-w-4xl"
+            >
+              {/* Star Rating */}
+              <div className="flex items-center justify-center gap-1.5 mb-6 text-amber-400">
+                {[...Array(current.rating)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-amber-400 stroke-amber-400" />
+                ))}
+              </div>
+
+              {/* Editorial Quote */}
+              <blockquote className="font-serif italic text-lg sm:text-2xl md:text-3xl text-gray-900 leading-[1.45] font-normal min-h-[140px] flex items-center justify-center">
+                &ldquo;{current.quote}&rdquo;
+              </blockquote>
+
+              {/* Author Info */}
+              <div className="pt-8 mt-4 border-t border-gray-100 w-full">
+                <div className="text-lg sm:text-xl font-black text-gray-950">
+                  {current.author}
+                </div>
+                <div className="text-xs sm:text-sm text-gray-500 mt-0.5">
+                  {current.role} •{" "}
+                  <span className="font-semibold text-gray-800">{current.organization}</span>
+                </div>
+                <div className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-[#4d7817] bg-[#84c52c]/15 px-3 py-1 rounded-full border border-[#84c52c]/30">
+                  <Award className="w-3.5 h-3.5 text-[#84c52c]" />
+                  <span>{current.badge}</span>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Navigation Controls */}
+          <div className="mt-8 flex items-center justify-between w-full max-w-xs z-20">
+            <button
+              onClick={prevSlide}
+              aria-label="Previous quote"
+              className="w-10 h-10 rounded-full border border-gray-200 bg-white hover:bg-gray-50 text-gray-700 flex items-center justify-center hover:border-gray-900 transition-all cursor-pointer shadow-sm hover:scale-105 active:scale-95"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            {/* Pagination Dots */}
+            <div className="flex items-center gap-2">
+              {TESTIMONIALS.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  aria-label={`Go to review ${idx + 1}`}
+                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                    currentIndex === idx ? "w-8 bg-[#f28822]" : "w-2 bg-gray-300 hover:bg-gray-400"
+                  }`}
+                />
               ))}
             </div>
 
-            {/* Large Quote */}
-            <blockquote className="text-lg sm:text-2xl md:text-3xl lg:text-[30px] font-medium text-gray-900 leading-[1.4] sm:leading-[1.45] font-serif italic max-w-4xl min-h-[160px] sm:min-h-[180px] flex items-center justify-center">
-              &ldquo;{current.quote}&rdquo;
-            </blockquote>
-
-            {/* Author Details */}
-            <div className="text-gray-900 pt-6">
-              <div className="text-lg sm:text-xl font-bold">{current.author}</div>
-              <div className="text-sm sm:text-base text-gray-600 font-normal">
-                {current.role} &bull; <span className="text-gray-800 font-medium">{current.organization}</span>
-              </div>
-              <div className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-green-700 bg-green-50 px-3 py-1 rounded-full border border-green-200">
-                <Award className="w-3.5 h-3.5" />
-                {current.badge}
-              </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
-      {/* Floating Edge Navigation Buttons */}
-      <button
-        onClick={prevSlide}
-        aria-label="Previous testimonial"
-        className="absolute left-3 sm:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-gray-200 flex items-center justify-center text-gray-700 hover:text-[#f28822] hover:scale-110 hover:border-[#f28822]/40 transition-all focus:outline-none cursor-pointer"
-      >
-        <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7" />
-      </button>
-
-      <button
-        onClick={nextSlide}
-        aria-label="Next testimonial"
-        className="absolute right-3 sm:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-gray-200 flex items-center justify-center text-gray-700 hover:text-[#f28822] hover:scale-110 hover:border-[#f28822]/40 transition-all focus:outline-none cursor-pointer"
-      >
-        <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7" />
-      </button>
-
-      {/* Full-Width Bottom Preview Strip & Indicators */}
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-8 mt-6">
-        {/* Pagination Dots */}
-        <div className="flex items-center justify-center gap-3 mb-6">
-          {TESTIMONIALS.map((_, idx) => (
             <button
-              key={idx}
-              onClick={() => setCurrentIndex(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-              className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                currentIndex === idx
-                  ? "w-10 bg-[#f28822]"
-                  : "w-2.5 bg-gray-300 hover:bg-gray-400"
-              }`}
-            />
-          ))}
+              onClick={nextSlide}
+              aria-label="Next quote"
+              className="w-10 h-10 rounded-full border border-gray-200 bg-white hover:bg-gray-50 text-gray-700 flex items-center justify-center hover:border-gray-900 transition-all cursor-pointer shadow-sm hover:scale-105 active:scale-95"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       </div>
     </section>

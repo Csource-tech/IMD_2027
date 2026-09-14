@@ -1,21 +1,64 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-serif), Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
 @layer base {
   :root {
     --primary-orange: #f28822;
     --primary-orange-hover: #d97416;
-    --accent-green: #96cd3f;
-    --accent-light-green: #e6f5d2;
-    --link-blue: #2c29e4;
+    --accent-green: #84c52c;
+    --accent-light-green: #eef8df;
+    --brand-blue: #004aab;
+    --brand-blue-hover: #003c8c;
+    --forest-dark: #0a130e;
+    --forest-slate: #141f18;
+    --canvas-cream: #faf9f5;
   }
 
   html { scroll-behavior: smooth; }
   body {
-    background-color: #ffffff;
-    color: #333333;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #faf9f5;
+    color: #1a221d;
+    font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     overflow-x: hidden;
   }
+
+  ::selection {
+    background-color: #f28822;
+    color: #ffffff;
+  }
+}
+
+/* Glassmorphism & Editorial utilities */
+.glass-panel-dark {
+  background: rgba(12, 20, 15, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(229, 231, 235, 0.8);
+}
+
+.mycelium-pattern {
+  background-image: radial-gradient(rgba(132, 197, 44, 0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 4s ease-in-out infinite;
 }
 
 @keyframes marquee { from { transform: translateX(0%); } to { transform: translateX(-50%); } }

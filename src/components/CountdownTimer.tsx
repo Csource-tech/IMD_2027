@@ -117,18 +117,34 @@ export default function CountdownTimer({ targetDate = TARGET_DATE, onComplete, c
     };
   }, [targetDate, onComplete]);
 
-  if (!timeLeft) return <section className={`countdown-section ${className}`} aria-hidden="true"><div className="countdown-placeholder" /></section>;
+  if (!timeLeft) {
+    return (
+      <section className={`py-12 sm:py-16 bg-[#faf9f5] border-b border-gray-200/80 ${className}`} aria-hidden="true">
+        <div className="max-w-5xl mx-auto px-4 flex justify-center">
+          <div className="countdown-placeholder" />
+        </div>
+      </section>
+    );
+  }
 
   return (
-    <section className={`countdown-section ${className}`} aria-label="Event countdown">
-      <div className="countdown-container">
-        <CountdownUnit value={timeLeft.days} label="DAYS" />
-        <div className="days-hours-space" aria-hidden="true" />
-        <CountdownUnit value={timeLeft.hours} label="HOURS" />
-        <Separator />
-        <CountdownUnit value={timeLeft.minutes} label="MINUTES" />
-        <Separator />
-        <CountdownUnit value={timeLeft.seconds} label="SECONDS" />
+    <section className={`py-12 sm:py-16 bg-[#faf9f5] border-b border-gray-200/80 overflow-hidden relative ${className}`} aria-label="Event countdown">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col items-center">
+        {/* Editorial Subtitle */}
+        <div className="flex items-center gap-2 text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#f28822] mb-6 font-sans text-center">
+          <span className="w-2 h-2 rounded-full bg-[#f28822] animate-pulse" />
+          <span>OFFICIAL COUNTDOWN TO INAUGURATION • FEBRUARY 19, 2027</span>
+        </div>
+
+        <div className="countdown-container">
+          <CountdownUnit value={timeLeft.days} label="DAYS" />
+          <div className="days-hours-space" aria-hidden="true" />
+          <CountdownUnit value={timeLeft.hours} label="HOURS" />
+          <Separator />
+          <CountdownUnit value={timeLeft.minutes} label="MINUTES" />
+          <Separator />
+          <CountdownUnit value={timeLeft.seconds} label="SECONDS" />
+        </div>
       </div>
     </section>
   );
