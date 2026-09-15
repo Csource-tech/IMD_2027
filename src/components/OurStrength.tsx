@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Users, Store, Globe2, Mic2 } from "lucide-react";
 import SectionDivider from "./SectionDivider";
 
 interface CounterItemProps {
@@ -10,7 +9,6 @@ interface CounterItemProps {
   suffix?: string;
   label: string;
   sublabel: string;
-  icon: React.ElementType;
   duration?: number;
   delayIndex?: number;
 }
@@ -20,7 +18,6 @@ function CounterItem({
   suffix = "+",
   label,
   sublabel,
-  icon: IconComponent,
   duration = 2000,
   delayIndex = 0,
 }: CounterItemProps) {
@@ -75,9 +72,7 @@ function CounterItem({
       transition={{ duration: 0.6, delay: delayIndex * 0.1 }}
       className="p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 flex flex-col items-center text-center group cursor-default"
     >
-      <div className="w-10 h-10 rounded-2xl bg-[#004aab]/20 text-[#004aab] flex items-center justify-center mb-4 border border-[#004aab]/30 group-hover:scale-110 transition-transform">
-        <IconComponent className="w-5 h-5" />
-      </div>
+
 
       {/* Massive Display Number */}
       <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight font-sans">
@@ -128,28 +123,24 @@ export default function OurStrength() {
             target={5000}
             label="Delegates"
             sublabel="Commercial cultivators & farm owners across India"
-            icon={Users}
             delayIndex={0}
           />
           <CounterItem
             target={100}
             label="Exhibitors"
             sublabel="Machinery, spawn labs, and CEA tech corporations"
-            icon={Store}
             delayIndex={1}
           />
           <CounterItem
             target={15}
             label="Countries"
             sublabel="International delegates and European equipment leaders"
-            icon={Globe2}
             delayIndex={2}
           />
           <CounterItem
             target={50}
             label="Speakers"
             sublabel="Renowned mycology scientists & agribusiness economists"
-            icon={Mic2}
             delayIndex={3}
           />
         </div>

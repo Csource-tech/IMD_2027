@@ -7,8 +7,8 @@
 
 @layer base {
   :root {
-    --primary-orange: #f28822;
-    --primary-orange-hover: #d97416;
+    --primary-orange: #ff9f43;
+    --primary-orange-hover: #f28822;
     --accent-green: #004aab;
     --accent-light-green: #e6f0fa;
     --brand-blue: #004aab;
@@ -27,7 +27,7 @@
   }
 
   ::selection {
-    background-color: #f28822;
+    background-color: #ff9f43;
     color: #ffffff;
   }
 }

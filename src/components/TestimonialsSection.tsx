@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, ChevronLeft, ChevronRight, Quote, Award } from "lucide-react";
 import SectionDivider from "./SectionDivider";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Testimonial {
   quote: string;
@@ -11,7 +11,6 @@ interface Testimonial {
   author: string;
   role: string;
   organization: string;
-  badge: string;
   rating: number;
 }
 
@@ -23,7 +22,6 @@ const TESTIMONIALS: Testimonial[] = [
     author: "Dr. R. K. Sharma",
     role: "President",
     organization: "National Mushroom Growers & Agri-Tech Council",
-    badge: "Official Delegation",
     rating: 5,
   },
   {
@@ -33,7 +31,6 @@ const TESTIMONIALS: Testimonial[] = [
     author: "Sunil Patel",
     role: "Managing Director",
     organization: "Global Mushroom Farm Innovations",
-    badge: "Industry Partner",
     rating: 5,
   },
   {
@@ -43,7 +40,6 @@ const TESTIMONIALS: Testimonial[] = [
     author: "Elena Rostova",
     role: "Director of International Sourcing",
     organization: "Euro-Asia Fresh Produce Sourcing",
-    badge: "VIP Buyer Club",
     rating: 5,
   },
   {
@@ -53,7 +49,6 @@ const TESTIMONIALS: Testimonial[] = [
     author: "Amitabh Verma",
     role: "Chief Technology Officer",
     organization: "Vedic Mushroom Agro-Industries",
-    badge: "Agri-Tech Pioneer",
     rating: 5,
   },
 ];
@@ -103,10 +98,7 @@ export default function TestimonialsSection() {
 
         {/* Testimonial Editorial Card */}
         <div className="relative rounded-3xl bg-white border border-gray-200 shadow-xl p-8 sm:p-14 md:p-16 flex flex-col items-center text-center overflow-hidden">
-          {/* Subtle Watermark Quote Mark */}
-          <div className="absolute -top-10 -left-10 text-gray-100 pointer-events-none select-none">
-            <Quote className="w-48 h-48 sm:w-64 sm:h-64" />
-          </div>
+
 
           <AnimatePresence mode="wait">
             <motion.div
@@ -117,12 +109,7 @@ export default function TestimonialsSection() {
               transition={{ duration: 0.35, ease: "easeOut" }}
               className="relative z-10 flex flex-col items-center max-w-4xl"
             >
-              {/* Star Rating */}
-              <div className="flex items-center justify-center gap-1.5 mb-6 text-amber-400">
-                {[...Array(current.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-amber-400 stroke-amber-400" />
-                ))}
-              </div>
+
 
               {/* Editorial Quote */}
               <blockquote className="font-serif italic text-lg sm:text-2xl md:text-3xl text-gray-900 leading-[1.45] font-normal min-h-[140px] flex items-center justify-center">
@@ -138,10 +125,7 @@ export default function TestimonialsSection() {
                   {current.role} •{" "}
                   <span className="font-semibold text-gray-800">{current.organization}</span>
                 </div>
-                <div className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-[#004aab] bg-[#004aab]/15 px-3 py-1 rounded-full border border-[#004aab]/30">
-                  <Award className="w-3.5 h-3.5 text-[#004aab]" />
-                  <span>{current.badge}</span>
-                </div>
+
               </div>
             </motion.div>
           </AnimatePresence>
@@ -163,9 +147,8 @@ export default function TestimonialsSection() {
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
                   aria-label={`Go to review ${idx + 1}`}
-                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                    currentIndex === idx ? "w-8 bg-[#f28822]" : "w-2 bg-gray-300 hover:bg-gray-400"
-                  }`}
+                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${currentIndex === idx ? "w-8 bg-[#f28822]" : "w-2 bg-gray-300 hover:bg-gray-400"
+                    }`}
                 />
               ))}
             </div>

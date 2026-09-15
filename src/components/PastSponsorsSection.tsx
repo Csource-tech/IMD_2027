@@ -9,7 +9,6 @@ interface SponsorItem {
   category: string;
   desc: string;
   logo: string;
-  badge: string;
 }
 
 const SPONSORS: SponsorItem[] = [
@@ -18,21 +17,18 @@ const SPONSORS: SponsorItem[] = [
     category: "SPAWN & CULTIVATION PIONEER",
     desc: "Pioneering commercial spawn production and turn-key farm setup consulting since 1994, empowering thousands of high-yield growers across India.",
     logo: "/milkyway.webp",
-    badge: "Foundation Sponsor",
   },
   {
     name: "University of Agricultural Sciences, Bangalore",
     category: "ACADEMIC & SCIENTIFIC RESEARCH PARTNER",
     desc: "Karnataka's premier farm university (ICAR & NAAC 'A+') leading scientific mycology breakthroughs, farmer training, and statewide cultivation development.",
     logo: "/uas.webp",
-    badge: "Knowledge Partner",
   },
   {
     name: "Mushroom Exchange",
     category: "GLOBAL INDUSTRY VALUE-CHAIN PLATFORM",
     desc: "India's collaborative trade hub connecting commercial cultivators directly with certified biotech spawn labs, cold chains, and national retail buyers.",
     logo: "/mushroom-exchange.webp",
-    badge: "Industry Platform",
   },
 ];
 
@@ -68,13 +64,7 @@ export default function PastSponsorsSection() {
               className="p-8 sm:p-10 rounded-3xl bg-white border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5"
             >
               <div>
-                {/* Badge */}
-                <div className="flex items-center justify-between gap-2 mb-6">
-                  <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-50 text-[#d97416] border border-orange-200">
-                    {s.badge}
-                  </span>
-                  <Award className="w-4 h-4 text-[#004aab]" />
-                </div>
+
 
                 {/* Logo Area */}
                 <div className="h-44 sm:h-52 w-full flex items-center justify-center p-3 sm:p-4 bg-slate-50/70 rounded-2xl border border-slate-100 mb-6 group-hover:bg-white transition-colors">

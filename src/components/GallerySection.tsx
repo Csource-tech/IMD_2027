@@ -4,87 +4,90 @@ import React, { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionDivider from "./SectionDivider";
+import galleryData from "./galleryData.json";
 
 interface GalleryItem {
   id: number;
   url: string;
+  thumbUrl?: string;
   title: string;
 }
 
-const GALLERY_ITEMS: GalleryItem[] = [
-  {
-    id: 1,
-    url: "/imdgallery/imd-2024-002-inauguration.png",
-    title: "Inauguration Ceremony & Lamp Lighting",
-  },
-  {
-    id: 2,
-    url: "/imdgallery/imd-2024-001.jpg",
-    title: "Main Exhibition Pavilion & Commercial Stalls",
-  },
-  {
-    id: 3,
-    url: "/imdgallery/imd-2024-005.jpg",
-    title: "B2B Buyer Networking & Business Stalls",
-  },
-  {
-    id: 4,
-    url: "/imdgallery/imd-2024-006.jpg",
-    title: "Advanced Substrate & Cultivation Technology",
-  },
-  {
-    id: 5,
-    url: "/imdgallery/imd-2024-007.jpg",
-    title: "Commercial Spawn & Farm Infrastructure Showcase",
-  },
-  {
-    id: 6,
-    url: "/imdgallery/imd-2024-010.jpg",
-    title: "Global Delegates & Technical Presentation",
-  },
-  {
-    id: 7,
-    url: "/imdgallery/imd-2024-011.jpg",
-    title: "Industry Conference & Scientific Summit Dialogues",
-  },
-  {
-    id: 8,
-    url: "/imdgallery/imd-2024-012.jpg",
-    title: "Exhibitor & Sourcing Buyer Matchmaking",
-  },
-  {
-    id: 9,
-    url: "/imdgallery/imd-2024-013.jpg",
-    title: "High-Yield Mushroom Cultivation Equipment",
-  },
-  {
-    id: 10,
-    url: "/imdgallery/imd-2024-015.jpg",
-    title: "Distinguished Industry Guests & VIP Delegations",
-  },
-];
+const GALLERY_ITEMS: GalleryItem[] = galleryData;
 
 export default function GallerySection() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [prevIndex, setPrevIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
   const [lightboxOpen, setLightboxOpen] = useState(false);
-
-  const prevSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev === 0 ? GALLERY_ITEMS.length - 1 : prev - 1));
-  }, []);
+  const thumbnailStripRef = React.useRef<HTMLDivElement>(null);
 
   const nextSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev === GALLERY_ITEMS.length - 1 ? 0 : prev + 1));
-  }, []);
+    setPrevIndex(currentIndex);
+    setCurrentIndex((curr) => (curr === GALLERY_ITEMS.length - 1 ? 0 : curr + 1));
+  }, [currentIndex]);
 
-  // Auto-slide every 5 seconds unless paused or modal open
+  const prevSlide = useCallback(() => {
+    setPrevIndex(currentIndex);
+    setCurrentIndex((curr) => (curr === 0 ? GALLERY_ITEMS.length - 1 : curr - 1));
+  }, [currentIndex]);
+
+  const goToSlide = useCallback(
+    (idx: number) => {
+      if (idx === currentIndex) return;
+      setPrevIndex(currentIndex);
+      setCurrentIndex(idx);
+    },
+    [currentIndex]
+  );
+
+  // Continuous auto-slide every 3 seconds (pauses on hover or when lightbox is open)
   useEffect(() => {
-    if (isPaused || lightboxOpen) return;
+    if (lightboxOpen || isHovered) return;
     const timer = setInterval(() => {
       nextSlide();
-    }, 5000);
+    }, 3000);
     return () => clearInterval(timer);
-  }, [isPaused, lightboxOpen, nextSlide]);
+  }, [lightboxOpen, isHovered, nextSlide]);
+
+  // Keep the active thumbnail centered in the scrollable tray without scrolling the browser window
+  useEffect(() => {
+    const container = thumbnailStripRef.current;
+    if (!container) return;
+    const activeThumb = container.children[currentIndex] as HTMLElement | undefined;
+    if (activeThumb) {
+      const scrollLeft =
+        activeThumb.offsetLeft - container.offsetWidth / 2 + activeThumb.offsetWidth / 2;
+      container.scrollTo({ left: Math.max(0, scrollLeft), behavior: "smooth" });
+    }
+  }, [currentIndex]);
+
+  // Preload upcoming slides to eliminate decode lag
+  useEffect(() => {
+    const next1 = (currentIndex + 1) % GALLERY_ITEMS.length;
+    const next2 = (currentIndex + 2) % GALLERY_ITEMS.length;
+    const prev = (currentIndex - 1 + GALLERY_ITEMS.length) % GALLERY_ITEMS.length;
+
+    [next1, next2, prev].forEach((idx) => {
+      const img = new window.Image();
+      img.src = GALLERY_ITEMS[idx].url;
+    });
+  }, [currentIndex]);
+
+  // Background preload for thumbnails and initial web images
+  useEffect(() => {
+    GALLERY_ITEMS.forEach((item) => {
+      if (item.thumbUrl) {
+        const thumb = new window.Image();
+        thumb.src = item.thumbUrl;
+      }
+    });
+
+    for (let i = 0; i < Math.min(8, GALLERY_ITEMS.length); i++) {
+      const full = new window.Image();
+      full.src = GALLERY_ITEMS[i].url;
+    }
+  }, []);
 
   // Keyboard navigation
   useEffect(() => {
@@ -115,23 +118,31 @@ export default function GallerySection() {
           </motion.h2>
         </div>
 
-        {/* Main Featured Photo Display with Finished Elevation & Controls */}
+        {/* Main Featured Photo Display */}
         <div
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           className="relative w-full aspect-[16/10] sm:aspect-[16/9] max-h-[580px] overflow-hidden rounded-2xl sm:rounded-3xl bg-[#0c140f] border border-gray-200 shadow-xl shadow-black/5 group select-none"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Animated Main Image with Smooth Crossfade */}
-          <AnimatePresence mode="wait">
+          {/* Solid Previous Image Layer underneath (eliminates any black flash) */}
+          <img
+            src={GALLERY_ITEMS[prevIndex].url}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
+          />
+
+          {/* Animated Current Image Layer with Smooth Crossfade */}
+          <AnimatePresence initial={false}>
             <motion.img
               key={activeItem.id}
               src={activeItem.url}
               alt={activeItem.title}
-              initial={{ opacity: 0.85 }}
+              initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0.85 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              className="w-full h-full object-cover cursor-pointer transition-transform duration-700 group-hover:scale-[1.02]"
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.7, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full object-cover cursor-pointer select-none"
               onClick={() => setLightboxOpen(true)}
             />
           </AnimatePresence>
@@ -139,7 +150,7 @@ export default function GallerySection() {
           {/* Bottom Gradient Overlay with Title & Slide Counter */}
           <div
             onClick={() => setLightboxOpen(true)}
-            className="absolute inset-x-0 bottom-0 pt-16 pb-4 sm:pb-5 px-4 sm:px-7 bg-gradient-to-t from-black/85 via-black/35 to-transparent flex items-end justify-between cursor-pointer"
+            className="absolute inset-x-0 bottom-0 pt-16 pb-4 sm:pb-5 px-4 sm:px-7 bg-gradient-to-t from-black/85 via-black/35 to-transparent flex items-end justify-between cursor-pointer z-10"
           >
             <p className="text-white text-sm sm:text-lg font-semibold tracking-tight leading-snug drop-shadow-sm pr-4 line-clamp-2">
               {activeItem.title}
@@ -153,7 +164,7 @@ export default function GallerySection() {
           <button
             onClick={prevSlide}
             aria-label="Previous image"
-            className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-10 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#0c140f]/60 hover:bg-[#0c140f] text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md border border-white/20 shadow-lg hover:scale-110 active:scale-95"
+            className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#0c140f]/60 hover:bg-[#0c140f] text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md border border-white/20 shadow-lg hover:scale-110 active:scale-95"
           >
             <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7" />
           </button>
@@ -162,7 +173,7 @@ export default function GallerySection() {
           <button
             onClick={nextSlide}
             aria-label="Next image"
-            className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-10 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#0c140f]/60 hover:bg-[#0c140f] text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md border border-white/20 shadow-lg hover:scale-110 active:scale-95"
+            className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#0c140f]/60 hover:bg-[#0c140f] text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md border border-white/20 shadow-lg hover:scale-110 active:scale-95"
           >
             <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7" />
           </button>
@@ -171,29 +182,34 @@ export default function GallerySection() {
           <button
             onClick={() => setLightboxOpen(true)}
             aria-label="View fullscreen"
-            className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 p-2.5 rounded-full bg-[#0c140f]/60 hover:bg-[#0c140f] text-white flex items-center justify-center backdrop-blur-md border border-white/20 opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-all cursor-pointer shadow-md hover:scale-105 active:scale-95"
+            className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 p-2.5 rounded-full bg-[#0c140f]/60 hover:bg-[#0c140f] text-white flex items-center justify-center backdrop-blur-md border border-white/20 opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-all cursor-pointer shadow-md hover:scale-105 active:scale-95"
           >
             <Maximize2 className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Horizontal Thumbnails Strip (10 Thumbnails Grid with Finished Polish) */}
-        <div className="mt-3 sm:mt-4 grid grid-cols-5 sm:grid-cols-10 gap-1.5 sm:gap-2">
+        {/* Horizontal Thumbnails Strip (Scrollable tray for all 29 gallery images) */}
+        <div
+          ref={thumbnailStripRef}
+          className="mt-3 sm:mt-4 flex items-center gap-2 overflow-x-auto pb-2.5 pt-1 px-1 scroll-smooth"
+        >
           {GALLERY_ITEMS.map((item, idx) => {
             const isActive = currentIndex === idx;
             return (
               <button
                 key={item.id}
-                onClick={() => setCurrentIndex(idx)}
-                className={`relative aspect-[16/10] rounded-lg sm:rounded-xl overflow-hidden transition-all duration-200 cursor-pointer border ${isActive
-                    ? "ring-2 ring-[#f28822] ring-offset-2 ring-offset-white border-[#f28822] opacity-100 scale-102 shadow-sm"
+                onClick={() => goToSlide(idx)}
+                className={`relative shrink-0 w-16 h-11 sm:w-20 sm:h-13 rounded-lg sm:rounded-xl overflow-hidden transition-all duration-200 cursor-pointer border ${
+                  isActive
+                    ? "ring-2 ring-[#ff9f43] ring-offset-2 ring-offset-white border-[#ff9f43] opacity-100 scale-105 shadow-sm"
                     : "border-gray-200/90 opacity-45 hover:opacity-90 hover:scale-102"
-                  }`}
+                }`}
                 aria-label={`Select photo ${idx + 1}`}
               >
                 <img
-                  src={item.url}
+                  src={item.thumbUrl || item.url}
                   alt={item.title}
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </button>
@@ -257,17 +273,22 @@ export default function GallerySection() {
           </div>
 
           {/* Bottom Thumbnails Strip inside Frosted Tray */}
-          <div className="max-w-3xl mx-auto w-full overflow-x-auto py-2 flex items-center justify-center gap-1.5 sm:gap-2">
+          <div className="max-w-4xl mx-auto w-full overflow-x-auto py-2 flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 px-3">
             {GALLERY_ITEMS.map((item, idx) => (
               <button
                 key={item.id}
-                onClick={() => setCurrentIndex(idx)}
-                className={`relative shrink-0 w-14 h-9 sm:w-16 sm:h-10 rounded-lg overflow-hidden transition-all duration-200 cursor-pointer border ${currentIndex === idx
-                    ? "ring-2 ring-[#f28822] border-[#f28822] opacity-100 scale-105 shadow-md"
+                onClick={() => goToSlide(idx)}
+                className={`relative shrink-0 w-14 h-9 sm:w-16 sm:h-10 rounded-lg overflow-hidden transition-all duration-200 cursor-pointer border ${
+                  currentIndex === idx
+                    ? "ring-2 ring-[#ff9f43] border-[#ff9f43] opacity-100 scale-105 shadow-md"
                     : "border-white/10 opacity-40 hover:opacity-85"
-                  }`}
+                }`}
               >
-                <img src={item.url} alt={item.title} className="w-full h-full object-cover" />
+                <img
+                  src={item.thumbUrl || item.url}
+                  alt={item.title}
+                  className="w-full h-full object-cover"
+                />
               </button>
             ))}
           </div>

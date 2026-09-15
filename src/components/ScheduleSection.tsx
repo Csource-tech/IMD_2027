@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Play,
@@ -16,21 +16,34 @@ export default function ScheduleSection() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = isMuted;
+    video.play().catch(() => {
+      // Browser autoplay policy requires muted
+      video.muted = true;
+      setIsMuted(true);
+      video.play().catch(() => {});
+    });
+  }, [isMuted]);
+
   const togglePlay = () => {
     if (!videoRef.current) return;
     if (isPlaying) {
       videoRef.current.pause();
       setIsPlaying(false);
     } else {
-      videoRef.current.play();
-      setIsPlaying(true);
+      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
     }
   };
 
   const toggleMute = () => {
     if (!videoRef.current) return;
-    videoRef.current.muted = !isMuted;
-    setIsMuted(!isMuted);
+    const nextMuted = !videoRef.current.muted;
+    videoRef.current.muted = nextMuted;
+    setIsMuted(nextMuted);
   };
 
   return (
@@ -48,7 +61,7 @@ export default function ScheduleSection() {
             transition={{ duration: 0.5 }}
             className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
           >
-            India&apos;s 2nd Largest Mushroom Connection Event
+            2nd Edition of Indian Mushroom Days 2027
           </motion.h2>
         </div>
 
@@ -64,21 +77,23 @@ export default function ScheduleSection() {
           <div className="relative aspect-[16/9] max-h-[620px] w-full overflow-hidden bg-black">
             <video
               ref={videoRef}
-              src="/bgvideo.mp4"
               autoPlay
               loop
-              muted
+              muted={isMuted}
               playsInline
+              preload="auto"
               className="w-full h-full object-cover"
-            />
+            >
+              <source src="/imdvideo.mp4" type="video/mp4" />
+              <source src="/bgvideo.mp4" type="video/mp4" />
+            </video>
 
             {/* Gradient Overlays */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/50 pointer-events-none" />
 
             {/* Top Video Header Tag */}
             <div className="absolute top-4 sm:top-6 left-4 sm:left-6 flex items-center gap-2.5 z-20">
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-black tracking-wider uppercase bg-[#f28822] text-white shadow-lg">
-                <Sparkles className="w-3.5 h-3.5" />
+              <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-black tracking-wider uppercase bg-[#ff9f43] text-white shadow-lg">
                 Live Conclave Showcase
               </span>
               <span className="hidden sm:inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-md text-white border border-white/20">
@@ -108,7 +123,7 @@ export default function ScheduleSection() {
 
             {/* In-Video Hero Callout at Bottom */}
             <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 right-16 sm:right-36 z-20">
-              <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#f28822] mb-1.5">
+              <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#ff9f43] mb-1.5">
                 The Epicenter of Commercial Mushroom Farming
               </p>
               <h3 className="text-lg sm:text-2xl md:text-3xl font-black text-white leading-tight font-sans">

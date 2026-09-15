@@ -20,7 +20,7 @@ export default function SloganBanner() {
               <span>•</span>
               <span>SCIENCE</span>
               <span>•</span>
-              <span className="text-[#f28822]">SPAWN BIOTECHNOLOGY</span>
+              <span className="text-[#ff9f43]">SPAWN BIOTECHNOLOGY</span>
               <span>•</span>
               <span>BUSINESS</span>
               <span>•</span>
@@ -43,7 +43,7 @@ export default function SloganBanner() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="text-2xl sm:text-3xl md:text-4xl font-serif italic text-white leading-relaxed max-w-4xl mx-auto"
         >
-          &ldquo;India&apos;s apex commercial platform bridging the complete edible &amp; medicinal mushroom value chain — from spore genetics to cold-chain supermarket aisles.&rdquo;
+          &ldquo;India’s Biggest Mushroom Event On Cultivation | Machinery | Value Addition&rdquo;
         </motion.h2>
       </div>
 
@@ -52,7 +52,7 @@ export default function SloganBanner() {
         <div className="animate-marquee-reverse flex items-center space-x-8 text-xs sm:text-sm font-extrabold uppercase tracking-[0.3em] text-gray-300 font-sans">
           {[...Array(6)].map((_, i) => (
             <span key={i} className="flex items-center gap-8 shrink-0">
-              <span className="text-[#f28822]">INDIAN MUSHROOM DAYS</span>
+              <span className="text-[#ff9f43]">INDIAN MUSHROOM DAYS</span>
               <span>•</span>
               <span>NEW DELHI, INDIA</span>
               <span>•</span>

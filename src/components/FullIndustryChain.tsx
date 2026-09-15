@@ -2,18 +2,6 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Sprout,
-  Flame,
-  Utensils,
-  Wheat,
-  HeartPulse,
-  Crown,
-  ArrowRight,
-  Thermometer,
-  Layers,
-  TrendingUp,
-} from "lucide-react";
 import SectionDivider from "./SectionDivider";
 
 interface SpeciesItem {
@@ -25,7 +13,6 @@ interface SpeciesItem {
   commercialValue: string;
   desc: string;
   badge: string;
-  icon: React.ElementType;
   image: string;
 }
 
@@ -39,7 +26,6 @@ const SPECIALTY_SPECIES: SpeciesItem[] = [
     commercialValue: "High consumer turnover",
     desc: "Low CAPEX rapid substrate cropping converting agricultural waste into protein-dense harvest in just 21 days for urban and rural micro-farms.",
     badge: "Agro-Waste Upcycling",
-    icon: Sprout,
     image: "/species/oyster.jpg",
   },
   {
@@ -51,7 +37,6 @@ const SPECIALTY_SPECIES: SpeciesItem[] = [
     commercialValue: "Extended ambient shelf life",
     desc: "Indigenous tropical powerhouse thriving in Indian peak summer temperatures with remarkable 4–5 days ambient post-harvest shelf resilience.",
     badge: "Tropical Heat-Tolerant",
-    icon: Flame,
     image: "/species/milky.jpg",
   },
   {
@@ -63,7 +48,6 @@ const SPECIALTY_SPECIES: SpeciesItem[] = [
     commercialValue: "Premium HoReCa demand",
     desc: "Savory umami-dense gourmet variety cultivated on sterilized sawdust blocks, commanding top dollar in fine dining and dried export markets.",
     badge: "Gourmet & Umami Rich",
-    icon: Utensils,
     image: "/species/shiitake.jpg",
   },
   {
@@ -75,7 +59,6 @@ const SPECIALTY_SPECIES: SpeciesItem[] = [
     commercialValue: "Rapid cash turnaround",
     desc: "The fastest cropping cycle in agriculture (harvestable within 12–14 days), ideally suited for coastal and humid agrarian heartlands.",
     badge: "Fastest 14-Day Cycle",
-    icon: Wheat,
     image: "/species/paddy-straw.jpg",
   },
   {
@@ -87,7 +70,6 @@ const SPECIALTY_SPECIES: SpeciesItem[] = [
     commercialValue: "Highest margin / gram",
     desc: "Pharmaceutical & nutraceutical superstars cultivated under ultra-pure sterile conditions for immune-boosting beta-glucans and neuroprotective cordycepin.",
     badge: "Nutraceutical Grade",
-    icon: HeartPulse,
     image: "/species/medicinal.jpg",
   },
   {
@@ -99,7 +81,6 @@ const SPECIALTY_SPECIES: SpeciesItem[] = [
     commercialValue: "Modern retail tier-1",
     desc: "High-density automated bottle cultivation catering to premium supermarket chains, organic grocery boutiques, and luxury hotels.",
     badge: "Tier-1 Modern Retail",
-    icon: Crown,
     image: "/species/exotic.jpg",
   },
 ];
@@ -244,49 +225,32 @@ export default function FullIndustryChain() {
             {/* Left: Species Selector List (4 cols) */}
             <div className="lg:col-span-4 flex flex-col justify-between gap-2 h-full min-h-[350px]">
               {SPECIALTY_SPECIES.map((species) => {
-                const IconComp = species.icon;
                 const isSelected = activeSpecies === species.id;
                 return (
                   <button
                     key={species.id}
                     onClick={() => setActiveSpecies(species.id)}
                     type="button"
-                    className={`w-full h-[52px] px-3.5 rounded-xl text-left transition-all duration-150 cursor-pointer flex items-center justify-between border group shrink-0 ${
-                      isSelected
-                        ? "bg-slate-900 text-white border-slate-900 shadow-sm"
-                        : "bg-white text-gray-800 border-gray-200 hover:border-[#004aab] hover:bg-blue-50/20"
-                    }`}
+                    className={`w-full h-[52px] px-3.5 rounded-xl text-left transition-all duration-150 cursor-pointer flex items-center justify-between border group shrink-0 ${isSelected
+                      ? "bg-slate-900 text-white border-slate-900 shadow-sm"
+                      : "bg-white text-gray-800 border-gray-200 hover:border-[#004aab] hover:bg-blue-50/20"
+                      }`}
                   >
                     <div className="flex items-center gap-2.5 min-w-0 pr-2">
-                      <div
-                        className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
-                          isSelected
-                            ? "bg-white/10 text-[#f28822]"
-                            : "bg-gray-100 text-gray-600 group-hover:bg-[#004aab]/10 group-hover:text-[#004aab]"
-                        }`}
-                      >
-                        <IconComp className="w-3.5 h-3.5" />
-                      </div>
+
                       <div className="min-w-0">
                         <div className="text-xs sm:text-sm font-bold leading-tight tracking-tight truncate">
                           {species.title}
                         </div>
                         <div
-                          className={`text-[11px] mt-0.5 truncate font-medium ${
-                            isSelected ? "text-amber-300" : "text-gray-500"
-                          }`}
+                          className={`text-[11px] mt-0.5 truncate font-medium ${isSelected ? "text-amber-300" : "text-gray-500"
+                            }`}
                         >
                           {species.badge}
                         </div>
                       </div>
                     </div>
-                    <ArrowRight
-                      className={`w-3.5 h-3.5 shrink-0 transition-transform ${
-                        isSelected
-                          ? "text-[#f28822] translate-x-0.5"
-                          : "text-gray-300 group-hover:text-[#004aab] group-hover:translate-x-0.5"
-                      }`}
-                    />
+
                   </button>
                 );
               })}
@@ -354,7 +318,6 @@ export default function FullIndustryChain() {
                       <div className="grid grid-cols-2 gap-2 pt-2 border-t border-gray-100 mt-2">
                         <div className="p-2 rounded-lg bg-slate-50 border border-slate-200/80">
                           <div className="flex items-center gap-1 text-slate-500 text-[10px] font-semibold">
-                            <Thermometer className="w-3 h-3 text-[#f28822]" />
                             <span>Growth Temp</span>
                           </div>
                           <div className="text-[11px] font-bold text-gray-900 mt-0.5 truncate">
@@ -364,7 +327,6 @@ export default function FullIndustryChain() {
 
                         <div className="p-2 rounded-lg bg-slate-50 border border-slate-200/80">
                           <div className="flex items-center gap-1 text-slate-500 text-[10px] font-semibold">
-                            <Layers className="w-3 h-3 text-[#004aab]" />
                             <span>Substrate</span>
                           </div>
                           <div className="text-[11px] font-bold text-gray-900 truncate mt-0.5">
@@ -374,7 +336,6 @@ export default function FullIndustryChain() {
 
                         <div className="col-span-2 p-2 rounded-lg bg-slate-50 border border-slate-200/80">
                           <div className="flex items-center gap-1 text-slate-500 text-[10px] font-semibold">
-                            <TrendingUp className="w-3 h-3 text-emerald-600" />
                             <span>Market Advantage</span>
                           </div>
                           <div className="text-[11px] font-bold text-gray-900 mt-0.5 truncate">

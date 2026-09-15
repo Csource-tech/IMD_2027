@@ -3,14 +3,6 @@
 import { motion, type Variants } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  Microscope,
-  Sprout,
-  Handshake,
-  Calendar,
-  MapPin,
-  ArrowRight,
-} from "lucide-react";
 import SectionDivider from "./SectionDivider";
 
 interface PillarCard {
@@ -23,10 +15,8 @@ interface PillarCard {
   date: string;
   place: string;
   bgImage: string;
-  icon: React.ElementType;
   href: string;
   badgeStyle: string;
-  iconStyle: string;
   acronymStyle: string;
   btnStyle: string;
   hoverShadow: string;
@@ -43,10 +33,8 @@ const PILLARS: PillarCard[] = [
     date: "19–21 Feb 2027",
     place: "New Delhi, India",
     bgImage: "/pillars/scientific-summit.jpg",
-    icon: Microscope,
     href: "/#program-agenda",
     badgeStyle: "border-emerald-500/50 bg-black/45 text-emerald-300",
-    iconStyle: "bg-emerald-500/20 text-emerald-400",
     acronymStyle: "text-emerald-400",
     btnStyle:
       "bg-emerald-950/80 border-emerald-500/50 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white",
@@ -63,15 +51,13 @@ const PILLARS: PillarCard[] = [
     date: "19–21 Feb 2027",
     place: "New Delhi, India",
     bgImage: "/pillars/commercial-expo.jpg",
-    icon: Sprout,
     href: "/book-your-stall",
     badgeStyle: "border-amber-500/60 bg-black/45 text-amber-300",
-    iconStyle: "bg-amber-500/20 text-amber-400",
     acronymStyle: "text-amber-400",
     btnStyle:
-      "bg-amber-950/80 border-amber-500/50 text-amber-400 group-hover:bg-[#f28822] group-hover:text-white",
+      "bg-amber-950/80 border-amber-500/50 text-amber-400 group-hover:bg-[#ff9f43] group-hover:text-white",
     hoverShadow:
-      "hover:shadow-[0_20px_50px_rgba(242,136,34,0.28)] hover:border-amber-500/50",
+      "hover:shadow-[0_20px_50px_rgba(255,159,67,0.28)] hover:border-amber-500/50",
   },
   {
     id: "shroom-connect",
@@ -83,10 +69,8 @@ const PILLARS: PillarCard[] = [
     date: "19–21 Feb 2027",
     place: "New Delhi, India",
     bgImage: "/pillars/shroom-connect.jpg",
-    icon: Handshake,
     href: "/#buyer-club",
     badgeStyle: "border-purple-400/60 bg-black/45 text-purple-200",
-    iconStyle: "bg-purple-500/20 text-purple-300",
     acronymStyle: "text-purple-400",
     btnStyle:
       "bg-purple-950/80 border-purple-500/50 text-purple-400 group-hover:bg-purple-600 group-hover:text-white",
@@ -191,7 +175,6 @@ export default function SummitPillars() {
             className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch"
           >
             {PILLARS.map((pillar) => {
-              const IconComp = pillar.icon;
               return (
                 <motion.div
                   key={pillar.id}
@@ -221,11 +204,7 @@ export default function SummitPillars() {
                       <div
                         className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full backdrop-blur-md border shadow-md ${pillar.badgeStyle}`}
                       >
-                        <div
-                          className={`w-5 h-5 rounded-full flex items-center justify-center p-0.5 ${pillar.iconStyle}`}
-                        >
-                          <IconComp className="w-3.5 h-3.5" />
-                        </div>
+
                         <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider">
                           {pillar.badge}
                         </span>
@@ -256,26 +235,7 @@ export default function SummitPillars() {
                       {/* Thin Divider Line */}
                       <div className="border-t border-white/15 my-3.5" />
 
-                      {/* Footer: Date, Location & Circular Arrow Button */}
-                      <div className="flex items-center justify-between gap-2 text-xs text-white/90">
-                        <div className="flex items-center gap-3.5 flex-wrap">
-                          <div className="flex items-center gap-1.5 font-medium">
-                            <Calendar className="w-3.5 h-3.5 text-white/80 shrink-0" />
-                            <span>{pillar.date}</span>
-                          </div>
-                          <div className="flex items-center gap-1.5 font-medium">
-                            <MapPin className="w-3.5 h-3.5 text-white/80 shrink-0" />
-                            <span>{pillar.place}</span>
-                          </div>
-                        </div>
 
-                        {/* Circular Action Button */}
-                        <div
-                          className={`w-9 h-9 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 shadow-md ${pillar.btnStyle}`}
-                        >
-                          <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-                        </div>
-                      </div>
                     </div>
                   </Link>
                 </motion.div>

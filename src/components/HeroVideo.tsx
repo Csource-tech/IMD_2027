@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Ticket, Store } from "lucide-react";
 import CountdownTimer from "@/components/CountdownTimer";
 
 const CAROUSEL_IMAGES = [
@@ -66,13 +65,14 @@ export default function HeroVideo() {
       </div>
 
       {/* 2. Centered Persistent Hero Content */}
-      <div className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center flex flex-col items-center justify-center">
+      <div className="relative z-20 py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center flex flex-col items-center justify-center">
         {/* Kicker Headline */}
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="text-xs sm:text-sm font-serif italic text-amber-200/95 tracking-wide uppercase mb-3 sm:mb-4 [text-shadow:_0_2px_4px_rgb(0_0_0_/_80%)]"
+          style={{ textShadow: "0 2px 6px rgba(0,0,0,0.9), 0 4px 12px rgba(0,0,0,0.8)" }}
+          className="text-xs sm:text-sm font-serif italic text-amber-200/95 tracking-wide uppercase mb-3 sm:mb-4"
         >
           Asia&apos;s Premier Commercial Mushroom Gathering &amp; B2B Conclave
         </motion.p>
@@ -82,9 +82,10 @@ export default function HeroVideo() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.08] text-white uppercase font-sans drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]"
+          style={{ textShadow: "0 2px 4px rgba(0,0,0,0.9), 0 4px 16px rgba(0,0,0,0.9), 0 8px 30px rgba(0,0,0,0.8)" }}
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-[1.08] text-white uppercase font-sans"
         >
-          Indian Mushroom <span className="text-[#f28822]">Days 2027</span>
+          Indian Mushroom <span className="text-[#ff9f43]">Days 2027</span>
         </motion.h1>
 
         {/* Elegant Ampersand Divider */}
@@ -95,7 +96,12 @@ export default function HeroVideo() {
           className="flex items-center justify-center gap-3 sm:gap-4 my-2 sm:my-3"
         >
           <span className="h-[1px] w-12 sm:w-24 bg-gradient-to-r from-transparent to-white/40" />
-          <span className="text-lg sm:text-2xl font-serif italic text-white/85 [text-shadow:_0_2px_4px_rgb(0_0_0_/_80%)]">&amp;</span>
+          <span
+            style={{ textShadow: "0 2px 8px rgba(0,0,0,0.9)" }}
+            className="text-lg sm:text-2xl font-serif italic text-white/85"
+          >
+            &amp;
+          </span>
           <span className="h-[1px] w-12 sm:w-24 bg-gradient-to-l from-transparent to-white/40" />
         </motion.div>
 
@@ -104,7 +110,8 @@ export default function HeroVideo() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="text-2xl sm:text-4xl md:text-6xl font-black tracking-tight leading-[1.1] text-[#004aab] uppercase font-sans drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]"
+          style={{ textShadow: "0 2px 4px rgba(0,0,0,0.9), 0 4px 16px rgba(0,0,0,0.9), 0 8px 30px rgba(0,0,0,0.8)" }}
+          className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.1] text-[#004aab] uppercase font-sans"
         >
           Shroom Connect
         </motion.h2>
@@ -114,9 +121,10 @@ export default function HeroVideo() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-4 sm:mt-5 text-xs sm:text-base md:text-lg text-gray-100 max-w-2xl mx-auto leading-relaxed font-normal [text-shadow:_0_2px_6px_rgb(0_0_0_/_90%)]"
+          style={{ textShadow: "0 2px 8px rgba(0,0,0,0.95), 0 4px 16px rgba(0,0,0,0.9)" }}
+          className="mt-4 sm:mt-5 text-xs sm:text-sm md:text-base font-semibold text-gray-100 max-w-2xl mx-auto leading-relaxed tracking-wide"
         >
-          India&apos;s apex commercial platform bridging the complete edible &amp; medicinal mushroom value chain — from spore genetics to cold-chain supermarket aisles.
+          India’s Biggest Mushroom Event On Cultivation | Machinery | Value Addition
         </motion.p>
 
         {/* Two Centered Action Buttons */}
@@ -129,23 +137,17 @@ export default function HeroVideo() {
           {/* Visitor Registration Button */}
           <Link
             href="/visitor-register"
-            className="group inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold text-white bg-[#f28822] hover:bg-[#e07512] shadow-xl shadow-black/40 hover:scale-105 active:scale-95 transition-all duration-200"
+            className="group inline-flex items-center justify-center px-7 sm:px-9 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold text-white bg-[#ff9f43] hover:bg-[#f28822] shadow-xl shadow-black/50 hover:scale-105 active:scale-95 transition-all duration-200 uppercase tracking-wider"
           >
-            <Ticket className="w-4 h-4 text-white" />
             <span>Visitor Registration</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Link>
 
           {/* Book Your Stall Button */}
           <Link
             href="/book-your-stall"
-            className="group inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold text-white bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/30 shadow-xl hover:border-white/50 hover:scale-105 active:scale-95 transition-all duration-200"
+            className="group inline-flex items-center justify-center px-7 sm:px-9 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold text-white bg-black/50 hover:bg-black/70 backdrop-blur-md border border-white/30 shadow-xl shadow-black/50 hover:border-white/50 hover:scale-105 active:scale-95 transition-all duration-200 uppercase tracking-wider"
           >
-            <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center shrink-0">
-              <Store className="w-3 h-3 text-[#f28822]" />
-            </div>
             <span>Book Your Stall</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 text-[#f28822]" />
           </Link>
         </motion.div>
       </div>
