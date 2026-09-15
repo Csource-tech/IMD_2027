@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import SectionDivider from "./SectionDivider";
 
 interface GalleryItem {
   id: number;
@@ -54,7 +55,7 @@ const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: 9,
     url: "/imdgallery/imd-2024-013.jpg",
-    title: "High-Yield Fungi Cultivation Equipment",
+    title: "High-Yield Mushroom Cultivation Equipment",
   },
   {
     id: 10,
@@ -99,42 +100,19 @@ export default function GallerySection() {
   const activeItem = GALLERY_ITEMS[currentIndex];
 
   return (
-    <section id="gallery" className="py-16 sm:py-24 bg-white border-b border-gray-200/80">
+    <section id="gallery" className="py-14 sm:py-20 bg-white border-b border-gray-200/80">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header matching all other sections */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <motion.div
+        {/* Section Header */}
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
+          <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#f28822]/15 border border-[#f28822]/30 text-xs font-bold text-[#b85b06] uppercase tracking-wider mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
           >
-            <span>Event Highlights</span>
-          </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-5xl font-black tracking-tight text-gray-950 uppercase font-sans leading-[1.1]"
-          >
-            Glimpses of <br />
-            <span className="font-serif italic font-normal text-gray-700 capitalize">
-              Indian Mushroom Days
-            </span>
+            GALLERY
           </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-4 text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed font-normal"
-          >
-            A curated visual chronicle capturing the vibrant delegations, technology pavilions, and commercial deal-making from previous editions.
-          </motion.p>
         </div>
 
         {/* Main Featured Photo Display with Finished Elevation & Controls */}
@@ -207,11 +185,10 @@ export default function GallerySection() {
               <button
                 key={item.id}
                 onClick={() => setCurrentIndex(idx)}
-                className={`relative aspect-[16/10] rounded-lg sm:rounded-xl overflow-hidden transition-all duration-200 cursor-pointer border ${
-                  isActive
+                className={`relative aspect-[16/10] rounded-lg sm:rounded-xl overflow-hidden transition-all duration-200 cursor-pointer border ${isActive
                     ? "ring-2 ring-[#f28822] ring-offset-2 ring-offset-white border-[#f28822] opacity-100 scale-102 shadow-sm"
                     : "border-gray-200/90 opacity-45 hover:opacity-90 hover:scale-102"
-                }`}
+                  }`}
                 aria-label={`Select photo ${idx + 1}`}
               >
                 <img
@@ -223,6 +200,9 @@ export default function GallerySection() {
             );
           })}
         </div>
+
+        {/* Center Bottom Mushroom Emblem */}
+        <SectionDivider className="mt-14 sm:mt-18" />
       </div>
 
       {/* Finished Lightbox Fullscreen Modal */}
@@ -282,11 +262,10 @@ export default function GallerySection() {
               <button
                 key={item.id}
                 onClick={() => setCurrentIndex(idx)}
-                className={`relative shrink-0 w-14 h-9 sm:w-16 sm:h-10 rounded-lg overflow-hidden transition-all duration-200 cursor-pointer border ${
-                  currentIndex === idx
+                className={`relative shrink-0 w-14 h-9 sm:w-16 sm:h-10 rounded-lg overflow-hidden transition-all duration-200 cursor-pointer border ${currentIndex === idx
                     ? "ring-2 ring-[#f28822] border-[#f28822] opacity-100 scale-105 shadow-md"
                     : "border-white/10 opacity-40 hover:opacity-85"
-                }`}
+                  }`}
               >
                 <img src={item.url} alt={item.title} className="w-full h-full object-cover" />
               </button>

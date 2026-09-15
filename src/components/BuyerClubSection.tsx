@@ -3,11 +3,25 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, ArrowRight, ShieldCheck, Ticket } from "lucide-react";
 import Link from "next/link";
+import SectionDivider from "./SectionDivider";
 
 export default function BuyerClubSection() {
   return (
-    <section id="buyer-club" className="py-20 sm:py-28 bg-[#faf9f5] border-b border-gray-200/80 overflow-hidden">
+    <section id="buyer-club" className="py-14 sm:py-20 bg-[#faf9f5] border-b border-gray-200/80 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
+          <motion.h2
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
+          >
+            Mushroom Exchange &amp; Buyer Club
+          </motion.h2>
+        </div>
+
         {/* Expanded 50/50 Architectural Split Box */}
         <div className="grid grid-cols-1 lg:grid-cols-12 border border-gray-200 shadow-2xl rounded-3xl overflow-hidden bg-white items-stretch">
           {/* Left Column: Mushroom Exchange Details (7 Cols) */}
@@ -19,19 +33,11 @@ export default function BuyerClubSection() {
             className="lg:col-span-7 p-8 sm:p-12 lg:p-16 flex flex-col justify-between space-y-6"
           >
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f28822]/15 text-[#b85b06] text-xs font-bold uppercase tracking-wider mb-4">
-                <span>Value-Chain Integration</span>
-              </div>
-
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-950 tracking-tight leading-[1.1] uppercase font-sans">
-                Mushroom Exchange <br />
-                <span className="font-serif italic font-normal text-gray-700 capitalize">
-                  official trade partner
-                </span>
-              </h2>
-
-              <p className="mt-4 text-sm sm:text-base text-gray-600 leading-relaxed font-normal">
-                India&apos;s apex collaborative value-chain hub uniting commercial cultivators, spawn laboratories, and biotechnology innovators with institutional procurement directors from tier-1 supermarket chains, HoReCa distributors, and global export syndicates.
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-950 tracking-tight uppercase font-sans">
+                Official Trade Partner
+              </h3>
+              <p className="mt-3 text-sm sm:text-base text-gray-600 leading-relaxed font-normal">
+                Connecting commercial cultivators, spawn laboratories, and biotechnology innovators directly with institutional buyers, supermarket chains, and HoReCa distributors.
               </p>
             </div>
 
@@ -41,15 +47,15 @@ export default function BuyerClubSection() {
               </span>
               <div className="space-y-2.5 text-xs sm:text-sm text-gray-700">
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-[#84c52c] mt-0.5 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#004aab] mt-0.5 shrink-0" />
                   <span>Pre-scheduled 1-on-1 procurement meetings with vetted commercial growers</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-[#84c52c] mt-0.5 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#004aab] mt-0.5 shrink-0" />
                   <span>Verified supply chains for certified spawn, substrate, and cold-chain logistics</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-4 h-4 text-[#84c52c] mt-0.5 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#004aab] mt-0.5 shrink-0" />
                   <span>Bilateral export linkages to Middle East, European, and Southeast Asian markets</span>
                 </div>
               </div>
@@ -58,7 +64,7 @@ export default function BuyerClubSection() {
             <div className="pt-4 flex flex-wrap items-center gap-4">
               <Link
                 href="/visitor-register"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-bold text-white bg-[#84c52c] hover:bg-[#72ab24] shadow-md transition-all duration-200"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-bold text-white bg-[#004aab] hover:bg-[#003c8c] shadow-md transition-all duration-200"
               >
                 <Ticket className="w-4 h-4" />
                 <span>Apply for Buyer Accreditation</span>
@@ -92,11 +98,14 @@ export default function BuyerClubSection() {
             <div className="relative z-10 max-w-xs space-y-2">
               <h3 className="text-lg font-bold text-white">Official Trade Partner</h3>
               <p className="text-xs text-gray-300 leading-relaxed font-normal">
-                Connecting growers, processors, and institutional buyers across India&apos;s edible fungi economy.
+                Connecting growers, processors, and institutional buyers across India&apos;s edible mushroom economy.
               </p>
             </div>
           </motion.div>
         </div>
+
+        {/* Center Bottom Mushroom Emblem */}
+        <SectionDivider className="mt-14 sm:mt-18" />
       </div>
     </section>
   );

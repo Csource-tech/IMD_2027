@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, ArrowRight } from "lucide-react";
+import SectionDivider from "./SectionDivider";
 
 interface WhyReason {
   number: string;
@@ -70,42 +71,19 @@ export default function WhyJoinSection() {
   const current = REASONS[activeReason];
 
   return (
-    <section id="why-join" className="relative py-20 sm:py-28 bg-white border-b border-gray-200/80 overflow-hidden">
+    <section id="why-join" className="relative py-14 sm:py-20 bg-white border-b border-gray-200/80 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="max-w-3xl mb-14 sm:mb-18">
-          <motion.div
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
+          <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#f28822]/15 border border-[#f28822]/30 text-xs font-bold text-[#b85b06] uppercase tracking-wider mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
           >
-            <span>Strategic Imperatives</span>
-          </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-5xl font-black tracking-tight text-gray-950 uppercase font-sans leading-[1.1]"
-          >
-            Why Participate in <br />
-            <span className="font-serif italic font-normal text-gray-700 capitalize">
-              Indian Mushroom Days 2027
-            </span>
+            Why Participate
           </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed font-normal"
-          >
-            Six distinct strategic advantages that make Indian Mushroom Days the non-negotiable annual gathering for everyone in the fungi economy.
-          </motion.p>
         </div>
 
         {/* Asymmetrical 2-Column Chapter Composition */}
@@ -145,7 +123,7 @@ export default function WhyJoinSection() {
                       </h3>
                       <span
                         className={`text-[10px] font-bold uppercase tracking-wider shrink-0 ${
-                          isSelected ? "text-[#84c52c]" : "text-gray-400"
+                          isSelected ? "text-[#004aab]" : "text-gray-400"
                         }`}
                       >
                         {reason.tag}
@@ -213,6 +191,9 @@ export default function WhyJoinSection() {
             </AnimatePresence>
           </div>
         </div>
+
+        {/* Center Bottom Mushroom Emblem */}
+        <SectionDivider className="mt-14 sm:mt-18" />
       </div>
     </section>
   );

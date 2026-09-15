@@ -226,7 +226,7 @@ export default function VisitorRegisterPage() {
       <section className="relative pt-36 sm:pt-44 pb-24 sm:pb-32 bg-[#0c140f] text-white overflow-hidden border-b border-white/10">
         {/* Subtle Ambient Radial Glows */}
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#f28822]/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#84c52c]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#004aab]/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.div
@@ -271,7 +271,7 @@ export default function VisitorRegisterPage() {
               <Sparkles className="w-3.5 h-3.5 text-[#f28822]" /> 100% Free Visitor Pass
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
-              <Calendar className="w-3.5 h-3.5 text-[#84c52c]" /> 3-Day Exhibition Access
+              <Calendar className="w-3.5 h-3.5 text-[#004aab]" /> 3-Day Exhibition Access
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
               <ShieldCheck className="w-3.5 h-3.5 text-amber-300" /> Instant Digital E-Badge
@@ -287,12 +287,12 @@ export default function VisitorRegisterPage() {
             {isSuccess ? (
               /* Success Confirmation Card */
               <div className="py-12 text-center space-y-6">
-                <div className="w-20 h-20 mx-auto bg-green-50 text-[#84c52c] rounded-3xl flex items-center justify-center border-2 border-[#84c52c]/30 shadow-md">
+                <div className="w-20 h-20 mx-auto bg-blue-50 text-[#004aab] rounded-3xl flex items-center justify-center border-2 border-[#004aab]/30 shadow-md">
                   <CheckCircle2 className="w-10 h-10 stroke-[2.2]" />
                 </div>
 
                 <div>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-50 border border-green-200 text-xs font-bold text-[#456b14] uppercase tracking-wider mb-2">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-[#004aab] uppercase tracking-wider mb-2">
                     Verified Credential
                   </span>
                   <h2 className="text-2xl sm:text-4xl font-black text-gray-950 tracking-tight uppercase font-sans">
@@ -496,7 +496,7 @@ export default function VisitorRegisterPage() {
                           value={formData.companyName}
                           onChange={(e) => handleChange("companyName", e.target.value)}
                           onBlur={() => handleBlur("companyName")}
-                          placeholder="e.g. Apex Fungi Agro Industries"
+                          placeholder="e.g. Apex Mushroom Agro Industries"
                           className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
                             errors.companyName
                               ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
@@ -730,7 +730,7 @@ export default function VisitorRegisterPage() {
 
                   <div className="mt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-2">
                     <span className="inline-flex items-center gap-1.5">
-                      <ShieldCheck className="w-4 h-4 text-[#84c52c]" /> Official Indian Mushroom Days 2027 Secretariat
+                      <ShieldCheck className="w-4 h-4 text-[#004aab]" /> Official Indian Mushroom Days 2027 Secretariat
                     </span>
                     <span>Instant confirmation email with QR entry badge</span>
                   </div>

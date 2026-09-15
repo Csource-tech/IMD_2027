@@ -39,7 +39,7 @@ export default function FloatingChat() {
 
           <div className="py-4 text-xs sm:text-sm text-gray-600">
             {sent ? (
-              <div className="text-center py-6 text-green-600 font-semibold">
+              <div className="text-center py-6 text-[#004aab] font-semibold">
                 Thank you! Your message has been sent to our exhibition secretariat.
               </div>
             ) : (

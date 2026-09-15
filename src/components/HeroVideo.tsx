@@ -1,98 +1,164 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Ticket, Store } from "lucide-react";
+import CountdownTimer from "@/components/CountdownTimer";
+
+const CAROUSEL_IMAGES = [
+  "/carousel/3U3A5020.JPG",
+  "/carousel/8C2A5919.JPG",
+  "/carousel/3U3A5155.JPG",
+  "/carousel/3U3A5379.JPG",
+  "/carousel/8C2A6538.JPG",
+  "/carousel/3U3A6154.JPG",
+  "/carousel/3U3A5175.JPG",
+  "/carousel/3U3A5098.JPG",
+];
 
 export default function HeroVideo() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % CAROUSEL_IMAGES.length);
+    }, 4500);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section
       id="home"
-      className="relative w-full min-h-[90vh] sm:min-h-screen flex items-center justify-start overflow-hidden bg-[#0a120d] text-white pt-28 sm:pt-32 pb-16 sm:pb-20"
+      className="relative w-full overflow-visible bg-[#0a1118] text-white pt-16 sm:pt-24 pb-14 sm:pb-20 flex flex-col justify-between"
     >
-      {/* 1. Background Video from public/bgvideo.mp4 */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover object-center"
+      {/* 1. Full Page Background Image Carousel with No Controls */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
+        {CAROUSEL_IMAGES.map((src, index) => (
+          <motion.div
+            key={src}
+            initial={false}
+            animate={{
+              opacity: index === currentSlide ? 1 : 0,
+              scale: index === currentSlide ? 1.05 : 1.0,
+            }}
+            transition={{
+              opacity: { duration: 1.4, ease: "easeInOut" },
+              scale: { duration: 5.5, ease: "easeOut" },
+            }}
+            className="absolute inset-0 w-full h-full"
+          >
+            <Image
+              src={src}
+              alt={`Indian Mushroom Days Showcase ${index + 1}`}
+              fill
+              priority={index === 0}
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+          </motion.div>
+        ))}
+
+        {/* Cinematic gradient overlay ensuring crisp text contrast on every image */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-black/75 pointer-events-none z-10" />
+      </div>
+
+      {/* 2. Centered Persistent Hero Content */}
+      <div className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center flex flex-col items-center justify-center">
+        {/* Kicker Headline */}
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-xs sm:text-sm font-serif italic text-amber-200/95 tracking-wide uppercase mb-3 sm:mb-4 [text-shadow:_0_2px_4px_rgb(0_0_0_/_80%)]"
         >
-          <source src="/bgvideo.mp4" type="video/mp4" />
-        </video>
+          Asia&apos;s Premier Commercial Mushroom Gathering &amp; B2B Conclave
+        </motion.p>
 
-        {/* Left-side subtle gradient only behind text; center and right remain completely clear */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/30 to-transparent pointer-events-none" />
-      </div>
+        {/* Main Centered Title */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.08] text-white uppercase font-sans drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]"
+        >
+          Indian Mushroom <span className="text-[#f28822]">Days 2027</span>
+        </motion.h1>
 
-      {/* 2. Left-Aligned Hero Content */}
-      <div className="relative z-10 max-w-8xl mx-auto px-4 sm:px-8 lg:px-12 w-full flex flex-col justify-center items-start text-left">
-        <div className="max-w-3xl space-y-4 sm:space-y-5">
-          <motion.h1
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.1] text-white uppercase font-sans drop-shadow-md"
+        {/* Elegant Ampersand Divider */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex items-center justify-center gap-3 sm:gap-4 my-2 sm:my-3"
+        >
+          <span className="h-[1px] w-12 sm:w-24 bg-gradient-to-r from-transparent to-white/40" />
+          <span className="text-lg sm:text-2xl font-serif italic text-white/85 [text-shadow:_0_2px_4px_rgb(0_0_0_/_80%)]">&amp;</span>
+          <span className="h-[1px] w-12 sm:w-24 bg-gradient-to-l from-transparent to-white/40" />
+        </motion.div>
+
+        {/* Shroom Connect Sub-Title */}
+        <motion.h2
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          className="text-2xl sm:text-4xl md:text-6xl font-black tracking-tight leading-[1.1] text-[#004aab] uppercase font-sans drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]"
+        >
+          Shroom Connect
+        </motion.h2>
+
+        {/* Core Subtitle Paragraph */}
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-4 sm:mt-5 text-xs sm:text-base md:text-lg text-gray-100 max-w-2xl mx-auto leading-relaxed font-normal [text-shadow:_0_2px_6px_rgb(0_0_0_/_90%)]"
+        >
+          India&apos;s apex commercial platform bridging the complete edible &amp; medicinal mushroom value chain — from spore genetics to cold-chain supermarket aisles.
+        </motion.p>
+
+        {/* Two Centered Action Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
+          className="pt-6 sm:pt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-5"
+        >
+          {/* Visitor Registration Button */}
+          <Link
+            href="/visitor-register"
+            className="group inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold text-white bg-[#f28822] hover:bg-[#e07512] shadow-xl shadow-black/40 hover:scale-105 active:scale-95 transition-all duration-200"
           >
-            Indian Mushroom <br />
-            <span className="text-[#f28822]">
-              Days 2027
-            </span>
-          </motion.h1>
+            <Ticket className="w-4 h-4 text-white" />
+            <span>Visitor Registration</span>
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </Link>
 
-          {/* Sleek Modern Connector Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="flex items-center gap-3 my-1"
+          {/* Book Your Stall Button */}
+          <Link
+            href="/book-your-stall"
+            className="group inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold text-white bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/30 shadow-xl hover:border-white/50 hover:scale-105 active:scale-95 transition-all duration-200"
           >
-            <div className="flex items-center justify-center w-8 h-8 sm:w-14 sm:h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-black text-base sm:text-xl font-sans shadow-md">
-              &amp;
+            <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+              <Store className="w-3 h-3 text-[#f28822]" />
             </div>
-            <span className="h-[2px] w-16 sm:w-[400px] bg-gradient-to-r from-white/30 to-transparent" />
-          </motion.div>
-
-          {/* Shroom Connect Title */}
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.1] text-[#84c52c] uppercase font-sans drop-shadow-md"
-          >
-            Shroom Connect
-          </motion.h2>
-
-          {/* Two Primary Action Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-            className="pt-4 sm:pt-6 flex flex-wrap items-center gap-4 sm:gap-6"
-          >
-            {/* Visitor Registration Button */}
-            <Link
-              href="/visitor-register"
-              className="group inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm md:text-base font-bold text-white bg-gradient-to-r from-[#84c52c] to-[#6da523] hover:from-[#90d930] hover:to-[#78b727] shadow-xl shadow-green-950/40 hover:shadow-green-500/20 hover:scale-105 active:scale-95 transition-all duration-200"
-            >
-              <Ticket className="w-5 h-5 text-white" />
-              <span>Visitor Registration</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-
-            {/* Book Your Stall Button */}
-            <Link
-              href="/book-your-stall"
-              className="group inline-flex items-center gap-2.5 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm md:text-base font-bold text-white bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/25 shadow-xl hover:border-white/40 hover:scale-105 active:scale-95 transition-all duration-200"
-            >
-              <Store className="w-5 h-5 text-[#f28822]" />
-              <span>Book Your Stall</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 text-[#f28822]" />
-            </Link>
-          </motion.div>
-        </div>
+            <span>Book Your Stall</span>
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 text-[#f28822]" />
+          </Link>
+        </motion.div>
       </div>
+
+      {/* 3. Circular Countdown Timer Overlapping Hero Bottom */}
+      <motion.div
+        initial={{ opacity: 0, y: 25 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.4 }}
+        className="relative z-30 max-w-6xl mx-auto px-4 -mb-18 sm:-mb-26 md:-mb-48 mt-10 sm:mt-14 flex justify-center w-full"
+      >
+        <CountdownTimer />
+      </motion.div>
     </section>
   );
 }

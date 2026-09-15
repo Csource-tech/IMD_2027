@@ -1,14 +1,17 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-/** Change this value to set the event date/time. Indian Mushroom Days: 19-20-21 February 2027 */
 export const TARGET_DATE = "2027-02-19T09:00:00+05:30";
 
-type TimeLeft = { days: number; hours: number; minutes: number; seconds: number };
+type TimeLeft = {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+};
+
 const ZERO_TIME: TimeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
-// Keep just below one second so every seconds change completes before the next.
-const FLIP_DURATION = 960;
 
 function calculateTimeLeft(targetTimestamp: number): TimeLeft {
   const remainingSeconds = Math.max(0, Math.floor((targetTimestamp - Date.now()) / 1000));
@@ -20,132 +23,68 @@ function calculateTimeLeft(targetTimestamp: number): TimeLeft {
   };
 }
 
-interface DigitProps { digit: string }
-
-/** A full four-face split-flap card, with stable faces behind each movement. */
-export function Digit({ digit }: DigitProps) {
-  const [displayedDigit, setDisplayedDigit] = useState(digit);
-  const [nextDigit, setNextDigit] = useState(digit);
-  const [isFlipping, setIsFlipping] = useState(false);
-  const finishTimer = useRef<number | null>(null);
-
-  useEffect(() => {
-    if (digit === displayedDigit) return;
-    if (finishTimer.current !== null) window.clearTimeout(finishTimer.current);
-
-    const startTimer = window.setTimeout(() => {
-      setNextDigit(digit);
-      setIsFlipping(true);
-      finishTimer.current = window.setTimeout(() => {
-        setDisplayedDigit(digit);
-        setIsFlipping(false);
-        finishTimer.current = null;
-      }, FLIP_DURATION);
-    }, 0);
-
-    return () => {
-      window.clearTimeout(startTimer);
-      if (finishTimer.current !== null) {
-        window.clearTimeout(finishTimer.current);
-        finishTimer.current = null;
-      }
-    };
-  }, [digit, displayedDigit]);
-
-  return (
-    <div className={`flip-digit${isFlipping ? " is-flipping" : ""}`} aria-label={digit}>
-      <div className="flip-digit-half flip-digit-top" aria-hidden="true"><span>{isFlipping ? nextDigit : displayedDigit}</span></div>
-      <div className="flip-digit-half flip-digit-bottom" aria-hidden="true"><span>{displayedDigit}</span></div>
-      {isFlipping && (
-        <div className="flip-animation" aria-hidden="true">
-          <div className="flip-front"><span>{displayedDigit}</span></div>
-          <div className="flip-back"><span>{nextDigit}</span></div>
-        </div>
-      )}
-      <div className="flip-divider" aria-hidden="true" />
-    </div>
-  );
-}
-
-function CountdownUnit({ value, label }: { value: number; label: string }) {
-  const formatted = String(Math.max(0, value)).padStart(2, "0");
-  return (
-    <div className="countdown-unit">
-      <div className="countdown-digits">{formatted.split("").map((digit, index) => <Digit digit={digit} key={index} />)}</div>
-      <div className="countdown-label">{label}</div>
-    </div>
-  );
-}
-
-function Separator() {
-  return <div className="countdown-separator" aria-hidden="true"><span /><span /></div>;
-}
-
-interface CountdownTimerProps { targetDate?: string; onComplete?: () => void; className?: string }
-
-export default function CountdownTimer({ targetDate = TARGET_DATE, onComplete, className = "" }: CountdownTimerProps) {
+export default function CountdownTimer({ targetDate = TARGET_DATE }: { targetDate?: string }) {
   const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
-  const completedRef = useRef(false);
 
   useEffect(() => {
     const targetTimestamp = new Date(targetDate).getTime();
     if (Number.isNaN(targetTimestamp)) {
-      console.error("CountdownTimer: Invalid target date:", targetDate);
-      const invalidDateTimer = window.setTimeout(() => setTimeLeft(ZERO_TIME), 0);
-      return () => window.clearTimeout(invalidDateTimer);
+      setTimeLeft(ZERO_TIME);
+      return;
     }
 
-    let nextTick = 0;
-    const updateCountdown = () => {
-      window.clearTimeout(nextTick);
-      const nextTime = calculateTimeLeft(targetTimestamp);
-      setTimeLeft(nextTime);
-      const complete = Object.values(nextTime).every((value) => value === 0);
-      if (complete && !completedRef.current) onComplete?.();
-      completedRef.current = complete;
-      nextTick = window.setTimeout(updateCountdown, 1_000 - (Date.now() % 1_000) + 16);
+    const update = () => {
+      setTimeLeft(calculateTimeLeft(targetTimestamp));
     };
 
-    updateCountdown();
-    const refresh = () => { if (!document.hidden) updateCountdown(); };
-    window.addEventListener("focus", refresh);
-    document.addEventListener("visibilitychange", refresh);
-    return () => {
-      window.clearTimeout(nextTick);
-      window.removeEventListener("focus", refresh);
-      document.removeEventListener("visibilitychange", refresh);
-    };
-  }, [targetDate, onComplete]);
+    update();
+    const interval = window.setInterval(update, 1000);
+    return () => window.clearInterval(interval);
+  }, [targetDate]);
+
+  const days = timeLeft ? String(timeLeft.days).padStart(timeLeft.days >= 100 ? 3 : 2, "0") : "157";
+  const hours = timeLeft ? String(timeLeft.hours).padStart(2, "0") : "14";
+  const minutes = timeLeft ? String(timeLeft.minutes).padStart(2, "0") : "27";
+  const seconds = timeLeft ? String(timeLeft.seconds).padStart(2, "0") : "41";
+
+  const units = [
+    { value: days, label: "DAY(S)" },
+    { value: hours, label: "HOUR" },
+    { value: minutes, label: "MINUTE" },
+    { value: seconds, label: "SECOND" },
+  ];
 
   if (!timeLeft) {
     return (
-      <section className={`py-12 sm:py-16 bg-[#faf9f5] border-b border-gray-200/80 ${className}`} aria-hidden="true">
-        <div className="max-w-5xl mx-auto px-4 flex justify-center">
-          <div className="countdown-placeholder" />
-        </div>
-      </section>
+      <div className="rounded-3xl sm:rounded-[3rem] bg-[#0c141c]/95 border-2 border-white/25 px-10 py-8 shadow-2xl">
+        <div className="h-28 w-96 bg-white/5 animate-pulse rounded-2xl" />
+      </div>
     );
   }
 
   return (
-    <section className={`py-12 sm:py-16 bg-[#faf9f5] border-b border-gray-200/80 overflow-hidden relative ${className}`} aria-label="Event countdown">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col items-center">
-        {/* Editorial Subtitle */}
-        <div className="flex items-center gap-2 text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#f28822] mb-6 font-sans text-center">
-          <span className="w-2 h-2 rounded-full bg-[#f28822] animate-pulse" />
-          <span>OFFICIAL COUNTDOWN TO INAUGURATION • FEBRUARY 19, 2027</span>
-        </div>
+    <div className="relative inline-flex items-center justify-center rounded-3xl sm:rounded-[3rem] bg-[#0c141c]/95 backdrop-blur-2xl border-2 border-white/25 px-6 py-5 sm:px-12 sm:py-8 md:px-16 md:py-9 shadow-[0_30px_80px_-10px_rgba(0,0,0,0.95),_0_0_45px_rgba(242,136,34,0.18)] select-none">
+      {/* Top subtle amber glowing line */}
+      <div className="absolute top-0 left-1/4 right-1/4 h-[2px] bg-gradient-to-r from-transparent via-[#f28822] to-transparent" />
 
-        <div className="countdown-container">
-          <CountdownUnit value={timeLeft.days} label="DAYS" />
-          <div className="days-hours-space" aria-hidden="true" />
-          <CountdownUnit value={timeLeft.hours} label="HOURS" />
-          <Separator />
-          <CountdownUnit value={timeLeft.minutes} label="MINUTES" />
-          <Separator />
-          <CountdownUnit value={timeLeft.seconds} label="SECONDS" />
-        </div>
+      {/* 4 Large Circular Countdown Badges */}
+      <div className="flex items-center justify-center gap-4 sm:gap-8 md:gap-11">
+        {units.map((unit, idx) => (
+          <div key={idx} className="flex flex-col items-center">
+            {/* Circular Dark Badge with proper border and background */}
+            <div className="w-[82px] h-[82px] sm:w-[110px] sm:h-[110px] md:w-[132px] md:h-[132px] rounded-full bg-gradient-to-b from-[#1c2836] to-[#101820] border-[2.5px] sm:border-[3px] border-white/25 sm:border-white/30 shadow-[inset_0_3px_6px_rgba(255,255,255,0.12),_0_15px_30px_rgba(0,0,0,0.6)] flex items-center justify-center transition-all duration-300 hover:scale-105 hover:border-[#f28822]">
+              <span className="text-3xl sm:text-5xl md:text-6xl font-light text-white font-sans tracking-tight leading-none drop-shadow-md">
+                {unit.value}
+              </span>
+            </div>
+
+            {/* Clean Uppercase Unit Label */}
+            <span className="text-[11px] sm:text-xs md:text-sm font-extrabold uppercase tracking-[0.25em] text-gray-300 font-sans mt-3 sm:mt-4">
+              {unit.label}
+            </span>
+          </div>
+        ))}
       </div>
-    </section>
+    </div>
   );
 }

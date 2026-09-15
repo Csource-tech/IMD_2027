@@ -172,7 +172,7 @@ export async function POST(req: Request) {
                 </div>
 
                 <p style="font-size: 13px; color: #555;">
-                  We look forward to welcoming you to India's premier international edible fungi expo.
+                  We look forward to welcoming you to India's premier international edible mushroom expo.
                 </p>
 
                 <div class="footer">

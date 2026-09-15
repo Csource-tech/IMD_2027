@@ -13,6 +13,7 @@ import {
   Clock,
   ArrowRight,
 } from "lucide-react";
+import SectionDivider from "./SectionDivider";
 
 const INQUIRY_TOPICS = [
   "General Inquiry",
@@ -69,8 +70,21 @@ export default function RegisterSection() {
   };
 
   return (
-    <section id="contact" className="relative py-20 sm:py-28 bg-[#faf9f5] border-b border-gray-200/80 overflow-hidden">
+    <section id="contact" className="relative py-14 sm:py-20 bg-[#faf9f5] border-b border-gray-200/80 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
+          <motion.h2
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
+          >
+            Contact Secretariat
+          </motion.h2>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           {/* Left Column: Official Secretariat Credentials (5 Cols) */}
           <motion.div
@@ -81,19 +95,11 @@ export default function RegisterSection() {
             className="lg:col-span-5 space-y-6"
           >
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#f28822]/15 text-[#b85b06] text-xs font-bold uppercase tracking-wider mb-4">
-                <span>Direct Secretariat Linkage</span>
-              </div>
-
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-950 tracking-tight leading-[1.1] uppercase font-sans">
-                Official <br />
-                <span className="font-serif italic font-normal text-gray-700 capitalize">
-                  Secretariat &amp; Helpdesk
-                </span>
-              </h2>
-
-              <p className="mt-4 text-sm sm:text-base text-gray-600 leading-relaxed font-normal">
-                Connect directly with the India Mushroom Days (IMD 2027) organizing council for stall reservations, delegate passes, technical paper submissions, and strategic partnerships.
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-950 tracking-tight uppercase font-sans">
+                Official Helpdesk
+              </h3>
+              <p className="mt-3 text-sm sm:text-base text-gray-600 leading-relaxed font-normal">
+                Connect directly with the India Mushroom Days 2027 secretariat for stall reservations, delegate passes, and partnerships.
               </p>
             </div>
 
@@ -121,8 +127,8 @@ export default function RegisterSection() {
               </div>
 
               {/* Card 2: Helplines */}
-              <div className="p-5 rounded-2xl bg-white border border-gray-200 shadow-sm flex items-start gap-4 hover:border-[#84c52c] transition-colors">
-                <div className="w-11 h-11 rounded-xl bg-green-50 text-[#84c52c] flex items-center justify-center shrink-0 border border-green-100">
+              <div className="p-5 rounded-2xl bg-white border border-gray-200 shadow-sm flex items-start gap-4 hover:border-[#004aab] transition-colors">
+                <div className="w-11 h-11 rounded-xl bg-blue-50 text-[#004aab] flex items-center justify-center shrink-0 border border-blue-100">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -189,7 +195,7 @@ export default function RegisterSection() {
 
             {isSuccess ? (
               <div className="py-12 text-center space-y-4">
-                <div className="w-14 h-14 mx-auto bg-green-100 text-green-700 flex items-center justify-center rounded-2xl border border-green-200">
+                <div className="w-14 h-14 mx-auto bg-[#004aab]/15 text-[#004aab] flex items-center justify-center rounded-2xl border border-[#004aab]/30">
                   <CheckCircle className="w-7 h-7" />
                 </div>
                 <h4 className="text-2xl font-bold text-gray-900">
@@ -334,6 +340,9 @@ export default function RegisterSection() {
             )}
           </motion.div>
         </div>
+
+        {/* Center Bottom Mushroom Emblem */}
+        <SectionDivider className="mt-14 sm:mt-18" />
       </div>
     </section>
   );

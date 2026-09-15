@@ -27,13 +27,13 @@ export default function FooterSection() {
                   alt="Indian Mushroom Days 2027 Official Logo"
                   className="h-14 sm:h-16 w-auto object-contain rounded-full shadow-lg group-hover:scale-105 transition-transform ring-2 ring-white/10"
                 />
-                <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-[#84c52c] ring-2 ring-[#070e0a]" />
+                <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-[#004aab] ring-2 ring-[#070e0a]" />
               </div>
               <div>
                 <h4 className="text-white text-lg sm:text-xl font-black uppercase tracking-tight font-sans">
                   Indian Mushroom Days <span className="text-[#f28822]">2027</span>
                 </h4>
-                <p className="text-xs text-[#84c52c] font-medium tracking-wide">
+                <p className="text-xs text-[#004aab] font-medium tracking-wide">
                   &amp; Shroom Connect Conclave
                 </p>
               </div>
@@ -52,7 +52,7 @@ export default function FooterSection() {
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <Link
                 href="/visitor-register"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold text-white bg-[#84c52c] hover:bg-[#73ad24] shadow-md transition-all duration-200"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold text-white bg-[#004aab] hover:bg-[#003c8c] shadow-md transition-all duration-200"
               >
                 <Ticket className="w-3.5 h-3.5" />
                 <span>Visitor Registration</span>
@@ -80,15 +80,15 @@ export default function FooterSection() {
                 </Link>
               </li>
               <li>
-                <Link href="/#about-shroomconnect" className="hover:text-[#84c52c] transition-colors flex items-center gap-1.5">
-                  <ChevronRight className="w-3.5 h-3.5 text-[#84c52c]" />
+                <Link href="/#about-shroomconnect" className="hover:text-[#004aab] transition-colors flex items-center gap-1.5">
+                  <ChevronRight className="w-3.5 h-3.5 text-[#004aab]" />
                   <span>Shroom Connect Conclave</span>
                 </Link>
               </li>
               <li>
                 <Link href="/#industry-chain" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <ChevronRight className="w-3.5 h-3.5 text-[#f28822]" />
-                  <span>Button &amp; Specialty Fungi</span>
+                  <span>Button &amp; Specialty Mushrooms</span>
                 </Link>
               </li>
               <li>
@@ -135,7 +135,7 @@ export default function FooterSection() {
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-[#84c52c] shrink-0" />
+                <Phone className="w-4 h-4 text-[#004aab] shrink-0" />
                 <a href="tel:+918860115588" className="hover:text-white transition-colors">
                   +91 88601 15588 (Exhibition Helpline)
                 </a>
@@ -147,7 +147,7 @@ export default function FooterSection() {
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Clock className="w-4 h-4 text-[#84c52c] shrink-0" />
+                <Clock className="w-4 h-4 text-[#004aab] shrink-0" />
                 <span>Mon – Sat: 09:00 AM – 06:00 PM IST</span>
               </li>
             </ul>

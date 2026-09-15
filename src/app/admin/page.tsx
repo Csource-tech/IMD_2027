@@ -73,12 +73,12 @@ export default function AdminLoginPage() {
     <div className="min-h-screen flex flex-col justify-between bg-[#0c140f] text-white relative overflow-hidden font-sans">
       {/* Ambient Radial Background Glows */}
       <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#f28822]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-[#84c52c]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-[#004aab]/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Top Header */}
       <header className="p-6 sm:p-8 flex items-center justify-between relative z-10 max-w-7xl mx-auto w-full">
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#f28822] to-[#84c52c] flex items-center justify-center text-white font-black text-lg shadow-md group-hover:scale-105 transition-transform">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#f28822] to-[#004aab] flex items-center justify-center text-white font-black text-lg shadow-md group-hover:scale-105 transition-transform">
             M
           </div>
           <div>

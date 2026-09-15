@@ -14,6 +14,7 @@ import {
   Layers,
   TrendingUp,
 } from "lucide-react";
+import SectionDivider from "./SectionDivider";
 
 interface SpeciesItem {
   id: string;
@@ -79,7 +80,7 @@ const SPECIALTY_SPECIES: SpeciesItem[] = [
   },
   {
     id: "medicinal",
-    title: "Medicinal & Wellness Fungi",
+    title: "Medicinal & Wellness Mushrooms",
     scientificName: "Cordyceps militaris, Reishi & Lion's Mane",
     temp: "18°C – 24°C (HEPA Cleanroom)",
     substrate: "Sterile liquid & solid bioreactors",
@@ -91,7 +92,7 @@ const SPECIALTY_SPECIES: SpeciesItem[] = [
   },
   {
     id: "exotic",
-    title: "Exotic Supermarket Fungi",
+    title: "Exotic Supermarket Mushrooms",
     scientificName: "King Oyster, Enoki, Shimeji & Morel",
     temp: "12°C – 16°C (Cold Fruiting)",
     substrate: "Automated bottle & polypropylene bags",
@@ -104,50 +105,27 @@ const SPECIALTY_SPECIES: SpeciesItem[] = [
 ];
 
 export default function FullIndustryChain() {
-  const [activeSpecies, setActiveSpecies] = useState<string>("medicinal");
+  const [activeSpecies, setActiveSpecies] = useState<string>("oyster");
 
-  const currentSpecialty = SPECIALTY_SPECIES.find((s) => s.id === activeSpecies) || SPECIALTY_SPECIES[4];
+  const currentSpecialty = SPECIALTY_SPECIES.find((s) => s.id === activeSpecies) || SPECIALTY_SPECIES[0];
 
   return (
     <section
       id="industry-chain"
-      className="relative py-20 sm:py-28 bg-[#faf9f5] border-b border-gray-200/80 overflow-hidden"
+      className="relative py-14 sm:py-20 bg-[#faf9f5] border-b border-gray-200/80 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <motion.div
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
+          <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#f28822]/15 border border-[#f28822]/30 text-xs font-bold text-[#b85b06] uppercase tracking-wider mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
           >
-            <span>Mushroom First Architecture</span>
-          </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-5xl font-black tracking-tight text-gray-950 uppercase font-sans leading-[1.1]"
-          >
-            The Full Spectrum of <br />
-            <span className="font-serif italic font-normal text-gray-700 capitalize">
-              Edible &amp; Medicinal Fungi
-            </span>
+            Industry Chain &amp; Species
           </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed font-normal"
-          >
-            From India&apos;s commercial high-volume Button Mushroom backbone to the six explosive specialty sectors driving new agribusiness fortunes.
-          </motion.p>
         </div>
 
         {/* ========================================================================= */}
@@ -158,35 +136,35 @@ export default function FullIndustryChain() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-16 sm:mb-20 rounded-3xl bg-white border border-gray-200 shadow-xl overflow-hidden"
+          className="mb-10 sm:mb-14 rounded-3xl bg-white border border-gray-200 shadow-md overflow-hidden"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-            {/* Left Image & Volume Metric (5 cols) */}
-            <div className="lg:col-span-5 relative min-h-[320px] lg:min-h-[440px] bg-slate-900 group overflow-hidden">
+            {/* Left Image & Volume Metric (4 cols) */}
+            <div className="lg:col-span-4 relative min-h-[220px] sm:min-h-[240px] lg:min-h-0 bg-slate-900 group overflow-hidden">
               <img
-                src="/imdgallery/imd-2024-003.jpg"
-                alt="High-Tech Button Mushroom Cultivation Facility"
-                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-95"
+                src="/species/button-mushrooms.jpg"
+                alt="Fresh Button Mushrooms (Agaricus bisporus)"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
 
-              <div className="absolute top-5 left-5 px-3 py-1.5 rounded-full bg-[#f28822] text-white text-xs font-bold uppercase tracking-wider shadow-md">
-                Commercial Core Segment
+              <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#f28822] text-white text-[11px] font-bold uppercase tracking-wider shadow-md">
+                Commercial Core
               </div>
 
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="text-3xl sm:text-4xl font-extrabold text-white">75%+</div>
-                <div className="text-xs sm:text-sm font-semibold text-amber-200">
-                  Total National Mushroom Production Volume in India
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="text-2xl sm:text-3xl font-black text-white leading-none">75%+</div>
+                <div className="text-[11px] sm:text-xs font-semibold text-amber-200 mt-1">
+                  Total National Mushroom Production Volume
                 </div>
               </div>
             </div>
 
-            {/* Right Details & 4-Stage Production Chain (7 cols) */}
-            <div className="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-between">
+            {/* Right Details & 4-Stage Production Chain (8 cols) */}
+            <div className="lg:col-span-8 p-5 sm:p-7 flex flex-col justify-center gap-3.5">
               <div>
-                <div className="flex items-baseline justify-between flex-wrap gap-2 mb-2">
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-950">
+                <div className="flex items-baseline justify-between flex-wrap gap-2 mb-1.5">
+                  <h3 className="text-xl sm:text-2xl font-black text-gray-950 tracking-tight">
                     Button Mushrooms
                   </h3>
                   <span className="text-xs font-serif italic text-gray-500 font-semibold">
@@ -194,64 +172,56 @@ export default function FullIndustryChain() {
                   </span>
                 </div>
 
-                <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6">
-                  The commercial engine of India&apos;s edible fungi industry. Produced in precision Controlled Environment Agriculture (CEA) climate facilities for wholesale mandis, modern supermarkets, canning plants, and institutional catering.
+                <p className="text-xs sm:text-sm text-gray-600 leading-relaxed max-w-2xl">
+                  The commercial engine of India&apos;s mushroom industry, cultivated in precision climate-controlled facilities for fresh retail, wholesale mandis, and food processing.
                 </p>
               </div>
 
               {/* 4-Stage Lifecycle Flow */}
-              <div className="space-y-2 pt-2 border-t border-gray-100">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#f28822] block mb-2">
+              <div className="pt-3 border-t border-gray-100">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#f28822] block mb-2">
                   Industrial Cultivation Cycle
                 </span>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div className="p-3.5 rounded-xl bg-[#faf9f5] border border-gray-200/80">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="w-5 h-5 rounded-full bg-[#f28822] text-white flex items-center justify-center text-xs font-bold">
-                        1
-                      </span>
-                      <h4 className="text-xs font-bold text-gray-900">Phase I–III Bulk Compost</h4>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  <div className="p-2.5 rounded-xl bg-[#faf9f5] border border-gray-200/80 flex items-center gap-2.5">
+                    <span className="w-6 h-6 rounded-full bg-[#f28822] text-white flex-shrink-0 flex items-center justify-center text-xs font-bold">
+                      1
+                    </span>
+                    <div className="min-w-0">
+                      <h4 className="text-xs font-bold text-gray-900 truncate">Bulk Compost</h4>
+                      <p className="text-[10px] text-gray-500 truncate">Phase I–III Substrate</p>
                     </div>
-                    <p className="text-[11px] text-gray-500 leading-snug">
-                      High-yield straw substrate with pasteurization tunnels and certified grain spawn.
-                    </p>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-[#faf9f5] border border-gray-200/80">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="w-5 h-5 rounded-full bg-[#f28822] text-white flex items-center justify-center text-xs font-bold">
-                        2
-                      </span>
-                      <h4 className="text-xs font-bold text-gray-900">Automated CEA Climate</h4>
+                  <div className="p-2.5 rounded-xl bg-[#faf9f5] border border-gray-200/80 flex items-center gap-2.5">
+                    <span className="w-6 h-6 rounded-full bg-[#004aab] text-white flex-shrink-0 flex items-center justify-center text-xs font-bold">
+                      2
+                    </span>
+                    <div className="min-w-0">
+                      <h4 className="text-xs font-bold text-gray-900 truncate">CEA Climate</h4>
+                      <p className="text-[10px] text-gray-500 truncate">16°C–18°C Chilling</p>
                     </div>
-                    <p className="text-[11px] text-gray-500 leading-snug">
-                      Precision chilling (16°C–18°C), 90% RH humidity, and CO2 ventilation management.
-                    </p>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-[#faf9f5] border border-gray-200/80">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="w-5 h-5 rounded-full bg-[#f28822] text-white flex items-center justify-center text-xs font-bold">
-                        3
-                      </span>
-                      <h4 className="text-xs font-bold text-gray-900">Multi-Flush Harvesting</h4>
+                  <div className="p-2.5 rounded-xl bg-[#faf9f5] border border-gray-200/80 flex items-center gap-2.5">
+                    <span className="w-6 h-6 rounded-full bg-[#004aab] text-white flex-shrink-0 flex items-center justify-center text-xs font-bold">
+                      3
+                    </span>
+                    <div className="min-w-0">
+                      <h4 className="text-xs font-bold text-gray-900 truncate">Harvesting</h4>
+                      <p className="text-[10px] text-gray-500 truncate">Multi-Flush Yield</p>
                     </div>
-                    <p className="text-[11px] text-gray-500 leading-snug">
-                      High-density tiered shelving with precision hand and semi-automated harvesting.
-                    </p>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-[#faf9f5] border border-gray-200/80">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="w-5 h-5 rounded-full bg-[#f28822] text-white flex items-center justify-center text-xs font-bold">
-                        4
-                      </span>
-                      <h4 className="text-xs font-bold text-gray-900">Vacuum Cooling &amp; Pack</h4>
+                  <div className="p-2.5 rounded-xl bg-[#faf9f5] border border-gray-200/80 flex items-center gap-2.5">
+                    <span className="w-6 h-6 rounded-full bg-emerald-600 text-white flex-shrink-0 flex items-center justify-center text-xs font-bold">
+                      4
+                    </span>
+                    <div className="min-w-0">
+                      <h4 className="text-xs font-bold text-gray-900 truncate">Cold Chain</h4>
+                      <p className="text-[10px] text-gray-500 truncate">Pre-Cool &amp; Pack</p>
                     </div>
-                    <p className="text-[11px] text-gray-500 leading-snug">
-                      Rapid core pre-cooling, punnet film sealing, and reefer logistics to retail hubs.
-                    </p>
                   </div>
                 </div>
               </div>
@@ -262,162 +232,166 @@ export default function FullIndustryChain() {
         {/* ========================================================================= */}
         {/* FEATURE 2: 6 SPECIALTY SECTORS (SHROOM CONNECT CONCLAVE)                 */}
         {/* ========================================================================= */}
-        <div id="specialty-sectors" className="pt-4">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#84c52c]">
-                Shroom Connect Sector Showcase
-              </span>
-              <h3 className="text-2xl sm:text-4xl font-extrabold text-gray-950 tracking-tight mt-1">
-                6 High-Growth Specialty Fungi Sectors
-              </h3>
-            </div>
-            <p className="text-xs sm:text-sm text-gray-600 max-w-md">
-              Specialized cultivation domains commanding premium retail prices, government capital subsidies, and expanding export demand.
-            </p>
+        <div id="specialty-sectors" className="pt-2">
+          <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-black font-sans text-gray-950 tracking-tight uppercase">
+              Specialty Mushroom Sectors
+            </h3>
           </div>
 
-          {/* Species Selector Tabs */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-8">
-            {SPECIALTY_SPECIES.map((species) => {
-              const IconComp = species.icon;
-              const isSelected = activeSpecies === species.id;
-              return (
-                <button
-                  key={species.id}
-                  onClick={() => setActiveSpecies(species.id)}
-                  type="button"
-                  className={`p-3 rounded-2xl border text-left transition-all duration-200 cursor-pointer flex flex-col justify-between ${
-                    isSelected
-                      ? "bg-slate-900 text-white border-slate-900 shadow-md scale-[1.02]"
-                      : "bg-white text-gray-800 border-gray-200 hover:border-[#84c52c] hover:bg-green-50/20"
-                  }`}
-                >
-                  <div className="flex items-center justify-between w-full mb-2">
-                    <div className="flex items-center gap-2">
+          {/* Master-Detail Layout: Left Selector Sidebar & Right Active Spotlight Card */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-stretch">
+            {/* Left: Species Selector List (4 cols) */}
+            <div className="lg:col-span-4 flex flex-col justify-between gap-2 h-full min-h-[350px]">
+              {SPECIALTY_SPECIES.map((species) => {
+                const IconComp = species.icon;
+                const isSelected = activeSpecies === species.id;
+                return (
+                  <button
+                    key={species.id}
+                    onClick={() => setActiveSpecies(species.id)}
+                    type="button"
+                    className={`w-full h-[52px] px-3.5 rounded-xl text-left transition-all duration-150 cursor-pointer flex items-center justify-between border group shrink-0 ${
+                      isSelected
+                        ? "bg-slate-900 text-white border-slate-900 shadow-sm"
+                        : "bg-white text-gray-800 border-gray-200 hover:border-[#004aab] hover:bg-blue-50/20"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5 min-w-0 pr-2">
                       <div
-                        className={`w-8 h-8 rounded-lg overflow-hidden border shrink-0 transition-all ${
+                        className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
                           isSelected
-                            ? "border-[#84c52c] ring-2 ring-[#84c52c]/30 shadow"
-                            : "border-gray-200"
+                            ? "bg-white/10 text-[#f28822]"
+                            : "bg-gray-100 text-gray-600 group-hover:bg-[#004aab]/10 group-hover:text-[#004aab]"
                         }`}
                       >
-                        <img
-                          src={species.image}
-                          alt={species.title}
-                          className="w-full h-full object-cover"
-                        />
+                        <IconComp className="w-3.5 h-3.5" />
                       </div>
-                      <IconComp
-                        className={`w-4 h-4 ${isSelected ? "text-[#84c52c]" : "text-gray-400"}`}
-                      />
+                      <div className="min-w-0">
+                        <div className="text-xs sm:text-sm font-bold leading-tight tracking-tight truncate">
+                          {species.title}
+                        </div>
+                        <div
+                          className={`text-[11px] mt-0.5 truncate font-medium ${
+                            isSelected ? "text-amber-300" : "text-gray-500"
+                          }`}
+                        >
+                          {species.badge}
+                        </div>
+                      </div>
                     </div>
-                    <span
-                      className={`text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded ${
-                        isSelected ? "bg-white/15 text-white" : "bg-gray-100 text-gray-600"
+                    <ArrowRight
+                      className={`w-3.5 h-3.5 shrink-0 transition-transform ${
+                        isSelected
+                          ? "text-[#f28822] translate-x-0.5"
+                          : "text-gray-300 group-hover:text-[#004aab] group-hover:translate-x-0.5"
                       }`}
-                    >
-                      {species.id === "medicinal" ? "Top ROI" : "Specialty"}
-                    </span>
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold leading-tight">{species.title}</div>
-                    <div className={`text-[10px] truncate mt-0.5 ${isSelected ? "text-gray-300" : "text-gray-500"}`}>
-                      {species.badge}
+                    />
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Right: Active Species Spotlight Card (8 cols) */}
+            <div className="lg:col-span-8 h-full min-h-[350px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentSpecialty.id}
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -10 }}
+                  transition={{ duration: 0.18, ease: "easeOut" }}
+                  className="rounded-2xl bg-white border border-gray-200 shadow-md overflow-hidden h-full min-h-[350px]"
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 h-full min-h-[350px] items-stretch">
+                    {/* Visual side: 50% of the card */}
+                    <div className="relative h-56 md:h-full min-h-[220px] md:min-h-[350px] w-full bg-slate-900 group overflow-hidden">
+                      <img
+                        key={currentSpecialty.id}
+                        src={currentSpecialty.image}
+                        alt={`${currentSpecialty.title} - ${currentSpecialty.scientificName}`}
+                        className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
+                      <div className="absolute top-3 left-3 z-10">
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#f28822] text-white shadow">
+                          {currentSpecialty.badge}
+                        </span>
+                      </div>
+                      <div className="absolute bottom-3 left-3 right-3 text-white z-10">
+                        <h4 className="text-base sm:text-lg font-black leading-tight truncate">{currentSpecialty.title}</h4>
+                        <p className="text-[11px] text-amber-200 italic font-serif truncate">
+                          {currentSpecialty.scientificName}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Information side: 50% of the card */}
+                    <div className="p-4 sm:p-5 flex flex-col justify-between h-full min-h-[350px] overflow-hidden">
+                      <div>
+                        <div className="flex items-center gap-1.5 mb-1.5">
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-100 text-[#d97416]">
+                            Shroom Connect
+                          </span>
+                          <span className="text-[11px] text-gray-500 font-medium">
+                            B2B Sourcing
+                          </span>
+                        </div>
+
+                        <h3 className="text-lg sm:text-xl font-black text-gray-950 tracking-tight leading-snug truncate">
+                          {currentSpecialty.title}
+                        </h3>
+                        <p className="text-[11px] text-gray-500 italic font-serif truncate mb-1.5">
+                          {currentSpecialty.scientificName}
+                        </p>
+
+                        <p className="text-xs text-gray-600 leading-relaxed line-clamp-3">
+                          {currentSpecialty.desc}
+                        </p>
+                      </div>
+
+                      {/* Biological & Market Specs Grid */}
+                      <div className="grid grid-cols-2 gap-2 pt-2 border-t border-gray-100 mt-2">
+                        <div className="p-2 rounded-lg bg-slate-50 border border-slate-200/80">
+                          <div className="flex items-center gap-1 text-slate-500 text-[10px] font-semibold">
+                            <Thermometer className="w-3 h-3 text-[#f28822]" />
+                            <span>Growth Temp</span>
+                          </div>
+                          <div className="text-[11px] font-bold text-gray-900 mt-0.5 truncate">
+                            {currentSpecialty.temp}
+                          </div>
+                        </div>
+
+                        <div className="p-2 rounded-lg bg-slate-50 border border-slate-200/80">
+                          <div className="flex items-center gap-1 text-slate-500 text-[10px] font-semibold">
+                            <Layers className="w-3 h-3 text-[#004aab]" />
+                            <span>Substrate</span>
+                          </div>
+                          <div className="text-[11px] font-bold text-gray-900 truncate mt-0.5">
+                            {currentSpecialty.substrate}
+                          </div>
+                        </div>
+
+                        <div className="col-span-2 p-2 rounded-lg bg-slate-50 border border-slate-200/80">
+                          <div className="flex items-center gap-1 text-slate-500 text-[10px] font-semibold">
+                            <TrendingUp className="w-3 h-3 text-emerald-600" />
+                            <span>Market Advantage</span>
+                          </div>
+                          <div className="text-[11px] font-bold text-gray-900 mt-0.5 truncate">
+                            {currentSpecialty.commercialValue}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </button>
-              );
-            })}
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
-
-          {/* Active Species Detail Spotlight Card */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSpecialty.id}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              className="rounded-3xl bg-white border border-gray-200 shadow-xl overflow-hidden p-6 sm:p-10"
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                {/* Visual side (5 cols) */}
-                <div className="lg:col-span-5 relative rounded-2xl overflow-hidden shadow-lg h-64 sm:h-80 group">
-                  <img
-                    key={currentSpecialty.id}
-                    src={currentSpecialty.image}
-                    alt={`${currentSpecialty.title} - ${currentSpecialty.scientificName}`}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#84c52c]">
-                      {currentSpecialty.badge}
-                    </span>
-                    <h4 className="text-xl font-bold">{currentSpecialty.title}</h4>
-                    <p className="text-xs text-gray-300 italic font-serif">
-                      {currentSpecialty.scientificName}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Information side (7 cols) */}
-                <div className="lg:col-span-7 space-y-5">
-                  <div className="flex items-center gap-2">
-                    <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-100 text-[#d97416]">
-                      Shroom Connect Feature
-                    </span>
-                    <span className="text-xs text-gray-500 font-medium">
-                      B2B Sourcing Category
-                    </span>
-                  </div>
-
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-950">
-                    {currentSpecialty.title}
-                  </h3>
-
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                    {currentSpecialty.desc}
-                  </p>
-
-                  {/* Biological & Market Specs Grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-gray-100">
-                    <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                      <div className="flex items-center gap-1.5 text-slate-500 text-xs font-semibold mb-1">
-                        <Thermometer className="w-4 h-4 text-[#f28822]" />
-                        <span>Growth Temp</span>
-                      </div>
-                      <div className="text-xs font-bold text-gray-900">
-                        {currentSpecialty.temp}
-                      </div>
-                    </div>
-
-                    <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                      <div className="flex items-center gap-1.5 text-slate-500 text-xs font-semibold mb-1">
-                        <Layers className="w-4 h-4 text-[#84c52c]" />
-                        <span>Substrate Medium</span>
-                      </div>
-                      <div className="text-xs font-bold text-gray-900 truncate">
-                        {currentSpecialty.substrate}
-                      </div>
-                    </div>
-
-                    <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
-                      <div className="flex items-center gap-1.5 text-slate-500 text-xs font-semibold mb-1">
-                        <TrendingUp className="w-4 h-4 text-emerald-600" />
-                        <span>Market Advantage</span>
-                      </div>
-                      <div className="text-xs font-bold text-gray-900 truncate">
-                        {currentSpecialty.commercialValue}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
         </div>
+
+        {/* Center Bottom Mushroom Emblem */}
+        <SectionDivider className="mt-14 sm:mt-18" />
       </div>
     </section>
   );

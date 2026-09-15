@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Award } from "lucide-react";
+import SectionDivider from "./SectionDivider";
 
 interface SponsorItem {
   name: string;
@@ -39,43 +40,20 @@ export default function PastSponsorsSection() {
   return (
     <section
       id="past-sponsors"
-      className="relative py-20 sm:py-28 bg-[#faf9f5] border-b border-gray-200/80 overflow-hidden"
+      className="relative py-14 sm:py-20 bg-[#faf9f5] border-b border-gray-200/80 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <motion.div
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
+          <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#f28822]/15 border border-[#f28822]/30 text-xs font-bold text-[#b85b06] uppercase tracking-wider mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
           >
-            <span>Institutional Alliances</span>
-          </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-5xl font-black tracking-tight text-gray-950 uppercase font-sans leading-[1.1]"
-          >
-            Our Strategic &amp; <br />
-            <span className="font-serif italic font-normal text-gray-700 capitalize">
-              Industry Partners
-            </span>
+            Partners &amp; Sponsors
           </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed font-normal"
-          >
-            Supported by leading farm universities, biotechnology innovators, and value-chain leaders driving the national mushroom ecosystem forward.
-          </motion.p>
         </div>
 
         {/* 3 Tiered Partner Cards */}
@@ -95,7 +73,7 @@ export default function PastSponsorsSection() {
                   <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-50 text-[#d97416] border border-orange-200">
                     {s.badge}
                   </span>
-                  <Award className="w-4 h-4 text-[#84c52c]" />
+                  <Award className="w-4 h-4 text-[#004aab]" />
                 </div>
 
                 {/* Logo Area */}
@@ -123,11 +101,14 @@ export default function PastSponsorsSection() {
 
               <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-400 font-semibold">
                 <span>Official Partner</span>
-                <span className="text-[#84c52c]">IMD 2027</span>
+                <span className="text-[#004aab]">IMD 2027</span>
               </div>
             </motion.div>
           ))}
         </div>
+
+        {/* Center Bottom Mushroom Emblem */}
+        <SectionDivider className="mt-14 sm:mt-18" />
       </div>
     </section>
   );

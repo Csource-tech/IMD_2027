@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight, Quote, Award } from "lucide-react";
+import SectionDivider from "./SectionDivider";
 
 interface Testimonial {
   quote: string;
@@ -17,8 +18,8 @@ interface Testimonial {
 const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "More than 5,000 delegates convened across three intensive days. Indian Mushroom Days has established an unprecedented national benchmark, connecting government ministries, scientific research academia, and progressive commercial growers with fungi at the center.",
-    meta: "India's Most Trusted Edible Fungi Exhibition",
+      "More than 5,000 delegates convened across three intensive days. Indian Mushroom Days has established an unprecedented national benchmark, connecting government ministries, scientific research academia, and progressive commercial growers with mushrooms at the center.",
+    meta: "India's Most Trusted Edible Mushroom Exhibition",
     author: "Dr. R. K. Sharma",
     role: "President",
     organization: "National Mushroom Growers & Agri-Tech Council",
@@ -28,10 +29,10 @@ const TESTIMONIALS: Testimonial[] = [
   {
     quote:
       "Indian Mushroom Days delivers the complete end-to-end industrial value chain—from climate-controlled growing rooms and substrate bagging lines to high-margin medicinal mushroom extracts. The scale and international networking exceeded all our expectations.",
-    meta: "One-Stop Solutions for Edible Fungi Industry",
+    meta: "One-Stop Solutions for Edible Mushroom Industry",
     author: "Sunil Patel",
     role: "Managing Director",
-    organization: "Global Fungi Farm Innovations",
+    organization: "Global Mushroom Farm Innovations",
     badge: "Industry Partner",
     rating: 5,
   },
@@ -51,7 +52,7 @@ const TESTIMONIALS: Testimonial[] = [
     meta: "Leading Agro-Tech Innovation Forum",
     author: "Amitabh Verma",
     role: "Chief Technology Officer",
-    organization: "Vedic Fungi Agro-Industries",
+    organization: "Vedic Mushroom Agro-Industries",
     badge: "Agri-Tech Pioneer",
     rating: 5,
   },
@@ -82,34 +83,21 @@ export default function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="relative py-20 sm:py-28 bg-[#faf9f5] border-b border-gray-200/80 overflow-hidden"
+      className="relative py-14 sm:py-20 bg-[#faf9f5] border-b border-gray-200/80 overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <motion.div
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
+          <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#f28822]/15 border border-[#f28822]/30 text-xs font-bold text-[#b85b06] uppercase tracking-wider mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
           >
-            <span>Industry Endorsements</span>
-          </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-5xl font-black tracking-tight text-gray-950 uppercase font-sans leading-[1.1]"
-          >
-            Voices of the <br />
-            <span className="font-serif italic font-normal text-gray-700 capitalize">
-              Mushroom Industry
-            </span>
+            Testimonials
           </motion.h2>
         </div>
 
@@ -150,8 +138,8 @@ export default function TestimonialsSection() {
                   {current.role} •{" "}
                   <span className="font-semibold text-gray-800">{current.organization}</span>
                 </div>
-                <div className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-[#4d7817] bg-[#84c52c]/15 px-3 py-1 rounded-full border border-[#84c52c]/30">
-                  <Award className="w-3.5 h-3.5 text-[#84c52c]" />
+                <div className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-[#004aab] bg-[#004aab]/15 px-3 py-1 rounded-full border border-[#004aab]/30">
+                  <Award className="w-3.5 h-3.5 text-[#004aab]" />
                   <span>{current.badge}</span>
                 </div>
               </div>
@@ -191,6 +179,9 @@ export default function TestimonialsSection() {
             </button>
           </div>
         </div>
+
+        {/* Center Bottom Mushroom Emblem */}
+        <SectionDivider className="mt-14 sm:mt-18" />
       </div>
     </section>
   );

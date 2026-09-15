@@ -266,7 +266,7 @@ export default function AdminDashboardPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#f28822] to-[#84c52c] flex items-center justify-center text-white font-black text-base shadow-sm">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#f28822] to-[#004aab] flex items-center justify-center text-white font-black text-base shadow-sm">
                 M
               </div>
               <div>
@@ -336,14 +336,14 @@ export default function AdminDashboardPage() {
           {/* Card 2: Visitor Passes */}
           <div className="p-5 sm:p-6 rounded-2xl bg-white border border-gray-200 shadow-sm flex items-center justify-between">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#456b14] block mb-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#004aab] block mb-1">
                 Visitor Passes
               </span>
               <span className="text-2xl sm:text-3xl font-black text-gray-950 font-sans">
                 {stats.visitors}
               </span>
             </div>
-            <div className="w-12 h-12 rounded-2xl bg-green-50 text-[#84c52c] flex items-center justify-center shrink-0 border border-green-100">
+            <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#004aab] flex items-center justify-center shrink-0 border border-blue-100">
               <Users className="w-6 h-6" />
             </div>
           </div>
@@ -524,7 +524,7 @@ export default function AdminDashboardPage() {
                         {/* Type Badge */}
                         <td className="py-4 px-4 whitespace-nowrap">
                           {lead.type === "visitor" && (
-                            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-green-50 text-[#366810] border border-green-200">
+                            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-blue-50 text-[#004aab] border border-blue-200">
                               <Users className="w-3 h-3" /> Visitor Pass
                             </span>
                           )}

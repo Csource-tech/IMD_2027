@@ -121,8 +121,8 @@ export async function POST(req: Request) {
           <style>
             body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #222; background-color: #f6f5f0; margin: 0; padding: 20px; }
             .container { max-width: 620px; margin: 0 auto; background: #ffffff; border: 1px solid #e0ded8; padding: 32px; border-radius: 6px; }
-            .badge { display: inline-block; background: #84c52c; color: white; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
-            .header { border-bottom: 2px solid #84c52c; padding-bottom: 16px; margin-bottom: 24px; }
+            .badge { display: inline-block; background: #004aab; color: white; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+            .header { border-bottom: 2px solid #004aab; padding-bottom: 16px; margin-bottom: 24px; }
             .header h2 { margin: 8px 0 0; color: #111; font-size: 22px; }
             .field-row { display: flex; border-bottom: 1px solid #f0eee9; padding: 10px 0; }
             .field-label { width: 180px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #777; }

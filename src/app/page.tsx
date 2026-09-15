@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroVideo from "@/components/HeroVideo";
-import CountdownTimer from "@/components/CountdownTimer";
+import SummitPillars from "@/components/SummitPillars";
 import SloganBanner from "@/components/SloganBanner";
 import AboutEvent from "@/components/AboutEvent";
 import FullIndustryChain from "@/components/FullIndustryChain";
@@ -22,11 +22,11 @@ export default function Home() {
       {/* 1. Floating Pill Glassmorphism Navigation Bar */}
       <Navbar />
 
-      {/* 2. Cinematic Macro Mushroom Editorial Hero */}
+      {/* 2. Cinematic Macro Mushroom Editorial Hero with Overlapping Digital Timer */}
       <HeroVideo />
 
-      {/* 3. Official Live Countdown Split-Flap Ticker */}
-      <CountdownTimer />
+      {/* 3. Tri-Pillar Architecture: IMS, IMD & Shroom Connect (White Background) */}
+      <SummitPillars />
 
       {/* 4. Editorial Manifesto Bar: Mushrooms First */}
       <SloganBanner />

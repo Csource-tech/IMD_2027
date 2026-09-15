@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown, Ticket, Store, Calendar } from "lucide-react";
+import { Menu, X, ChevronDown, Ticket, Store, Calendar, MapPin, Phone, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface SubLink {
@@ -24,43 +24,43 @@ const NAV_ITEMS: NavItem[] = [
     name: "About",
     href: "/#about",
     dropdown: [
-      { name: "About The Movement", href: "/#about", desc: "India's premier edible fungi ecosystem" },
-      { name: "Shroom Connect Conclave", href: "/#about-shroomconnect", desc: "National B2B & Deal-Making Conclave" },
-      { name: "Organising Committee", href: "/#organising-committee", desc: "Visionary leaders & mycology council" },
-      { name: "Our Strength & Scale", href: "/#our-strength", desc: "5,000+ delegates & global impact" },
+      { name: "About The Movement", href: "/#about" },
+      { name: "Shroom Connect Conclave", href: "/#about-shroomconnect" },
+      { name: "Organising Committee", href: "/#organising-committee" },
+      { name: "Our Strength & Scale", href: "/#our-strength" },
     ],
   },
   {
     name: "Value Chain",
     href: "/#industry-chain",
     dropdown: [
-      { name: "Button Mushroom Backbone", href: "/#industry-chain", desc: "Commercial Phase I–III CEA production" },
-      { name: "6 Specialty Sectors", href: "/#specialty-sectors", desc: "Oyster, Shiitake, Cordyceps & Exotics" },
-      { name: "Why Indian Mushroom Days", href: "/#why-join", desc: "6 strategic reasons to participate" },
+      { name: "Button Mushroom Backbone", href: "/#industry-chain" },
+      { name: "6 Specialty Sectors", href: "/#specialty-sectors" },
+      { name: "Why Indian Mushroom Days", href: "/#why-join" },
     ],
   },
   {
     name: "Program",
     href: "/#program-agenda",
     dropdown: [
-      { name: "3-Day Program Agenda", href: "/#program-agenda", desc: "Discover • Innovate • Grow" },
-      { name: "Mushroom Exchange & Buyer Club", href: "/#buyer-club", desc: "Direct supermarket & institutional linkages" },
+      { name: "3-Day Program Agenda", href: "/#program-agenda" },
+      { name: "Mushroom Exchange & Buyer Club", href: "/#buyer-club" },
     ],
   },
   {
     name: "Partners & Expo",
     href: "/#past-sponsors",
     dropdown: [
-      { name: "Strategic Partners", href: "/#past-sponsors", desc: "Milkyway, UAS Bangalore & Mushex" },
-      { name: "Exhibitors Showcase", href: "/#exhibitors", desc: "100+ technology & spawn corporations" },
+      { name: "Strategic Partners", href: "/#past-sponsors" },
+      { name: "Exhibitors Showcase", href: "/#exhibitors" },
     ],
   },
   {
     name: "Media",
     href: "/#gallery",
     dropdown: [
-      { name: "Visual Chronicle (Gallery)", href: "/#gallery", desc: "Inauguration & trade floor highlights" },
-      { name: "Industry Testimonials", href: "/#testimonials", desc: "Reviews from dignitaries & growers" },
+      { name: "Visual Chronicle (Gallery)", href: "/#gallery" },
+      { name: "Industry Testimonials", href: "/#testimonials" },
     ],
   },
   { name: "Contact", href: "/#contact" },
@@ -112,22 +112,59 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-50 w-full bg-transparent border-none">
-      {/* Full width container with no borders and no backgrounds */}
-      <div className="w-full px-4 sm:px-8 lg:px-12 py-3 sm:py-4 flex items-center justify-between relative">
-        {/* Big Logo on Left Side */}
+    <header className="relative z-40 w-full shadow-md">
+      {/* 1. Upper Orange Utility Banner */}
+      <div className="w-full bg-[#f28822] text-white text-xs font-semibold py-2 px-4 sm:px-8 lg:px-12 flex items-center justify-between shadow-sm">
+        {/* Left: Location, Helpline & Email */}
+        <div className="flex items-center flex-wrap gap-2.5 sm:gap-5">
+          <div className="flex items-center gap-1.5 text-white/95">
+            <MapPin className="w-3.5 h-3.5 text-white shrink-0" />
+            <span>New Delhi, India</span>
+          </div>
+          <span className="hidden sm:inline text-white/40">•</span>
+          <div className="flex items-center gap-1.5 text-white/95">
+            <Phone className="w-3.5 h-3.5 text-white shrink-0" />
+            <span>Hot Line : <a href="tel:+919810726996" className="hover:underline font-bold">+91 98107 26996</a></span>
+          </div>
+          <span className="hidden md:inline text-white/40">•</span>
+          <div className="hidden md:flex items-center gap-1.5 text-white/95">
+            <Mail className="w-3.5 h-3.5 text-white shrink-0" />
+            <a href="mailto:reachout@mushex.in" className="hover:underline font-medium">reachout@mushex.in</a>
+          </div>
+        </div>
+
+        {/* Right: Social Icons */}
+        <div className="flex items-center gap-3 text-white/90">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-white transition-colors hover:scale-110">
+            <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24H12.82v-9.294H9.692V11.08h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.626h-3.12V24h6.116c.73 0 1.323-.597 1.323-1.326V1.326C24 .597 23.403 0 22.675 0z" /></svg>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white transition-colors hover:scale-110">
+            <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg>
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X" className="hover:text-white transition-colors hover:scale-110">
+            <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-white transition-colors hover:scale-110">
+            <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg>
+          </a>
+        </div>
+      </div>
+
+      {/* 2. Main Dark Charcoal Navbar */}
+      <div className="w-full bg-[#18232e] border-b border-white/10 px-4 sm:px-8 lg:px-12 py-3 sm:py-3.5 flex items-center justify-between relative shadow-lg">
+        {/* Left: Logo */}
         <div className="flex-shrink-0 z-20 flex items-center">
-          <Link href="/#home" className="flex items-center group focus:outline-none" aria-label="Indian Mushroom Days 2027 Homepage">
+          <Link href="/#home" className="flex items-center gap-3 group focus:outline-none" aria-label="Indian Mushroom Days 2027 Homepage">
             <img
               src="/reallogo.png"
               alt="Indian Mushroom Days 2027 Logo"
-              className="h-16 sm:h-20 md:h-24 w-auto object-contain rounded-full shadow-2xl drop-shadow-xl hover:scale-105 transition-transform"
+              className="h-12 sm:h-14 md:h-16 w-auto object-contain rounded-full shadow-lg drop-shadow hover:scale-105 transition-transform"
             />
           </Link>
         </div>
 
-        {/* Full Centered Desktop Navigation Menu */}
-        <nav className="hidden lg:flex items-center justify-center space-x-2.5 xl:space-x-5 absolute left-1/2 -translate-x-1/2 z-20">
+        {/* Center: Desktop Navigation Menu */}
+        <nav className="hidden lg:flex items-center justify-center space-x-1 xl:space-x-3 absolute left-1/2 -translate-x-1/2 z-20">
           {NAV_ITEMS.map((item) => {
             const hasDropdown = Boolean(item.dropdown && item.dropdown.length > 0);
             const isActive = activeSection === item.name;
@@ -137,17 +174,15 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`relative px-3.5 py-2 text-sm xl:text-base font-bold transition-all duration-200 [text-shadow:_0_1px_3px_rgb(0_0_0_/_90%),_0_2px_8px_rgb(0_0_0_/_60%)] group whitespace-nowrap ${
-                    isActive
-                      ? "text-white font-black"
-                      : "text-white hover:text-[#f28822]"
-                  }`}
+                  className={`relative px-3 py-2 text-xs xl:text-sm uppercase tracking-wider font-bold transition-all duration-200 group whitespace-nowrap ${isActive
+                    ? "text-[#f28822]"
+                    : "text-gray-200 hover:text-[#f28822]"
+                    }`}
                 >
                   <span>{item.name}</span>
                   <span
-                    className={`absolute -bottom-0.5 left-2 right-2 h-0.5 bg-[#f28822] rounded-full transition-all duration-200 ${
-                      isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100"
-                    }`}
+                    className={`absolute bottom-0 left-2 right-2 h-0.5 bg-[#f28822] rounded-full transition-all duration-200 ${isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100"
+                      }`}
                   />
                 </Link>
               );
@@ -162,22 +197,19 @@ export default function Navbar() {
               >
                 <Link
                   href={item.href}
-                  className={`relative px-3.5 py-2 text-sm xl:text-base font-bold transition-all duration-200 flex items-center gap-1.5 cursor-pointer focus:outline-none [text-shadow:_0_1px_3px_rgb(0_0_0_/_90%),_0_2px_8px_rgb(0_0_0_/_60%)] group whitespace-nowrap ${
-                    isActive
-                      ? "text-white font-black"
-                      : "text-white hover:text-[#f28822]"
-                  }`}
+                  className={`relative px-3 py-2 text-xs xl:text-sm uppercase tracking-wider font-bold transition-all duration-200 flex items-center gap-1 cursor-pointer focus:outline-none group whitespace-nowrap ${isActive
+                    ? "text-[#f28822]"
+                    : "text-gray-200 hover:text-[#f28822]"
+                    }`}
                 >
                   <span>{item.name}</span>
                   <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                      activeDropdown === item.name ? "rotate-180 text-[#f28822]" : "text-white/80"
-                    }`}
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180 text-[#f28822]" : "text-gray-400 group-hover:text-[#f28822]"
+                      }`}
                   />
                   <span
-                    className={`absolute -bottom-0.5 left-2 right-2 h-0.5 bg-[#f28822] rounded-full transition-all duration-200 ${
-                      isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100"
-                    }`}
+                    className={`absolute bottom-0 left-2 right-2 h-0.5 bg-[#f28822] rounded-full transition-all duration-200 ${isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100"
+                      }`}
                   />
                 </Link>
 
@@ -191,7 +223,7 @@ export default function Navbar() {
                       transition={{ duration: 0.15, ease: "easeOut" }}
                       className="absolute top-full left-1/2 -translate-x-1/2 pt-2.5 w-72 z-50"
                     >
-                      <div className="rounded-2xl bg-[#0b141e]/95 backdrop-blur-2xl border border-white/15 shadow-2xl p-2.5 space-y-1">
+                      <div className="rounded-2xl bg-[#111a24] border border-white/15 shadow-2xl p-2 space-y-1">
                         {item.dropdown?.map((sub) => (
                           <Link
                             key={sub.name}
@@ -203,11 +235,6 @@ export default function Navbar() {
                               <span>{sub.name}</span>
                               <span className="text-[#f28822] opacity-0 group-hover:opacity-100 transition-opacity text-xs">→</span>
                             </div>
-                            {sub.desc && (
-                              <p className="text-[11px] text-gray-300 mt-0.5 line-clamp-1 leading-snug">
-                                {sub.desc}
-                              </p>
-                            )}
                           </Link>
                         ))}
                       </div>
@@ -219,7 +246,7 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right Register Button (as it is now) */}
+        {/* Right: Orange CTA Button */}
         <div className="flex items-center gap-3 z-20">
           <div
             className="relative"
@@ -229,13 +256,12 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setRegisterDropdownOpen(!registerDropdownOpen)}
-              className="relative inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#f28822] to-[#e07512] hover:brightness-110 shadow-lg shadow-black/30 transition-all cursor-pointer focus:outline-none hover:scale-105 active:scale-95"
+              className="relative inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold text-white bg-[#f28822] hover:bg-[#e07512] shadow-lg shadow-black/20 transition-all cursor-pointer focus:outline-none hover:scale-105 active:scale-95"
             >
               <span>Register</span>
               <ChevronDown
-                className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                  registerDropdownOpen ? "rotate-180" : ""
-                }`}
+                className={`w-3.5 h-3.5 transition-transform duration-200 ${registerDropdownOpen ? "rotate-180" : ""
+                  }`}
               />
             </button>
 
@@ -255,11 +281,11 @@ export default function Navbar() {
                       onClick={() => setRegisterDropdownOpen(false)}
                       className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition-colors group"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-[#84c52c]/20 text-[#84c52c] flex items-center justify-center shrink-0 border border-[#84c52c]/30">
+                      <div className="w-8 h-8 rounded-lg bg-[#004aab]/20 text-[#004aab] flex items-center justify-center shrink-0 border border-[#004aab]/30">
                         <Ticket className="w-4 h-4" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-white group-hover:text-[#84c52c] transition-colors">
+                        <div className="text-xs font-bold text-white group-hover:text-[#004aab] transition-colors">
                           Visitor Registration
                         </div>
                         <div className="text-[10px] text-gray-300">Entry pass &amp; expo badge</div>
@@ -312,7 +338,7 @@ export default function Navbar() {
             className="lg:hidden w-full bg-[#0b141e]/98 backdrop-blur-2xl border-b border-white/10 shadow-2xl p-6 space-y-4 max-h-[85vh] overflow-y-auto"
           >
             <div className="flex items-center justify-between pb-3 border-b border-white/10">
-              <div className="flex items-center gap-2 text-xs font-bold text-[#84c52c]">
+              <div className="flex items-center gap-2 text-xs font-bold text-[#004aab]">
                 <Calendar className="w-4 h-4" />
                 <span>February 19–21, 2027</span>
               </div>
@@ -352,7 +378,7 @@ export default function Navbar() {
               <Link
                 href="/visitor-register"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 w-full py-3 rounded-full text-xs font-bold text-white bg-[#84c52c] hover:bg-[#73ad24] transition-colors"
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-full text-xs font-bold text-white bg-[#004aab] hover:bg-[#003c8c] transition-colors"
               >
                 <Ticket className="w-4 h-4" />
                 <span>Visitor Registration</span>

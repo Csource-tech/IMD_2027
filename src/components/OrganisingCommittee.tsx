@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
+import SectionDivider from "./SectionDivider";
 
 interface CommitteeMember {
   name: string;
@@ -49,43 +50,20 @@ export default function OrganisingCommittee() {
   return (
     <section
       id="organising-committee"
-      className="relative py-20 sm:py-28 bg-[#faf9f5] border-b border-gray-200/80 overflow-hidden"
+      className="relative py-14 sm:py-20 bg-[#faf9f5] border-b border-gray-200/80 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <motion.div
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
+          <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#f28822]/15 border border-[#f28822]/30 text-xs font-bold text-[#b85b06] uppercase tracking-wider mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
           >
-            <span>Visionary Leadership</span>
-          </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-5xl font-black tracking-tight text-gray-950 uppercase font-sans leading-[1.1]"
-          >
-            Organising Committee &amp; <br />
-            <span className="font-serif italic font-normal text-gray-700 capitalize">
-              Advisory Board
-            </span>
+            Organising Committee
           </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed font-normal"
-          >
-            Pioneering founders, veteran mycology researchers, and high-tech agricultural engineers charting the future course of India&apos;s mushroom industry.
-          </motion.p>
         </div>
 
         {/* 5 Leadership Cards */}
@@ -127,7 +105,7 @@ export default function OrganisingCommittee() {
               </h3>
 
               {/* Role */}
-              <p className="text-xs font-semibold text-[#84c52c] mt-1.5 leading-snug">
+              <p className="text-xs font-semibold text-[#004aab] mt-1.5 leading-snug">
                 {member.role}
               </p>
 
@@ -138,6 +116,9 @@ export default function OrganisingCommittee() {
             </motion.div>
           ))}
         </div>
+
+        {/* Center Bottom Mushroom Emblem */}
+        <SectionDivider className="mt-14 sm:mt-18" />
       </div>
     </section>
   );

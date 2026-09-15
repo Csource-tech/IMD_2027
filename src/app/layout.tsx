@@ -19,14 +19,14 @@ const playfairDisplay = Playfair_Display({
 export const metadata: Metadata = {
   title: "Indian Mushroom Days 2027 | IMD 2027 & Shroom Connect | New Delhi, India",
   description:
-    "Indian Mushroom Days 2027 (IMD 2027) & Shroom Connect B2B Conclave. Join the premier international edible fungi expo on 19-20-21 February 2027 in New Delhi, India.",
+    "Indian Mushroom Days 2027 (IMD 2027) & Shroom Connect B2B Conclave. Join the premier international edible mushroom expo on 19-20-21 February 2027 in New Delhi, India.",
   keywords: [
     "Indian Mushroom Days 2027",
     "IMD 2027",
     "Shroom Connect 2027",
     "India Mushroom Days",
     "Mushroom Exhibition India",
-    "Edible Fungi Expo",
+    "Edible Mushroom Expo",
     "New Delhi Mushroom Days",
     "Agriculture Summit India",
     "New Delhi, India",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Indian Mushroom Days 2027 | IMD 2027 & Shroom Connect | New Delhi, India",
     description:
-      "Indian Mushroom Days 2027 (IMD 2027) & Shroom Connect B2B Conclave. Join the premier international edible fungi expo on 19-20-21 February 2027 in New Delhi, India.",
+      "Indian Mushroom Days 2027 (IMD 2027) & Shroom Connect B2B Conclave. Join the premier international edible mushroom expo on 19-20-21 February 2027 in New Delhi, India.",
     url: "https://indianmushroomdays.com",
     siteName: "Indian Mushroom Days 2027",
     type: "website",

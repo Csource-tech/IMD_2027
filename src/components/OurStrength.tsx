@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Users, Store, Globe2, Mic2 } from "lucide-react";
+import SectionDivider from "./SectionDivider";
 
 interface CounterItemProps {
   target: number;
@@ -74,7 +75,7 @@ function CounterItem({
       transition={{ duration: 0.6, delay: delayIndex * 0.1 }}
       className="p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 flex flex-col items-center text-center group cursor-default"
     >
-      <div className="w-10 h-10 rounded-2xl bg-[#84c52c]/20 text-[#84c52c] flex items-center justify-center mb-4 border border-[#84c52c]/30 group-hover:scale-110 transition-transform">
+      <div className="w-10 h-10 rounded-2xl bg-[#004aab]/20 text-[#004aab] flex items-center justify-center mb-4 border border-[#004aab]/30 group-hover:scale-110 transition-transform">
         <IconComponent className="w-5 h-5" />
       </div>
 
@@ -101,36 +102,23 @@ export default function OurStrength() {
   return (
     <section
       id="our-strength"
-      className="relative bg-[#0a120d] text-white py-20 sm:py-28 overflow-hidden border-b border-white/10"
+      className="relative bg-[#0a120d] text-white py-14 sm:py-20 overflow-hidden border-b border-white/10"
     >
       {/* Ambient spore lighting accents */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#84c52c]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#004aab]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-[#f28822]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
-          <motion.div
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
+          <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-bold text-amber-300 uppercase tracking-wider mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-white tracking-tight uppercase"
           >
-            <span>National Scale &amp; Global Benchmark</span>
-          </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase font-sans leading-[1.1]"
-          >
-            Numbers That Define <br />
-            <span className="font-serif italic font-normal text-amber-100 capitalize">
-              The Indian Mushroom Revolution
-            </span>
+            Scale &amp; Impact
           </motion.h2>
         </div>
 
@@ -165,6 +153,9 @@ export default function OurStrength() {
             delayIndex={3}
           />
         </div>
+
+        {/* Center Bottom Mushroom Emblem */}
+        <SectionDivider className="mt-14 sm:mt-18" />
       </div>
     </section>
   );

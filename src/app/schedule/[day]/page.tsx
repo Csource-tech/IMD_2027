@@ -53,7 +53,7 @@ const DAYS_SCHEDULE: Record<string, DayData> = {
       },
       {
         time: "10:45 AM – 12:15 PM",
-        title: "Global Edible Fungi Market: Trends, Demand & Export Trajectories",
+        title: "Global Edible Mushroom Market: Trends, Demand & Export Trajectories",
         category: "Keynote",
         hall: "Plenary Hall A",
         speakers: "International Mycology Experts & Agro-Economists",
@@ -104,7 +104,7 @@ const DAYS_SCHEDULE: Record<string, DayData> = {
       },
       {
         time: "11:15 AM – 12:45 PM",
-        title: "Cultivation & Commercialization of Medicinal & Exotic Fungi",
+        title: "Cultivation & Commercialization of Medicinal & Exotic Mushrooms",
         category: "Masterclass",
         hall: "Symposium Hall B",
         speakers: "Specialist Mycologists & Functional Food Brands",
@@ -319,7 +319,7 @@ export default async function DaySchedulePage({
                 <h3 className="text-lg font-bold text-slate-900 border-b border-slate-100 pb-3">
                   Day Focus &amp; Highlights
                 </h3>
-                <p className="text-xs font-bold uppercase tracking-wider text-[#84c52c]">
+                <p className="text-xs font-bold uppercase tracking-wider text-[#004aab]">
                   Theme: {currentDay.theme}
                 </p>
                 <p className="text-sm text-slate-600 leading-relaxed">
@@ -342,7 +342,7 @@ export default async function DaySchedulePage({
                 <div className="space-y-2.5 pt-2">
                   <Link
                     href="/visitor-register"
-                    className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold text-white bg-[#84c52c] hover:bg-[#73ad24] shadow transition-transform hover:scale-[1.02]"
+                    className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold text-white bg-[#004aab] hover:bg-[#003c8c] shadow transition-transform hover:scale-[1.02]"
                   >
                     <Ticket className="w-4 h-4" />
                     <span>Visitor Registration</span>
