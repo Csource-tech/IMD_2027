@@ -114,7 +114,7 @@ export default function Navbar() {
   return (
     <header className="relative z-40 w-full shadow-md">
       {/* 1. Upper Orange Utility Banner */}
-      <div className="w-full bg-[#f28822] text-white text-xs font-semibold py-2 px-4 sm:px-8 lg:px-12 flex items-center justify-between shadow-sm">
+      <div className="w-full bg-[#ff9f43] text-white text-xs font-semibold py-2 px-4 sm:px-8 lg:px-12 flex items-center justify-between shadow-sm">
         {/* Left: Location, Helpline & Email */}
         <div className="flex items-center flex-wrap gap-2.5 sm:gap-5">
           <div className="flex items-center gap-1.5 text-white/95">
@@ -152,13 +152,19 @@ export default function Navbar() {
 
       {/* 2. Main Dark Charcoal Navbar */}
       <div className="w-full bg-[#18232e] border-b border-white/10 px-4 sm:px-8 lg:px-12 py-3 sm:py-3.5 flex items-center justify-between relative shadow-lg">
-        {/* Left: Logo */}
+        {/* Left: Dual Logos (IMD 2027 & Shroom Connect) */}
         <div className="flex-shrink-0 z-20 flex items-center">
-          <Link href="/#home" className="flex items-center gap-3 group focus:outline-none" aria-label="Indian Mushroom Days 2027 Homepage">
+          <Link href="/#home" className="flex items-center gap-2 sm:gap-3 group focus:outline-none" aria-label="Indian Mushroom Days 2027 & Shroom Connect Homepage">
             <img
               src="/reallogo.png"
               alt="Indian Mushroom Days 2027 Logo"
-              className="h-12 sm:h-14 md:h-16 w-auto object-contain rounded-full shadow-lg drop-shadow hover:scale-105 transition-transform"
+              className="h-11 sm:h-13 md:h-14 w-auto object-contain rounded-full shadow-lg drop-shadow hover:scale-105 transition-transform ring-1 ring-white/10"
+            />
+            <div className="h-6 sm:h-8 w-px bg-white/20" />
+            <img
+              src="/shroomlogo.jpeg"
+              alt="Shroom Connect Logo"
+              className="h-11 sm:h-13 md:h-14 w-auto object-contain rounded-full shadow-lg drop-shadow hover:scale-105 transition-transform ring-1 ring-white/10"
             />
           </Link>
         </div>
@@ -175,13 +181,13 @@ export default function Navbar() {
                   key={item.name}
                   href={item.href}
                   className={`relative px-3 py-2 text-xs xl:text-sm uppercase tracking-wider font-bold transition-all duration-200 group whitespace-nowrap ${isActive
-                    ? "text-[#f28822]"
-                    : "text-gray-200 hover:text-[#f28822]"
+                    ? "text-[#ff9f43]"
+                    : "text-gray-200 hover:text-[#ff9f43]"
                     }`}
                 >
                   <span>{item.name}</span>
                   <span
-                    className={`absolute bottom-0 left-2 right-2 h-0.5 bg-[#f28822] rounded-full transition-all duration-200 ${isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100"
+                    className={`absolute bottom-0 left-2 right-2 h-0.5 bg-[#ff9f43] rounded-full transition-all duration-200 ${isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100"
                       }`}
                   />
                 </Link>
@@ -198,17 +204,17 @@ export default function Navbar() {
                 <Link
                   href={item.href}
                   className={`relative px-3 py-2 text-xs xl:text-sm uppercase tracking-wider font-bold transition-all duration-200 flex items-center gap-1 cursor-pointer focus:outline-none group whitespace-nowrap ${isActive
-                    ? "text-[#f28822]"
-                    : "text-gray-200 hover:text-[#f28822]"
+                    ? "text-[#ff9f43]"
+                    : "text-gray-200 hover:text-[#ff9f43]"
                     }`}
                 >
                   <span>{item.name}</span>
                   <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180 text-[#f28822]" : "text-gray-400 group-hover:text-[#f28822]"
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180 text-[#ff9f43]" : "text-gray-400 group-hover:text-[#ff9f43]"
                       }`}
                   />
                   <span
-                    className={`absolute bottom-0 left-2 right-2 h-0.5 bg-[#f28822] rounded-full transition-all duration-200 ${isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100"
+                    className={`absolute bottom-0 left-2 right-2 h-0.5 bg-[#ff9f43] rounded-full transition-all duration-200 ${isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100"
                       }`}
                   />
                 </Link>
@@ -231,9 +237,9 @@ export default function Navbar() {
                             onClick={() => setActiveDropdown(null)}
                             className="group block p-2.5 rounded-xl hover:bg-white/10 transition-colors text-left"
                           >
-                            <div className="text-xs font-bold text-white group-hover:text-[#f28822] transition-colors flex items-center justify-between">
+                            <div className="text-xs font-bold text-white group-hover:text-[#ff9f43] transition-colors flex items-center justify-between">
                               <span>{sub.name}</span>
-                              <span className="text-[#f28822] opacity-0 group-hover:opacity-100 transition-opacity text-xs">→</span>
+                              <span className="text-[#ff9f43] opacity-0 group-hover:opacity-100 transition-opacity text-xs">→</span>
                             </div>
                           </Link>
                         ))}
@@ -256,7 +262,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setRegisterDropdownOpen(!registerDropdownOpen)}
-              className="relative inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold text-white bg-[#f28822] hover:bg-[#e07512] shadow-lg shadow-black/20 transition-all cursor-pointer focus:outline-none hover:scale-105 active:scale-95"
+              className="relative inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold text-white bg-[#ff9f43] hover:bg-[#f28822] shadow-lg shadow-black/20 transition-all cursor-pointer focus:outline-none hover:scale-105 active:scale-95"
             >
               <span>Register</span>
               <ChevronDown
@@ -297,11 +303,11 @@ export default function Navbar() {
                       onClick={() => setRegisterDropdownOpen(false)}
                       className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition-colors group"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-[#f28822]/20 text-[#f28822] flex items-center justify-center shrink-0 border border-[#f28822]/30">
+                      <div className="w-8 h-8 rounded-lg bg-[#ff9f43]/20 text-[#ff9f43] flex items-center justify-center shrink-0 border border-[#ff9f43]/30">
                         <Store className="w-4 h-4" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-white group-hover:text-[#f28822] transition-colors">
+                        <div className="text-xs font-bold text-white group-hover:text-[#ff9f43] transition-colors">
                           Book Your Stall
                         </div>
                         <div className="text-[10px] text-gray-300">Exhibitor space reservation</div>
@@ -337,12 +343,25 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
             className="lg:hidden w-full bg-[#0b141e]/98 backdrop-blur-2xl border-b border-white/10 shadow-2xl p-6 space-y-4 max-h-[85vh] overflow-y-auto"
           >
+            {/* Dual Logos & Event Info in Mobile Drawer */}
             <div className="flex items-center justify-between pb-3 border-b border-white/10">
-              <div className="flex items-center gap-2 text-xs font-bold text-[#004aab]">
-                <Calendar className="w-4 h-4" />
-                <span>February 19–21, 2027</span>
+              <div className="flex items-center gap-2.5">
+                <img
+                  src="/reallogo.png"
+                  alt="Indian Mushroom Days 2027"
+                  className="h-10 w-auto object-contain rounded-full ring-1 ring-white/15"
+                />
+                <div className="h-6 w-px bg-white/20" />
+                <img
+                  src="/shroomlogo.jpeg"
+                  alt="Shroom Connect"
+                  className="h-10 w-auto object-contain rounded-full ring-1 ring-white/15"
+                />
               </div>
-              <span className="text-xs text-amber-200 font-semibold">New Delhi, India</span>
+              <div className="text-right">
+                <div className="text-[11px] font-bold text-[#ff9f43]">Feb 19–21, 2027</div>
+                <div className="text-[10px] text-gray-300">New Delhi, India</div>
+              </div>
             </div>
 
             {NAV_ITEMS.map((item) => (
@@ -353,7 +372,7 @@ export default function Navbar() {
                     setActiveSection(item.name);
                     setMobileMenuOpen(false);
                   }}
-                  className="block py-1.5 text-base font-bold text-white hover:text-[#f28822]"
+                  className="block py-1.5 text-base font-bold text-white hover:text-[#ff9f43]"
                 >
                   {item.name}
                 </Link>
@@ -386,7 +405,7 @@ export default function Navbar() {
               <Link
                 href="/book-your-stall"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 w-full py-3 rounded-full text-xs font-bold text-white bg-[#f28822] hover:bg-[#d97517] transition-colors"
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-full text-xs font-bold text-white bg-[#ff9f43] hover:bg-[#f28822] transition-colors"
               >
                 <Store className="w-4 h-4" />
                 <span>Book Your Stall (Exhibitor)</span>

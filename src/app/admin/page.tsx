@@ -72,13 +72,13 @@ export default function AdminLoginPage() {
   return (
     <div className="min-h-screen flex flex-col justify-between bg-[#0c140f] text-white relative overflow-hidden font-sans">
       {/* Ambient Radial Background Glows */}
-      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#f28822]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#ff9f43]/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-[#004aab]/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Top Header */}
       <header className="p-6 sm:p-8 flex items-center justify-between relative z-10 max-w-7xl mx-auto w-full">
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#f28822] to-[#004aab] flex items-center justify-center text-white font-black text-lg shadow-md group-hover:scale-105 transition-transform">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#ff9f43] to-[#004aab] flex items-center justify-center text-white font-black text-lg shadow-md group-hover:scale-105 transition-transform">
             M
           </div>
           <div>
@@ -109,7 +109,7 @@ export default function AdminLoginPage() {
         >
           {/* Badge & Title */}
           <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#f28822]/20 border border-[#f28822]/35 text-xs font-bold text-[#f28822] uppercase tracking-wider mb-3.5 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#ff9f43]/20 border border-[#ff9f43]/35 text-xs font-bold text-[#ff9f43] uppercase tracking-wider mb-3.5 shadow-sm">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>Secretariat Access</span>
             </div>
@@ -144,7 +144,7 @@ export default function AdminLoginPage() {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="admin"
-                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/10 border border-white/15 text-white placeholder:text-gray-500 text-sm focus:outline-none focus:border-[#f28822] focus:ring-1 focus:ring-[#f28822] transition-all"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/10 border border-white/15 text-white placeholder:text-gray-500 text-sm focus:outline-none focus:border-[#ff9f43] focus:ring-1 focus:ring-[#ff9f43] transition-all"
                 />
               </div>
             </div>
@@ -162,7 +162,7 @@ export default function AdminLoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full pl-10 pr-10 py-3 rounded-xl bg-white/10 border border-white/15 text-white placeholder:text-gray-500 text-sm focus:outline-none focus:border-[#f28822] focus:ring-1 focus:ring-[#f28822] transition-all"
+                  className="w-full pl-10 pr-10 py-3 rounded-xl bg-white/10 border border-white/15 text-white placeholder:text-gray-500 text-sm focus:outline-none focus:border-[#ff9f43] focus:ring-1 focus:ring-[#ff9f43] transition-all"
                 />
                 <button
                   type="button"
@@ -178,7 +178,7 @@ export default function AdminLoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3.5 px-6 rounded-xl bg-[#f28822] hover:bg-[#d97416] text-white text-sm font-black uppercase tracking-wider shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 group"
+              className="w-full py-3.5 px-6 rounded-xl bg-[#ff9f43] hover:bg-[#f28822] text-white text-sm font-black uppercase tracking-wider shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 group"
             >
               {isLoading ? (
                 <>
@@ -199,7 +199,7 @@ export default function AdminLoginPage() {
             <button
               type="button"
               onClick={handleQuickFill}
-              className="inline-flex items-center gap-1.5 text-xs text-[#f28822] hover:underline cursor-pointer font-medium"
+              className="inline-flex items-center gap-1.5 text-xs text-[#ff9f43] hover:underline cursor-pointer font-medium"
             >
               <Sparkles className="w-3.5 h-3.5" />
               <span>Click to auto-fill default admin credentials</span>

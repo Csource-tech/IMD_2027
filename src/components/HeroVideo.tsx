@@ -31,7 +31,7 @@ export default function HeroVideo() {
   return (
     <section
       id="home"
-      className="relative w-full overflow-visible bg-[#0a1118] text-white pt-16 sm:pt-24 pb-14 sm:pb-20 flex flex-col justify-between"
+      className="relative w-full overflow-visible bg-[#141f2a] text-white pt-16 sm:pt-24 pb-14 sm:pb-20 flex flex-col justify-between"
     >
       {/* 1. Full Page Background Image Carousel with No Controls */}
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
@@ -60,8 +60,8 @@ export default function HeroVideo() {
           </motion.div>
         ))}
 
-        {/* Cinematic gradient overlay ensuring crisp text contrast on every image */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/45 to-black/75 pointer-events-none z-10" />
+        {/* Lighter, crisp gradient overlay ensuring vibrant imagery while preserving text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-black/40 pointer-events-none z-10" />
       </div>
 
       {/* 2. Centered Persistent Hero Content */}
@@ -145,7 +145,7 @@ export default function HeroVideo() {
           {/* Book Your Stall Button */}
           <Link
             href="/book-your-stall"
-            className="group inline-flex items-center justify-center px-7 sm:px-9 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold text-white bg-black/50 hover:bg-black/70 backdrop-blur-md border border-white/30 shadow-xl shadow-black/50 hover:border-white/50 hover:scale-105 active:scale-95 transition-all duration-200 uppercase tracking-wider"
+            className="group inline-flex items-center justify-center px-7 sm:px-9 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold text-white bg-black/35 hover:bg-black/55 backdrop-blur-md border border-white/40 shadow-xl shadow-black/40 hover:border-white/60 hover:scale-105 active:scale-95 transition-all duration-200 uppercase tracking-wider"
           >
             <span>Book Your Stall</span>
           </Link>

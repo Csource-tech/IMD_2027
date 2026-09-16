@@ -48,7 +48,7 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
         <div className="px-6 py-4 border-t border-gray-200 bg-gray-50 flex justify-end">
           <button
             onClick={onClose}
-            className="px-6 py-2 rounded-full bg-[#f28822] text-white font-semibold hover:bg-[#d97416] transition-colors"
+            className="px-6 py-2 rounded-full bg-[#ff9f43] text-white font-semibold hover:bg-[#f28822] transition-colors"
           >
             I Understand
           </button>

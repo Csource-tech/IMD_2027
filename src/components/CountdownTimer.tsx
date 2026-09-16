@@ -56,30 +56,30 @@ export default function CountdownTimer({ targetDate = TARGET_DATE }: { targetDat
 
   if (!timeLeft) {
     return (
-      <div className="rounded-3xl sm:rounded-[3rem] bg-[#0c141c]/95 border-2 border-white/25 px-10 py-8 shadow-2xl">
+      <div className="rounded-3xl sm:rounded-[3rem] bg-[#14202c]/95 border-2 border-white/25 px-10 py-8 shadow-2xl">
         <div className="h-28 w-96 bg-white/5 animate-pulse rounded-2xl" />
       </div>
     );
   }
 
   return (
-    <div className="relative inline-flex items-center justify-center rounded-3xl sm:rounded-[3rem] bg-[#0c141c]/95 backdrop-blur-2xl border-2 border-white/25 px-6 py-5 sm:px-12 sm:py-8 md:px-16 md:py-9 shadow-[0_30px_80px_-10px_rgba(0,0,0,0.95),_0_0_45px_rgba(242,136,34,0.18)] select-none">
+    <div className="relative inline-flex items-center justify-center rounded-3xl sm:rounded-[3rem] bg-[#14202c]/95 backdrop-blur-2xl border-2 border-white/30 px-6 py-5 sm:px-12 sm:py-8 md:px-16 md:py-9 shadow-[0_30px_80px_-10px_rgba(0,0,0,0.85),_0_0_45px_rgba(255,159,67,0.22)] select-none">
       {/* Top subtle amber glowing line */}
-      <div className="absolute top-0 left-1/4 right-1/4 h-[2px] bg-gradient-to-r from-transparent via-[#f28822] to-transparent" />
+      <div className="absolute top-0 left-1/4 right-1/4 h-[2px] bg-gradient-to-r from-transparent via-[#ff9f43] to-transparent" />
 
       {/* 4 Large Circular Countdown Badges */}
       <div className="flex items-center justify-center gap-4 sm:gap-8 md:gap-11">
         {units.map((unit, idx) => (
           <div key={idx} className="flex flex-col items-center">
             {/* Circular Dark Badge with proper border and background */}
-            <div className="w-[82px] h-[82px] sm:w-[110px] sm:h-[110px] md:w-[132px] md:h-[132px] rounded-full bg-gradient-to-b from-[#1c2836] to-[#101820] border-[2.5px] sm:border-[3px] border-white/25 sm:border-white/30 shadow-[inset_0_3px_6px_rgba(255,255,255,0.12),_0_15px_30px_rgba(0,0,0,0.6)] flex items-center justify-center transition-all duration-300 hover:scale-105 hover:border-[#f28822]">
+            <div className="w-[82px] h-[82px] sm:w-[110px] sm:h-[110px] md:w-[132px] md:h-[132px] rounded-full bg-gradient-to-b from-[#223244] to-[#14202c] border-[2.5px] sm:border-[3px] border-white/30 sm:border-white/35 shadow-[inset_0_3px_6px_rgba(255,255,255,0.15),_0_15px_30px_rgba(0,0,0,0.5)] flex items-center justify-center transition-all duration-300 hover:scale-105 hover:border-[#ff9f43]">
               <span className="text-3xl sm:text-5xl md:text-6xl font-light text-white font-sans tracking-tight leading-none drop-shadow-md">
                 {unit.value}
               </span>
             </div>
 
             {/* Clean Uppercase Unit Label */}
-            <span className="text-[11px] sm:text-xs md:text-sm font-extrabold uppercase tracking-[0.25em] text-gray-300 font-sans mt-3 sm:mt-4">
+            <span className="text-[11px] sm:text-xs md:text-sm font-extrabold uppercase tracking-[0.25em] text-gray-200 font-sans mt-3 sm:mt-4">
               {unit.label}
             </span>
           </div>

@@ -106,7 +106,7 @@ export default function WhyJoinSection() {
                   {/* Number Box */}
                   <span
                     className={`font-sans text-xs font-black px-2.5 py-1 rounded-lg shrink-0 ${
-                      isSelected ? "bg-[#f28822] text-white" : "bg-gray-200 text-gray-700"
+                      isSelected ? "bg-[#ff9f43] text-white" : "bg-gray-200 text-gray-700"
                     }`}
                   >
                     {reason.number}
@@ -184,7 +184,7 @@ export default function WhyJoinSection() {
 
                   <div className="pt-2 flex items-center justify-between border-t border-gray-100 text-xs font-semibold text-gray-500">
                     <span>Indian Mushroom Days 2027 • New Delhi, India</span>
-                    <span className="text-[#f28822] font-bold">Priority Attendance</span>
+                    <span className="text-[#ff9f43] font-bold">Priority Attendance</span>
                   </div>
                 </div>
               </motion.div>

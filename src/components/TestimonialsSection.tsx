@@ -147,7 +147,7 @@ export default function TestimonialsSection() {
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
                   aria-label={`Go to review ${idx + 1}`}
-                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${currentIndex === idx ? "w-8 bg-[#f28822]" : "w-2 bg-gray-300 hover:bg-gray-400"
+                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${currentIndex === idx ? "w-8 bg-[#ff9f43]" : "w-2 bg-gray-300 hover:bg-gray-400"
                     }`}
                 />
               ))}

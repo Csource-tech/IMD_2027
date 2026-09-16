@@ -67,14 +67,14 @@ export async function POST(req: Request) {
           <style>
             body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #222; background-color: #f6f5f0; margin: 0; padding: 20px; }
             .container { max-width: 620px; margin: 0 auto; background: #ffffff; border: 1px solid #e0ded8; padding: 32px; border-radius: 4px; }
-            .header { border-bottom: 2px solid #f28822; padding-bottom: 16px; margin-bottom: 24px; }
+            .header { border-bottom: 2px solid #ff9f43; padding-bottom: 16px; margin-bottom: 24px; }
             .header h2 { margin: 0; color: #111; font-size: 22px; }
-            .header p { margin: 4px 0 0; color: #f28822; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+            .header p { margin: 4px 0 0; color: #ff9f43; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
             .field-group { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #f0eee9; }
             .label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #888; margin-bottom: 4px; }
             .value { font-size: 15px; color: #111; font-weight: 600; }
-            .value a { color: #f28822; text-decoration: none; }
-            .message-box { background: #faf9f6; border-left: 4px solid #f28822; padding: 16px; margin-top: 20px; white-space: pre-wrap; font-size: 14px; color: #333; }
+            .value a { color: #ff9f43; text-decoration: none; }
+            .message-box { background: #faf9f6; border-left: 4px solid #ff9f43; padding: 16px; margin-top: 20px; white-space: pre-wrap; font-size: 14px; color: #333; }
             .footer { margin-top: 28px; padding-top: 16px; border-top: 1px solid #eee; font-size: 12px; color: #888; text-align: center; }
           </style>
         </head>
@@ -139,7 +139,7 @@ export async function POST(req: Request) {
               <style>
                 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #222; background-color: #f6f5f0; margin: 0; padding: 20px; }
                 .container { max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e0ded8; padding: 32px; }
-                .header { border-bottom: 2px solid #f28822; padding-bottom: 16px; margin-bottom: 20px; }
+                .header { border-bottom: 2px solid #ff9f43; padding-bottom: 16px; margin-bottom: 20px; }
                 .header h2 { margin: 0; color: #111; font-size: 20px; }
                 .info-box { background: #faf9f6; border: 1px solid #e6e3da; padding: 18px; margin: 20px 0; font-size: 14px; }
                 .footer { font-size: 12px; color: #888; border-top: 1px solid #eee; padding-top: 16px; margin-top: 24px; }
@@ -149,7 +149,7 @@ export async function POST(req: Request) {
               <div class="container">
                 <div class="header">
                   <h2>India Mushroom Days 2027 (IMD 2027)</h2>
-                  <div style="font-size: 12px; color: #f28822; font-weight: 700; text-transform: uppercase;">Official Secretariat</div>
+                  <div style="font-size: 12px; color: #ff9f43; font-weight: 700; text-transform: uppercase;">Official Secretariat</div>
                 </div>
 
                 <p>Dear <strong>${fullName}</strong>,</p>

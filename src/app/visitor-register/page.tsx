@@ -225,7 +225,7 @@ export default function VisitorRegisterPage() {
       {/* 2. Editorial Hero Header with Website Dark Theme */}
       <section className="relative pt-36 sm:pt-44 pb-24 sm:pb-32 bg-[#0c140f] text-white overflow-hidden border-b border-white/10">
         {/* Subtle Ambient Radial Glows */}
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#f28822]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#ff9f43]/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#004aab]/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -233,7 +233,7 @@ export default function VisitorRegisterPage() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#f28822]/20 border border-[#f28822]/35 text-xs font-bold text-[#f28822] uppercase tracking-wider mb-4 shadow-sm"
+            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#ff9f43]/20 border border-[#ff9f43]/35 text-xs font-bold text-[#ff9f43] uppercase tracking-wider mb-4 shadow-sm"
           >
             <Ticket className="w-3.5 h-3.5" />
             <span>Complimentary Trade Pass</span>
@@ -268,7 +268,7 @@ export default function VisitorRegisterPage() {
             className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm text-gray-300 font-medium"
           >
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
-              <Sparkles className="w-3.5 h-3.5 text-[#f28822]" /> 100% Free Visitor Pass
+              <Sparkles className="w-3.5 h-3.5 text-[#ff9f43]" /> 100% Free Visitor Pass
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
               <Calendar className="w-3.5 h-3.5 text-[#004aab]" /> 3-Day Exhibition Access
@@ -341,7 +341,7 @@ export default function VisitorRegisterPage() {
                       });
                       setErrors({});
                     }}
-                    className="px-6 py-3 bg-[#0c140f] hover:bg-[#f28822] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer"
+                    className="px-6 py-3 bg-[#0c140f] hover:bg-[#ff9f43] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer"
                   >
                     Register Another Visitor
                   </button>
@@ -367,7 +367,7 @@ export default function VisitorRegisterPage() {
                       Complete all fields below for instant electronic accreditation.
                     </p>
                   </div>
-                  <span className="text-xs font-bold text-[#f28822] bg-orange-50 border border-orange-200 px-3 py-1 rounded-full w-fit">
+                  <span className="text-xs font-bold text-[#ff9f43] bg-orange-50 border border-orange-200 px-3 py-1 rounded-full w-fit">
                     * All mandatory fields
                   </span>
                 </div>
@@ -393,7 +393,7 @@ export default function VisitorRegisterPage() {
                     {/* Title */}
                     <div className="sm:col-span-2">
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                        Title <span className="text-[#f28822]">*</span>
+                        Title <span className="text-[#ff9f43]">*</span>
                       </label>
                       <select
                         value={formData.title}
@@ -411,7 +411,7 @@ export default function VisitorRegisterPage() {
                     {/* First Name */}
                     <div className="sm:col-span-5">
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                        First Name <span className="text-[#f28822]">*</span>
+                        First Name <span className="text-[#ff9f43]">*</span>
                       </label>
                       <div className="relative">
                         <User className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
@@ -436,7 +436,7 @@ export default function VisitorRegisterPage() {
                     {/* Last Name */}
                     <div className="sm:col-span-5">
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                        Last Name <span className="text-[#f28822]">*</span>
+                        Last Name <span className="text-[#ff9f43]">*</span>
                       </label>
                       <div className="relative">
                         <User className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
@@ -463,7 +463,7 @@ export default function VisitorRegisterPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                        Designation / Role <span className="text-[#f28822]">*</span>
+                        Designation / Role <span className="text-[#ff9f43]">*</span>
                       </label>
                       <div className="relative">
                         <Briefcase className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
@@ -487,7 +487,7 @@ export default function VisitorRegisterPage() {
 
                     <div>
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                        Company / Organization / Farm Name <span className="text-[#f28822]">*</span>
+                        Company / Organization / Farm Name <span className="text-[#ff9f43]">*</span>
                       </label>
                       <div className="relative">
                         <Building className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
@@ -542,7 +542,7 @@ export default function VisitorRegisterPage() {
                     {/* Country */}
                     <div className="sm:col-span-3">
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                        Country <span className="text-[#f28822]">*</span>
+                        Country <span className="text-[#ff9f43]">*</span>
                       </label>
                       <div className="relative">
                         <Globe className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
@@ -566,7 +566,7 @@ export default function VisitorRegisterPage() {
                     {/* State */}
                     <div className="sm:col-span-3">
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                        State <span className="text-[#f28822]">*</span>
+                        State <span className="text-[#ff9f43]">*</span>
                       </label>
                       <select
                         value={formData.state}
@@ -593,7 +593,7 @@ export default function VisitorRegisterPage() {
                     {/* City */}
                     <div className="sm:col-span-3">
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                        City <span className="text-[#f28822]">*</span>
+                        City <span className="text-[#ff9f43]">*</span>
                       </label>
                       <div className="relative">
                         <Building className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
@@ -656,7 +656,7 @@ export default function VisitorRegisterPage() {
                     {/* Mobile Number */}
                     <div>
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                        Mobile Number <span className="text-[#f28822]">*</span>
+                        Mobile Number <span className="text-[#ff9f43]">*</span>
                       </label>
                       <div className="flex">
                         <span className="inline-flex items-center px-3.5 rounded-l-xl border border-r-0 border-gray-200 bg-gray-100 text-gray-700 text-sm font-bold">
@@ -684,7 +684,7 @@ export default function VisitorRegisterPage() {
                     {/* Email Address */}
                     <div>
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                        Official Email Address <span className="text-[#f28822]">*</span>
+                        Official Email Address <span className="text-[#ff9f43]">*</span>
                       </label>
                       <div className="relative">
                         <Mail className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
@@ -713,11 +713,11 @@ export default function VisitorRegisterPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 px-8 rounded-xl bg-[#0c140f] hover:bg-[#f28822] text-white text-base font-black uppercase tracking-wider shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed group"
+                    className="w-full py-4 px-8 rounded-xl bg-[#0c140f] hover:bg-[#ff9f43] text-white text-base font-black uppercase tracking-wider shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed group"
                   >
                     {isSubmitting ? (
                       <>
-                        <Loader2 className="w-5 h-5 animate-spin text-[#f28822]" />
+                        <Loader2 className="w-5 h-5 animate-spin text-[#ff9f43]" />
                         <span>Verifying &amp; Generating Pass...</span>
                       </>
                     ) : (

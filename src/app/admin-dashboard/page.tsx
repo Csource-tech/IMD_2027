@@ -266,7 +266,7 @@ export default function AdminDashboardPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#f28822] to-[#004aab] flex items-center justify-center text-white font-black text-base shadow-sm">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#ff9f43] to-[#004aab] flex items-center justify-center text-white font-black text-base shadow-sm">
                 M
               </div>
               <div>
@@ -288,14 +288,14 @@ export default function AdminDashboardPage() {
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs text-gray-200 transition-all cursor-pointer font-medium"
               title="Refresh leads list"
             >
-              <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? "animate-spin text-[#f28822]" : ""}`} />
+              <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? "animate-spin text-[#ff9f43]" : ""}`} />
               <span className="hidden sm:inline">Refresh</span>
             </button>
 
             {/* Export CSV */}
             <button
               onClick={handleExportCSV}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#f28822] hover:bg-[#d97416] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-sm cursor-pointer"
+              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#ff9f43] hover:bg-[#f28822] text-white text-xs font-bold uppercase tracking-wider transition-all shadow-sm cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Export CSV</span>
@@ -358,7 +358,7 @@ export default function AdminDashboardPage() {
                 {stats.stalls}
               </span>
             </div>
-            <div className="w-12 h-12 rounded-2xl bg-orange-50 text-[#f28822] flex items-center justify-center shrink-0 border border-orange-100">
+            <div className="w-12 h-12 rounded-2xl bg-orange-50 text-[#ff9f43] flex items-center justify-center shrink-0 border border-orange-100">
               <Store className="w-6 h-6" />
             </div>
           </div>
@@ -471,7 +471,7 @@ export default function AdminDashboardPage() {
         <div className="rounded-2xl bg-white border border-gray-200 shadow-sm overflow-hidden">
           {isLoading ? (
             <div className="py-20 text-center text-gray-500 space-y-3">
-              <RefreshCw className="w-8 h-8 mx-auto animate-spin text-[#f28822]" />
+              <RefreshCw className="w-8 h-8 mx-auto animate-spin text-[#ff9f43]" />
               <p className="text-sm font-medium">Loading leads from storage...</p>
             </div>
           ) : filteredLeads.length === 0 ? (
@@ -542,7 +542,7 @@ export default function AdminDashboardPage() {
 
                         {/* Name & Role */}
                         <td className="py-4 px-4 font-semibold text-gray-900">
-                          <div className="font-bold text-sm text-gray-950 group-hover:text-[#f28822] transition-colors">
+                          <div className="font-bold text-sm text-gray-950 group-hover:text-[#ff9f43] transition-colors">
                             {name}
                           </div>
                           <div className="text-[11px] text-gray-500 font-normal">
@@ -554,7 +554,7 @@ export default function AdminDashboardPage() {
                         <td className="py-4 px-4 font-medium text-gray-700 max-w-[200px] truncate">
                           <div className="truncate font-semibold">{company}</div>
                           {lead.data.requiredStallSpace && (
-                            <div className="text-[11px] text-[#f28822] font-bold">
+                            <div className="text-[11px] text-[#ff9f43] font-bold">
                               {lead.data.requiredStallSpace}
                             </div>
                           )}
@@ -567,7 +567,7 @@ export default function AdminDashboardPage() {
                             <a
                               href={`tel:${phone}`}
                               onClick={(e) => e.stopPropagation()}
-                              className="hover:text-[#f28822] hover:underline"
+                              className="hover:text-[#ff9f43] hover:underline"
                             >
                               {phone}
                             </a>
@@ -577,7 +577,7 @@ export default function AdminDashboardPage() {
                             <a
                               href={`mailto:${email}`}
                               onClick={(e) => e.stopPropagation()}
-                              className="hover:text-[#f28822] hover:underline truncate max-w-[170px]"
+                              className="hover:text-[#ff9f43] hover:underline truncate max-w-[170px]"
                             >
                               {email}
                             </a>
@@ -744,7 +744,7 @@ export default function AdminDashboardPage() {
                   </span>
                   <a
                     href={`tel:${getLeadPhone(selectedLead)}`}
-                    className="font-semibold text-gray-900 hover:text-[#f28822] hover:underline font-mono"
+                    className="font-semibold text-gray-900 hover:text-[#ff9f43] hover:underline font-mono"
                   >
                     {getLeadPhone(selectedLead)}
                   </a>
@@ -756,7 +756,7 @@ export default function AdminDashboardPage() {
                   </span>
                   <a
                     href={`mailto:${getLeadEmail(selectedLead)}`}
-                    className="font-semibold text-gray-900 hover:text-[#f28822] hover:underline truncate block"
+                    className="font-semibold text-gray-900 hover:text-[#ff9f43] hover:underline truncate block"
                   >
                     {getLeadEmail(selectedLead)}
                   </a>
@@ -767,7 +767,7 @@ export default function AdminDashboardPage() {
                     <span className="text-[10px] font-bold uppercase tracking-wider text-[#b85b06] block mb-0.5">
                       Requested Stall Space
                     </span>
-                    <span className="font-extrabold text-base text-[#f28822]">
+                    <span className="font-extrabold text-base text-[#ff9f43]">
                       {selectedLead.data.requiredStallSpace}
                     </span>
                   </div>
@@ -834,7 +834,7 @@ export default function AdminDashboardPage() {
               <div className="pt-2 flex flex-wrap gap-3">
                 <a
                   href={`tel:${getLeadPhone(selectedLead)}`}
-                  className="flex-1 py-3 px-4 rounded-xl bg-[#0c140f] hover:bg-[#f28822] text-white text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2"
+                  className="flex-1 py-3 px-4 rounded-xl bg-[#0c140f] hover:bg-[#ff9f43] text-white text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2"
                 >
                   <Phone className="w-4 h-4" />
                   <span>Call {getLeadPhone(selectedLead)}</span>
@@ -842,7 +842,7 @@ export default function AdminDashboardPage() {
 
                 <a
                   href={`mailto:${getLeadEmail(selectedLead)}`}
-                  className="flex-1 py-3 px-4 rounded-xl bg-[#f28822] hover:bg-[#d97416] text-white text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2"
+                  className="flex-1 py-3 px-4 rounded-xl bg-[#ff9f43] hover:bg-[#f28822] text-white text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2"
                 >
                   <Mail className="w-4 h-4" />
                   <span>Email {getLeadEmail(selectedLead)}</span>

@@ -83,7 +83,7 @@ export default function OrganisingCommittee() {
             >
               {/* Portrait Photo Container */}
               <div className="relative mb-5">
-                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-2 border-gray-200 group-hover:border-[#f28822] shadow-md transition-all duration-300 group-hover:scale-105 bg-slate-100 flex items-center justify-center">
+                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-2 border-gray-200 group-hover:border-[#ff9f43] shadow-md transition-all duration-300 group-hover:scale-105 bg-slate-100 flex items-center justify-center">
                   <img
                     src={member.image}
                     alt={member.name}
@@ -92,7 +92,7 @@ export default function OrganisingCommittee() {
                 </div>
 
                 {member.isFounder && (
-                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-[#f28822] text-white text-[10px] font-extrabold uppercase tracking-wider shadow-md whitespace-nowrap flex items-center gap-1">
+                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-[#ff9f43] text-white text-[10px] font-extrabold uppercase tracking-wider shadow-md whitespace-nowrap flex items-center gap-1">
                     <Heart className="w-2.5 h-2.5 fill-white" />
                     <span>FOUNDER</span>
                   </span>
@@ -100,7 +100,7 @@ export default function OrganisingCommittee() {
               </div>
 
               {/* Name */}
-              <h3 className="text-base sm:text-lg font-bold text-gray-950 group-hover:text-[#f28822] transition-colors leading-snug">
+              <h3 className="text-base sm:text-lg font-bold text-gray-950 group-hover:text-[#ff9f43] transition-colors leading-snug">
                 {member.name}
               </h3>
 

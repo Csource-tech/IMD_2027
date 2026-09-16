@@ -210,7 +210,7 @@ export default function BookYourStallPage() {
       {/* 2. Editorial Hero Header with Dark Website Theme */}
       <section className="relative pt-36 sm:pt-44 pb-24 sm:pb-32 bg-[#0c140f] text-white overflow-hidden border-b border-white/10">
         {/* Ambient Radial Glows */}
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#f28822]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#ff9f43]/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#004aab]/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -218,7 +218,7 @@ export default function BookYourStallPage() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#f28822]/20 border border-[#f28822]/35 text-xs font-bold text-[#f28822] uppercase tracking-wider mb-4 shadow-sm"
+            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#ff9f43]/20 border border-[#ff9f43]/35 text-xs font-bold text-[#ff9f43] uppercase tracking-wider mb-4 shadow-sm"
           >
             <Store className="w-3.5 h-3.5" />
             <span>Commercial Exhibition Pavilion</span>
@@ -253,7 +253,7 @@ export default function BookYourStallPage() {
             className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm text-gray-300 font-medium"
           >
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
-              <Sparkles className="w-3.5 h-3.5 text-[#f28822]" /> Prime Pavilion Positioning
+              <Sparkles className="w-3.5 h-3.5 text-[#ff9f43]" /> Prime Pavilion Positioning
             </span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
               <Calendar className="w-3.5 h-3.5 text-[#004aab]" /> 3 Full Exhibition Days
@@ -298,7 +298,7 @@ export default function BookYourStallPage() {
                   </div>
                   <div className="text-xs text-gray-600 pt-1 border-t border-gray-100 flex items-center justify-between">
                     <span>Requested Space:</span>
-                    <span className="font-bold text-[#f28822]">{formData.requiredStallSpace}</span>
+                    <span className="font-bold text-[#ff9f43]">{formData.requiredStallSpace}</span>
                   </div>
                   <div className="text-xs text-gray-600 flex items-center justify-between">
                     <span>Preferred Communication:</span>
@@ -330,7 +330,7 @@ export default function BookYourStallPage() {
                       });
                       setErrors({});
                     }}
-                    className="px-6 py-3 bg-[#0c140f] hover:bg-[#f28822] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer"
+                    className="px-6 py-3 bg-[#0c140f] hover:bg-[#ff9f43] text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md cursor-pointer"
                   >
                     Submit Another Booking
                   </button>
@@ -356,7 +356,7 @@ export default function BookYourStallPage() {
                       Provide your organization and stall details to receive priority hall allocation.
                     </p>
                   </div>
-                  <span className="text-xs font-bold text-[#f28822] bg-orange-50 border border-orange-200 px-3 py-1 rounded-full w-fit">
+                  <span className="text-xs font-bold text-[#ff9f43] bg-orange-50 border border-orange-200 px-3 py-1 rounded-full w-fit">
                     * All mandatory fields
                   </span>
                 </div>
@@ -381,7 +381,7 @@ export default function BookYourStallPage() {
                     {/* Full Name */}
                     <div>
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                        Representative Full Name <span className="text-[#f28822]">*</span>
+                        Representative Full Name <span className="text-[#ff9f43]">*</span>
                       </label>
                       <div className="relative">
                         <User className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
@@ -406,7 +406,7 @@ export default function BookYourStallPage() {
                     {/* Company Name */}
                     <div>
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                        Company / Organization Name <span className="text-[#f28822]">*</span>
+                        Company / Organization Name <span className="text-[#ff9f43]">*</span>
                       </label>
                       <div className="relative">
                         <Building className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
@@ -433,7 +433,7 @@ export default function BookYourStallPage() {
                     {/* Exhibitor Category */}
                     <div>
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                        Exhibitor Category <span className="text-[#f28822]">*</span>
+                        Exhibitor Category <span className="text-[#ff9f43]">*</span>
                       </label>
                       <div className="relative">
                         <Tag className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
@@ -462,7 +462,7 @@ export default function BookYourStallPage() {
                     {/* Position / Role */}
                     <div>
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                        Designation / Position <span className="text-[#f28822]">*</span>
+                        Designation / Position <span className="text-[#ff9f43]">*</span>
                       </label>
                       <div className="relative">
                         <Briefcase className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
@@ -498,7 +498,7 @@ export default function BookYourStallPage() {
                   {/* Street Address */}
                   <div>
                     <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                      Business Address <span className="text-[#f28822]">*</span>
+                      Business Address <span className="text-[#ff9f43]">*</span>
                     </label>
                     <div className="relative">
                       <MapPin className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
@@ -525,7 +525,7 @@ export default function BookYourStallPage() {
                     {/* Country */}
                     <div>
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                        Country <span className="text-[#f28822]">*</span>
+                        Country <span className="text-[#ff9f43]">*</span>
                       </label>
                       <div className="relative">
                         <Globe className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
@@ -549,7 +549,7 @@ export default function BookYourStallPage() {
                     {/* City */}
                     <div>
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                        City <span className="text-[#f28822]">*</span>
+                        City <span className="text-[#ff9f43]">*</span>
                       </label>
                       <div className="relative">
                         <Building className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
@@ -574,7 +574,7 @@ export default function BookYourStallPage() {
                     {/* PIN Code */}
                     <div>
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                        PIN / Postal Code <span className="text-[#f28822]">*</span>
+                        PIN / Postal Code <span className="text-[#ff9f43]">*</span>
                       </label>
                       <div className="relative">
                         <Hash className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
@@ -608,7 +608,7 @@ export default function BookYourStallPage() {
                       </span>
                       <span>Required Stall Space &amp; Booth Scale</span>
                     </div>
-                    <span className="text-[11px] font-bold text-[#f28822]">
+                    <span className="text-[11px] font-bold text-[#ff9f43]">
                       Selected: {formData.requiredStallSpace}
                     </span>
                   </div>
@@ -642,21 +642,21 @@ export default function BookYourStallPage() {
                           onClick={() => setFormData({ ...formData, requiredStallSpace: item.id })}
                           className={`cursor-pointer rounded-2xl p-4 border-2 transition-all flex flex-col justify-between ${
                             isSelected
-                              ? "border-[#f28822] bg-orange-50/40 text-gray-950 shadow-md scale-[1.02]"
+                              ? "border-[#ff9f43] bg-orange-50/40 text-gray-950 shadow-md scale-[1.02]"
                               : "border-gray-200 hover:border-gray-300 bg-white text-gray-700"
                           }`}
                         >
                           <div className="flex items-start justify-between gap-2 mb-3">
                             <div
                               className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
-                                isSelected ? "bg-[#0c140f] text-[#f28822]" : "bg-gray-100 text-gray-500"
+                                isSelected ? "bg-[#0c140f] text-[#ff9f43]" : "bg-gray-100 text-gray-500"
                               }`}
                             >
                               <Icon className="w-5 h-5" />
                             </div>
                             <span
                               className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${
-                                isSelected ? "border-[#f28822] bg-[#f28822]" : "border-gray-300 bg-white"
+                                isSelected ? "border-[#ff9f43] bg-[#ff9f43]" : "border-gray-300 bg-white"
                               }`}
                             >
                               {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-white" />}
@@ -686,7 +686,7 @@ export default function BookYourStallPage() {
                       </span>
                       <span>Secretariat Contact Preference</span>
                     </div>
-                    <span className="text-[11px] font-bold text-[#f28822]">
+                    <span className="text-[11px] font-bold text-[#ff9f43]">
                       Via {formData.contactPreference}
                     </span>
                   </div>
@@ -736,7 +736,7 @@ export default function BookYourStallPage() {
                     {/* Phone Number */}
                     <div>
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                        Contact Phone / WhatsApp <span className="text-[#f28822]">*</span>
+                        Contact Phone / WhatsApp <span className="text-[#ff9f43]">*</span>
                       </label>
                       <div className="flex">
                         <span className="inline-flex items-center px-3.5 rounded-l-xl border border-r-0 border-gray-200 bg-gray-100 text-gray-700 text-sm font-bold">
@@ -764,7 +764,7 @@ export default function BookYourStallPage() {
                     {/* Email Address */}
                     <div>
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
-                        Official Business Email <span className="text-[#f28822]">*</span>
+                        Official Business Email <span className="text-[#ff9f43]">*</span>
                       </label>
                       <div className="relative">
                         <Mail className="w-4 h-4 text-gray-400 absolute left-3.5 top-3.5 pointer-events-none" />
@@ -793,11 +793,11 @@ export default function BookYourStallPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 px-8 rounded-xl bg-[#0c140f] hover:bg-[#f28822] text-white text-base font-black uppercase tracking-wider shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed group"
+                    className="w-full py-4 px-8 rounded-xl bg-[#0c140f] hover:bg-[#ff9f43] text-white text-base font-black uppercase tracking-wider shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed group"
                   >
                     {isSubmitting ? (
                       <>
-                        <Loader2 className="w-5 h-5 animate-spin text-[#f28822]" />
+                        <Loader2 className="w-5 h-5 animate-spin text-[#ff9f43]" />
                         <span>Verifying &amp; Logging Space Request...</span>
                       </>
                     ) : (

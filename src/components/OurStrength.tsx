@@ -77,7 +77,7 @@ function CounterItem({
       {/* Massive Display Number */}
       <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight font-sans">
         {count.toLocaleString()}
-        <span className="text-[#f28822]">{suffix}</span>
+        <span className="text-[#ff9f43]">{suffix}</span>
       </div>
 
       {/* Primary Label */}
@@ -101,7 +101,7 @@ export default function OurStrength() {
     >
       {/* Ambient spore lighting accents */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#004aab]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-[#f28822]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-[#ff9f43]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}

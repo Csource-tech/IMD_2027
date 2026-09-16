@@ -61,7 +61,7 @@ export default function RootLayout({
         <link rel="icon" href="/reallogo.png" type="image/png" sizes="any" />
       </head>
       <body
-        className={`${plusJakartaSans.variable} ${playfairDisplay.variable} font-sans antialiased text-[#151c17] bg-[#faf9f5] min-h-screen flex flex-col selection:bg-[#f28822] selection:text-white`}
+        className={`${plusJakartaSans.variable} ${playfairDisplay.variable} font-sans antialiased text-[#151c17] bg-[#faf9f5] min-h-screen flex flex-col selection:bg-[#ff9f43] selection:text-white`}
       >
         {children}
       </body>

@@ -121,13 +121,13 @@ export async function POST(req: Request) {
           <style>
             body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #222; background-color: #f6f5f0; margin: 0; padding: 20px; }
             .container { max-width: 620px; margin: 0 auto; background: #ffffff; border: 1px solid #e0ded8; padding: 32px; border-radius: 6px; }
-            .badge { display: inline-block; background: #f28822; color: white; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
-            .header { border-bottom: 2px solid #f28822; padding-bottom: 16px; margin-bottom: 24px; }
+            .badge { display: inline-block; background: #ff9f43; color: white; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+            .header { border-bottom: 2px solid #ff9f43; padding-bottom: 16px; margin-bottom: 24px; }
             .header h2 { margin: 8px 0 0; color: #111; font-size: 22px; }
             .field-row { display: flex; border-bottom: 1px solid #f0eee9; padding: 10px 0; }
             .field-label { width: 180px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #777; }
             .field-value { flex: 1; font-size: 14px; color: #111; font-weight: 600; }
-            .highlight-box { background: #fff8f0; border-left: 4px solid #f28822; padding: 14px; margin: 16px 0; }
+            .highlight-box { background: #fff8f0; border-left: 4px solid #ff9f43; padding: 14px; margin: 16px 0; }
             .footer { margin-top: 24px; padding-top: 16px; border-top: 1px solid #eee; font-size: 12px; color: #888; text-align: center; }
           </style>
         </head>
@@ -140,7 +140,7 @@ export async function POST(req: Request) {
             </div>
 
             <div class="highlight-box">
-              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: #f28822;">Requested Stall Space</div>
+              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: #ff9f43;">Requested Stall Space</div>
               <div style="font-size: 18px; font-weight: 800; color: #111;">${requiredStallSpace}</div>
               <div style="font-size: 12px; color: #555; margin-top: 4px;">Preferred Contact: <strong>${contactPreference}</strong></div>
             </div>
@@ -167,12 +167,12 @@ export async function POST(req: Request) {
 
             <div class="field-row">
               <div class="field-label">Email Address</div>
-              <div class="field-value"><a href="mailto:${email}" style="color: #f28822;">${email}</a></div>
+              <div class="field-value"><a href="mailto:${email}" style="color: #ff9f43;">${email}</a></div>
             </div>
 
             <div class="field-row">
               <div class="field-label">Phone Number</div>
-              <div class="field-value"><a href="tel:${phone}" style="color: #f28822;">${phone}</a></div>
+              <div class="field-value"><a href="tel:${phone}" style="color: #ff9f43;">${phone}</a></div>
             </div>
 
             <div class="field-row">
@@ -215,7 +215,7 @@ export async function POST(req: Request) {
             <style>
               body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #222; background-color: #f6f5f0; margin: 0; padding: 20px; }
               .container { max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e0ded8; padding: 32px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-              .header { border-bottom: 2px solid #f28822; padding-bottom: 16px; margin-bottom: 20px; }
+              .header { border-bottom: 2px solid #ff9f43; padding-bottom: 16px; margin-bottom: 20px; }
               .thank-you-banner { background: #fff7ed; border-left: 4px solid #f97316; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
               .thank-you-banner h3 { margin: 0 0 6px 0; color: #c2410c; font-size: 16px; }
               .thank-you-banner p { margin: 0; color: #9a3412; font-size: 13.5px; }
@@ -231,7 +231,7 @@ export async function POST(req: Request) {
             <div class="container">
               <div class="header">
                 <h2 style="margin: 0; color: #111; font-size: 22px;">India Mushroom Days 2027</h2>
-                <div style="color: #f28822; font-weight: bold; font-size: 13px; text-transform: uppercase; margin-top: 4px;">Exhibitor Stall Booking Application</div>
+                <div style="color: #ff9f43; font-weight: bold; font-size: 13px; text-transform: uppercase; margin-top: 4px;">Exhibitor Stall Booking Application</div>
               </div>
 
               <p style="font-size: 15px;">Dear <strong>${name}</strong>,</p>
@@ -293,7 +293,7 @@ export async function POST(req: Request) {
               </div>
 
               <p style="font-size: 13.5px; color: #555;">
-                For immediate space reservation assistance, you can also reach us directly at <a href="mailto:reachout@mushex.in" style="color: #f28822; font-weight: 600;">reachout@mushex.in</a> or call our helpline at <strong>+91 98107 26996</strong>.
+                For immediate space reservation assistance, you can also reach us directly at <a href="mailto:reachout@mushex.in" style="color: #ff9f43; font-weight: 600;">reachout@mushex.in</a> or call our helpline at <strong>+91 98107 26996</strong>.
               </p>
 
               <div class="footer">

@@ -106,8 +106,8 @@ export default function RegisterSection() {
             {/* Secretariat Contact Cards */}
             <div className="space-y-3 pt-2">
               {/* Card 1: Official Email */}
-              <div className="p-5 rounded-2xl bg-white border border-gray-200 shadow-sm flex items-start gap-4 hover:border-[#f28822] transition-colors">
-                <div className="w-11 h-11 rounded-xl bg-orange-50 text-[#f28822] flex items-center justify-center shrink-0 border border-orange-100">
+              <div className="p-5 rounded-2xl bg-white border border-gray-200 shadow-sm flex items-start gap-4 hover:border-[#ff9f43] transition-colors">
+                <div className="w-11 h-11 rounded-xl bg-orange-50 text-[#ff9f43] flex items-center justify-center shrink-0 border border-orange-100">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -116,7 +116,7 @@ export default function RegisterSection() {
                   </span>
                   <a
                     href="mailto:reachout@mushex.in"
-                    className="text-base sm:text-lg font-bold text-gray-950 hover:text-[#f28822] transition-colors block truncate"
+                    className="text-base sm:text-lg font-bold text-gray-950 hover:text-[#ff9f43] transition-colors block truncate"
                   >
                     reachout@mushex.in
                   </a>
@@ -137,13 +137,13 @@ export default function RegisterSection() {
                   </span>
                   <div className="space-y-1 text-sm sm:text-base font-bold text-gray-950">
                     <div>
-                      <a href="tel:+919810726996" className="hover:text-[#f28822] transition-colors">
+                      <a href="tel:+919810726996" className="hover:text-[#ff9f43] transition-colors">
                         +91 98107 26996
                       </a>{" "}
                       <span className="text-[10px] font-normal text-gray-400">/ Helpline 1</span>
                     </div>
                     <div>
-                      <a href="tel:+919811775443" className="hover:text-[#f28822] transition-colors">
+                      <a href="tel:+919811775443" className="hover:text-[#ff9f43] transition-colors">
                         +91 98117 75443
                       </a>{" "}
                       <span className="text-[10px] font-normal text-gray-400">/ Helpline 2</span>
@@ -188,7 +188,7 @@ export default function RegisterSection() {
               <h3 className="text-xl sm:text-2xl font-black text-gray-950 tracking-tight">
                 Send a Direct Inquiry
               </h3>
-              <span className="text-xs font-semibold text-[#f28822]">
+              <span className="text-xs font-semibold text-[#ff9f43]">
                 * Required Fields
               </span>
             </div>
@@ -216,7 +216,7 @@ export default function RegisterSection() {
                       message: "",
                     });
                   }}
-                  className="mt-4 px-6 py-2.5 rounded-full bg-[#0c140f] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#f28822] transition-colors cursor-pointer"
+                  className="mt-4 px-6 py-2.5 rounded-full bg-[#0c140f] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#ff9f43] transition-colors cursor-pointer"
                 >
                   Send Another Inquiry
                 </button>
@@ -234,7 +234,7 @@ export default function RegisterSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">
-                      Full Name <span className="text-[#f28822]">*</span>
+                      Full Name <span className="text-[#ff9f43]">*</span>
                     </label>
                     <input
                       type="text"
@@ -248,7 +248,7 @@ export default function RegisterSection() {
 
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">
-                      Email Address <span className="text-[#f28822]">*</span>
+                      Email Address <span className="text-[#ff9f43]">*</span>
                     </label>
                     <input
                       type="email"
@@ -265,7 +265,7 @@ export default function RegisterSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">
-                      Phone / WhatsApp <span className="text-[#f28822]">*</span>
+                      Phone / WhatsApp <span className="text-[#ff9f43]">*</span>
                     </label>
                     <input
                       type="tel"
@@ -279,7 +279,7 @@ export default function RegisterSection() {
 
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">
-                      Inquiry Topic <span className="text-[#f28822]">*</span>
+                      Inquiry Topic <span className="text-[#ff9f43]">*</span>
                     </label>
                     <select
                       value={formData.inquiryTopic}
@@ -299,7 +299,7 @@ export default function RegisterSection() {
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-700">
-                      Detailed Message / Requirements <span className="text-[#f28822]">*</span>
+                      Detailed Message / Requirements <span className="text-[#ff9f43]">*</span>
                     </label>
                     <span className="text-[11px] font-medium text-gray-400">
                       {formData.message.length} / 3000
@@ -321,7 +321,7 @@ export default function RegisterSection() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 px-6 rounded-2xl bg-[#0c140f] hover:bg-[#f28822] text-white font-bold text-xs sm:text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-200 disabled:opacity-60 cursor-pointer shadow-lg hover:shadow-xl hover:scale-[1.01] active:scale-[0.99]"
+                    className="w-full py-4 px-6 rounded-2xl bg-[#0c140f] hover:bg-[#ff9f43] text-white font-bold text-xs sm:text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-200 disabled:opacity-60 cursor-pointer shadow-lg hover:shadow-xl hover:scale-[1.01] active:scale-[0.99]"
                   >
                     {isSubmitting ? (
                       <>

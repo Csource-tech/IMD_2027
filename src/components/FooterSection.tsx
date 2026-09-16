@@ -20,27 +20,37 @@ export default function FooterSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b border-white/10">
           {/* Col 1: Brand Wordmark & Mission (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
-            <Link href="/#home" className="inline-flex items-center gap-3.5 group focus:outline-none">
-              <div className="relative">
-                <img
-                  src="/reallogo.png"
-                  alt="Indian Mushroom Days 2027 Official Logo"
-                  className="h-14 sm:h-16 w-auto object-contain rounded-full shadow-lg group-hover:scale-105 transition-transform ring-2 ring-white/10"
-                />
-                <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-[#004aab] ring-2 ring-[#070e0a]" />
+            {/* Dual Brand Logos & Titles */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3.5 sm:gap-4">
+              <div className="flex items-center gap-3">
+                <Link href="/#home" className="group focus:outline-none" aria-label="Indian Mushroom Days 2027 Homepage">
+                  <img
+                    src="/reallogo.png"
+                    alt="Indian Mushroom Days 2027 Official Logo"
+                    className="h-14 sm:h-16 w-auto object-contain rounded-full shadow-lg group-hover:scale-105 transition-transform ring-2 ring-white/10"
+                  />
+                </Link>
+                <div className="h-9 sm:h-10 w-px bg-white/20" />
+                <Link href="/#about-shroomconnect" className="group focus:outline-none" aria-label="Shroom Connect Conclave">
+                  <img
+                    src="/shroomlogo.jpeg"
+                    alt="Shroom Connect Official Logo"
+                    className="h-14 sm:h-16 w-auto object-contain rounded-full shadow-lg group-hover:scale-105 transition-transform ring-2 ring-white/10"
+                  />
+                </Link>
               </div>
               <div>
                 <h4 className="text-white text-lg sm:text-xl font-black uppercase tracking-tight font-sans">
-                  Indian Mushroom Days <span className="text-[#f28822]">2027</span>
+                  Indian Mushroom Days <span className="text-[#ff9f43]">2027</span>
                 </h4>
-                <p className="text-xs text-[#004aab] font-medium tracking-wide">
+                <p className="text-lg font-bold text-[#004aab] tracking-wide">
                   &amp; Shroom Connect Conclave
                 </p>
               </div>
-            </Link>
+            </div>
 
             <div className="inline-flex items-center gap-2 text-xs font-bold text-amber-200 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full">
-              <Calendar className="w-3.5 h-3.5 text-[#f28822]" />
+              <Calendar className="w-3.5 h-3.5 text-[#ff9f43]" />
               <span>February 19 – 21, 2027 • New Delhi, India</span>
             </div>
 
@@ -59,7 +69,7 @@ export default function FooterSection() {
               </Link>
               <Link
                 href="/book-your-stall"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold text-white bg-[#f28822] hover:bg-[#d97517] shadow-md transition-all duration-200"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold text-white bg-[#ff9f43] hover:bg-[#f28822] shadow-md transition-all duration-200"
               >
                 <Store className="w-3.5 h-3.5" />
                 <span>Book Your Stall</span>
@@ -74,8 +84,8 @@ export default function FooterSection() {
             </h5>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-400">
               <li>
-                <Link href="/#about" className="hover:text-[#f28822] transition-colors flex items-center gap-1.5">
-                  <ChevronRight className="w-3.5 h-3.5 text-[#f28822]" />
+                <Link href="/#about" className="hover:text-[#ff9f43] transition-colors flex items-center gap-1.5">
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff9f43]" />
                   <span>About The Movement</span>
                 </Link>
               </li>
@@ -87,31 +97,31 @@ export default function FooterSection() {
               </li>
               <li>
                 <Link href="/#industry-chain" className="hover:text-white transition-colors flex items-center gap-1.5">
-                  <ChevronRight className="w-3.5 h-3.5 text-[#f28822]" />
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff9f43]" />
                   <span>Button &amp; Specialty Mushrooms</span>
                 </Link>
               </li>
               <li>
                 <Link href="/#why-join" className="hover:text-white transition-colors flex items-center gap-1.5">
-                  <ChevronRight className="w-3.5 h-3.5 text-[#f28822]" />
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff9f43]" />
                   <span>Why Indian Mushroom Days</span>
                 </Link>
               </li>
               <li>
                 <Link href="/#program-agenda" className="hover:text-white transition-colors flex items-center gap-1.5">
-                  <ChevronRight className="w-3.5 h-3.5 text-[#f28822]" />
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff9f43]" />
                   <span>3-Day Program Agenda</span>
                 </Link>
               </li>
               <li>
                 <Link href="/#organising-committee" className="hover:text-white transition-colors flex items-center gap-1.5">
-                  <ChevronRight className="w-3.5 h-3.5 text-[#f28822]" />
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff9f43]" />
                   <span>Organising Committee</span>
                 </Link>
               </li>
               <li>
                 <Link href="/#gallery" className="hover:text-white transition-colors flex items-center gap-1.5">
-                  <ChevronRight className="w-3.5 h-3.5 text-[#f28822]" />
+                  <ChevronRight className="w-3.5 h-3.5 text-[#ff9f43]" />
                   <span>Visual Chronicle (Gallery)</span>
                 </Link>
               </li>
@@ -125,11 +135,11 @@ export default function FooterSection() {
             </h5>
             <ul className="space-y-3 text-xs sm:text-sm text-slate-400">
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-[#f28822] mt-0.5 shrink-0" />
+                <MapPin className="w-4 h-4 text-[#ff9f43] mt-0.5 shrink-0" />
                 <span>New Delhi, India</span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-[#f28822] shrink-0" />
+                <Phone className="w-4 h-4 text-[#ff9f43] shrink-0" />
                 <a href="tel:+919810726996" className="hover:text-white transition-colors">
                   +91 98107 26996 / +91 98117 75443
                 </a>
@@ -141,7 +151,7 @@ export default function FooterSection() {
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-[#f28822] shrink-0" />
+                <Mail className="w-4 h-4 text-[#ff9f43] shrink-0" />
                 <a href="mailto:reachout@mushex.in" className="hover:text-white transition-colors">
                   reachout@mushex.in
                 </a>

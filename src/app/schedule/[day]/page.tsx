@@ -213,7 +213,7 @@ export default async function DaySchedulePage({
             <span>Back to Home Schedule</span>
           </Link>
 
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#f28822] mb-2">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#ff9f43] mb-2">
             <Calendar className="w-4 h-4" />
             <span>{currentDay.date} • New Delhi, India</span>
           </div>
@@ -236,7 +236,7 @@ export default async function DaySchedulePage({
                   href={`/schedule/${d.slug}`}
                   className={`flex-1 py-2.5 sm:py-3 px-3 sm:px-4 rounded-full text-center transition-all duration-200 ${
                     isActive
-                      ? "bg-[#f28822] text-white font-bold shadow-lg"
+                      ? "bg-[#ff9f43] text-white font-bold shadow-lg"
                       : "text-white/80 hover:text-white hover:bg-white/10 font-medium"
                   }`}
                 >
@@ -275,7 +275,7 @@ export default async function DaySchedulePage({
                 >
                   {/* Category & Hall Row */}
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                    <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-50 text-[#f28822] border border-orange-200">
+                    <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-orange-50 text-[#ff9f43] border border-orange-200">
                       {session.category}
                     </span>
                     <span className="flex items-center gap-1.5 text-xs font-semibold text-slate-500">
@@ -349,7 +349,7 @@ export default async function DaySchedulePage({
                   </Link>
                   <Link
                     href="/book-your-stall"
-                    className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold text-white bg-[#f28822] hover:bg-[#d97517] shadow transition-transform hover:scale-[1.02]"
+                    className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold text-white bg-[#ff9f43] hover:bg-[#f28822] shadow transition-transform hover:scale-[1.02]"
                   >
                     <Store className="w-4 h-4" />
                     <span>Book Your Stall</span>

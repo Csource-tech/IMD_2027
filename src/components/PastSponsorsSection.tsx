@@ -76,10 +76,10 @@ export default function PastSponsorsSection() {
                 </div>
 
                 {/* Category & Title */}
-                <p className="text-[11px] font-extrabold uppercase tracking-widest text-[#f28822] mb-1.5 font-sans">
+                <p className="text-[11px] font-extrabold uppercase tracking-widest text-[#ff9f43] mb-1.5 font-sans">
                   {s.category}
                 </p>
-                <h3 className="text-xl font-bold text-gray-950 leading-snug group-hover:text-[#f28822] transition-colors mb-3">
+                <h3 className="text-xl font-bold text-gray-950 leading-snug group-hover:text-[#ff9f43] transition-colors mb-3">
                   {s.name}
                 </h3>
 

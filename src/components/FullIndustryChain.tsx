@@ -129,7 +129,7 @@ export default function FullIndustryChain() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
 
-              <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#f28822] text-white text-[11px] font-bold uppercase tracking-wider shadow-md">
+              <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#ff9f43] text-white text-[11px] font-bold uppercase tracking-wider shadow-md">
                 Commercial Core
               </div>
 
@@ -160,13 +160,13 @@ export default function FullIndustryChain() {
 
               {/* 4-Stage Lifecycle Flow */}
               <div className="pt-3 border-t border-gray-100">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#f28822] block mb-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#ff9f43] block mb-2">
                   Industrial Cultivation Cycle
                 </span>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   <div className="p-2.5 rounded-xl bg-[#faf9f5] border border-gray-200/80 flex items-center gap-2.5">
-                    <span className="w-6 h-6 rounded-full bg-[#f28822] text-white flex-shrink-0 flex items-center justify-center text-xs font-bold">
+                    <span className="w-6 h-6 rounded-full bg-[#ff9f43] text-white flex-shrink-0 flex items-center justify-center text-xs font-bold">
                       1
                     </span>
                     <div className="min-w-0">
@@ -278,7 +278,7 @@ export default function FullIndustryChain() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
                       <div className="absolute top-3 left-3 z-10">
-                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#f28822] text-white shadow">
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#ff9f43] text-white shadow">
                           {currentSpecialty.badge}
                         </span>
                       </div>

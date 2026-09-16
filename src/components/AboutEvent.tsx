@@ -33,7 +33,7 @@ export default function AboutEvent() {
             className="lg:col-span-6 relative pb-12 sm:pb-14 pl-1 sm:pl-2 pr-1 sm:pr-2"
           >
             {/* Ambient Radial Glows */}
-            <div className="absolute -top-6 -right-4 w-48 h-48 bg-[#f28822]/15 rounded-full blur-3xl pointer-events-none -z-10" />
+            <div className="absolute -top-6 -right-4 w-48 h-48 bg-[#ff9f43]/15 rounded-full blur-3xl pointer-events-none -z-10" />
             <div className="absolute -bottom-6 -left-4 w-40 h-40 bg-[#004aab]/10 rounded-full blur-3xl pointer-events-none -z-10" />
 
             {/* Main Primary Image (Inauguration Ceremony & Lamp Lighting - Previously Used) */}
@@ -103,10 +103,10 @@ export default function AboutEvent() {
             {/* Event 2: Shroom Connect 2027 */}
             <div
               id="about-shroomconnect"
-              className="p-4 sm:p-5 rounded-2xl bg-orange-50/40 border border-orange-200/80 shadow-xs hover:border-[#f28822]/50 transition-colors"
+              className="p-4 sm:p-5 rounded-2xl bg-orange-50/40 border border-orange-200/80 shadow-xs hover:border-[#ff9f43]/50 transition-colors"
             >
               <div className="flex items-center justify-between gap-2 mb-1.5">
-                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-orange-100/70 text-[#f28822] border border-orange-200/80">
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-orange-100/70 text-[#ff9f43] border border-orange-200/80">
                   B2B Trade Conclave
                 </span>
                 <span className="text-[11px] font-semibold text-gray-500">
@@ -124,15 +124,15 @@ export default function AboutEvent() {
 
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2.5 pt-2.5 border-t border-orange-200/70 text-xs text-gray-700">
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#f28822] shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#ff9f43] shrink-0" />
                   <span>Retail &amp; Supermarket Sourcing</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#f28822] shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#ff9f43] shrink-0" />
                   <span>Specialty &amp; Medicinal Markets</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#f28822] shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#ff9f43] shrink-0" />
                   <span>NHB Subsidy Clinic</span>
                 </div>
               </div>
@@ -142,14 +142,14 @@ export default function AboutEvent() {
             <div className="flex flex-wrap items-center gap-5 sm:gap-7 pt-2">
               <Link
                 href="/visitor-register"
-                className="inline-flex items-center justify-center px-7 py-3 rounded-full text-xs sm:text-sm font-bold text-white bg-[#f28822] hover:bg-[#d97416] transition-all duration-200 shadow-md hover:shadow-lg hover:scale-[1.02]"
+                className="inline-flex items-center justify-center px-7 py-3 rounded-full text-xs sm:text-sm font-bold text-white bg-[#ff9f43] hover:bg-[#f28822] transition-all duration-200 shadow-md hover:shadow-lg hover:scale-[1.02]"
               >
                 <span>Register Now</span>
                 <ArrowRight className="w-4 h-4 ml-1.5" />
               </Link>
 
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-orange-50 border border-orange-200/80 text-[#f28822] flex items-center justify-center shrink-0">
+                <div className="w-9 h-9 rounded-full bg-orange-50 border border-orange-200/80 text-[#ff9f43] flex items-center justify-center shrink-0">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
@@ -158,7 +158,7 @@ export default function AboutEvent() {
                   </span>
                   <a
                     href="tel:+919810726996"
-                    className="text-xs sm:text-sm font-bold text-gray-900 hover:text-[#f28822] transition-colors leading-tight"
+                    className="text-xs sm:text-sm font-bold text-gray-900 hover:text-[#ff9f43] transition-colors leading-tight"
                   >
                     +91 98107 26996
                   </a>

@@ -38,7 +38,7 @@ export default function ExhibitorsSection() {
               <img
                 src={exhibitor.logo}
                 alt={exhibitor.name}
-                className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 object-contain rounded-full border-2 border-gray-200/90 bg-white shadow-md group-hover:border-[#f28822] group-hover:shadow-xl group-hover:scale-108 transition-all duration-300"
+                className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 object-contain rounded-full border-2 border-gray-200/90 bg-white shadow-md group-hover:border-[#ff9f43] group-hover:shadow-xl group-hover:scale-108 transition-all duration-300"
               />
             </div>
           ))}
