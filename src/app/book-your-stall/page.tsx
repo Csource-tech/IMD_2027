@@ -232,7 +232,7 @@ export default function BookYourStallPage() {
           >
             Book Your <br />
             <span className="font-serif italic font-normal text-amber-200 capitalize">
-              Stall &amp; Pavilion
+              Booth &amp; Pavilion
             </span>
           </motion.h1>
 
@@ -281,7 +281,7 @@ export default function BookYourStallPage() {
                     Request Logged
                   </span>
                   <h2 className="text-2xl sm:text-4xl font-black text-gray-950 tracking-tight uppercase font-sans">
-                    Stall Reservation Request Received!
+                    Booth Reservation Request Received!
                   </h2>
                 </div>
 
@@ -353,7 +353,7 @@ export default function BookYourStallPage() {
                       Exhibition Space Reservation
                     </h2>
                     <p className="text-xs text-gray-500 mt-1">
-                      Provide your organization and stall details to receive priority hall allocation.
+                      Provide your organization and booth details to receive priority hall allocation.
                     </p>
                   </div>
                   <span className="text-xs font-bold text-[#ff9f43] bg-orange-50 border border-orange-200 px-3 py-1 rounded-full w-fit">
@@ -606,7 +606,7 @@ export default function BookYourStallPage() {
                       <span className="w-5 h-5 rounded-full bg-[#0c140f] text-white flex items-center justify-center text-[10px]">
                         3
                       </span>
-                      <span>Required Stall Space &amp; Booth Scale</span>
+                      <span>Required Booth Space &amp; Scale</span>
                     </div>
                     <span className="text-[11px] font-bold text-[#ff9f43]">
                       Selected: {formData.requiredStallSpace}
@@ -802,7 +802,7 @@ export default function BookYourStallPage() {
                       </>
                     ) : (
                       <>
-                        <span>Submit Stall Booking Request</span>
+                        <span>Submit Booth Booking Request</span>
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                       </>
                     )}

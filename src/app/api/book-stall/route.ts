@@ -112,7 +112,7 @@ export async function POST(req: Request) {
       from: fromEmail,
       to: toEmail,
       replyTo: email,
-      subject: `[IMD 2027 Stall Booking Request] ${companyName} (${requiredStallSpace}) - ${name}`,
+      subject: `[IMD 2027 Booth Booking Request] ${companyName} (${requiredStallSpace}) - ${name}`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -191,7 +191,7 @@ export async function POST(req: Request) {
             </div>
 
             <div class="footer">
-              This stall booking request was submitted via the official India Mushroom Days 2027 website.
+              This booth booking request was submitted via the official India Mushroom Days 2027 website.
             </div>
           </div>
         </body>
@@ -206,7 +206,7 @@ export async function POST(req: Request) {
       const exhibitorMailOptions = {
         from: fromEmail,
         to: email,
-        subject: `Thank you for your Stall Booking Request! We will contact you soon - India Mushroom Days 2027`,
+        subject: `Thank you for your Booth Booking Request! We will contact you soon - India Mushroom Days 2027`,
         html: `
           <!DOCTYPE html>
           <html>
@@ -231,13 +231,13 @@ export async function POST(req: Request) {
             <div class="container">
               <div class="header">
                 <h2 style="margin: 0; color: #111; font-size: 22px;">India Mushroom Days 2027</h2>
-                <div style="color: #ff9f43; font-weight: bold; font-size: 13px; text-transform: uppercase; margin-top: 4px;">Exhibitor Stall Booking Application</div>
+                <div style="color: #ff9f43; font-weight: bold; font-size: 13px; text-transform: uppercase; margin-top: 4px;">Exhibitor Booth Booking Application</div>
               </div>
 
               <p style="font-size: 15px;">Dear <strong>${name}</strong>,</p>
 
               <div class="thank-you-banner">
-                <h3>Thank you for your stall booking request!</h3>
+                <h3>Thank you for your booth booking request!</h3>
                 <p>We have successfully received your booking request for <strong>${companyName}</strong>. Our exhibition management team will contact you soon via <strong>${contactPreference}</strong> with the stall layout floor plan, booth packages, and space allocation details.</p>
               </div>
 
@@ -312,12 +312,12 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       success: true,
-      message: "Stall booking request received successfully!",
+      message: "Booth booking request received successfully!",
     });
   } catch (error: any) {
     console.error("Error in /api/book-stall:", error);
     return NextResponse.json(
-      { error: error?.message || "Failed to process stall booking request." },
+      { error: error?.message || "Failed to process booth booking request." },
       { status: 500 }
     );
   }

@@ -63,7 +63,7 @@ export default function CountdownTimer({ targetDate = TARGET_DATE }: { targetDat
   }
 
   return (
-    <div className="relative inline-flex items-center justify-center rounded-3xl sm:rounded-[3rem] bg-[#14202c]/95 backdrop-blur-2xl border-2 border-white/30 px-6 py-5 sm:px-12 sm:py-8 md:px-16 md:py-9 shadow-[0_30px_80px_-10px_rgba(0,0,0,0.85),_0_0_45px_rgba(255,159,67,0.22)] select-none">
+    <div className="relative inline-flex items-center justify-center rounded-3xl sm:rounded-[3rem] bg-[#1e2a38]/80 backdrop-blur-2xl border-2 border-white/30 px-6 py-5 sm:px-12 sm:py-8 md:px-16 md:py-9 shadow-[0_30px_80px_-10px_rgba(0,0,0,0.85),_0_0_45px_rgba(255,159,67,0.22)] select-none">
       {/* Top subtle amber glowing line */}
       <div className="absolute top-0 left-1/4 right-1/4 h-[2px] bg-gradient-to-r from-transparent via-[#ff9f43] to-transparent" />
 

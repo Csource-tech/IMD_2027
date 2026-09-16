@@ -99,7 +99,7 @@ export default function RegisterSection() {
                 Official Helpdesk
               </h3>
               <p className="mt-3 text-sm sm:text-base text-gray-600 leading-relaxed font-normal">
-                Connect directly with the India Mushroom Days 2027 secretariat for stall reservations, delegate passes, and partnerships.
+                Connect directly with the India Mushroom Days 2027 secretariat for booth reservations, delegate passes, and partnerships.
               </p>
             </div>
 
@@ -312,7 +312,7 @@ export default function RegisterSection() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-gray-200 text-sm text-gray-900 focus:bg-white focus:border-[#0c140f] focus:ring-0 outline-none transition-all placeholder:text-gray-400 resize-y"
-                    placeholder="Tell us about your organization, stall size preferences, or delegate inquiries..."
+                    placeholder="Tell us about your organization, booth size preferences, or delegate inquiries..."
                   />
                 </div>
 

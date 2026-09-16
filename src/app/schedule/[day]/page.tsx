@@ -352,7 +352,7 @@ export default async function DaySchedulePage({
                     className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold text-white bg-[#ff9f43] hover:bg-[#f28822] shadow transition-transform hover:scale-[1.02]"
                   >
                     <Store className="w-4 h-4" />
-                    <span>Book Your Stall</span>
+                    <span>Book Your Booth</span>
                   </Link>
                 </div>
               </div>

@@ -197,7 +197,7 @@ export default function AdminDashboardPage() {
       "City",
       "State",
       "Country",
-      "Stall Space",
+      "Booth Space",
       "Category / Topic",
       "Message / Details",
     ];
@@ -352,7 +352,7 @@ export default function AdminDashboardPage() {
           <div className="p-5 sm:p-6 rounded-2xl bg-white border border-gray-200 shadow-sm flex items-center justify-between">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-[#b85b06] block mb-1">
-                Stall Bookings
+                Booth Bookings
               </span>
               <span className="text-2xl sm:text-3xl font-black text-gray-950 font-sans">
                 {stats.stalls}
@@ -412,7 +412,7 @@ export default function AdminDashboardPage() {
                     : "text-gray-600 hover:text-gray-900"
                 }`}
               >
-                Stall Bookings ({stats.stalls})
+                Booth Bookings ({stats.stalls})
               </button>
               <button
                 onClick={() => setActiveTab("contact")}
@@ -530,7 +530,7 @@ export default function AdminDashboardPage() {
                           )}
                           {lead.type === "stall" && (
                             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-50 text-[#b85b06] border border-orange-200">
-                              <Store className="w-3 h-3" /> Stall Booking
+                              <Store className="w-3 h-3" /> Booth Booking
                             </span>
                           )}
                           {lead.type === "contact" && (
@@ -678,7 +678,7 @@ export default function AdminDashboardPage() {
                     {selectedLead.type === "visitor"
                       ? "Visitor Pass"
                       : selectedLead.type === "stall"
-                      ? "Stall Booking"
+                      ? "Booth Booking"
                       : "General Inquiry"}
                   </span>
                 </div>

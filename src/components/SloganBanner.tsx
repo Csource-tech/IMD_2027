@@ -5,7 +5,7 @@ import SectionDivider from "./SectionDivider";
 
 export default function SloganBanner() {
   return (
-    <section id="manifesto" className="relative bg-[#0c140f] text-white py-14 sm:py-18 overflow-hidden shadow-inner">
+    <section id="manifesto" className="relative bg-[#0c140f]/95 text-white py-14 sm:py-18 overflow-hidden shadow-inner">
       {/* Background mycelium texture accent */}
       <div className="absolute inset-0 mycelium-pattern opacity-30 pointer-events-none" />
 

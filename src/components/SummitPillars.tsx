@@ -15,10 +15,12 @@ interface PillarCard {
   date: string;
   place: string;
   bgImage: string;
+  cardBg: string;
+  glowColor: string;
+  logoClass?: string;
   href: string;
   badgeStyle: string;
   acronymStyle: string;
-  btnStyle: string;
   hoverShadow: string;
 }
 
@@ -32,14 +34,15 @@ const PILLARS: PillarCard[] = [
     tags: "Technology  •  Farming  •  Trade",
     date: "19–21 Feb 2027",
     place: "New Delhi, India",
-    bgImage: "/pillars/commercial-expo.jpg",
+    bgImage: "/reallogo.png",
+    cardBg: "bg-gradient-to-br from-[#061c36] via-[#09294e] to-[#041224]",
+    glowColor: "bg-[#004aab]/60",
+    logoClass: "rounded-full ring-2 ring-white/10",
     href: "/book-your-stall",
     badgeStyle: "border-amber-500/60 bg-black/55 text-amber-300",
-    acronymStyle: "text-[#ff9f43]",
-    btnStyle:
-      "bg-amber-950/80 border-amber-500/50 text-[#ff9f43] group-hover:bg-[#ff9f43] group-hover:text-white",
+    acronymStyle: "text-[#ffaa5b]",
     hoverShadow:
-      "hover:shadow-[0_20px_50px_rgba(255,159,67,0.28)] hover:border-amber-500/50",
+      "hover:shadow-[0_20px_50px_rgba(0,74,171,0.35)] hover:border-blue-500/50",
   },
   {
     id: "shroom-connect",
@@ -50,14 +53,15 @@ const PILLARS: PillarCard[] = [
     tags: "Buyers  •  Brands  •  Partnerships",
     date: "19–21 Feb 2027",
     place: "New Delhi, India",
-    bgImage: "/pillars/shroom-connect.jpg",
+    bgImage: "/shroomlogo.jpeg",
+    cardBg: "bg-gradient-to-br from-[#24140b] via-[#331c0e] to-[#1a0e07]",
+    glowColor: "bg-[#ff9f43]/40",
+    logoClass: "rounded-full ring-2 ring-white/15",
     href: "/#buyer-club",
-    badgeStyle: "border-purple-400/60 bg-black/55 text-purple-200",
-    acronymStyle: "text-purple-400",
-    btnStyle:
-      "bg-purple-950/80 border-purple-500/50 text-purple-400 group-hover:bg-purple-600 group-hover:text-white",
+    badgeStyle: "border-orange-400/60 bg-black/55 text-orange-200",
+    acronymStyle: "text-[#ffaa5b]",
     hoverShadow:
-      "hover:shadow-[0_20px_50px_rgba(139,92,246,0.25)] hover:border-purple-500/40",
+      "hover:shadow-[0_20px_50px_rgba(255,159,67,0.3)] hover:border-orange-500/40",
   },
 ];
 
@@ -127,7 +131,7 @@ export default function SummitPillars() {
                 strokeWidth="1.5"
                 fill="none"
               />
-              <circle cx="40" cy="20" r="4.5" fill="#ff9f43" />
+              <circle cx="40" cy="20" r="4.5" fill="#ffaa5b" />
             </svg>
           </div>
 
@@ -149,25 +153,33 @@ export default function SummitPillars() {
                 >
                   <Link
                     href={pillar.href}
-                    className={`group relative h-full min-h-[300px] sm:min-h-[330px] md:min-h-[340px] rounded-[24px] sm:rounded-[28px] overflow-hidden border border-black/10 p-6 sm:p-7 flex flex-col justify-between shadow-2xl transition-all duration-300 ${pillar.hoverShadow}`}
+                    className={`group relative h-full min-h-[320px] sm:min-h-[350px] md:min-h-[360px] rounded-[24px] sm:rounded-[28px] overflow-hidden border border-white/10 p-6 sm:p-7 flex flex-col justify-between shadow-2xl transition-all duration-300 ${pillar.cardBg} ${pillar.hoverShadow}`}
                   >
-                    {/* Card Background: Crisp Photography */}
-                    <div className="absolute inset-0 z-0">
-                      <Image
-                        src={pillar.bgImage}
-                        alt={pillar.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
+                    {/* Card Background: Respective Official Logo & Ambient Glow */}
+                    <div className="absolute inset-0 z-0 overflow-hidden flex items-center justify-center pointer-events-none">
+                      {/* Ambient Brand Glow */}
+                      <div
+                        className={`absolute w-56 h-56 rounded-full blur-3xl opacity-50 ${pillar.glowColor}`}
                       />
-                      {/* Cinematic Multi-Stop Contrast Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/30 group-hover:via-black/45 transition-colors duration-300" />
+
+                      {/* Centered Crisp Logo Emblem */}
+                      <div className="relative w-40 h-40 sm:w-48 sm:h-48 -mt-8 sm:-mt-10 group-hover:scale-110 transition-transform duration-500 ease-out flex items-center justify-center">
+                        <Image
+                          src={pillar.bgImage}
+                          alt={`${pillar.title} Official Logo`}
+                          fill
+                          sizes="(max-width: 768px) 200px, 240px"
+                          className={`object-contain drop-shadow-[0_12px_28px_rgba(0,0,0,0.7)] ${pillar.logoClass || ""}`}
+                        />
+                      </div>
+
+                      {/* Multi-Stop Contrast Overlay ensuring text contrast */}
                     </div>
 
                     {/* Top Header: Badge on left, Big Number on right */}
                     <div className="relative z-10 flex items-start justify-between">
                       <div
-                        className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full backdrop-blur-md border shadow-md ${pillar.badgeStyle}`}
+                        className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full backdrop-blur-md border shadow-md ${pillar.badgeStyle}`}
                       >
                         <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider">
                           {pillar.badge}
