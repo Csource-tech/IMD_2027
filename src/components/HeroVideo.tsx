@@ -59,9 +59,6 @@ export default function HeroVideo() {
             />
           </motion.div>
         ))}
-
-        {/* Light / Whiteness Tint Layover to brighten carousel images */}
-        <div className="absolute inset-0 bg-white/20 sm:bg-white/25 backdrop-brightness-[1.06] pointer-events-none z-10" />
       </div>
 
       {/* 2. Centered Persistent Hero Content */}

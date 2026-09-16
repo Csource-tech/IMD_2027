@@ -105,7 +105,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="relative z-40 w-full shadow-md">
+    <header className="relative z-40 w-full shadow-none">
       {/* 1. Upper Lighter Orange Utility Banner */}
       <div className="w-full bg-[#ff9f43] text-white text-xs font-semibold py-2 px-4 sm:px-8 lg:px-12 flex items-center justify-between shadow-sm">
         {/* Left: Location, Helpline & Email */}
@@ -140,21 +140,21 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* 2. Main Lighter Translucent Navbar */}
-      <div className="w-full bg-[#1e2a38]/80 backdrop-blur-xl border-b border-white/15 px-4 sm:px-8 lg:px-12 py-3 sm:py-3.5 flex items-center justify-between relative shadow-lg">
+      {/* 2. Main Highly Transparent White Navbar */}
+      <div className="w-full bg-white/35 backdrop-blur-md border-b border-black/[0.05] px-4 sm:px-8 lg:px-12 py-3 sm:py-3.5 flex items-center justify-between relative">
         {/* Left: Dual Logos (IMD 2027 & Shroom Connect) */}
         <div className="flex-shrink-0 z-20 flex items-center">
           <Link href="/#home" className="flex items-center gap-2 sm:gap-3 group focus:outline-none" aria-label="Indian Mushroom Days 2027 & Shroom Connect Homepage">
             <img
               src="/reallogo.png"
               alt="Indian Mushroom Days 2027 Logo"
-              className="h-11 sm:h-13 md:h-14 w-auto object-contain rounded-full shadow-lg drop-shadow hover:scale-105 transition-transform ring-1 ring-white/10"
+              className="h-11 sm:h-13 md:h-14 w-auto object-contain rounded-full shadow-md drop-shadow hover:scale-105 transition-transform ring-1 ring-black/10"
             />
-            <div className="h-6 sm:h-8 w-px bg-white/20" />
+            <div className="h-6 sm:h-8 w-px bg-gray-300" />
             <img
               src="/shroomlogo.jpeg"
               alt="Shroom Connect Logo"
-              className="h-11 sm:h-13 md:h-14 w-auto object-contain rounded-full shadow-lg drop-shadow hover:scale-105 transition-transform ring-1 ring-white/10"
+              className="h-11 sm:h-13 md:h-14 w-auto object-contain rounded-full shadow-md drop-shadow hover:scale-105 transition-transform ring-1 ring-black/10"
             />
           </Link>
         </div>
@@ -172,7 +172,7 @@ export default function Navbar() {
                   href={item.href}
                   className={`relative px-3 py-2 text-xs xl:text-sm uppercase tracking-wider font-bold transition-all duration-200 group whitespace-nowrap ${isActive
                     ? "text-[#ff9f43]"
-                    : "text-gray-200 hover:text-[#ff9f43]"
+                    : "text-gray-800 hover:text-[#ff9f43]"
                     }`}
                 >
                   <span>{item.name}</span>
@@ -195,12 +195,12 @@ export default function Navbar() {
                   href={item.href}
                   className={`relative px-3 py-2 text-xs xl:text-sm uppercase tracking-wider font-bold transition-all duration-200 flex items-center gap-1 cursor-pointer focus:outline-none group whitespace-nowrap ${isActive
                     ? "text-[#ff9f43]"
-                    : "text-gray-200 hover:text-[#ff9f43]"
+                    : "text-gray-800 hover:text-[#ff9f43]"
                     }`}
                 >
                   <span>{item.name}</span>
                   <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180 text-[#ff9f43]" : "text-gray-400 group-hover:text-[#ff9f43]"
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === item.name ? "rotate-180 text-[#ff9f43]" : "text-gray-600 group-hover:text-[#ff9f43]"
                       }`}
                   />
                   <span
@@ -219,17 +219,17 @@ export default function Navbar() {
                       transition={{ duration: 0.15, ease: "easeOut" }}
                       className="absolute top-full left-1/2 -translate-x-1/2 pt-2.5 w-72 z-50"
                     >
-                      <div className="rounded-2xl bg-[#1e2a38]/95 backdrop-blur-xl border border-white/20 shadow-2xl p-2 space-y-1">
+                      <div className="rounded-2xl bg-white/95 backdrop-blur-2xl border border-gray-200/80 shadow-2xl p-2 space-y-1">
                         {item.dropdown?.map((sub) => (
                           <Link
                             key={sub.name}
                             href={sub.href}
                             onClick={() => setActiveDropdown(null)}
-                            className="group block p-2.5 rounded-xl hover:bg-white/10 transition-colors text-left"
+                            className="group block p-2.5 rounded-xl hover:bg-orange-50/80 transition-colors text-left"
                           >
-                            <div className="text-xs font-bold text-white group-hover:text-[#ffaa5b] transition-colors flex items-center justify-between">
+                            <div className="text-xs font-bold text-gray-800 group-hover:text-[#ff9f43] transition-colors flex items-center justify-between">
                               <span>{sub.name}</span>
-                              <span className="text-[#ffaa5b] opacity-0 group-hover:opacity-100 transition-opacity text-xs">→</span>
+                              <span className="text-[#ff9f43] opacity-0 group-hover:opacity-100 transition-opacity text-xs">→</span>
                             </div>
                           </Link>
                         ))}
@@ -252,7 +252,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setRegisterDropdownOpen(!registerDropdownOpen)}
-              className="relative inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold text-white bg-[#ffaa5b] hover:bg-[#f29338] shadow-lg shadow-black/20 transition-all cursor-pointer focus:outline-none hover:scale-105 active:scale-95"
+              className="relative inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold text-white bg-[#ffaa5b] hover:bg-[#f29338] shadow-md transition-all cursor-pointer focus:outline-none hover:scale-105 active:scale-95"
             >
               <span>Register</span>
               <ChevronDown
@@ -271,36 +271,36 @@ export default function Navbar() {
                   transition={{ duration: 0.15, ease: "easeOut" }}
                   className="absolute top-full right-0 pt-2.5 w-64 z-50"
                 >
-                  <div className="rounded-2xl bg-[#1e2a38]/95 backdrop-blur-2xl border border-white/20 shadow-2xl p-2 space-y-1.5 text-left">
+                  <div className="rounded-2xl bg-white/95 backdrop-blur-2xl border border-gray-200/80 shadow-2xl p-2 space-y-1.5 text-left">
                     <Link
                       href="/visitor-register"
                       onClick={() => setRegisterDropdownOpen(false)}
-                      className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition-colors group"
+                      className="flex items-center gap-3 p-3 rounded-xl hover:bg-blue-50/70 transition-colors group"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-[#004aab]/20 text-[#004aab] flex items-center justify-center shrink-0 border border-[#004aab]/30">
+                      <div className="w-8 h-8 rounded-lg bg-[#004aab]/15 text-[#004aab] flex items-center justify-center shrink-0 border border-[#004aab]/25">
                         <Ticket className="w-4 h-4" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-white group-hover:text-[#004aab] transition-colors">
+                        <div className="text-xs font-bold text-gray-900 group-hover:text-[#004aab] transition-colors">
                           Visitor Registration
                         </div>
-                        <div className="text-[10px] text-gray-300">Entry pass &amp; expo badge</div>
+                        <div className="text-[10px] text-gray-500">Entry pass &amp; expo badge</div>
                       </div>
                     </Link>
 
                     <Link
                       href="/book-your-stall"
                       onClick={() => setRegisterDropdownOpen(false)}
-                      className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition-colors group"
+                      className="flex items-center gap-3 p-3 rounded-xl hover:bg-orange-50/70 transition-colors group"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-[#ff9f43]/20 text-[#ff9f43] flex items-center justify-center shrink-0 border border-[#ff9f43]/30">
+                      <div className="w-8 h-8 rounded-lg bg-[#ff9f43]/15 text-[#ff9f43] flex items-center justify-center shrink-0 border border-[#ff9f43]/25">
                         <Store className="w-4 h-4" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-white group-hover:text-[#ff9f43] transition-colors">
+                        <div className="text-xs font-bold text-gray-900 group-hover:text-[#ff9f43] transition-colors">
                           Book Your Booth
                         </div>
-                        <div className="text-[10px] text-gray-300">Exhibitor space reservation</div>
+                        <div className="text-[10px] text-gray-500">Exhibitor space reservation</div>
                       </div>
                     </Link>
                   </div>
@@ -315,7 +315,7 @@ export default function Navbar() {
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle navigation menu"
-              className="p-2 rounded-full text-white bg-black/40 hover:bg-black/60 transition-colors focus:outline-none"
+              className="p-2 rounded-full text-gray-800 bg-gray-100 hover:bg-gray-200 border border-gray-200 transition-colors focus:outline-none"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -331,26 +331,26 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden w-full bg-[#1e2a38]/98 backdrop-blur-2xl border-b border-white/15 shadow-2xl p-6 space-y-4 max-h-[85vh] overflow-y-auto"
+            className="lg:hidden w-full bg-white/98 backdrop-blur-2xl border-b border-gray-200 shadow-2xl p-6 space-y-4 max-h-[85vh] overflow-y-auto"
           >
             {/* Dual Logos & Event Info in Mobile Drawer */}
-            <div className="flex items-center justify-between pb-3 border-b border-white/10">
+            <div className="flex items-center justify-between pb-3 border-b border-gray-200">
               <div className="flex items-center gap-2.5">
                 <img
                   src="/reallogo.png"
                   alt="Indian Mushroom Days 2027"
-                  className="h-10 w-auto object-contain rounded-full ring-1 ring-white/15"
+                  className="h-10 w-auto object-contain rounded-full ring-1 ring-black/10"
                 />
-                <div className="h-6 w-px bg-white/20" />
+                <div className="h-6 w-px bg-gray-300" />
                 <img
                   src="/shroomlogo.jpeg"
                   alt="Shroom Connect"
-                  className="h-10 w-auto object-contain rounded-full ring-1 ring-white/15"
+                  className="h-10 w-auto object-contain rounded-full ring-1 ring-black/10"
                 />
               </div>
               <div className="text-right">
                 <div className="text-[11px] font-bold text-[#ff9f43]">Feb 19–21, 2027</div>
-                <div className="text-[10px] text-gray-300">New Delhi, India</div>
+                <div className="text-[10px] text-gray-500">New Delhi, India</div>
               </div>
             </div>
 
@@ -362,18 +362,18 @@ export default function Navbar() {
                     setActiveSection(item.name);
                     setMobileMenuOpen(false);
                   }}
-                  className="block py-1.5 text-base font-bold text-white hover:text-[#ff9f43]"
+                  className="block py-1.5 text-base font-bold text-gray-900 hover:text-[#ff9f43]"
                 >
                   {item.name}
                 </Link>
                 {item.dropdown && (
-                  <div className="pl-3 border-l border-white/10 space-y-1">
+                  <div className="pl-3 border-l border-gray-200 space-y-1">
                     {item.dropdown.map((sub) => (
                       <Link
                         key={sub.name}
                         href={sub.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="block py-1 text-xs text-gray-300 hover:text-white"
+                        className="block py-1 text-xs text-gray-600 hover:text-gray-950"
                       >
                         {sub.name}
                       </Link>
@@ -383,7 +383,7 @@ export default function Navbar() {
               </div>
             ))}
 
-            <div className="pt-4 border-t border-white/10 space-y-2.5">
+            <div className="pt-4 border-t border-gray-200 space-y-2.5">
               <Link
                 href="/visitor-register"
                 onClick={() => setMobileMenuOpen(false)}
@@ -403,13 +403,13 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Social Links */}
-            <div className="pt-2 flex items-center justify-center gap-4 text-white/80">
+            <div className="pt-2 flex items-center justify-center gap-4 text-gray-600">
               <a
                 href="https://www.instagram.com/indiamushroomdays?stkn=bWU4bjd5N3d5YzNs"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="p-2 rounded-full bg-white/5 border border-white/10 hover:border-[#ff9f43] hover:text-[#ff9f43] transition-colors"
+                className="p-2 rounded-full bg-gray-100 border border-gray-200 hover:border-[#ff9f43] hover:text-[#ff9f43] transition-colors"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" /></svg>
               </a>
@@ -418,7 +418,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="X (formerly Twitter)"
-                className="p-2 rounded-full bg-white/5 border border-white/10 hover:border-white hover:text-white transition-colors"
+                className="p-2 rounded-full bg-gray-100 border border-gray-200 hover:border-gray-900 hover:text-gray-900 transition-colors"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
               </a>
@@ -427,7 +427,7 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="YouTube"
-                className="p-2 rounded-full bg-white/5 border border-white/10 hover:border-red-500 hover:text-red-500 transition-colors"
+                className="p-2 rounded-full bg-gray-100 border border-gray-200 hover:border-red-500 hover:text-red-500 transition-colors"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg>
               </a>
