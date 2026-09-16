@@ -51,6 +51,7 @@ export const metadata: Metadata = {
 };
 
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
+import WelcomeJingle from "@/components/WelcomeJingle";
 
 export default function RootLayout({
   children,
@@ -61,12 +62,14 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <head>
         <link rel="icon" href="/reallogo.png" type="image/png" sizes="any" />
+        <link rel="preload" href="/jingle.mp3" as="audio" type="audio/mpeg" />
       </head>
       <body
         className={`${plusJakartaSans.variable} ${playfairDisplay.variable} font-sans antialiased text-[#151c17] bg-[#faf9f5] min-h-screen flex flex-col selection:bg-[#ff9f43] selection:text-white`}
       >
         {children}
         <WhatsAppFloatingButton />
+        <WelcomeJingle />
       </body>
     </html>
   );

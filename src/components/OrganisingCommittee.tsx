@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Heart } from "lucide-react";
 import SectionDivider from "./SectionDivider";
 
 interface CommitteeMember {
@@ -9,40 +8,81 @@ interface CommitteeMember {
   role: string;
   org: string;
   image: string;
+  imagePosition?: string;
   isFounder?: boolean;
 }
 
+
 const MEMBERS: CommitteeMember[] = [
   {
-    name: "Late Atul Saxena",
-    role: "Founder & Visionary",
-    org: "Mushroom Exchange & Indian Mushroom Days",
-    image: "/committee/atul.png",
-    isFounder: true,
+    name: "Dr. Sunil Kumar Srivastava",
+    role: "Organising Committee Member",
+    org: "Former Principal Scientist, ICAR-DMR",
+    image: "/organisers/sunilsrivastava.jfif",
+    imagePosition: "object-center",
+  },
+  {
+    name: "Dr. Loveleet Rana",
+    role: "Technical & Mycology Expert",
+    org: "Mushroom Specialist, HP",
+    image: "/organisers/loveleet.jpeg",
+    imagePosition: "object-top",
+  },
+  {
+    name: "Dr. MP Thakur",
+    role: "Senior Mycologist & Advisor",
+    org: "Former Dean & Director of Extension, IGKV",
+    image: "/organisers/mpthakur.jpeg",
+    imagePosition: "object-center",
+  },
+  {
+    name: "Dr. Manjit Singh",
+    role: "Senior Scientist & Advisor",
+    org: "Former Director, ICAR-DMR Solan",
+    image: "/organisers/manjitsingh.jpeg",
+    imagePosition: "object-center",
+  },
+  {
+    name: "Dr. RP Tewari",
+    role: "Veteran Mushroom Specialist",
+    org: "Former Director, ICAR-DMR Solan",
+    image: "/organisers/rptiwari.jpeg",
+    imagePosition: "object-center",
+  },
+  {
+    name: "Dr. Arvind Rabba",
+    role: "Commercial Cultivation Specialist",
+    org: "Spawn & Mushroom Industry Expert",
+    image: "/organisers/arvindrabba.jpeg",
+    imagePosition: "object-center",
   },
   {
     name: "Ms. Pinky Malhotra",
     role: "Core Leadership & Secretariat",
     org: "India Mushroom Days Board",
-    image: "/committee/pinky.png",
+    image: "/organisers/pinkymalhotra.jpeg",
+    imagePosition: "object-[center_20%]",
   },
   {
-    name: "Anurag Saxena",
+    name: "Mr. Anurag Saxena",
     role: "Chief Advisor",
     org: "Founder — Milkyway Spawn Technologies",
-    image: "/committee/anurag.png",
+    image: "/organisers/anuragsaxena.jpeg",
+    imagePosition: "object-center",
   },
   {
-    name: "Dr. Loveleet Rana",
-    role: "Technical & Mycology Expert",
-    org: "Veteran Mushroom Specialist, HP",
-    image: "/committee/loveleet.png",
+    name: "DK Mazumdar",
+    role: "Industry Consultant",
+    org: "Commercial Cultivation Technologist",
+    image: "/organisers/mazumdar.jfif",
+    imagePosition: "object-center",
   },
   {
-    name: "Er. Sanjeev Verma",
-    role: "Agri-Tech & Climate Systems",
-    org: "CEA Automation & Farm Engineering Lead",
-    image: "/committee/sanjeev.png",
+    name: "Dr. B K Paani",
+    role: "Mushroom Research Specialist",
+    org: "Eminent Mycologist & Professor, OUAT",
+    image: "/organisers/placeholder.svg",
+    imagePosition: "object-center",
   },
 ];
 
@@ -54,7 +94,8 @@ export default function OrganisingCommittee() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}
-        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">
+        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12">
+
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -64,53 +105,51 @@ export default function OrganisingCommittee() {
           >
             Organising Committee
           </motion.h2>
+
         </div>
 
-        {/* 5 Leadership Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-7 items-stretch">
+
+        {/* 10 Organizing Committee Members Grid (5 cols on lg, 3 on md, 2 on sm) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-6 items-stretch">
           {MEMBERS.map((member, idx) => (
             <motion.div
               key={member.name}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className={`p-6 rounded-3xl border transition-all duration-300 flex flex-col items-center text-center group cursor-default ${
-                member.isFounder
-                  ? "bg-gradient-to-b from-white via-orange-50/20 to-white border-orange-200/90 shadow-xl"
-                  : "bg-white border-gray-200 shadow-md hover:shadow-xl hover:border-gray-300"
-              }`}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.5, delay: idx * 0.06 }}
+              className="p-5 sm:p-6 rounded-3xl bg-white border border-gray-200 shadow-md hover:shadow-xl hover:border-[#ff9f43]/60 transition-all duration-300 flex flex-col items-center text-center group cursor-default"
             >
               {/* Portrait Photo Container */}
-              <div className="relative mb-5">
-                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-2 border-gray-200 group-hover:border-[#ff9f43] shadow-md transition-all duration-300 group-hover:scale-105 bg-slate-100 flex items-center justify-center">
+              <div className="relative mb-4">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-gray-200 group-hover:border-[#ff9f43] shadow-md transition-all duration-300 group-hover:scale-105 bg-slate-100 flex items-center justify-center">
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover object-center group-hover:brightness-105 transition-all"
+                    onError={(e) => {
+                      // Fallback to placeholder if image fails to load
+                      const target = e.currentTarget;
+                      if (!target.src.includes("placeholder.svg")) {
+                        target.src = "/organisers/placeholder.svg";
+                      }
+                    }}
+                    className={`w-full h-full object-cover ${member.imagePosition || "object-center"} group-hover:brightness-105 transition-all`}
                   />
                 </div>
-
-                {member.isFounder && (
-                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-[#ff9f43] text-white text-[10px] font-extrabold uppercase tracking-wider shadow-md whitespace-nowrap flex items-center gap-1">
-                    <Heart className="w-2.5 h-2.5 fill-white" />
-                    <span>FOUNDER</span>
-                  </span>
-                )}
               </div>
 
               {/* Name */}
-              <h3 className="text-base sm:text-lg font-bold text-gray-950 group-hover:text-[#ff9f43] transition-colors leading-snug">
+              <h3 className="text-sm sm:text-base font-bold text-gray-950 group-hover:text-[#ff9f43] transition-colors leading-snug">
                 {member.name}
               </h3>
 
               {/* Role */}
-              <p className="text-xs font-semibold text-[#004aab] mt-1.5 leading-snug">
+              <p className="text-[11px] sm:text-xs font-semibold text-[#004aab] mt-1.5 leading-snug">
                 {member.role}
               </p>
 
               {/* Organization */}
-              <p className="text-[11px] text-gray-500 mt-2 leading-relaxed">
+              <p className="text-[10px] sm:text-[11px] text-gray-500 mt-1.5 leading-relaxed">
                 {member.org}
               </p>
             </motion.div>
