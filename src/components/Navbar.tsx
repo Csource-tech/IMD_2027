@@ -124,7 +124,7 @@ export default function Navbar() {
           <span className="hidden sm:inline text-white/40">•</span>
           <div className="flex items-center gap-1.5 text-white/95">
             <Phone className="w-3.5 h-3.5 text-white shrink-0" />
-            <span>Hot Line : <a href="tel:+919810726996" className="hover:underline font-bold">+91 98107 26996</a></span>
+            <span>Hot Line: <a href="tel:+918860115588" className="hover:underline font-bold">+91 88601 15588</a> / <a href="tel:+919810726996" className="hover:underline font-bold">+91 98107 26996</a></span>
           </div>
           <span className="hidden md:inline text-white/40">•</span>
           <div className="hidden md:flex items-center gap-1.5 text-white/95">

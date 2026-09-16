@@ -137,14 +137,14 @@ export default function RegisterSection() {
                   </span>
                   <div className="space-y-1 text-sm sm:text-base font-bold text-gray-950">
                     <div>
-                      <a href="tel:+919810726996" className="hover:text-[#ff9f43] transition-colors">
-                        +91 98107 26996
+                      <a href="tel:+918860115588" className="hover:text-[#ff9f43] transition-colors">
+                        +91 88601 15588
                       </a>{" "}
                       <span className="text-[10px] font-normal text-gray-400">/ Helpline 1</span>
                     </div>
                     <div>
-                      <a href="tel:+919811775443" className="hover:text-[#ff9f43] transition-colors">
-                        +91 98117 75443
+                      <a href="tel:+919810726996" className="hover:text-[#ff9f43] transition-colors">
+                        +91 98107 26996
                       </a>{" "}
                       <span className="text-[10px] font-normal text-gray-400">/ Helpline 2</span>
                     </div>

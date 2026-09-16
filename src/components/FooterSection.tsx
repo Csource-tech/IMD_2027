@@ -140,14 +140,14 @@ export default function FooterSection() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-[#ff9f43] shrink-0" />
-                <a href="tel:+919810726996" className="hover:text-white transition-colors">
-                  +91 98107 26996 / +91 98117 75443
+                <a href="tel:+918860115588" className="hover:text-white transition-colors">
+                  +91 88601 15588
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-[#004aab] shrink-0" />
-                <a href="tel:+918860115588" className="hover:text-white transition-colors">
-                  +91 88601 15588 (Exhibition Helpline)
+                <a href="tel:+919810726996" className="hover:text-white transition-colors">
+                  +91 98107 26996 (Exhibition Helpline)
                 </a>
               </li>
               <li className="flex items-center gap-3">
