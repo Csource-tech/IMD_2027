@@ -56,8 +56,8 @@ const MEMBERS: CommitteeMember[] = [
     imagePosition: "object-center",
   },
   {
-    name: "Dr. B K Paani",
-    image: "/organisers/placeholder.svg",
+    name: "Dr. B K Pani",
+    image: "/organisers/bkpani.jpeg",
     imagePosition: "object-center",
   },
 ];
