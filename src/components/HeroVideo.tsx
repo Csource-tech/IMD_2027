@@ -8,6 +8,7 @@ import CountdownTimer from "@/components/CountdownTimer";
 
 const CAROUSEL_IMAGES = [
   "/carousel/3U3A5155.JPG",
+  "/carousel/latest.jpeg",
   "/carousel/3U3A5379.JPG",
   "/carousel/3U3A6154.JPG",
   "/carousel/3U3A5175.JPG",

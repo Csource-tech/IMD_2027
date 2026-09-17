@@ -11,6 +11,36 @@ interface CommitteeMember {
 
 const MEMBERS: CommitteeMember[] = [
   {
+    name: "Dr. RP Tewari",
+    image: "/organisers/rptiwari.jpeg",
+    imagePosition: "object-center",
+  },
+  {
+    name: "Dr. Manjit Singh",
+    image: "/organisers/manjitsingh.jpeg",
+    imagePosition: "object-center",
+  },
+  {
+    name: "Dr. B K Pani",
+    image: "/organisers/bkpani.jpeg",
+    imagePosition: "object-center",
+  },
+  {
+    name: "Dr. MP Thakur",
+    image: "/organisers/mpthakur.jpeg",
+    imagePosition: "object-center",
+  },
+  {
+    name: "DK Mazumdar",
+    image: "/organisers/mazumdar.jfif",
+    imagePosition: "object-center",
+  },
+  {
+    name: "Dr. Arvind Rabba",
+    image: "/organisers/arvindrabba.jpeg",
+    imagePosition: "object-center",
+  },
+  {
     name: "Dr. Sunil Kumar Srivastava",
     image: "/organisers/sunilsrivastava.jfif",
     imagePosition: "object-center",
@@ -21,44 +51,14 @@ const MEMBERS: CommitteeMember[] = [
     imagePosition: "object-top",
   },
   {
-    name: "Dr. MP Thakur",
-    image: "/organisers/mpthakur.jpeg",
-    imagePosition: "object-center",
-  },
-  {
-    name: "Dr. Manjit Singh",
-    image: "/organisers/manjitsingh.jpeg",
-    imagePosition: "object-center",
-  },
-  {
-    name: "Dr. RP Tewari",
-    image: "/organisers/rptiwari.jpeg",
-    imagePosition: "object-center",
-  },
-  {
-    name: "Dr. Arvind Rabba",
-    image: "/organisers/arvindrabba.jpeg",
+    name: "Mr. Anurag Saxena",
+    image: "/organisers/anuragsaxena.jpeg",
     imagePosition: "object-center",
   },
   {
     name: "Ms. Pinky Malhotra",
     image: "/organisers/pinkymalhotra.jpeg",
     imagePosition: "object-[center_20%]",
-  },
-  {
-    name: "Mr. Anurag Saxena",
-    image: "/organisers/anuragsaxena.jpeg",
-    imagePosition: "object-center",
-  },
-  {
-    name: "DK Mazumdar",
-    image: "/organisers/mazumdar.jfif",
-    imagePosition: "object-center",
-  },
-  {
-    name: "Dr. B K Pani",
-    image: "/organisers/bkpani.jpeg",
-    imagePosition: "object-center",
   },
 ];
 
