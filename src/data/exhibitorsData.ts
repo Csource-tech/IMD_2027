@@ -73,4 +73,16 @@ export const EXHIBITORS: Exhibitor[] = [
     name: "MARG",
     logo: "/marglogo.png",
   },
+  {
+    name: "mushAI",
+    logo: "/mushai.jpeg",
+  },
+  {
+    name: "Mushtoons",
+    logo: "/mushtoons.jpeg",
+  },
+  {
+    name: "Mushroom Chronicle",
+    logo: "/msuhroomlogoo.jpeg",
+  },
 ];
