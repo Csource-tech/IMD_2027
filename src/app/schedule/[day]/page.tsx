@@ -41,7 +41,7 @@ const DAYS_SCHEDULE: Record<string, DayData> = {
     date: "February 19, 2027",
     subtitle: "Opening of India's largest mushroom gathering and global market outlook.",
     overview:
-      "Day 1 kicks off Indian Mushroom Days 2027 with high-level inaugural addresses by government officials, followed by in-depth technical masterclasses on high-yield spawn production, strain breeding, and substrate innovations. The day also marks the official launch of the Shroom Connect B2B matchmaking lounge.",
+      "Day 1 kicks off India Mushroom Days 2027 with high-level inaugural addresses by government officials, followed by in-depth technical masterclasses on high-yield spawn production, strain breeding, and substrate innovations. The day also marks the official launch of the Shroom Connect B2B matchmaking lounge.",
     sessions: [
       {
         time: "09:00 AM – 10:30 AM",

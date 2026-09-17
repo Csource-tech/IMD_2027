@@ -45,7 +45,7 @@ export default function FloatingChat() {
             ) : (
               <div className="space-y-3">
                 <p className="bg-gray-50 p-3 rounded-xl text-gray-700">
-                  👋 Hello! Welcome to Indian Mushroom Days 2027 (IMD 2027). How can we assist with your visit or exhibition booking?
+                  👋 Hello! Welcome to India Mushroom Days 2027 (IMD 2027). How can we assist with your visit or exhibition booking?
                 </p>
                 <form onSubmit={handleSend} className="flex gap-2">
                   <input

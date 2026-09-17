@@ -83,7 +83,7 @@ export default function AdminLoginPage() {
           </div>
           <div>
             <span className="font-extrabold text-sm sm:text-base tracking-tight block text-white">
-              Indian Mushroom Days 2027
+              India Mushroom Days 2027
             </span>
             <span className="text-[10px] text-gray-400 uppercase tracking-widest block font-mono">
               Official Admin Portal
@@ -213,7 +213,7 @@ export default function AdminLoginPage() {
 
       {/* Footer */}
       <footer className="p-6 text-center text-xs text-gray-400 relative z-10 border-t border-white/5">
-        &copy; 2027 Indian Mushroom Days Secretariat. Secure Administrative System.
+        &copy; 2027 India Mushroom Days Secretariat. Secure Administrative System.
       </footer>
     </div>
   );

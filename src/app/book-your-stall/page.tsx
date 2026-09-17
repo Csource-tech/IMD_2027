@@ -242,7 +242,7 @@ export default function BookYourStallPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-4 text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal"
           >
-            Reserve your high-visibility commercial exhibition booth at Indian Mushroom Days 2027 in New Delhi, India. Direct engagement with 5,000+ national delegates, progressive farm operators, and global buyers.
+            Reserve your high-visibility commercial exhibition booth at India Mushroom Days 2027 in New Delhi, India. Direct engagement with 5,000+ national delegates, progressive farm operators, and global buyers.
           </motion.p>
 
           {/* Quick Perks Pill Strip */}
@@ -810,7 +810,7 @@ export default function BookYourStallPage() {
 
                   <div className="mt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-2">
                     <span className="inline-flex items-center gap-1.5">
-                      <ShieldCheck className="w-4 h-4 text-[#004aab]" /> Official Indian Mushroom Days 2027 Secretariat
+                      <ShieldCheck className="w-4 h-4 text-[#004aab]" /> Official India Mushroom Days 2027 Secretariat
                     </span>
                     <span>Floor plan &amp; commercial schedule dispatched within 4–6 business hours</span>
                   </div>

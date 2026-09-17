@@ -36,7 +36,7 @@ const NAV_ITEMS: NavItem[] = [
     dropdown: [
       { name: "Button Mushroom Backbone", href: "/#industry-chain" },
       { name: "6 Specialty Sectors", href: "/#specialty-sectors" },
-      { name: "Why Indian Mushroom Days", href: "/#why-join" },
+      { name: "Why India Mushroom Days", href: "/#why-join" },
       { name: "Mushroom Exchange & Buyer Club", href: "/#buyer-club" },
 
     ],
@@ -144,10 +144,10 @@ export default function Navbar() {
       <div className="w-full bg-white/35 backdrop-blur-md border-b border-black/[0.05] px-4 sm:px-8 lg:px-12 py-3 sm:py-3.5 flex items-center justify-between relative">
         {/* Left: Dual Logos (IMD 2027 & Shroom Connect) */}
         <div className="flex-shrink-0 z-20 flex items-center">
-          <Link href="/#home" className="flex items-center gap-2 sm:gap-3 group focus:outline-none" aria-label="Indian Mushroom Days 2027 & Shroom Connect Homepage">
+          <Link href="/#home" className="flex items-center gap-2 sm:gap-3 group focus:outline-none" aria-label="India Mushroom Days 2027 & Shroom Connect Homepage">
             <img
               src="/reallogo.png"
-              alt="Indian Mushroom Days 2027 Logo"
+              alt="India Mushroom Days 2027 Logo"
               className="h-11 sm:h-13 md:h-14 w-auto object-contain rounded-full shadow-md drop-shadow hover:scale-105 transition-transform ring-1 ring-black/10"
             />
             <div className="h-6 sm:h-8 w-px bg-gray-300" />

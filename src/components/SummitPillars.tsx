@@ -30,7 +30,7 @@ const PILLARS: PillarCard[] = [
     number: "01",
     acronym: "IMD 2027",
     badge: "COMMERCIAL EXPO",
-    title: "Indian Mushroom Days",
+    title: "India Mushroom Days",
     tags: "Technology  •  Farming  •  Trade",
     date: "19–21 Feb 2027",
     place: "New Delhi, India",

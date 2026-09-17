@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function WhatsAppFloatingButton() {
   const phoneNumber = "918860115588";
   const message = encodeURIComponent(
-    "Hello Indian Mushroom Days 2027 Secretariat, I would like to inquire about the event / booth booking."
+    "Hello India Mushroom Days 2027 Secretariat, I would like to inquire about the event / booth booking."
   );
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 

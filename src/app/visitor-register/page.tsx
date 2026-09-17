@@ -257,7 +257,7 @@ export default function VisitorRegisterPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-4 text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal"
           >
-            Register for Indian Mushroom Days 2027 in New Delhi, India. Direct access to 100+ global commercial exhibitors, scientific conferences, and B2B buyer sessions.
+            Register for India Mushroom Days 2027 in New Delhi, India. Direct access to 100+ global commercial exhibitors, scientific conferences, and B2B buyer sessions.
           </motion.p>
 
           {/* Quick Perks Pill Strip */}
@@ -730,7 +730,7 @@ export default function VisitorRegisterPage() {
 
                   <div className="mt-4 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-2">
                     <span className="inline-flex items-center gap-1.5">
-                      <ShieldCheck className="w-4 h-4 text-[#004aab]" /> Official Indian Mushroom Days 2027 Secretariat
+                      <ShieldCheck className="w-4 h-4 text-[#004aab]" /> Official India Mushroom Days 2027 Secretariat
                     </span>
                     <span>Instant confirmation email with QR entry badge</span>
                   </div>

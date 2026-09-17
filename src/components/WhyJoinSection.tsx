@@ -183,7 +183,7 @@ export default function WhyJoinSection() {
                   </p>
 
                   <div className="pt-2 flex items-center justify-between border-t border-gray-100 text-xs font-semibold text-gray-500">
-                    <span>Indian Mushroom Days 2027 • New Delhi, India</span>
+                    <span>India Mushroom Days 2027 • New Delhi, India</span>
                     <span className="text-[#ff9f43] font-bold">Priority Attendance</span>
                   </div>
                 </div>

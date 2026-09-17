@@ -25,7 +25,7 @@ export default function PrivacyModal({ isOpen, onClose }: PrivacyModalProps) {
 
         <div className="p-6 overflow-y-auto space-y-4 text-sm text-gray-600 leading-relaxed">
           <p>
-            <strong>Indian Mushroom Days (IMD 2027)</strong> is committed to protecting your privacy and ensuring you have a positive experience on our website and in using our exhibition services.
+            <strong>India Mushroom Days (IMD 2027)</strong> is committed to protecting your privacy and ensuring you have a positive experience on our website and in using our exhibition services.
           </p>
           <h4 className="font-bold text-gray-800 text-base">1. Collection of Personal Information</h4>
           <p>

@@ -61,7 +61,7 @@ export default function ScheduleSection() {
             transition={{ duration: 0.5 }}
             className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
           >
-            2nd Edition of Indian Mushroom Days 2027
+            2nd Edition of India Mushroom Days 2027
           </motion.h2>
         </div>
 

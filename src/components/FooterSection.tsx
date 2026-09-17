@@ -23,10 +23,10 @@ export default function FooterSection() {
             {/* Dual Brand Logos & Titles */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-3.5 sm:gap-4">
               <div className="flex items-center gap-3">
-                <Link href="/#home" className="group focus:outline-none" aria-label="Indian Mushroom Days 2027 Homepage">
+                <Link href="/#home" className="group focus:outline-none" aria-label="India Mushroom Days 2027 Homepage">
                   <img
                     src="/reallogo.png"
-                    alt="Indian Mushroom Days 2027 Official Logo"
+                    alt="India Mushroom Days 2027 Official Logo"
                     className="h-14 sm:h-16 w-auto object-contain rounded-full shadow-lg group-hover:scale-105 transition-transform ring-2 ring-white/10"
                   />
                 </Link>
@@ -41,7 +41,7 @@ export default function FooterSection() {
               </div>
               <div>
                 <h4 className="text-white text-lg sm:text-xl font-black uppercase tracking-tight font-sans">
-                  Indian Mushroom Days <span className="text-[#ff9f43]">2027</span>
+                  India Mushroom Days <span className="text-[#ff9f43]">2027</span>
                 </h4>
                 <p className="text-lg font-bold text-[#004aab] tracking-wide">
                   &amp; Shroom Connect Conclave
@@ -136,7 +136,7 @@ export default function FooterSection() {
               <li>
                 <Link href="/#why-join" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <ChevronRight className="w-3.5 h-3.5 text-[#ff9f43]" />
-                  <span>Why Indian Mushroom Days</span>
+                  <span>Why India Mushroom Days</span>
                 </Link>
               </li>
               <li>
@@ -193,7 +193,7 @@ export default function FooterSection() {
         {/* Bottom Copyright Strip */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>
-            &copy; 2027 Indian Mushroom Days (IMD 2027) &amp; Shroom Connect Conclave. All rights reserved.
+            &copy; 2027 India Mushroom Days (IMD 2027) &amp; Shroom Connect Conclave. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-slate-400">
             <span>New Delhi, India</span>

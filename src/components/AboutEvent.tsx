@@ -40,7 +40,7 @@ export default function AboutEvent() {
             <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3.2] max-h-[460px] sm:max-h-[520px] rounded-3xl overflow-hidden shadow-2xl border border-gray-200/80 bg-gray-100 group">
               <img
                 src="/imdgallery/imd-2024-002-inauguration.png"
-                alt="Inauguration Ceremony and Lamp Lighting at Indian Mushroom Days"
+                alt="Inauguration Ceremony and Lamp Lighting at India Mushroom Days"
                 className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-black/5 pointer-events-none" />
@@ -50,7 +50,7 @@ export default function AboutEvent() {
             <div className="absolute -bottom-2 left-0 sm:-bottom-4 sm:left-1 w-48 sm:w-64 lg:w-72 aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-4 sm:border-[6px] border-white bg-white group/sub z-20">
               <img
                 src="/gallery/web/3U3A5077.webp"
-                alt="Global Industry Delegates and B2B Conclave at Indian Mushroom Days"
+                alt="Global Industry Delegates and B2B Conclave at India Mushroom Days"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover/sub:scale-105"
               />
               <div className="absolute inset-0 rounded-2xl sm:rounded-3xl ring-1 ring-inset ring-black/5 pointer-events-none" />
@@ -65,7 +65,7 @@ export default function AboutEvent() {
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-6 space-y-4"
           >
-            {/* Event 1: Indian Mushroom Days 2027 (IMD) */}
+            {/* Event 1: India Mushroom Days 2027 (IMD) */}
             <div className="p-4 sm:p-5 rounded-2xl bg-[#faf9f5] border border-gray-200 shadow-xs hover:border-[#004aab]/40 transition-colors">
               <div className="flex items-center justify-between gap-2 mb-1.5">
                 <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-blue-50 text-[#004aab] border border-blue-200/60">
@@ -77,7 +77,7 @@ export default function AboutEvent() {
               </div>
 
               <h3 className="text-lg sm:text-xl font-extrabold text-gray-950 font-sans leading-snug">
-                Indian Mushroom Days 2027 (IMD)
+                India Mushroom Days 2027 (IMD)
               </h3>
 
               <p className="mt-1.5 text-xs sm:text-sm text-gray-600 leading-relaxed font-normal">

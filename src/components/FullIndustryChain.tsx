@@ -180,8 +180,8 @@ export default function FullIndustryChain() {
                       2
                     </span>
                     <div className="min-w-0">
-                      <h4 className="text-xs font-bold text-gray-900 truncate">CEA Climate</h4>
-                      <p className="text-[10px] text-gray-500 truncate">16°C–18°C Chilling</p>
+                      <h4 className="text-xs font-bold text-gray-900 truncate">Controlled Cropping Climate</h4>
+                      <p className="text-[10px] text-gray-500 truncate">16°C–18°C Fruiting Range</p>
                     </div>
                   </div>
 

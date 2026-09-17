@@ -17,7 +17,7 @@ interface Testimonial {
 const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "More than 5,000 delegates convened across three intensive days. Indian Mushroom Days has established an unprecedented national benchmark, connecting government ministries, scientific research academia, and progressive commercial growers with mushrooms at the center.",
+      "More than 5,000 delegates convened across three intensive days. India Mushroom Days has established an unprecedented national benchmark, connecting government ministries, scientific research academia, and progressive commercial growers with mushrooms at the center.",
     meta: "India's Most Trusted Edible Mushroom Exhibition",
     author: "Dr. R. K. Sharma",
     role: "President",
@@ -26,7 +26,7 @@ const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      "Indian Mushroom Days delivers the complete end-to-end industrial value chain—from climate-controlled growing rooms and substrate bagging lines to high-margin medicinal mushroom extracts. The scale and international networking exceeded all our expectations.",
+      "India Mushroom Days delivers the complete end-to-end industrial value chain—from climate-controlled growing rooms and substrate bagging lines to high-margin medicinal mushroom extracts. The scale and international networking exceeded all our expectations.",
     meta: "One-Stop Solutions for Edible Mushroom Industry",
     author: "Sunil Patel",
     role: "Managing Director",

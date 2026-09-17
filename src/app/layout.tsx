@@ -17,11 +17,11 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Indian Mushroom Days 2027 | IMD 2027 & Shroom Connect | New Delhi, India",
+  title: "India Mushroom Days 2027 | IMD 2027 & Shroom Connect | New Delhi, India",
   description:
-    "Indian Mushroom Days 2027 (IMD 2027) & Shroom Connect B2B Conclave. Join the premier international edible mushroom expo on 19-20-21 February 2027 in New Delhi, India.",
+    "India Mushroom Days 2027 (IMD 2027) & Shroom Connect B2B Conclave. Join the premier international edible mushroom expo on 19-20-21 February 2027 in New Delhi, India.",
   keywords: [
-    "Indian Mushroom Days 2027",
+    "India Mushroom Days 2027",
     "IMD 2027",
     "Shroom Connect 2027",
     "India Mushroom Days",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "Agriculture Summit India",
     "New Delhi, India",
   ],
-  authors: [{ name: "Indian Mushroom Days" }],
+  authors: [{ name: "India Mushroom Days" }],
   icons: {
     icon: [
       { url: "/reallogo.png" },
@@ -41,11 +41,11 @@ export const metadata: Metadata = {
     apple: "/reallogo.png",
   },
   openGraph: {
-    title: "Indian Mushroom Days 2027 | IMD 2027 & Shroom Connect | New Delhi, India",
+    title: "India Mushroom Days 2027 | IMD 2027 & Shroom Connect | New Delhi, India",
     description:
-      "Indian Mushroom Days 2027 (IMD 2027) & Shroom Connect B2B Conclave. Join the premier international edible mushroom expo on 19-20-21 February 2027 in New Delhi, India.",
+      "India Mushroom Days 2027 (IMD 2027) & Shroom Connect B2B Conclave. Join the premier international edible mushroom expo on 19-20-21 February 2027 in New Delhi, India.",
     url: "https://indianmushroomdays.com",
-    siteName: "Indian Mushroom Days 2027",
+    siteName: "India Mushroom Days 2027",
     type: "website",
   },
 };

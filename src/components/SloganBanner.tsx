@@ -52,7 +52,7 @@ export default function SloganBanner() {
         <div className="animate-marquee-reverse flex items-center space-x-8 text-xs sm:text-sm font-extrabold uppercase tracking-[0.3em] text-gray-300 font-sans">
           {[...Array(6)].map((_, i) => (
             <span key={i} className="flex items-center gap-8 shrink-0">
-              <span className="text-[#ff9f43]">INDIAN MUSHROOM DAYS</span>
+              <span className="text-[#ff9f43]">INDIA MUSHROOM DAYS</span>
               <span>•</span>
               <span>NEW DELHI, INDIA</span>
               <span>•</span>

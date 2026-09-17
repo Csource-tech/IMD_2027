@@ -53,7 +53,7 @@ export default function HeroVideo() {
           >
             <Image
               src={src}
-              alt={`Indian Mushroom Days Showcase ${index + 1}`}
+              alt={`India Mushroom Days Showcase ${index + 1}`}
               fill
               priority={index === 0}
               sizes="100vw"
