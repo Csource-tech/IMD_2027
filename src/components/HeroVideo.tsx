@@ -7,6 +7,15 @@ import { motion } from "framer-motion";
 import CountdownTimer from "@/components/CountdownTimer";
 
 const CAROUSEL_IMAGES = [
+  "/carousel/3U3A5155.JPG",
+  "/carousel/3U3A5379.JPG",
+  "/carousel/3U3A6154.JPG",
+  "/carousel/3U3A5175.JPG",
+  "/carousel/3U3A5098.JPG",
+  "/carousel/3U3A5002.JPG",
+  "/carousel/3U3A5077.JPG",
+  "/carousel/3U3A5264.JPG",
+  "/carousel/3U3A5523.JPG",
   "/carousel/image1.jpeg",
   "/carousel/image2.jpeg",
   "/carousel/image3.jpeg",

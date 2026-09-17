@@ -1,50 +1,79 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import {
-  Play,
-  Pause,
-  Volume2,
-  VolumeX,
-  Sparkles,
-} from "lucide-react";
 import SectionDivider from "./SectionDivider";
 
 export default function ScheduleSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    video.muted = isMuted;
-    video.play().catch(() => {
-      // Browser autoplay policy requires muted
-      video.muted = true;
-      setIsMuted(true);
+    video.volume = 0.8;
+
+    const interactionEvents = [
+      "pointerdown",
+      "touchstart",
+      "mousedown",
+      "keydown",
+      "click",
+      "wheel",
+      "scroll",
+    ] as const;
+
+    const handleUnlockSound = () => {
+      if (!video) return;
+      video.muted = false;
+      video.volume = 0.8;
       video.play().catch(() => {});
-    });
-  }, [isMuted]);
+      interactionEvents.forEach((evt) => {
+        window.removeEventListener(evt, handleUnlockSound, true);
+        document.removeEventListener(evt, handleUnlockSound, true);
+      });
+    };
 
-  const togglePlay = () => {
-    if (!videoRef.current) return;
-    if (isPlaying) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
-    }
-  };
+    // 1. Try unmuted playback immediately
+    video.muted = false;
+    video
+      .play()
+      .then(() => {
+        // Successfully played unmuted
+      })
+      .catch(() => {
+        // Autoplay policy prevented unmuted audio on load.
+        // Start visually muted, and immediately unmute on first gesture.
+        video.muted = true;
+        video.play().catch(() => {});
 
-  const toggleMute = () => {
-    if (!videoRef.current) return;
-    const nextMuted = !videoRef.current.muted;
-    videoRef.current.muted = nextMuted;
-    setIsMuted(nextMuted);
-  };
+        interactionEvents.forEach((evt) => {
+          window.addEventListener(evt, handleUnlockSound, {
+            capture: true,
+            passive: true,
+          });
+          document.addEventListener(evt, handleUnlockSound, {
+            capture: true,
+            passive: true,
+          });
+        });
+      });
+
+    const handleEnded = () => {
+      if (!video) return;
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    };
+    video.addEventListener("ended", handleEnded);
+
+    return () => {
+      interactionEvents.forEach((evt) => {
+        window.removeEventListener(evt, handleUnlockSound, true);
+        document.removeEventListener(evt, handleUnlockSound, true);
+      });
+      video.removeEventListener("ended", handleEnded);
+    };
+  }, []);
 
   return (
     <section
@@ -79,7 +108,6 @@ export default function ScheduleSection() {
               ref={videoRef}
               autoPlay
               loop
-              muted={isMuted}
               playsInline
               preload="auto"
               className="w-full h-full object-cover"
@@ -101,28 +129,8 @@ export default function ScheduleSection() {
               </span>
             </div>
 
-            {/* Video Player Floating Controls */}
-            <div className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6 flex items-center gap-2.5 z-20">
-              <button
-                type="button"
-                onClick={togglePlay}
-                aria-label={isPlaying ? "Pause Video" : "Play Video"}
-                className="w-10 h-10 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md text-white border border-white/30 flex items-center justify-center transition-all duration-200 hover:scale-105 cursor-pointer"
-              >
-                {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 translate-x-0.5" />}
-              </button>
-              <button
-                type="button"
-                onClick={toggleMute}
-                aria-label={isMuted ? "Unmute Audio" : "Mute Audio"}
-                className="w-10 h-10 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md text-white border border-white/30 flex items-center justify-center transition-all duration-200 hover:scale-105 cursor-pointer"
-              >
-                {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-              </button>
-            </div>
-
             {/* In-Video Hero Callout at Bottom */}
-            <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 right-16 sm:right-36 z-20">
+            <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 right-4 sm:right-8 z-20">
               <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#ff9f43] mb-1.5">
                 The Epicenter of Commercial Mushroom Farming
               </p>
