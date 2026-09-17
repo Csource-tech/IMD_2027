@@ -60,6 +60,11 @@ const MEMBERS: CommitteeMember[] = [
     image: "/organisers/pinkymalhotra.jpeg",
     imagePosition: "object-[center_20%]",
   },
+  {
+    name: "Harshita Bisht",
+    image: "/organisers/harshitabisht.jpeg",
+    imagePosition: "object-[center_20%]",
+  },
 ];
 
 export default function OrganisingCommittee() {
