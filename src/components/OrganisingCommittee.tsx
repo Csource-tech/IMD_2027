@@ -65,6 +65,11 @@ const MEMBERS: CommitteeMember[] = [
     image: "/organisers/harshitabisht.jpeg",
     imagePosition: "object-[center_20%]",
   },
+  {
+    name: "Bhumika Singh",
+    image: "/organisers/bhumikasingh.jpeg",
+    imagePosition: "object-[center_55%]",
+  },
 ];
 
 export default function OrganisingCommittee() {
@@ -90,8 +95,8 @@ export default function OrganisingCommittee() {
         </div>
 
 
-        {/* 10 Organizing Committee Members Grid (5 cols on lg, 3 on md, 2 on sm) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-6 items-stretch">
+        {/* Organizing Committee Members Grid (4 cols on lg, 3 on md, 2 on sm) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 items-stretch">
           {MEMBERS.map((member, idx) => (
             <motion.div
               key={member.name}
