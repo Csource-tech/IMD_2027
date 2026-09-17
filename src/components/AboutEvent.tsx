@@ -46,11 +46,11 @@ export default function AboutEvent() {
               <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-black/5 pointer-events-none" />
             </div>
 
-            {/* Secondary Overlapping Image (Conference Delegates & Audience) */}
+            {/* Secondary Overlapping Image (B2B Trade Conclave & Global Delegates) */}
             <div className="absolute -bottom-2 left-0 sm:-bottom-4 sm:left-1 w-48 sm:w-64 lg:w-72 aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-4 sm:border-[6px] border-white bg-white group/sub z-20">
               <img
-                src="/imdgallery/imd-2024-001.jpg"
-                alt="Audience and Industry Delegates at Indian Mushroom Days"
+                src="/gallery/web/3U3A5077.webp"
+                alt="Global Industry Delegates and B2B Conclave at Indian Mushroom Days"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover/sub:scale-105"
               />
               <div className="absolute inset-0 rounded-2xl sm:rounded-3xl ring-1 ring-inset ring-black/5 pointer-events-none" />

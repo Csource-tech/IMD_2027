@@ -66,10 +66,6 @@ export const EXHIBITORS: Exhibitor[] = [
     logo: "/satrise.webp",
   },
   {
-    name: "Soma",
-    logo: "/soma.webp",
-  },
-  {
     name: "Mushroom Business",
     logo: "/mushroombusiness.jpeg",
   },

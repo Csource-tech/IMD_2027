@@ -11,7 +11,7 @@ interface CommitteeMember {
 
 const MEMBERS: CommitteeMember[] = [
   {
-    name: "Dr. RP Tewari",
+    name: "Dr. R.P. Tewari",
     image: "/organisers/rptiwari.jpeg",
     imagePosition: "object-center",
   },
@@ -21,22 +21,22 @@ const MEMBERS: CommitteeMember[] = [
     imagePosition: "object-center",
   },
   {
-    name: "Dr. B K Pani",
+    name: "Dr. B.K. Pani",
     image: "/organisers/bkpani.jpeg",
     imagePosition: "object-center",
   },
   {
-    name: "Dr. MP Thakur",
+    name: "Dr. M.P. Thakur",
     image: "/organisers/mpthakur.jpeg",
     imagePosition: "object-center",
   },
   {
-    name: "DK Mazumdar",
+    name: "Dr. D.K. Mazumdar",
     image: "/organisers/mazumdar.jfif",
     imagePosition: "object-center",
   },
   {
-    name: "Dr. Arvind Rabba",
+    name: "Dr. Arvinda Rabba",
     image: "/organisers/arvindrabba.jpeg",
     imagePosition: "object-center",
   },
