@@ -153,28 +153,12 @@ export default function SummitPillars() {
                 >
                   <Link
                     href={pillar.href}
-                    className={`group relative h-full min-h-[320px] sm:min-h-[350px] md:min-h-[360px] rounded-[24px] sm:rounded-[28px] overflow-hidden border border-white/10 p-6 sm:p-7 flex flex-col justify-between shadow-2xl transition-all duration-300 ${pillar.cardBg} ${pillar.hoverShadow}`}
+                    className={`group relative h-full min-h-[400px] sm:min-h-[440px] rounded-[24px] sm:rounded-[28px] overflow-hidden border border-white/10 p-6 sm:p-7 flex flex-col justify-between shadow-2xl transition-all duration-300 ${pillar.cardBg} ${pillar.hoverShadow}`}
                   >
-                    {/* Card Background: Respective Official Logo & Ambient Glow */}
-                    <div className="absolute inset-0 z-0 overflow-hidden flex items-center justify-center pointer-events-none">
-                      {/* Ambient Brand Glow */}
-                      <div
-                        className={`absolute w-56 h-56 rounded-full blur-3xl opacity-50 ${pillar.glowColor}`}
-                      />
-
-                      {/* Centered Crisp Logo Emblem */}
-                      <div className="relative w-40 h-40 sm:w-48 sm:h-48 -mt-8 sm:-mt-10 group-hover:scale-110 transition-transform duration-500 ease-out flex items-center justify-center">
-                        <Image
-                          src={pillar.bgImage}
-                          alt={`${pillar.title} Official Logo`}
-                          fill
-                          sizes="(max-width: 768px) 200px, 240px"
-                          className={`object-contain drop-shadow-[0_12px_28px_rgba(0,0,0,0.7)] ${pillar.logoClass || ""}`}
-                        />
-                      </div>
-
-                      {/* Multi-Stop Contrast Overlay ensuring text contrast */}
-                    </div>
+                    {/* Ambient Glow Background Accent */}
+                    <div
+                      className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full blur-3xl opacity-35 pointer-events-none ${pillar.glowColor}`}
+                    />
 
                     {/* Top Header: Badge on left, Big Number on right */}
                     <div className="relative z-10 flex items-start justify-between">
@@ -192,8 +176,21 @@ export default function SummitPillars() {
                       </span>
                     </div>
 
-                    {/* Lower Card Content */}
-                    <div className="relative z-10 pt-10 sm:pt-14">
+                    {/* Dedicated Logo Entity in Card (Non-overlapping) */}
+                    <div className="relative z-10 my-4 sm:my-6 flex items-center justify-center">
+                      <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full overflow-hidden p-1.5 bg-white/5 border border-white/20 shadow-2xl group-hover:scale-105 group-hover:border-white/35 transition-all duration-300 flex items-center justify-center">
+                        <Image
+                          src={pillar.bgImage}
+                          alt={`${pillar.title} Official Logo`}
+                          fill
+                          sizes="(max-width: 768px) 140px, 160px"
+                          className={`object-contain p-1 rounded-full ${pillar.logoClass || ""}`}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Lower Card Content (Cleanly below the logo) */}
+                    <div className="relative z-10">
                       <div
                         className={`text-[11px] font-mono font-bold tracking-[0.2em] uppercase mb-1 ${pillar.acronymStyle}`}
                       >
@@ -204,7 +201,7 @@ export default function SummitPillars() {
                         {pillar.title}
                       </h3>
 
-                      <div className="text-xs sm:text-[13px] text-white/80 font-medium tracking-wide mb-3">
+                      <div className="text-xs sm:text-[13px] text-white/80 font-medium tracking-wide mb-4">
                         {pillar.tags}
                       </div>
 

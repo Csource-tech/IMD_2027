@@ -188,7 +188,7 @@ export default function GallerySection() {
           </button>
         </div>
 
-        {/* Horizontal Thumbnails Strip (Scrollable tray for all 29 gallery images) */}
+        {/* Horizontal Thumbnails Strip (Scrollable tray for all gallery images) */}
         <div
           ref={thumbnailStripRef}
           className="mt-3 sm:mt-4 flex items-center gap-2 overflow-x-auto pb-2.5 pt-1 px-1 scroll-smooth"

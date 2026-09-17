@@ -19,12 +19,6 @@ const SPONSORS: SponsorItem[] = [
     logo: "/milkyway.webp",
   },
   {
-    name: "University of Agricultural Sciences, Bangalore",
-    category: "ACADEMIC & SCIENTIFIC RESEARCH PARTNER",
-    desc: "Karnataka's premier farm university (ICAR & NAAC 'A+') leading scientific mycology breakthroughs, farmer training, and statewide cultivation development.",
-    logo: "/uas.webp",
-  },
-  {
     name: "Mushroom Exchange",
     category: "GLOBAL INDUSTRY VALUE-CHAIN PLATFORM",
     desc: "India's collaborative trade hub connecting commercial cultivators directly with certified biotech spawn labs, cold chains, and national retail buyers.",
@@ -52,8 +46,8 @@ export default function PastSponsorsSection() {
           </motion.h2>
         </div>
 
-        {/* 3 Tiered Partner Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+        {/* 2 Tiered Partner Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch max-w-5xl mx-auto">
           {SPONSORS.map((s, idx) => (
             <motion.div
               key={s.name}

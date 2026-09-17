@@ -293,12 +293,12 @@ export async function POST(req: Request) {
               </div>
 
               <p style="font-size: 13.5px; color: #555;">
-                For immediate space reservation assistance, you can also reach us directly at <a href="mailto:reachout@mushex.in" style="color: #ff9f43; font-weight: 600;">reachout@mushex.in</a> or call our helpline at <strong>+91 88601 15588 / +91 98107 26996</strong>.
+                For immediate space reservation assistance, you can also reach us directly at <a href="mailto:reachout@mushex.in" style="color: #ff9f43; font-weight: 600;">reachout@mushex.in</a> or call our helpline at <strong>+91 88601 15588</strong>.
               </p>
 
               <div class="footer">
                 <strong>Exhibitor Secretariat &bull; India Mushroom Days 2027</strong><br>
-                Official Email: reachout@mushex.in &bull; Helpline: +91 88601 15588 / +91 98107 26996 &bull; New Delhi, India
+                Official Email: reachout@mushex.in &bull; Helpline: +91 88601 15588 &bull; New Delhi, India
               </div>
             </div>
           </body>

@@ -18,20 +18,8 @@ export const EXHIBITORS: Exhibitor[] = [
     logo: "/dr-kurades.webp",
   },
   {
-    name: "Green Apron Farms",
-    logo: "/green-apron-farms.webp",
-  },
-  {
-    name: "Nuvedo",
-    logo: "/nuvedo.webp",
-  },
-  {
     name: "Himalaya Mushrooms",
     logo: "/himalaya.webp",
-  },
-  {
-    name: "SM Biotech",
-    logo: "/sm-biotech.webp",
   },
   {
     name: "Mushroom Exchange",
@@ -50,24 +38,8 @@ export const EXHIBITORS: Exhibitor[] = [
     logo: "/currywale.webp",
   },
   {
-    name: "DMP",
-    logo: "/dmp.webp",
-  },
-  {
-    name: "Fresh Bowl",
-    logo: "/freshbowl.webp",
-  },
-  {
     name: "Grow Diesel",
     logo: "/grow-diesel.webp",
-  },
-  {
-    name: "India Mushroom",
-    logo: "/indiamushroom.webp",
-  },
-  {
-    name: "Marg",
-    logo: "/marg.webp",
   },
   {
     name: "Milkyway Mushrooms",
@@ -98,12 +70,11 @@ export const EXHIBITORS: Exhibitor[] = [
     logo: "/soma.webp",
   },
   {
-    name: "UAS",
-    logo: "/uas.webp",
+    name: "Mushroom Business",
+    logo: "/mushroombusiness.jpeg",
   },
   {
-    name: "UMIDS",
-    logo: "/umids.webp",
+    name: "MARG",
+    logo: "/marglogo.png",
   },
 ];
-

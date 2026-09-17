@@ -7,14 +7,15 @@ import { motion } from "framer-motion";
 import CountdownTimer from "@/components/CountdownTimer";
 
 const CAROUSEL_IMAGES = [
-  "/carousel/3U3A5020.JPG",
-  "/carousel/8C2A5919.JPG",
   "/carousel/3U3A5155.JPG",
   "/carousel/3U3A5379.JPG",
-  "/carousel/8C2A6538.JPG",
   "/carousel/3U3A6154.JPG",
   "/carousel/3U3A5175.JPG",
   "/carousel/3U3A5098.JPG",
+  "/carousel/3U3A5002.JPG",
+  "/carousel/3U3A5077.JPG",
+  "/carousel/3U3A5264.JPG",
+  "/carousel/3U3A5523.JPG",
 ];
 
 export default function HeroVideo() {
@@ -79,10 +80,14 @@ export default function HeroVideo() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          style={{ textShadow: "0 2px 4px rgba(0,0,0,0.9), 0 4px 16px rgba(0,0,0,0.9), 0 8px 30px rgba(0,0,0,0.8)" }}
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-[1.08] text-white uppercase font-sans"
+          style={{
+            textShadow: "0 2px 4px rgba(0,0,0,0.9), 0 4px 16px rgba(0,0,0,0.9), 0 8px 30px rgba(0,0,0,0.8)",
+            wordSpacing: "0.1em",
+          }}
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-normal leading-[1.08] text-white uppercase font-sans [word-spacing:0.1em]"
         >
-          Indian Mushroom <span className="text-[#ff9f43]">Days 2027</span>
+          India Mushroom{" "}
+          <span className="text-[#ff9f43]">Days 2027</span>
         </motion.h1>
 
         {/* Elegant Ampersand Divider */}
@@ -107,8 +112,11 @@ export default function HeroVideo() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          style={{ textShadow: "0 2px 4px rgba(0,0,0,0.9), 0 4px 16px rgba(0,0,0,0.9), 0 8px 30px rgba(0,0,0,0.8)" }}
-          className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.1] text-[#004aab] uppercase font-sans"
+          style={{
+            textShadow: "0 2px 4px rgba(0,0,0,0.9), 0 4px 16px rgba(0,0,0,0.9), 0 8px 30px rgba(0,0,0,0.8)",
+            wordSpacing: "0.1em",
+          }}
+          className="text-2xl sm:text-4xl md:text-5xl font-black tracking-normal leading-[1.1] text-[#004aab] uppercase font-sans [word-spacing:0.1em]"
         >
           Shroom Connect
         </motion.h2>
@@ -119,9 +127,9 @@ export default function HeroVideo() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           style={{ textShadow: "0 2px 8px rgba(0,0,0,0.95), 0 4px 16px rgba(0,0,0,0.9)" }}
-          className="mt-4 sm:mt-5 text-xs sm:text-sm md:text-base font-semibold text-gray-100 max-w-2xl mx-auto leading-relaxed tracking-wide"
+          className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg font-semibold text-gray-100 max-w-2xl mx-auto leading-relaxed tracking-wide"
         >
-          India’s Biggest Mushroom Event On Cultivation | Machinery | Value Addition
+          India’s Biggest Mushroom Event On : <br /> Cultivation | Machinery | Value Addition
         </motion.p>
 
         {/* Two Centered Action Buttons */}

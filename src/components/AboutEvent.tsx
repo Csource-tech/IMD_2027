@@ -157,10 +157,10 @@ export default function AboutEvent() {
                     Call Secretariat
                   </span>
                   <a
-                    href="tel:+919810726996"
+                    href="tel:+918860115588"
                     className="text-xs sm:text-sm font-bold text-gray-900 hover:text-[#ff9f43] transition-colors leading-tight"
                   >
-                    +91 98107 26996
+                    +91 88601 15588
                   </a>
                 </div>
               </div>

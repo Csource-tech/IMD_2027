@@ -177,12 +177,6 @@ export default function FooterSection() {
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-[#004aab] shrink-0" />
-                <a href="tel:+919810726996" className="hover:text-white transition-colors">
-                  +91 98107 26996 (Exhibition Helpline)
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-[#ff9f43] shrink-0" />
                 <a href="mailto:reachout@mushex.in" className="hover:text-white transition-colors">
                   reachout@mushex.in

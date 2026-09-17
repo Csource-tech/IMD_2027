@@ -140,13 +140,7 @@ export default function RegisterSection() {
                       <a href="tel:+918860115588" className="hover:text-[#ff9f43] transition-colors">
                         +91 88601 15588
                       </a>{" "}
-                      <span className="text-[10px] font-normal text-gray-400">/ Helpline 1</span>
-                    </div>
-                    <div>
-                      <a href="tel:+919810726996" className="hover:text-[#ff9f43] transition-colors">
-                        +91 98107 26996
-                      </a>{" "}
-                      <span className="text-[10px] font-normal text-gray-400">/ Helpline 2</span>
+                      <span className="text-[10px] font-normal text-gray-400">/ Official Helpline</span>
                     </div>
                   </div>
                   <div className="mt-2 pt-2 border-t border-gray-100 flex items-center gap-1.5 text-[11px] text-gray-500">
@@ -273,7 +267,7 @@ export default function RegisterSection() {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-gray-200 text-sm text-gray-900 focus:bg-white focus:border-[#0c140f] focus:ring-0 outline-none transition-all placeholder:text-gray-400"
-                      placeholder="+91 98107 26996"
+                      placeholder="+91 88601 15588"
                     />
                   </div>
 
