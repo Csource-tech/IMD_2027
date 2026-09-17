@@ -7,22 +7,22 @@ import { motion } from "framer-motion";
 import CountdownTimer from "@/components/CountdownTimer";
 
 const CAROUSEL_IMAGES = [
-  "/carousel/3U3A5155.JPG",
-  "/carousel/latest.jpeg",
-  "/carousel/3U3A5379.JPG",
-  "/carousel/3U3A6154.JPG",
-  "/carousel/3U3A5175.JPG",
-  "/carousel/3U3A5098.JPG",
-  "/carousel/3U3A5002.JPG",
-  "/carousel/3U3A5077.JPG",
-  "/carousel/3U3A5264.JPG",
-  "/carousel/3U3A5523.JPG",
+  "/carousel/image1.jpeg",
+  "/carousel/image2.jpeg",
+  "/carousel/image3.jpeg",
+  "/carousel/image4.jpeg",
+  "/carousel/image5.jpeg",
+  "/carousel/image6.jpeg",
+  "/carousel/a2.jpeg",
+  "/carousel/b8.jpeg",
+  "/carousel/b15.jpeg",
 ];
 
 export default function HeroVideo() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
+    setCurrentSlide(0);
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % CAROUSEL_IMAGES.length);
     }, 4500);
@@ -30,37 +30,45 @@ export default function HeroVideo() {
     return () => clearInterval(timer);
   }, []);
 
+  const activeIndex = currentSlide % CAROUSEL_IMAGES.length;
+
   return (
     <section
       id="home"
       className="relative w-full text-white pt-16 sm:pt-24 pb-14 sm:pb-20 flex flex-col justify-between"
     >
       {/* 1. Full Page Background Image Carousel with Light Overlay */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
-        {CAROUSEL_IMAGES.map((src, index) => (
-          <motion.div
-            key={src}
-            initial={false}
-            animate={{
-              opacity: index === currentSlide ? 1 : 0,
-              scale: index === currentSlide ? 1.05 : 1.0,
-            }}
-            transition={{
-              opacity: { duration: 1.4, ease: "easeInOut" },
-              scale: { duration: 5.5, ease: "easeOut" },
-            }}
-            className="absolute inset-0 w-full h-full"
-          >
-            <Image
-              src={src}
-              alt={`India Mushroom Days Showcase ${index + 1}`}
-              fill
-              priority={index === 0}
-              sizes="100vw"
-              className="object-cover object-center"
-            />
-          </motion.div>
-        ))}
+      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 bg-[#0f172a]">
+        {CAROUSEL_IMAGES.map((src, index) => {
+          const isActive = index === activeIndex;
+          return (
+            <motion.div
+              key={src}
+              initial={false}
+              animate={{
+                opacity: isActive ? 1 : 0,
+                scale: isActive ? 1.05 : 1.0,
+              }}
+              transition={{
+                opacity: { duration: 1.4, ease: "easeInOut" },
+                scale: { duration: 5.5, ease: "easeOut" },
+              }}
+              style={{
+                zIndex: isActive ? 1 : 0,
+              }}
+              className="absolute inset-0 w-full h-full"
+            >
+              <Image
+                src={src}
+                alt={`India Mushroom Days Showcase ${index + 1}`}
+                fill
+                priority={index <= 2}
+                sizes="100vw"
+                className="object-cover object-center"
+              />
+            </motion.div>
+          );
+        })}
       </div>
 
       {/* 2. Centered Persistent Hero Content */}
@@ -85,7 +93,7 @@ export default function HeroVideo() {
             textShadow: "0 2px 4px rgba(0,0,0,0.9), 0 4px 16px rgba(0,0,0,0.9), 0 8px 30px rgba(0,0,0,0.8)",
             wordSpacing: "0.1em",
           }}
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-normal leading-[1.08] text-white uppercase font-sans [word-spacing:0.1em]"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-normal leading-[1.08] text-white font-sans [word-spacing:0.1em]"
         >
           India Mushroom{" "}
           <span className="text-[#ff9f43]">Days 2027</span>
@@ -117,7 +125,7 @@ export default function HeroVideo() {
             textShadow: "0 2px 4px rgba(0,0,0,0.9), 0 4px 16px rgba(0,0,0,0.9), 0 8px 30px rgba(0,0,0,0.8)",
             wordSpacing: "0.1em",
           }}
-          className="text-2xl sm:text-4xl md:text-5xl font-black tracking-normal leading-[1.1] text-[#004aab] uppercase font-sans [word-spacing:0.1em]"
+          className="text-2xl sm:text-4xl md:text-5xl font-black tracking-normal leading-[1.1] text-[#004aab] font-sans [word-spacing:0.1em]"
         >
           Shroom Connect
         </motion.h2>

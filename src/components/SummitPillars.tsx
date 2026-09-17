@@ -178,7 +178,7 @@ export default function SummitPillars() {
 
                     {/* Dedicated Logo Entity in Card (Non-overlapping) */}
                     <div className="relative z-10 my-4 sm:my-6 flex items-center justify-center">
-                      <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full overflow-hidden p-1.5 bg-white/5 border border-white/20 shadow-2xl group-hover:scale-105 group-hover:border-white/35 transition-all duration-300 flex items-center justify-center">
+                      <div className="relative w-36 h-36 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden p-1.5 bg-white/5 border border-white/20 shadow-2xl group-hover:scale-105 group-hover:border-white/35 transition-all duration-300 flex items-center justify-center">
                         <Image
                           src={pillar.bgImage}
                           alt={`${pillar.title} Official Logo`}
