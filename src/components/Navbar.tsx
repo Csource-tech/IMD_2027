@@ -333,27 +333,6 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
             className="lg:hidden w-full bg-white/98 backdrop-blur-2xl border-b border-gray-200 shadow-2xl p-6 space-y-4 max-h-[85vh] overflow-y-auto"
           >
-            {/* Dual Logos & Event Info in Mobile Drawer */}
-            <div className="flex items-center justify-between pb-3 border-b border-gray-200">
-              <div className="flex items-center gap-2.5">
-                <img
-                  src="/reallogo.png"
-                  alt="Indian Mushroom Days 2027"
-                  className="h-10 w-auto object-contain rounded-full ring-1 ring-black/10"
-                />
-                <div className="h-6 w-px bg-gray-300" />
-                <img
-                  src="/shroomlogo.jpeg"
-                  alt="Shroom Connect"
-                  className="h-10 w-auto object-contain rounded-full ring-1 ring-black/10"
-                />
-              </div>
-              <div className="text-right">
-                <div className="text-[11px] font-bold text-[#ff9f43]">Feb 19–21, 2027</div>
-                <div className="text-[10px] text-gray-500">New Delhi, India</div>
-              </div>
-            </div>
-
             {NAV_ITEMS.map((item) => (
               <div key={item.name} className="space-y-1">
                 <Link
