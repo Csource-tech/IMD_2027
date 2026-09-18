@@ -181,13 +181,13 @@ export default function Navbar() {
           <img
             src="/reallogo.png"
             alt="India Mushroom Days 2027 Logo"
-            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-36 lg:h-36 object-contain rounded-full bg-white border sm:border-2 border-white shadow-2xl drop-shadow-md group-hover:scale-105 transition-transform"
+            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 object-contain rounded-full bg-white border sm:border-2 border-white shadow-2xl drop-shadow-md group-hover:scale-105 transition-transform"
           />
           <div className="h-6 sm:h-8 md:h-10 w-[1.5px] bg-white/70 shadow-sm shrink-0" />
           <img
             src="/shroomlogo.jpeg"
             alt="Shroom Connect Logo"
-            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-36 lg:h-36 object-contain rounded-full bg-[#eae1d1] p-1 sm:p-1.5 border sm:border-2 border-white shadow-2xl drop-shadow-md group-hover:scale-105 transition-transform"
+            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-32 lg:h-32 object-contain rounded-full bg-[#eae1d1] p-1 sm:p-1.5 border sm:border-2 border-white shadow-2xl drop-shadow-md group-hover:scale-105 transition-transform"
           />
         </Link>
 
@@ -202,17 +202,15 @@ export default function Navbar() {
                 <Link
                   key={item.id}
                   href={item.href}
-                  className={`relative px-2 xl:px-3 py-2 text-[11px] xl:text-sm uppercase tracking-wider font-bold transition-all duration-200 group whitespace-nowrap ${
-                    isActive ? "text-[#ff9f43]" : "text-gray-800 hover:text-[#ff9f43]"
-                  }`}
+                  className={`relative px-2 xl:px-3 py-2 text-[11px] xl:text-sm uppercase tracking-wider font-bold transition-all duration-200 group whitespace-nowrap ${isActive ? "text-[#ff9f43]" : "text-gray-800 hover:text-[#ff9f43]"
+                    }`}
                 >
                   <span>{item.name}</span>
                   <span
-                    className={`absolute bottom-0 left-2 right-2 h-0.5 bg-[#ff9f43] rounded-full transition-all duration-200 ${
-                      isActive
+                    className={`absolute bottom-0 left-2 right-2 h-0.5 bg-[#ff9f43] rounded-full transition-all duration-200 ${isActive
                         ? "opacity-100 scale-x-100"
                         : "opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100"
-                    }`}
+                      }`}
                   />
                 </Link>
               );
@@ -227,24 +225,21 @@ export default function Navbar() {
               >
                 <Link
                   href={item.href}
-                  className={`relative px-2 xl:px-3 py-2 text-[11px] xl:text-sm uppercase tracking-wider font-bold transition-all duration-200 flex items-center gap-1 cursor-pointer focus:outline-none group whitespace-nowrap ${
-                    isActive ? "text-[#ff9f43]" : "text-gray-800 hover:text-[#ff9f43]"
-                  }`}
+                  className={`relative px-2 xl:px-3 py-2 text-[11px] xl:text-sm uppercase tracking-wider font-bold transition-all duration-200 flex items-center gap-1 cursor-pointer focus:outline-none group whitespace-nowrap ${isActive ? "text-[#ff9f43]" : "text-gray-800 hover:text-[#ff9f43]"
+                    }`}
                 >
                   <span>{item.name}</span>
                   <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                      activeDropdown === item.id
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === item.id
                         ? "rotate-180 text-[#ff9f43]"
                         : "text-gray-600 group-hover:text-[#ff9f43]"
-                    }`}
+                      }`}
                   />
                   <span
-                    className={`absolute bottom-0 left-2 right-2 h-0.5 bg-[#ff9f43] rounded-full transition-all duration-200 ${
-                      isActive
+                    className={`absolute bottom-0 left-2 right-2 h-0.5 bg-[#ff9f43] rounded-full transition-all duration-200 ${isActive
                         ? "opacity-100 scale-x-100"
                         : "opacity-0 scale-x-0 group-hover:opacity-100 group-hover:scale-x-100"
-                    }`}
+                      }`}
                   />
                 </Link>
 
@@ -297,9 +292,8 @@ export default function Navbar() {
             >
               <span>{t("register")}</span>
               <ChevronDown
-                className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                  registerDropdownOpen ? "rotate-180" : ""
-                }`}
+                className={`w-3.5 h-3.5 transition-transform duration-200 ${registerDropdownOpen ? "rotate-180" : ""
+                  }`}
               />
             </button>
 

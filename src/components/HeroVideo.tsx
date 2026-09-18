@@ -151,7 +151,9 @@ export default function HeroVideo() {
           style={{ textShadow: "0 2px 8px rgba(0,0,0,0.95), 0 4px 16px rgba(0,0,0,0.9)" }}
           className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg font-semibold text-gray-100 max-w-2xl mx-auto leading-relaxed tracking-wide"
         >
-          {t("subtitle")}
+          <span>{t("subtitlePart1")}</span>{" "}
+          <br />
+          <span className="inline-block mt-0.5 sm:mt-1">{t("subtitlePart2")}</span>
         </motion.p>
 
         {/* Two Centered Action Buttons */}
