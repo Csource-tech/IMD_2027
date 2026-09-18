@@ -2,9 +2,11 @@
 
 import { EXHIBITORS } from "../data/exhibitorsData";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import SectionDivider from "./SectionDivider";
 
 export default function ExhibitorsSection() {
+  const t = useTranslations("partners");
   const half = Math.ceil(EXHIBITORS.length / 2);
   const row1 = EXHIBITORS.slice(0, half);
   const row2 = EXHIBITORS.slice(half);
@@ -17,9 +19,9 @@ export default function ExhibitorsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
+          className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight capitalize"
         >
-          Exhibitors
+          {t("exhibitorsTitle")}
         </motion.h2>
       </div>
 

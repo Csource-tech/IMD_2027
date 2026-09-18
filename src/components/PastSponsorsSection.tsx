@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Award } from "lucide-react";
 import SectionDivider from "./SectionDivider";
 
@@ -27,6 +28,8 @@ const SPONSORS: SponsorItem[] = [
 ];
 
 export default function PastSponsorsSection() {
+  const t = useTranslations("partners");
+
   return (
     <section
       id="past-sponsors"
@@ -40,9 +43,9 @@ export default function PastSponsorsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
+            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight capitalize"
           >
-            Partners &amp; Sponsors
+            {t("title")}
           </motion.h2>
         </div>
 

@@ -66,10 +66,6 @@ export const EXHIBITORS: Exhibitor[] = [
     logo: "/satrise.webp",
   },
   {
-    name: "Mushroom Business",
-    logo: "/mushroombusiness.jpeg",
-  },
-  {
     name: "MARG",
     logo: "/marglogo.png",
   },
@@ -80,9 +76,5 @@ export const EXHIBITORS: Exhibitor[] = [
   {
     name: "Mushtoons",
     logo: "/mushtoons.jpeg",
-  },
-  {
-    name: "Mushroom Chronicle",
-    logo: "/msuhroomlogoo.jpeg",
   },
 ];

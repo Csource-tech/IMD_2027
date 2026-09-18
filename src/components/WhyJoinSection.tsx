@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import SectionDivider from "./SectionDivider";
 
 interface WhyReason {
@@ -14,59 +14,61 @@ interface WhyReason {
   tag: string;
 }
 
-const REASONS: WhyReason[] = [
-  {
-    number: "01",
-    title: "Accelerate Commercial Enterprise",
-    subtitle: "Direct access to high-volume market channels",
-    desc: "Position your brand at the center of India's surging edible and medicinal mushroom revolution. Expand wholesale distribution pipelines, contract farming agreements, and international buyer linkages.",
-    image: "/imdgallery/imd-2024-001.jpg",
-    tag: "Market Expansion",
-  },
-  {
-    number: "02",
-    title: "Next-Gen CEA Climate Automation",
-    subtitle: "Precision temperature, humidity & CO2 control",
-    desc: "Inspect live cutting-edge Controlled Environment Agriculture (CEA) climate computers, multi-tier shelving infrastructure, compost turning machinery, and automated spawn bagging technologies.",
-    image: "/imdgallery/imd-2024-004.jpg",
-    tag: "Agri-Tech & Hardware",
-  },
-  {
-    number: "03",
-    title: "International Supply Chain Network",
-    subtitle: "Connect across 15+ participating countries",
-    desc: "Network with verified global equipment manufacturers from the Netherlands, China, and Europe alongside top Indian farm operators, substrate suppliers, and cold-chain logistics providers.",
-    image: "/imdgallery/imd-2024-015.jpg",
-    tag: "Global Trade",
-  },
-  {
-    number: "04",
-    title: "Engage 50+ Mycology & Biotech Keynotes",
-    subtitle: "Breakthrough science and high-yield genetics",
-    desc: "Gain proprietary technical masterclass insights from leading mycology scientists, spawn laboratory geneticists, substrate composting researchers, and medicinal extract formulators.",
-    image: "/imdgallery/imd-2024-011.jpg",
-    tag: "Scientific Masterclasses",
-  },
-  {
-    number: "05",
-    title: "Shroom Connect B2B Deal-Making",
-    subtitle: "Direct supermarket & HoReCa buyer sourcing",
-    desc: "A dedicated procurement conclave putting progressive growers face-to-face with retail supermarket category heads, freeze-drying processors, and dietary supplement brands.",
-    image: "/imdgallery/imd-2024-008.jpg",
-    tag: "Commercial Sourcing",
-  },
-  {
-    number: "06",
-    title: "NHB Subsidies & Project Finance Clinic",
-    subtitle: "Unlock 35%–50% capital support schemes",
-    desc: "Direct guidance on securing National Horticulture Board (NHB) commercial farm setup subsidies, bankable Detailed Project Reports (DPR), and subsidized agro-venture credit.",
-    image: "/imdgallery/imd-2024-014.jpg",
-    tag: "Government Financing",
-  },
-];
-
 export default function WhyJoinSection() {
+  const t = useTranslations("whyJoin");
+  const tCommon = useTranslations("common");
   const [activeReason, setActiveReason] = useState(0);
+
+  const REASONS: WhyReason[] = [
+    {
+      number: "01",
+      title: t("r1Title"),
+      subtitle: t("r1Subtitle"),
+      desc: t("r1Desc"),
+      image: "/imdgallery/imd-2024-001.jpg",
+      tag: "Market Expansion",
+    },
+    {
+      number: "02",
+      title: t("r2Title"),
+      subtitle: t("r2Subtitle"),
+      desc: t("r2Desc"),
+      image: "/imdgallery/imd-2024-004.jpg",
+      tag: "Agri-Tech & Hardware",
+    },
+    {
+      number: "03",
+      title: t("r3Title"),
+      subtitle: t("r3Subtitle"),
+      desc: t("r3Desc"),
+      image: "/imdgallery/imd-2024-015.jpg",
+      tag: "Global Trade",
+    },
+    {
+      number: "04",
+      title: t("r4Title"),
+      subtitle: t("r4Subtitle"),
+      desc: t("r4Desc"),
+      image: "/imdgallery/imd-2024-011.jpg",
+      tag: "Scientific Masterclasses",
+    },
+    {
+      number: "05",
+      title: t("r5Title"),
+      subtitle: t("r5Subtitle"),
+      desc: t("r5Desc"),
+      image: "/imdgallery/imd-2024-008.jpg",
+      tag: "Commercial Sourcing",
+    },
+    {
+      number: "06",
+      title: t("r6Title"),
+      subtitle: t("r6Subtitle"),
+      desc: t("r6Desc"),
+      image: "/imdgallery/imd-2024-014.jpg",
+      tag: "Government Financing",
+    },
+  ];
 
   const current = REASONS[activeReason];
 
@@ -80,9 +82,9 @@ export default function WhyJoinSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
+            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight capitalize"
           >
-            Why Participate
+            {t("title")}
           </motion.h2>
         </div>
 
@@ -183,7 +185,7 @@ export default function WhyJoinSection() {
                   </p>
 
                   <div className="pt-2 flex items-center justify-between border-t border-gray-100 text-xs font-semibold text-gray-500">
-                    <span>India Mushroom Days 2027 • New Delhi, India</span>
+                    <span>{tCommon("brandTitle")} • {tCommon("eventLocation")}</span>
                     <span className="text-[#ff9f43] font-bold">Priority Attendance</span>
                   </div>
                 </div>

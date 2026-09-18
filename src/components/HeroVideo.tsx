@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import CountdownTimer from "@/components/CountdownTimer";
 
 const CAROUSEL_IMAGES = [
@@ -26,6 +27,7 @@ const CAROUSEL_IMAGES = [
 ];
 
 export default function HeroVideo() {
+  const t = useTranslations("hero");
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -80,16 +82,20 @@ export default function HeroVideo() {
 
       {/* 2. Centered Persistent Hero Content */}
       <div className="relative z-20 py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center flex flex-col items-center justify-center">
-        {/* Kicker Headline */}
-        <motion.p
+        {/* Kicker Headline - High Contrast Frosted Pill Badge */}
+        <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          style={{ textShadow: "0 2px 6px rgba(0,0,0,0.9), 0 4px 12px rgba(0,0,0,0.8)" }}
-          className="text-xs sm:text-sm font-serif italic text-amber-200/95 tracking-wide uppercase mb-3 sm:mb-4"
+          className="mb-3 sm:mb-4"
         >
-          Asia&apos;s Premier Commercial Mushroom Gathering &amp; B2B Conclave
-        </motion.p>
+          <span
+            style={{ textShadow: "0 2px 6px rgba(0,0,0,0.9)" }}
+            className="inline-flex items-center px-4 sm:px-5 py-1.5 rounded-full bg-black/65 backdrop-blur-md border border-amber-400/50 text-amber-300 font-extrabold text-xs sm:text-sm tracking-wider uppercase shadow-2xl"
+          >
+            {t("kicker")}
+          </span>
+        </motion.div>
 
         {/* Main Centered Title */}
         <motion.h1
@@ -102,8 +108,8 @@ export default function HeroVideo() {
           }}
           className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-normal leading-[1.08] text-white font-sans [word-spacing:0.1em]"
         >
-          India Mushroom{" "}
-          <span className="text-[#ff9f43]">Days 2027</span>
+          {t("titlePart1")}{" "}
+          <span className="text-[#ff9f43]">{t("titlePart2")}</span>
         </motion.h1>
 
         {/* Elegant Ampersand Divider */}
@@ -123,18 +129,18 @@ export default function HeroVideo() {
           <span className="h-[1px] w-12 sm:w-24 bg-gradient-to-l from-transparent to-white/40" />
         </motion.div>
 
-        {/* Shroom Connect Sub-Title */}
+        {/* Shroom Connect Sub-Title - Ultra-High Visibility Luminous Sky Blue */}
         <motion.h2
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
           style={{
-            textShadow: "0 2px 4px rgba(0,0,0,0.9), 0 4px 16px rgba(0,0,0,0.9), 0 8px 30px rgba(0,0,0,0.8)",
+            textShadow: "0 2px 4px rgba(0,0,0,0.95), 0 4px 18px rgba(0,0,0,0.95), 0 0 30px rgba(56,189,248,0.5)",
             wordSpacing: "0.1em",
           }}
-          className="text-2xl sm:text-4xl md:text-5xl font-black tracking-normal leading-[1.1] text-[#004aab] font-sans [word-spacing:0.1em]"
+          className="text-2xl sm:text-4xl md:text-5xl font-black tracking-normal leading-[1.1] text-[#38bdf8] font-sans [word-spacing:0.1em]"
         >
-          Shroom Connect
+          {t("shroomConnect")}
         </motion.h2>
 
         {/* Core Subtitle Paragraph */}
@@ -145,7 +151,7 @@ export default function HeroVideo() {
           style={{ textShadow: "0 2px 8px rgba(0,0,0,0.95), 0 4px 16px rgba(0,0,0,0.9)" }}
           className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg font-semibold text-gray-100 max-w-2xl mx-auto leading-relaxed tracking-wide"
         >
-          India’s Biggest Mushroom Event On : <br /> Cultivation | Machinery | Value Addition
+          {t("subtitle")}
         </motion.p>
 
         {/* Two Centered Action Buttons */}
@@ -160,7 +166,7 @@ export default function HeroVideo() {
             href="/visitor-register"
             className="group inline-flex items-center justify-center px-7 sm:px-9 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold text-white bg-[#ff9f43] hover:bg-[#f28822] shadow-xl shadow-black/50 hover:scale-105 active:scale-95 transition-all duration-200 uppercase tracking-wider"
           >
-            <span>Visitor Registration</span>
+            <span>{t("visitorBtn")}</span>
           </Link>
 
           {/* Book Your Booth Button */}
@@ -168,7 +174,7 @@ export default function HeroVideo() {
             href="/book-your-stall"
             className="group inline-flex items-center justify-center px-7 sm:px-9 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold text-white bg-black/35 hover:bg-black/55 backdrop-blur-md border border-white/40 shadow-xl shadow-black/40 hover:border-white/60 hover:scale-105 active:scale-95 transition-all duration-200 uppercase tracking-wider"
           >
-            <span>Book Your Booth</span>
+            <span>{t("boothBtn")}</span>
           </Link>
         </motion.div>
       </div>

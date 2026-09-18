@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 export const TARGET_DATE = "2027-02-19T09:00:00+05:30";
 
@@ -24,6 +25,7 @@ function calculateTimeLeft(targetTimestamp: number): TimeLeft {
 }
 
 export default function CountdownTimer({ targetDate = TARGET_DATE }: { targetDate?: string }) {
+  const t = useTranslations("timer");
   const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
 
   useEffect(() => {
@@ -48,10 +50,10 @@ export default function CountdownTimer({ targetDate = TARGET_DATE }: { targetDat
   const seconds = timeLeft ? String(timeLeft.seconds).padStart(2, "0") : "41";
 
   const units = [
-    { value: days, label: "DAY(S)" },
-    { value: hours, label: "HOUR" },
-    { value: minutes, label: "MINUTE" },
-    { value: seconds, label: "SECOND" },
+    { value: days, label: t("days") },
+    { value: hours, label: t("hours") },
+    { value: minutes, label: t("minutes") },
+    { value: seconds, label: t("seconds") },
   ];
 
   if (!timeLeft) {

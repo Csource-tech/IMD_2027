@@ -1,9 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import SectionDivider from "./SectionDivider";
 
 export default function SloganBanner() {
+  const t = useTranslations("slogan");
+
   return (
     <section id="manifesto" className="relative bg-[#0c140f]/95 text-white py-14 sm:py-18 overflow-hidden shadow-inner">
       {/* Background mycelium texture accent */}
@@ -14,19 +17,19 @@ export default function SloganBanner() {
         <div className="animate-marquee flex items-center space-x-8 text-xs sm:text-sm font-extrabold uppercase tracking-[0.3em] text-gray-300 font-sans">
           {[...Array(6)].map((_, i) => (
             <span key={i} className="flex items-center gap-8 shrink-0">
-              <span className="text-[#004aab]">MUSHROOMS FIRST</span>
+              <span className="text-[#004aab]">{t("mushroomsFirst")}</span>
               <span>•</span>
-              <span>CULTIVATION</span>
+              <span>{t("cultivation")}</span>
               <span>•</span>
-              <span>SCIENCE</span>
+              <span>{t("science")}</span>
               <span>•</span>
-              <span className="text-[#ff9f43]">SPAWN BIOTECHNOLOGY</span>
+              <span className="text-[#ff9f43]">{t("spawnBiotech")}</span>
               <span>•</span>
-              <span>BUSINESS</span>
+              <span>{t("business")}</span>
               <span>•</span>
-              <span>INNOVATION</span>
+              <span>{t("innovation")}</span>
               <span>•</span>
-              <span>COMMUNITY</span>
+              <span>{t("community")}</span>
               <span>•</span>
             </span>
           ))}
@@ -35,7 +38,6 @@ export default function SloganBanner() {
 
       {/* Main Editorial Core Message */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center my-4 sm:my-6">
-
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -43,7 +45,7 @@ export default function SloganBanner() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="text-2xl sm:text-3xl md:text-4xl font-serif italic text-white leading-relaxed max-w-4xl mx-auto"
         >
-          &ldquo;India’s Biggest Mushroom Event On Cultivation | Machinery | Value Addition&rdquo;
+          {t("quote")}
         </motion.h2>
       </div>
 

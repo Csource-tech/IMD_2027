@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import SectionDivider from "./SectionDivider";
 
 interface CommitteeMember {
@@ -168,6 +169,8 @@ const SPEAKERS: Speaker[] = [
 ];
 
 export default function OrganisingCommittee() {
+  const t = useTranslations("committee");
+
   return (
     <section
       id="organising-committee"
@@ -176,19 +179,16 @@ export default function OrganisingCommittee() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}
         <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12">
-
           <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
+            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight capitalize"
           >
-            Organising Committee
+            {t("title")}
           </motion.h2>
-
         </div>
-
 
         {/* Organizing Committee Members Grid (4 cols on lg, 3 on md, 2 on sm) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 items-stretch">
@@ -239,9 +239,9 @@ export default function OrganisingCommittee() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
+              className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight capitalize"
             >
-              The 2027 Line-up
+              {t("lineupTitle")}
             </motion.h2>
 
             <motion.p
@@ -251,7 +251,7 @@ export default function OrganisingCommittee() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="mt-3 text-sm sm:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed font-normal"
             >
-              25+ speakers from 20+ countries. Names are being confirmed now. Here is who took the stage last time.
+              {t("lineupSubtitle")}
             </motion.p>
           </div>
 

@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import SectionDivider from "./SectionDivider";
 import galleryData from "./galleryData.json";
 
@@ -16,6 +17,7 @@ interface GalleryItem {
 const GALLERY_ITEMS: GalleryItem[] = galleryData;
 
 export default function GallerySection() {
+  const t = useTranslations("gallery");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -112,9 +114,9 @@ export default function GallerySection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
+            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight capitalize"
           >
-            GALLERY
+            {t("title")}
           </motion.h2>
         </div>
 

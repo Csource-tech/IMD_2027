@@ -1,4 +1,7 @@
-import Link from "next/link";
+"use client";
+
+import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 import {
   Phone,
   Mail,
@@ -11,6 +14,11 @@ import {
 } from "lucide-react";
 
 export default function FooterSection() {
+  const t = useTranslations("footer");
+  const tCommon = useTranslations("common");
+  const tNavbar = useTranslations("navbar");
+  const tContact = useTranslations("contact");
+
   return (
     <footer className="relative bg-[#070e0a] text-slate-300 pt-20 pb-10 border-t border-white/10 overflow-hidden">
       {/* Background mycelium texture */}
@@ -40,22 +48,22 @@ export default function FooterSection() {
                 </Link>
               </div>
               <div>
-                <h4 className="text-white text-lg sm:text-xl font-black uppercase tracking-tight font-sans">
-                  India Mushroom Days <span className="text-[#ff9f43]">2027</span>
+                <h4 className="text-white text-lg sm:text-xl font-black capitalize tracking-tight font-sans">
+                  {tCommon("brandTitle")}
                 </h4>
                 <p className="text-lg font-bold text-[#004aab] tracking-wide">
-                  &amp; Shroom Connect Conclave
+                  {tCommon("brandSubtitle")}
                 </p>
               </div>
             </div>
 
             <div className="inline-flex items-center gap-2 text-xs font-bold text-amber-200 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full">
               <Calendar className="w-3.5 h-3.5 text-[#ff9f43]" />
-              <span>February 19 – 21, 2027 • New Delhi, India</span>
+              <span>{tCommon("eventDatesFull")} • {tCommon("eventLocation")}</span>
             </div>
 
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-md font-normal">
-              India&apos;s premier exhibition and conference platform connecting commercial mushroom growers, spawn laboratories, CEA technology innovators, and institutional buyers across the globe.
+              {t("description")}
             </p>
 
             {/* Fast Registration Links */}
@@ -65,14 +73,14 @@ export default function FooterSection() {
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold text-white bg-[#004aab] hover:bg-[#003c8c] shadow-md transition-all duration-200"
               >
                 <Ticket className="w-3.5 h-3.5" />
-                <span>Visitor Registration</span>
+                <span>{tCommon("visitorRegistration")}</span>
               </Link>
               <Link
                 href="/book-your-stall"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold text-white bg-[#ffaa5b] hover:bg-[#ff9f43] shadow-md transition-all duration-200"
               >
                 <Store className="w-3.5 h-3.5" />
-                <span>Book Your Booth</span>
+                <span>{tCommon("bookBooth")}</span>
               </Link>
             </div>
 
@@ -111,32 +119,32 @@ export default function FooterSection() {
 
           {/* Col 2: Quick Links (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
-            <h5 className="text-white text-xs sm:text-sm font-extrabold uppercase tracking-widest border-b border-white/10 pb-3 font-sans">
-              Navigation
+            <h5 className="text-white text-xs sm:text-sm font-extrabold capitalize tracking-widest border-b border-white/10 pb-3 font-sans">
+              {t("quickLinks")}
             </h5>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-400">
               <li>
                 <Link href="/#about" className="hover:text-[#ff9f43] transition-colors flex items-center gap-1.5">
                   <ChevronRight className="w-3.5 h-3.5 text-[#ff9f43]" />
-                  <span>About The Movement</span>
+                  <span>{tNavbar("aboutMovement")}</span>
                 </Link>
               </li>
               <li>
                 <Link href="/#about-shroomconnect" className="hover:text-[#004aab] transition-colors flex items-center gap-1.5">
                   <ChevronRight className="w-3.5 h-3.5 text-[#004aab]" />
-                  <span>Shroom Connect Conclave</span>
+                  <span>{tNavbar("shroomConnect")}</span>
                 </Link>
               </li>
               <li>
                 <Link href="/#industry-chain" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <ChevronRight className="w-3.5 h-3.5 text-[#ff9f43]" />
-                  <span>Button &amp; Specialty Mushrooms</span>
+                  <span>{tNavbar("buttonBackbone")}</span>
                 </Link>
               </li>
               <li>
                 <Link href="/#why-join" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <ChevronRight className="w-3.5 h-3.5 text-[#ff9f43]" />
-                  <span>Why India Mushroom Days</span>
+                  <span>{tNavbar("whyJoin")}</span>
                 </Link>
               </li>
               <li>
@@ -148,13 +156,13 @@ export default function FooterSection() {
               <li>
                 <Link href="/#organising-committee" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <ChevronRight className="w-3.5 h-3.5 text-[#ff9f43]" />
-                  <span>Organising Committee</span>
+                  <span>{tNavbar("organisingCommittee")}</span>
                 </Link>
               </li>
               <li>
                 <Link href="/#gallery" className="hover:text-white transition-colors flex items-center gap-1.5">
                   <ChevronRight className="w-3.5 h-3.5 text-[#ff9f43]" />
-                  <span>Visual Chronicle (Gallery)</span>
+                  <span>{tNavbar("gallery")}</span>
                 </Link>
               </li>
             </ul>
@@ -162,13 +170,13 @@ export default function FooterSection() {
 
           {/* Col 3: Official Secretariat (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
-            <h5 className="text-white text-xs sm:text-sm font-extrabold uppercase tracking-widest border-b border-white/10 pb-3 font-sans">
-              Secretariat Helpdesk
+            <h5 className="text-white text-xs sm:text-sm font-extrabold capitalize tracking-widest border-b border-white/10 pb-3 font-sans">
+              {t("contactSecretariat")}
             </h5>
             <ul className="space-y-3 text-xs sm:text-sm text-slate-400">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-[#ff9f43] mt-0.5 shrink-0" />
-                <span>New Delhi, India</span>
+                <span>{tCommon("eventLocation")}</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-[#ff9f43] shrink-0" />
@@ -184,7 +192,7 @@ export default function FooterSection() {
               </li>
               <li className="flex items-center gap-3">
                 <Clock className="w-4 h-4 text-[#004aab] shrink-0" />
-                <span>Mon – Sat: 09:00 AM – 06:00 PM IST</span>
+                <span>{tContact("helplineHours")}</span>
               </li>
             </ul>
           </div>
@@ -193,10 +201,10 @@ export default function FooterSection() {
         {/* Bottom Copyright Strip */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>
-            &copy; 2027 India Mushroom Days (IMD 2027) &amp; Shroom Connect Conclave. All rights reserved.
+            {t("allRightsReserved")}
           </p>
           <div className="flex items-center gap-4 text-slate-400">
-            <span>New Delhi, India</span>
+            <span>{tCommon("eventLocation")}</span>
             <span>•</span>
             <span>19–20–21 February 2027</span>
           </div>

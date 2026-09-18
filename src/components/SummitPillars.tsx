@@ -1,69 +1,10 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import SectionDivider from "./SectionDivider";
-
-interface PillarCard {
-  id: string;
-  number: string;
-  acronym: string;
-  badge: string;
-  title: string;
-  tags: string;
-  date: string;
-  place: string;
-  bgImage: string;
-  cardBg: string;
-  glowColor: string;
-  logoClass?: string;
-  href: string;
-  badgeStyle: string;
-  acronymStyle: string;
-  hoverShadow: string;
-}
-
-const PILLARS: PillarCard[] = [
-  {
-    id: "imd",
-    number: "01",
-    acronym: "IMD 2027",
-    badge: "COMMERCIAL EXPO",
-    title: "India Mushroom Days",
-    tags: "Technology  •  Farming  •  Trade",
-    date: "19–21 Feb 2027",
-    place: "New Delhi, India",
-    bgImage: "/reallogo.png",
-    cardBg: "bg-gradient-to-br from-[#061c36] via-[#09294e] to-[#041224]",
-    glowColor: "bg-[#004aab]/60",
-    logoClass: "rounded-full ring-2 ring-white/10",
-    href: "/book-your-stall",
-    badgeStyle: "border-amber-500/60 bg-black/55 text-amber-300",
-    acronymStyle: "text-[#ffaa5b]",
-    hoverShadow:
-      "hover:shadow-[0_20px_50px_rgba(0,74,171,0.35)] hover:border-blue-500/50",
-  },
-  {
-    id: "shroom-connect",
-    number: "02",
-    acronym: "SHROOM CONNECT",
-    badge: "B2B BUYER CONCLAVE",
-    title: "Shroom Connect",
-    tags: "Buyers  •  Brands  •  Partnerships",
-    date: "19–21 Feb 2027",
-    place: "New Delhi, India",
-    bgImage: "/shroomlogo.jpeg",
-    cardBg: "bg-gradient-to-br from-[#24140b] via-[#331c0e] to-[#1a0e07]",
-    glowColor: "bg-[#ff9f43]/40",
-    logoClass: "rounded-full ring-2 ring-white/15",
-    href: "/#buyer-club",
-    badgeStyle: "border-orange-400/60 bg-black/55 text-orange-200",
-    acronymStyle: "text-[#ffaa5b]",
-    hoverShadow:
-      "hover:shadow-[0_20px_50px_rgba(255,159,67,0.3)] hover:border-orange-500/40",
-  },
-];
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -92,6 +33,50 @@ const cardVariants: Variants = {
 };
 
 export default function SummitPillars() {
+  const t = useTranslations("pillars");
+  const tCommon = useTranslations("common");
+
+  const PILLARS = [
+    {
+      id: "imd",
+      number: "01",
+      acronym: "IMD 2027",
+      badge: t("imdBadge"),
+      title: t("imdTitle"),
+      tags: t("imdTags"),
+      date: tCommon("eventDates"),
+      place: tCommon("eventLocation"),
+      bgImage: "/reallogo.png",
+      cardBg: "bg-gradient-to-br from-[#061c36] via-[#09294e] to-[#041224]",
+      glowColor: "bg-[#004aab]/60",
+      logoClass: "rounded-full ring-2 ring-white/10",
+      href: "/book-your-stall",
+      badgeStyle: "border-amber-500/60 bg-black/55 text-amber-300",
+      acronymStyle: "text-[#ffaa5b]",
+      hoverShadow:
+        "hover:shadow-[0_20px_50px_rgba(0,74,171,0.35)] hover:border-blue-500/50",
+    },
+    {
+      id: "shroom-connect",
+      number: "02",
+      acronym: "SHROOM CONNECT",
+      badge: t("shroomBadge"),
+      title: t("shroomTitle"),
+      tags: t("shroomTags"),
+      date: tCommon("eventDates"),
+      place: tCommon("eventLocation"),
+      bgImage: "/shroomlogo.jpeg",
+      cardBg: "bg-gradient-to-br from-[#24140b] via-[#331c0e] to-[#1a0e07]",
+      glowColor: "bg-[#ff9f43]/40",
+      logoClass: "rounded-full ring-2 ring-white/15",
+      href: "/#buyer-club",
+      badgeStyle: "border-orange-400/60 bg-black/55 text-orange-200",
+      acronymStyle: "text-[#ffaa5b]",
+      hoverShadow:
+        "hover:shadow-[0_20px_50px_rgba(255,159,67,0.3)] hover:border-orange-500/40",
+    },
+  ];
+
   return (
     <section
       id="pillars"
@@ -116,7 +101,7 @@ export default function SummitPillars() {
             transition={{ duration: 0.5, delay: 0.05 }}
             className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal text-[#1a231e] tracking-tight leading-tight"
           >
-            One ecosystem. Two powerful platforms
+            {t("heading")}
           </motion.h2>
         </div>
 
@@ -211,7 +196,7 @@ export default function SummitPillars() {
                           {pillar.date} &bull; {pillar.place}
                         </span>
                         <span className="inline-flex items-center gap-1.5 font-bold uppercase tracking-wider text-[11px] text-white group-hover:translate-x-1 transition-transform">
-                          Explore <span className="text-sm">&rarr;</span>
+                          {tCommon("learnMore")} <span className="text-sm">&rarr;</span>
                         </span>
                       </div>
                     </div>

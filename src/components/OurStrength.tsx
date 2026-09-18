@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import SectionDivider from "./SectionDivider";
 
 interface CounterItemProps {
@@ -72,8 +73,6 @@ function CounterItem({
       transition={{ duration: 0.6, delay: delayIndex * 0.1 }}
       className="p-6 sm:p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 flex flex-col items-center text-center group cursor-default"
     >
-
-
       {/* Massive Display Number */}
       <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight font-sans">
         {count.toLocaleString()}
@@ -81,7 +80,7 @@ function CounterItem({
       </div>
 
       {/* Primary Label */}
-      <div className="text-sm sm:text-base font-bold text-gray-200 mt-2 tracking-wide uppercase font-sans">
+      <div className="text-sm sm:text-base font-bold text-gray-200 mt-2 tracking-wide capitalize font-sans">
         {label}
       </div>
 
@@ -94,6 +93,8 @@ function CounterItem({
 }
 
 export default function OurStrength() {
+  const t = useTranslations("ourStrength");
+
   return (
     <section
       id="our-strength"
@@ -111,9 +112,9 @@ export default function OurStrength() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-white tracking-tight uppercase"
+            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-white tracking-tight capitalize"
           >
-            Scale &amp; Impact
+            {t("title")}
           </motion.h2>
         </div>
 
@@ -121,26 +122,26 @@ export default function OurStrength() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           <CounterItem
             target={5000}
-            label="Delegates"
-            sublabel="Commercial cultivators & farm owners across India"
+            label={t("delegatesLabel")}
+            sublabel={t("delegatesSublabel")}
             delayIndex={0}
           />
           <CounterItem
             target={100}
-            label="Exhibitors"
-            sublabel="Machinery, spawn labs, and CEA tech corporations"
+            label={t("exhibitorsLabel")}
+            sublabel={t("exhibitorsSublabel")}
             delayIndex={1}
           />
           <CounterItem
             target={15}
-            label="Countries"
-            sublabel="International delegates and European equipment leaders"
+            label={t("countriesLabel")}
+            sublabel={t("countriesSublabel")}
             delayIndex={2}
           />
           <CounterItem
             target={50}
-            label="Speakers"
-            sublabel="Renowned mycology scientists & agribusiness economists"
+            label={t("speakersLabel")}
+            sublabel={t("speakersSublabel")}
             delayIndex={3}
           />
         </div>

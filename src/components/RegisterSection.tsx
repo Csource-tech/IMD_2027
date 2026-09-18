@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import {
   CheckCircle,
   AlertCircle,
@@ -11,7 +12,6 @@ import {
   Phone,
   MapPin,
   Clock,
-  ArrowRight,
 } from "lucide-react";
 import SectionDivider from "./SectionDivider";
 
@@ -25,6 +25,9 @@ const INQUIRY_TOPICS = [
 ];
 
 export default function RegisterSection() {
+  const t = useTranslations("contact");
+  const tCommon = useTranslations("common");
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -79,9 +82,9 @@ export default function RegisterSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
+            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight capitalize"
           >
-            Contact Secretariat
+            {t("title")}
           </motion.h2>
         </div>
 
@@ -95,11 +98,11 @@ export default function RegisterSection() {
             className="lg:col-span-5 space-y-6"
           >
             <div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-950 tracking-tight uppercase font-sans">
-                Official Helpdesk
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-950 tracking-tight capitalize font-sans">
+                {t("title")}
               </h3>
               <p className="mt-3 text-sm sm:text-base text-gray-600 leading-relaxed font-normal">
-                Connect directly with the India Mushroom Days 2027 secretariat for booth reservations, delegate passes, and partnerships.
+                {t("subtitle")}
               </p>
             </div>
 
@@ -112,7 +115,7 @@ export default function RegisterSection() {
                 </div>
                 <div className="min-w-0 flex-1">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block mb-0.5">
-                    Official Secretariat Inbox
+                    {t("emailCardTitle")}
                   </span>
                   <a
                     href="mailto:reachout@mushex.in"
@@ -121,7 +124,7 @@ export default function RegisterSection() {
                     reachout@mushex.in
                   </a>
                   <p className="text-[11px] text-gray-500 mt-0.5">
-                    Response timeline: within 4–6 business hours
+                    {t("emailTimeline")}
                   </p>
                 </div>
               </div>
@@ -133,7 +136,7 @@ export default function RegisterSection() {
                 </div>
                 <div className="min-w-0 flex-1">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block mb-1">
-                    Summit Hotlines &amp; WhatsApp
+                    {t("helplineTitle")}
                   </span>
                   <div className="space-y-1 text-sm sm:text-base font-bold text-gray-950">
                     <div>
@@ -145,7 +148,7 @@ export default function RegisterSection() {
                   </div>
                   <div className="mt-2 pt-2 border-t border-gray-100 flex items-center gap-1.5 text-[11px] text-gray-500">
                     <Clock className="w-3.5 h-3.5 text-emerald-600" />
-                    <span>Mon – Sat: 09:00 AM – 06:00 PM IST</span>
+                    <span>{t("helplineHours")}</span>
                   </div>
                 </div>
               </div>
@@ -157,13 +160,13 @@ export default function RegisterSection() {
                 </div>
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block mb-0.5">
-                    Summit Location
+                    {t("venueTitle")}
                   </span>
                   <h4 className="text-base font-bold text-gray-950">
-                    New Delhi, India
+                    {tCommon("eventLocation")}
                   </h4>
                   <p className="text-xs text-gray-600 mt-0.5">
-                    February 19–21, 2027
+                    {tCommon("eventDatesFull")}
                   </p>
                 </div>
               </div>
@@ -180,10 +183,10 @@ export default function RegisterSection() {
           >
             <div className="flex items-center justify-between pb-4 mb-6 border-b border-gray-100">
               <h3 className="text-xl sm:text-2xl font-black text-gray-950 tracking-tight">
-                Send a Direct Inquiry
+                {t("formTitle")}
               </h3>
               <span className="text-xs font-semibold text-[#ff9f43]">
-                * Required Fields
+                {t("requiredFields")}
               </span>
             </div>
 
@@ -193,10 +196,10 @@ export default function RegisterSection() {
                   <CheckCircle className="w-7 h-7" />
                 </div>
                 <h4 className="text-2xl font-bold text-gray-900">
-                  Inquiry Dispatched Successfully
+                  {t("successTitle")}
                 </h4>
                 <p className="text-gray-600 max-w-md mx-auto text-sm leading-relaxed">
-                  Thank you for reaching out to <strong>India Mushroom Days 2027 (IMD 2027)</strong>. Your message has been routed to <strong>reachout@mushex.in</strong> and a secretariat officer will connect within 4–6 business hours.
+                  {t("successDesc")}
                 </p>
                 <button
                   type="button"
@@ -212,7 +215,7 @@ export default function RegisterSection() {
                   }}
                   className="mt-4 px-6 py-2.5 rounded-full bg-[#0c140f] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#ff9f43] transition-colors cursor-pointer"
                 >
-                  Send Another Inquiry
+                  {t("anotherInquiry")}
                 </button>
               </div>
             ) : (
@@ -228,7 +231,7 @@ export default function RegisterSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">
-                      Full Name <span className="text-[#ff9f43]">*</span>
+                      {t("fullName")} <span className="text-[#ff9f43]">*</span>
                     </label>
                     <input
                       type="text"
@@ -242,7 +245,7 @@ export default function RegisterSection() {
 
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">
-                      Email Address <span className="text-[#ff9f43]">*</span>
+                      {t("emailAddress")} <span className="text-[#ff9f43]">*</span>
                     </label>
                     <input
                       type="email"
@@ -259,7 +262,7 @@ export default function RegisterSection() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">
-                      Phone / WhatsApp <span className="text-[#ff9f43]">*</span>
+                      {t("phoneNumber")} <span className="text-[#ff9f43]">*</span>
                     </label>
                     <input
                       type="tel"
@@ -273,7 +276,7 @@ export default function RegisterSection() {
 
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">
-                      Inquiry Topic <span className="text-[#ff9f43]">*</span>
+                      {t("inquiryTopic")} <span className="text-[#ff9f43]">*</span>
                     </label>
                     <select
                       value={formData.inquiryTopic}
@@ -293,7 +296,7 @@ export default function RegisterSection() {
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
                     <label className="block text-xs font-bold uppercase tracking-wider text-gray-700">
-                      Detailed Message / Requirements <span className="text-[#ff9f43]">*</span>
+                      {t("message")} <span className="text-[#ff9f43]">*</span>
                     </label>
                     <span className="text-[11px] font-medium text-gray-400">
                       {formData.message.length} / 3000
@@ -320,12 +323,12 @@ export default function RegisterSection() {
                     {isSubmitting ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin" />
-                        <span>Dispatching to Secretariat...</span>
+                        <span>{t("submitting")}</span>
                       </>
                     ) : (
                       <>
                         <Send className="w-4 h-4" />
-                        <span>Submit Inquiry &amp; Dispatch to reachout@mushex.in</span>
+                        <span>{t("submitBtn")}</span>
                       </>
                     )}
                   </button>

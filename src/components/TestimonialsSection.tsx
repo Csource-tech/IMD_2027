@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import SectionDivider from "./SectionDivider";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -54,6 +55,7 @@ const TESTIMONIALS: Testimonial[] = [
 ];
 
 export default function TestimonialsSection() {
+  const t = useTranslations("testimonials");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -69,9 +71,9 @@ export default function TestimonialsSection() {
     if (isPaused) return;
     const timer = setInterval(() => {
       nextSlide();
-    }, 7500);
+    }, 6000);
     return () => clearInterval(timer);
-  }, [currentIndex, isPaused]);
+  }, [isPaused, currentIndex]);
 
   const current = TESTIMONIALS[currentIndex];
 
@@ -90,9 +92,9 @@ export default function TestimonialsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
+            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight capitalize"
           >
-            Testimonials
+            {t("title")}
           </motion.h2>
         </div>
 

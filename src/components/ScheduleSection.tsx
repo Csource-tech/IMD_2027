@@ -2,9 +2,11 @@
 
 import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import SectionDivider from "./SectionDivider";
 
 export default function ScheduleSection() {
+  const t = useTranslations("schedule");
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -88,9 +90,9 @@ export default function ScheduleSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
+            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight capitalize"
           >
-            2nd Edition of India Mushroom Days 2027
+            {t("title")}
           </motion.h2>
         </div>
 
@@ -122,20 +124,20 @@ export default function ScheduleSection() {
             {/* Top Video Header Tag */}
             <div className="absolute top-4 sm:top-6 left-4 sm:left-6 flex items-center gap-2.5 z-20">
               <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-black tracking-wider uppercase bg-[#ff9f43] text-white shadow-lg">
-                Live Conclave Showcase
+                {t("tag")}
               </span>
               <span className="hidden sm:inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-md text-white border border-white/20">
-                19–21 February 2027 • New Delhi
+                {t("subtag")}
               </span>
             </div>
 
             {/* In-Video Hero Callout at Bottom */}
             <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 right-4 sm:right-8 z-20">
               <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#ff9f43] mb-1.5">
-                The Epicenter of Commercial Mushroom Farming
+                {t("epicenter")}
               </p>
               <h3 className="text-lg sm:text-2xl md:text-3xl font-black text-white leading-tight font-sans">
-                Where India&apos;s Growers, Tech Innovators &amp; Institutional Buyers Meet
+                {t("banner")}
               </h3>
             </div>
           </div>

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import SectionDivider from "./SectionDivider";
 
 interface SpeciesItem {
@@ -86,6 +87,7 @@ const SPECIALTY_SPECIES: SpeciesItem[] = [
 ];
 
 export default function FullIndustryChain() {
+  const t = useTranslations("industryChain");
   const [activeSpecies, setActiveSpecies] = useState<string>("oyster");
 
   const currentSpecialty = SPECIALTY_SPECIES.find((s) => s.id === activeSpecies) || SPECIALTY_SPECIES[0];
@@ -103,9 +105,9 @@ export default function FullIndustryChain() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight uppercase"
+            className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight capitalize"
           >
-            Industry Chain &amp; Species
+            {t("title")}
           </motion.h2>
         </div>
 
@@ -130,13 +132,13 @@ export default function FullIndustryChain() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
 
               <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#ff9f43] text-white text-[11px] font-bold uppercase tracking-wider shadow-md">
-                Commercial Core
+                {t("buttonBadge")}
               </div>
 
               <div className="absolute bottom-4 left-4 right-4">
-                <div className="text-2xl sm:text-3xl font-black text-white leading-none">75%+</div>
+                <div className="text-2xl sm:text-3xl font-black text-white leading-none">{t("buttonVolume")}</div>
                 <div className="text-[11px] sm:text-xs font-semibold text-amber-200 mt-1">
-                  Total National Mushroom Production Volume
+                  {t("buttonVolumeDesc")}
                 </div>
               </div>
             </div>
@@ -146,15 +148,12 @@ export default function FullIndustryChain() {
               <div>
                 <div className="flex items-baseline justify-between flex-wrap gap-2 mb-1.5">
                   <h3 className="text-xl sm:text-2xl font-black text-gray-950 tracking-tight">
-                    Button Mushrooms
+                    {t("buttonHeading")}
                   </h3>
-                  <span className="text-xs font-serif italic text-gray-500 font-semibold">
-                    Agaricus bisporus
-                  </span>
                 </div>
 
                 <p className="text-xs sm:text-sm text-gray-600 leading-relaxed max-w-2xl">
-                  The commercial engine of India&apos;s mushroom industry, cultivated in precision climate-controlled facilities for fresh retail, wholesale mandis, and food processing.
+                  {t("buttonSubheading")}
                 </p>
               </div>
 
@@ -180,8 +179,8 @@ export default function FullIndustryChain() {
                       2
                     </span>
                     <div className="min-w-0">
-                      <h4 className="text-xs font-bold text-gray-900 truncate">Controlled Cropping Climate</h4>
-                      <p className="text-[10px] text-gray-500 truncate">16°C–18°C Fruiting Range</p>
+                      <h4 className="text-xs font-bold text-gray-900 truncate">Controlled Cropping</h4>
+                      <p className="text-[10px] text-gray-500 truncate">16°C–18°C Range</p>
                     </div>
                   </div>
 
@@ -215,8 +214,8 @@ export default function FullIndustryChain() {
         {/* ========================================================================= */}
         <div id="specialty-sectors" className="pt-2">
           <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-black font-sans text-gray-950 tracking-tight uppercase">
-              Specialty Mushroom Sectors
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-black font-sans text-gray-950 tracking-tight capitalize">
+              {t("specialtyHeading")}
             </h3>
           </div>
 
@@ -231,26 +230,26 @@ export default function FullIndustryChain() {
                     key={species.id}
                     onClick={() => setActiveSpecies(species.id)}
                     type="button"
-                    className={`w-full h-[52px] px-3.5 rounded-xl text-left transition-all duration-150 cursor-pointer flex items-center justify-between border group shrink-0 ${isSelected
-                      ? "bg-slate-900 text-white border-slate-900 shadow-sm"
-                      : "bg-white text-gray-800 border-gray-200 hover:border-[#004aab] hover:bg-blue-50/20"
-                      }`}
+                    className={`w-full h-[52px] px-3.5 rounded-xl text-left transition-all duration-150 cursor-pointer flex items-center justify-between border group shrink-0 ${
+                      isSelected
+                        ? "bg-slate-900 text-white border-slate-900 shadow-sm"
+                        : "bg-white text-gray-800 border-gray-200 hover:border-[#004aab] hover:bg-blue-50/20"
+                    }`}
                   >
                     <div className="flex items-center gap-2.5 min-w-0 pr-2">
-
                       <div className="min-w-0">
                         <div className="text-xs sm:text-sm font-bold leading-tight tracking-tight truncate">
                           {species.title}
                         </div>
                         <div
-                          className={`text-[11px] mt-0.5 truncate font-medium ${isSelected ? "text-amber-300" : "text-gray-500"
-                            }`}
+                          className={`text-[11px] mt-0.5 truncate font-medium ${
+                            isSelected ? "text-amber-300" : "text-gray-500"
+                          }`}
                         >
                           {species.badge}
                         </div>
                       </div>
                     </div>
-
                   </button>
                 );
               })}
@@ -283,7 +282,9 @@ export default function FullIndustryChain() {
                         </span>
                       </div>
                       <div className="absolute bottom-3 left-3 right-3 text-white z-10">
-                        <h4 className="text-base sm:text-lg font-black leading-tight truncate">{currentSpecialty.title}</h4>
+                        <h4 className="text-base sm:text-lg font-black leading-tight truncate">
+                          {currentSpecialty.title}
+                        </h4>
                         <p className="text-[11px] text-amber-200 italic font-serif truncate">
                           {currentSpecialty.scientificName}
                         </p>
@@ -318,7 +319,7 @@ export default function FullIndustryChain() {
                       <div className="grid grid-cols-2 gap-2 pt-2 border-t border-gray-100 mt-2">
                         <div className="p-2 rounded-lg bg-slate-50 border border-slate-200/80">
                           <div className="flex items-center gap-1 text-slate-500 text-[10px] font-semibold">
-                            <span>Growth Temp</span>
+                            <span>{t("temp")}</span>
                           </div>
                           <div className="text-[11px] font-bold text-gray-900 mt-0.5 truncate">
                             {currentSpecialty.temp}
@@ -327,7 +328,7 @@ export default function FullIndustryChain() {
 
                         <div className="p-2 rounded-lg bg-slate-50 border border-slate-200/80">
                           <div className="flex items-center gap-1 text-slate-500 text-[10px] font-semibold">
-                            <span>Substrate</span>
+                            <span>{t("substrate")}</span>
                           </div>
                           <div className="text-[11px] font-bold text-gray-900 truncate mt-0.5">
                             {currentSpecialty.substrate}
@@ -336,7 +337,7 @@ export default function FullIndustryChain() {
 
                         <div className="col-span-2 p-2 rounded-lg bg-slate-50 border border-slate-200/80">
                           <div className="flex items-center gap-1 text-slate-500 text-[10px] font-semibold">
-                            <span>Market Advantage</span>
+                            <span>{t("commercialValue")}</span>
                           </div>
                           <div className="text-[11px] font-bold text-gray-900 mt-0.5 truncate">
                             {currentSpecialty.commercialValue}
