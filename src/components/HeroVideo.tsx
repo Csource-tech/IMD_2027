@@ -10,8 +10,6 @@ const CAROUSEL_IMAGES = [
   "/carousel/3U3A5155.JPG",
   "/carousel/3U3A5379.JPG",
   "/carousel/3U3A6154.JPG",
-  "/carousel/3U3A5175.JPG",
-  "/carousel/3U3A5098.JPG",
   "/carousel/3U3A5002.JPG",
   "/carousel/3U3A5077.JPG",
   "/carousel/3U3A5264.JPG",
@@ -34,7 +32,7 @@ export default function HeroVideo() {
     setCurrentSlide(0);
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % CAROUSEL_IMAGES.length);
-    }, 4500);
+    }, 2000);
 
     return () => clearInterval(timer);
   }, []);
