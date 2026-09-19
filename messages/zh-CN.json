@@ -234,6 +234,12 @@
     "success": "报名注册成功！",
     "error": "发生错误，请稍后重试。"
   },
+  "instagram": {
+    "badge": "实时动态",
+    "title": "在 Instagram 上关注我们",
+    "subtitle": "获取展会现场实时动态、演讲集锦与精彩瞬间。",
+    "followBtn": "在 Instagram 上关注"
+  },
   "metadata": {
     "title": "印度蘑菇日 2027 暨 Shroom Connect 大会 | 印度新德里",
     "description": "印度蘑菇日 2027 (IMD 2027) 暨 Shroom Connect 大会。2027年2月19–21日在印度新德里盛大举办的顶级国际食用菌产业博览会。",

@@ -7,6 +7,7 @@ import SloganBanner from "@/components/SloganBanner";
 import AboutEvent from "@/components/AboutEvent";
 import FullIndustryChain from "@/components/FullIndustryChain";
 import WhyJoinSection from "@/components/WhyJoinSection";
+import InstagramFeed from "@/components/InstagramFeed";
 import OurStrength from "@/components/OurStrength";
 import ScheduleSection from "@/components/ScheduleSection";
 import OrganisingCommittee from "@/components/OrganisingCommittee";
@@ -36,6 +37,7 @@ export default async function Home({
       <AboutEvent />
       <FullIndustryChain />
       <WhyJoinSection />
+      <InstagramFeed />
       <OurStrength />
       <ExhibitorsSection />
       <ScheduleSection />

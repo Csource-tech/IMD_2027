@@ -234,6 +234,12 @@
     "success": "Registration successful!",
     "error": "An error occurred. Please try again."
   },
+  "instagram": {
+    "badge": "Live Updates",
+    "title": "Follow Us On Instagram",
+    "subtitle": "Catch live exhibition moments, speaker sessions & community highlights.",
+    "followBtn": "Follow On Instagram"
+  },
   "metadata": {
     "title": "India Mushroom Days 2027 | IMD 2027 & Shroom Connect | New Delhi, India",
     "description": "India Mushroom Days 2027 (IMD 2027) & Shroom Connect B2B Conclave. Join the premier international edible mushroom expo on 19-20-21 February 2027 in New Delhi, India.",
