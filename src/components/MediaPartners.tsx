@@ -16,14 +16,6 @@ interface MediaPartner {
 
 const MEDIA_PARTNERS: MediaPartner[] = [
   {
-    id: "mushroom-growing-news",
-    name: "Mushroom Growing News",
-    image: "/media/image1.jpeg",
-    website: "https://mgnews.org",
-    tagline: "Global Digital Media & Cultivation News",
-    bgColor: "#000000",
-  },
-  {
     id: "mushroom-business",
     name: "Mushroom Business",
     image: "/media/image2.jpeg",
@@ -38,6 +30,14 @@ const MEDIA_PARTNERS: MediaPartner[] = [
     website: "https://www.mushroomchronicle.com",
     tagline: "National Industry Magazine & Trade Chronicle",
     bgColor: "#313E37",
+  },
+  {
+    id: "mushroom-growing-news",
+    name: "Mushroom Growing News",
+    image: "/media/image1.jpeg",
+    website: "https://mgnews.org",
+    tagline: "Global Digital Media & Cultivation News",
+    bgColor: "#000000",
   },
 ];
 
