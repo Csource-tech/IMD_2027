@@ -1,8 +1,10 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import SectionDivider from "./SectionDivider";
+import { DEFAULT_SPEAKERS, SpeakerItem } from "@/lib/sectionsCmsTypes";
 
 interface CommitteeMember {
   name: string;
@@ -170,6 +172,33 @@ const SPEAKERS: Speaker[] = [
 
 export default function OrganisingCommittee() {
   const t = useTranslations("committee");
+  const [speakers, setSpeakers] = useState<SpeakerItem[]>(DEFAULT_SPEAKERS);
+  const [lineupTitle, setLineupTitle] = useState<string>("");
+  const [lineupSubtitle, setLineupSubtitle] = useState<string>("");
+
+  useEffect(() => {
+    fetch("/api/sections")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((json) => {
+        if (json?.data?.lineup) {
+          if (Array.isArray(json.data.lineup.items) && json.data.lineup.items.length > 0) {
+            setSpeakers(json.data.lineup.items);
+          }
+          if (json.data.lineup.title) {
+            setLineupTitle(json.data.lineup.title);
+          }
+          if (json.data.lineup.subtitle) {
+            setLineupSubtitle(json.data.lineup.subtitle);
+          }
+        }
+      })
+      .catch(() => {
+        // Fallback to static defaults
+      });
+  }, []);
+
+  const activeSpeakers = speakers.filter((s) => s.active !== false);
+  const displaySpeakers = activeSpeakers.length > 0 ? activeSpeakers : DEFAULT_SPEAKERS;
 
   return (
     <section
@@ -241,7 +270,7 @@ export default function OrganisingCommittee() {
               transition={{ duration: 0.5 }}
               className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight capitalize"
             >
-              {t("lineupTitle")}
+              {lineupTitle || t("lineupTitle")}
             </motion.h2>
 
             <motion.p
@@ -251,13 +280,13 @@ export default function OrganisingCommittee() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="mt-3 text-sm sm:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed font-normal"
             >
-              {t("lineupSubtitle")}
+              {lineupSubtitle || t("lineupSubtitle")}
             </motion.p>
           </div>
 
           {/* Speakers Grid (4 cols on lg, 3 on md/sm, 2 on xs) */}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 items-start">
-            {SPEAKERS.map((speaker, idx) => (
+            {displaySpeakers.map((speaker, idx) => (
               <motion.div
                 key={speaker.name}
                 initial={{ opacity: 0, y: 20 }}

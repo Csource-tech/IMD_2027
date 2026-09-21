@@ -162,26 +162,15 @@ export default function InstagramFeed({
           ) : (
             /* Script Widget Mode - Allows custom full-width borderless styling & bio hiding */
             <div
-              className="sk-instagram-feed w-full"
+              className="sk-instagram-feed w-full min-h-[360px]"
               data-embed-id={effectiveEmbedId}
               suppressHydrationWarning
-            >
-              {!mounted && (
-                <div className="w-full py-16 flex flex-col items-center justify-center text-center space-y-4">
-                  <div className="w-12 h-12 rounded-full border-2 border-pink-500/20 border-t-pink-500 animate-spin flex items-center justify-center">
-                    <InstagramIcon className="w-5 h-5 text-pink-500" />
-                  </div>
-                  <p className="text-xs font-semibold text-gray-500 font-mono tracking-wider uppercase">
-                    Loading Live Instagram Stream...
-                  </p>
-                </div>
-              )}
-            </div>
+            />
           )}
         </div>
 
-        {/* Next.js Script Loader for SociableKit (Only loaded if not in pure iframe mode) */}
-        {!useIframe && (
+        {/* Next.js Script Loader for SociableKit (Only loaded after client mount and if not in pure iframe mode) */}
+        {mounted && !useIframe && (
           <Script
             src="https://widgets.sociablekit.com/instagram-feed/widget.js"
             strategy="afterInteractive"

@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import CountdownTimer from "@/components/CountdownTimer";
 
-const CAROUSEL_IMAGES = [
+const DEFAULT_CAROUSEL_IMAGES = [
   "/carousel/3U3A5155.JPG",
   "/carousel/3U3A5379.JPG",
   "/carousel/3U3A6154.JPG",
@@ -26,20 +26,86 @@ const CAROUSEL_IMAGES = [
   "/carousel/b15.jpeg",
 ];
 
+interface HeroCmsState {
+  kicker?: string;
+  titlePart1?: string;
+  titlePart2?: string;
+  shroomConnect?: string;
+  subtitlePart1?: string;
+  subtitlePart2?: string;
+  visitorBtnText?: string;
+  boothBtnText?: string;
+  images?: string[];
+}
+
 export default function HeroVideo() {
   const t = useTranslations("hero");
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [cmsData, setCmsData] = useState<HeroCmsState | null>(null);
+
+  // Load dynamic CMS configuration
+  useEffect(() => {
+    let isMounted = true;
+    async function loadCmsHero() {
+      try {
+        const res = await fetch("/api/hero");
+        if (res.ok) {
+          const json = await res.json();
+          if (json.success && json.data && isMounted) {
+            const activeImages = Array.isArray(json.data.images)
+              ? json.data.images
+                  .filter((img: any) => img && img.active !== false && img.url)
+                  .sort((a: any, b: any) => (a.order ?? 0) - (b.order ?? 0))
+                  .map((img: any) => img.url)
+              : [];
+
+            setCmsData({
+              kicker: json.data.kicker,
+              titlePart1: json.data.titlePart1,
+              titlePart2: json.data.titlePart2,
+              shroomConnect: json.data.shroomConnect,
+              subtitlePart1: json.data.subtitlePart1,
+              subtitlePart2: json.data.subtitlePart2,
+              visitorBtnText: json.data.visitorBtnText,
+              boothBtnText: json.data.boothBtnText,
+              images: activeImages.length > 0 ? activeImages : undefined,
+            });
+          }
+        }
+      } catch (err) {
+        console.warn("Could not load dynamic CMS hero config, using defaults:", err);
+      }
+    }
+    loadCmsHero();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const carouselImages = cmsData?.images && cmsData.images.length > 0
+    ? cmsData.images
+    : DEFAULT_CAROUSEL_IMAGES;
 
   useEffect(() => {
     setCurrentSlide(0);
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % CAROUSEL_IMAGES.length);
-    }, 2000);
+      setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
+    }, 2500);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [carouselImages.length]);
 
-  const activeIndex = currentSlide % CAROUSEL_IMAGES.length;
+  const activeIndex = currentSlide % carouselImages.length;
+
+  // Text values: CMS override with fallback to next-intl translations
+  const kicker = cmsData?.kicker || t("kicker");
+  const titlePart1 = cmsData?.titlePart1 || t("titlePart1");
+  const titlePart2 = cmsData?.titlePart2 || t("titlePart2");
+  const shroomConnect = cmsData?.shroomConnect || t("shroomConnect");
+  const subtitlePart1 = cmsData?.subtitlePart1 || t("subtitlePart1");
+  const subtitlePart2 = cmsData?.subtitlePart2 || t("subtitlePart2");
+  const visitorBtn = cmsData?.visitorBtnText || t("visitorBtn");
+  const boothBtn = cmsData?.boothBtnText || t("boothBtn");
 
   return (
     <section
@@ -48,11 +114,11 @@ export default function HeroVideo() {
     >
       {/* 1. Full Page Background Image Carousel with Light Overlay */}
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 bg-[#0f172a]">
-        {CAROUSEL_IMAGES.map((src, index) => {
+        {carouselImages.map((src, index) => {
           const isActive = index === activeIndex;
           return (
             <motion.div
-              key={src}
+              key={`${src}-${index}`}
               initial={false}
               animate={{
                 opacity: isActive ? 1 : 0,
@@ -93,7 +159,7 @@ export default function HeroVideo() {
             style={{ textShadow: "0 2px 6px rgba(0,0,0,0.9)" }}
             className="inline-flex items-center px-4 sm:px-5 py-1.5 rounded-full bg-black/65 backdrop-blur-md border border-amber-400/50 text-amber-300 font-extrabold text-xs sm:text-sm tracking-wider uppercase shadow-2xl"
           >
-            {t("kicker")}
+            {kicker}
           </span>
         </motion.div>
 
@@ -108,8 +174,8 @@ export default function HeroVideo() {
           }}
           className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-normal leading-[1.08] text-white font-sans [word-spacing:0.1em]"
         >
-          {t("titlePart1")}{" "}
-          <span className="text-[#ff9f43]">{t("titlePart2")}</span>
+          {titlePart1}{" "}
+          <span className="text-[#ff9f43]">{titlePart2}</span>
         </motion.h1>
 
         {/* Elegant Ampersand Divider */}
@@ -140,7 +206,7 @@ export default function HeroVideo() {
           }}
           className="text-2xl sm:text-4xl md:text-5xl font-black tracking-normal leading-[1.1] text-[#38bdf8] font-sans [word-spacing:0.1em]"
         >
-          {t("shroomConnect")}
+          {shroomConnect}
         </motion.h2>
 
         {/* Core Subtitle Paragraph */}
@@ -151,9 +217,9 @@ export default function HeroVideo() {
           style={{ textShadow: "0 2px 8px rgba(0,0,0,0.95), 0 4px 16px rgba(0,0,0,0.9)" }}
           className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg font-semibold text-gray-100 max-w-2xl mx-auto leading-relaxed tracking-wide"
         >
-          <span>{t("subtitlePart1")}</span>{" "}
+          <span>{subtitlePart1}</span>{" "}
           <br />
-          <span className="inline-block mt-0.5 sm:mt-1">{t("subtitlePart2")}</span>
+          <span className="inline-block mt-0.5 sm:mt-1">{subtitlePart2}</span>
         </motion.p>
 
         {/* Two Centered Action Buttons */}
@@ -168,7 +234,7 @@ export default function HeroVideo() {
             href="/visitor-register"
             className="group inline-flex items-center justify-center px-7 sm:px-9 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold text-white bg-[#ff9f43] hover:bg-[#f28822] shadow-xl shadow-black/50 hover:scale-105 active:scale-95 transition-all duration-200 uppercase tracking-wider"
           >
-            <span>{t("visitorBtn")}</span>
+            <span>{visitorBtn}</span>
           </Link>
 
           {/* Book Your Booth Button */}
@@ -176,7 +242,7 @@ export default function HeroVideo() {
             href="/book-your-stall"
             className="group inline-flex items-center justify-center px-7 sm:px-9 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold text-white bg-black/35 hover:bg-black/55 backdrop-blur-md border border-white/40 shadow-xl shadow-black/40 hover:border-white/60 hover:scale-105 active:scale-95 transition-all duration-200 uppercase tracking-wider"
           >
-            <span>{t("boothBtn")}</span>
+            <span>{boothBtn}</span>
           </Link>
         </motion.div>
       </div>

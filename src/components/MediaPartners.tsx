@@ -1,48 +1,41 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import { DEFAULT_MEDIA_PARTNERS, MediaPartnerItem } from "@/lib/sectionsCmsTypes";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { useTranslations } from "next-intl";
 import SectionDivider from "./SectionDivider";
 
-interface MediaPartner {
-  id: string;
-  name: string;
-  image: string;
-  website: string;
-  tagline: string;
-  bgColor: string;
-}
-
-const MEDIA_PARTNERS: MediaPartner[] = [
-  {
-    id: "mushroom-business",
-    name: "Mushroom Business",
-    image: "/media/image2.jpeg",
-    website: "https://mushroombusiness.com/",
-    tagline: "International Trade Journal by Global Roel Media",
-    bgColor: "#564531",
-  },
-  {
-    id: "mushroom-chronicle",
-    name: "Mushroom Chronicle",
-    image: "/media/image3-v2.jpeg",
-    website: "https://www.mushroomchronicle.com",
-    tagline: "National Industry Magazine & Trade Chronicle",
-    bgColor: "#313E37",
-  },
-  {
-    id: "mushroom-growing-news",
-    name: "Mushroom Growing News",
-    image: "/media/image1.jpeg",
-    website: "https://mgnews.org",
-    tagline: "Global Digital Media & Cultivation News",
-    bgColor: "#000000",
-  },
-];
-
 export default function MediaPartners() {
   const t = useTranslations("partners");
+  const [partners, setPartners] = useState<MediaPartnerItem[]>(DEFAULT_MEDIA_PARTNERS);
+  const [title, setTitle] = useState<string>("");
+  const [subtitle, setSubtitle] = useState<string>("");
+
+  useEffect(() => {
+    fetch("/api/sections")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((json) => {
+        if (json?.data?.mediaPartners) {
+          if (Array.isArray(json.data.mediaPartners.items) && json.data.mediaPartners.items.length > 0) {
+            setPartners(json.data.mediaPartners.items);
+          }
+          if (json.data.mediaPartners.title) {
+            setTitle(json.data.mediaPartners.title);
+          }
+          if (json.data.mediaPartners.subtitle) {
+            setSubtitle(json.data.mediaPartners.subtitle);
+          }
+        }
+      })
+      .catch(() => {
+        // Fallback to static defaults
+      });
+  }, []);
+
+  const activeItems = partners.filter((p) => p.active !== false);
+  const displayItems = activeItems.length > 0 ? activeItems : DEFAULT_MEDIA_PARTNERS;
 
   return (
     <section
@@ -63,7 +56,7 @@ export default function MediaPartners() {
             transition={{ duration: 0.5 }}
             className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight capitalize"
           >
-            {t("mediaPartnersTitle")}
+            {title || t("mediaPartnersTitle")}
           </motion.h2>
 
           <motion.p
@@ -73,15 +66,15 @@ export default function MediaPartners() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="mt-3 text-sm sm:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed font-normal"
           >
-            {t("mediaPartnersSubtitle")}
+            {subtitle || t("mediaPartnersSubtitle")}
           </motion.p>
         </div>
 
-        {/* 3 Media Partner White Glassmorphic Cards Grid */}
+        {/* Media Partner White Glassmorphic Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-stretch max-w-6xl mx-auto">
-          {MEDIA_PARTNERS.map((partner, idx) => (
+          {displayItems.map((partner, idx) => (
             <motion.div
-              key={partner.id}
+              key={partner.id || idx}
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
@@ -98,16 +91,19 @@ export default function MediaPartners() {
                 {/* Subtle Ambient Radial Accent in Card */}
                 <div className="absolute top-0 right-0 w-44 h-44 bg-gradient-to-br from-amber-400/10 to-orange-500/10 rounded-full blur-2xl pointer-events-none group-hover:from-amber-400/20 group-hover:to-orange-500/20 transition-all duration-500" />
 
-                {/* Top Logo Container - fits image completely without cropping */}
+                {/* Top Logo Container */}
                 <div>
                   <div
                     className="w-full aspect-[2.35/1] rounded-2xl overflow-hidden relative border border-gray-200/90 shadow-md group-hover:shadow-lg transition-all duration-300 flex items-center justify-center p-2.5 sm:p-3"
-                    style={{ backgroundColor: partner.bgColor }}
+                    style={{ backgroundColor: partner.bgColor || "#313E37" }}
                   >
                     <img
                       src={partner.image}
                       alt={`${partner.name} Official Logo`}
                       className="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-300"
+                      onError={(e) => {
+                        e.currentTarget.src = "/media/image1.jpeg";
+                      }}
                     />
                   </div>
 

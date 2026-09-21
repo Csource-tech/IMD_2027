@@ -8,71 +8,62 @@ import SectionDivider from "./SectionDivider";
 export default function ScheduleSection() {
   const t = useTranslations("schedule");
   const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const video = videoRef.current;
+    const container = containerRef.current;
     if (!video) return;
 
-    video.volume = 0.8;
+    // Guaranteed continuous muted background playback
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
 
-    const interactionEvents = [
-      "pointerdown",
-      "touchstart",
-      "mousedown",
-      "keydown",
-      "click",
-      "wheel",
-      "scroll",
-    ] as const;
-
-    const handleUnlockSound = () => {
-      if (!video) return;
-      video.muted = false;
-      video.volume = 0.8;
-      video.play().catch(() => {});
-      interactionEvents.forEach((evt) => {
-        window.removeEventListener(evt, handleUnlockSound, true);
-        document.removeEventListener(evt, handleUnlockSound, true);
-      });
-    };
-
-    // 1. Try unmuted playback immediately
-    video.muted = false;
-    video
-      .play()
-      .then(() => {
-        // Successfully played unmuted
-      })
-      .catch(() => {
-        // Autoplay policy prevented unmuted audio on load.
-        // Start visually muted, and immediately unmute on first gesture.
+    const playVideo = () => {
+      if (video && video.paused) {
         video.muted = true;
         video.play().catch(() => {});
+      }
+    };
 
-        interactionEvents.forEach((evt) => {
-          window.addEventListener(evt, handleUnlockSound, {
-            capture: true,
-            passive: true,
-          });
-          document.addEventListener(evt, handleUnlockSound, {
-            capture: true,
-            passive: true,
-          });
+    // Initial play attempt
+    playVideo();
+
+    // Ensure continuous playback whenever in viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            playVideo();
+          }
         });
-      });
+      },
+      { threshold: 0.1 }
+    );
 
+    if (container) {
+      observer.observe(container);
+    }
+
+    // Resume playback if user switches tabs and returns
+    const handleVisibility = () => {
+      if (document.visibilityState === "visible") {
+        playVideo();
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
+
+    // Seamless loop restart
     const handleEnded = () => {
-      if (!video) return;
       video.currentTime = 0;
-      video.play().catch(() => {});
+      playVideo();
     };
     video.addEventListener("ended", handleEnded);
 
     return () => {
-      interactionEvents.forEach((evt) => {
-        window.removeEventListener(evt, handleUnlockSound, true);
-        document.removeEventListener(evt, handleUnlockSound, true);
-      });
+      if (container) observer.unobserve(container);
+      document.removeEventListener("visibilitychange", handleVisibility);
       video.removeEventListener("ended", handleEnded);
     };
   }, []);
@@ -96,13 +87,14 @@ export default function ScheduleSection() {
           </motion.h2>
         </div>
 
-        {/* Video Feature Stage */}
+        {/* Video Feature Stage - Pure Always-Playing Background Reel without controls */}
         <motion.div
+          ref={containerRef}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative w-full rounded-3xl overflow-hidden bg-black shadow-2xl border border-gray-200 group"
+          className="relative w-full rounded-3xl overflow-hidden bg-black shadow-2xl border border-gray-200 pointer-events-none"
         >
           {/* Background Video Element */}
           <div className="relative aspect-[16/9] max-h-[620px] w-full overflow-hidden bg-black">
@@ -110,9 +102,10 @@ export default function ScheduleSection() {
               ref={videoRef}
               autoPlay
               loop
+              muted
               playsInline
               preload="auto"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover pointer-events-none"
             >
               <source src="/imdvideo.mp4" type="video/mp4" />
               <source src="/bgvideo.mp4" type="video/mp4" />
@@ -122,7 +115,7 @@ export default function ScheduleSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/50 pointer-events-none" />
 
             {/* Top Video Header Tag */}
-            <div className="absolute top-4 sm:top-6 left-4 sm:left-6 flex items-center gap-2.5 z-20">
+            <div className="absolute top-4 sm:top-6 left-4 sm:left-6 flex items-center gap-2.5 z-20 pointer-events-none">
               <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-black tracking-wider uppercase bg-[#ff9f43] text-white shadow-lg">
                 {t("tag")}
               </span>
@@ -132,7 +125,7 @@ export default function ScheduleSection() {
             </div>
 
             {/* In-Video Hero Callout at Bottom */}
-            <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 right-4 sm:right-8 z-20">
+            <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 right-4 sm:right-8 z-20 pointer-events-none">
               <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#ff9f43] mb-1.5">
                 {t("epicenter")}
               </p>
