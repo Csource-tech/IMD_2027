@@ -27,7 +27,6 @@ import {
   Hash,
   ShieldCheck,
   MessageSquare,
-  Sparkles,
   LayoutGrid,
 } from "lucide-react";
 import HeroCmsManager from "@/components/admin/HeroCmsManager";
@@ -307,7 +306,6 @@ export default function AdminDashboardPage() {
                   : "text-gray-300 hover:text-white hover:bg-white/5"
               }`}
             >
-              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
               <span>Hero CMS</span>
             </button>
             <button
