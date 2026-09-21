@@ -28,7 +28,10 @@ import {
   ShieldCheck,
   MessageSquare,
   Sparkles,
+  LayoutGrid,
 } from "lucide-react";
+import HeroCmsManager from "@/components/admin/HeroCmsManager";
+import SectionsCmsManager from "@/components/admin/SectionsCmsManager";
 
 interface Lead {
   id: string;
@@ -40,6 +43,7 @@ interface Lead {
 
 export default function AdminDashboardPage() {
   const router = useRouter();
+  const [currentView, setCurrentView] = useState<"leads" | "hero-cms" | "sections-cms">("leads");
   const [leads, setLeads] = useState<Lead[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<"all" | "visitor" | "stall" | "contact">("all");
@@ -271,13 +275,53 @@ export default function AdminDashboardPage() {
               </div>
               <div>
                 <span className="font-extrabold text-sm sm:text-base tracking-tight block text-white leading-tight">
-                  IMD 2027 Leads Center
+                  IMD 2027 Admin Portal
                 </span>
                 <span className="text-[10px] text-gray-400 font-mono uppercase tracking-wider block">
-                  Official Secretariat Admin
+                  Official Secretariat & CMS
                 </span>
               </div>
             </Link>
+          </div>
+
+          {/* Central Portal Switcher */}
+          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-white/10 border border-white/10 text-xs font-bold">
+            <button
+              type="button"
+              onClick={() => setCurrentView("leads")}
+              className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-lg transition cursor-pointer ${
+                currentView === "leads"
+                  ? "bg-[#ff9f43] text-white shadow-xs"
+                  : "text-gray-300 hover:text-white hover:bg-white/5"
+              }`}
+            >
+              <Users className="w-3.5 h-3.5" />
+              <span>Leads ({stats.total})</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setCurrentView("hero-cms")}
+              className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-lg transition cursor-pointer ${
+                currentView === "hero-cms"
+                  ? "bg-[#ff9f43] text-white shadow-xs"
+                  : "text-gray-300 hover:text-white hover:bg-white/5"
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+              <span>Hero CMS</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setCurrentView("sections-cms")}
+              className={`flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-lg transition cursor-pointer ${
+                currentView === "sections-cms"
+                  ? "bg-[#ff9f43] text-white shadow-xs"
+                  : "text-gray-300 hover:text-white hover:bg-white/5"
+              }`}
+            >
+              <LayoutGrid className="w-3.5 h-3.5 text-blue-300" />
+              <span>Sections CMS</span>
+            </button>
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3">
@@ -316,158 +360,164 @@ export default function AdminDashboardPage() {
 
       {/* Main Container */}
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        {/* KPI Cards Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {/* Card 1: Total Leads */}
-          <div className="p-5 sm:p-6 rounded-2xl bg-white border border-gray-200 shadow-sm flex items-center justify-between">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-gray-500 block mb-1">
-                Total Leads
-              </span>
-              <span className="text-2xl sm:text-3xl font-black text-gray-950 font-sans">
-                {stats.total}
-              </span>
-            </div>
-            <div className="w-12 h-12 rounded-2xl bg-slate-100 text-gray-800 flex items-center justify-center shrink-0">
-              <Users className="w-6 h-6" />
-            </div>
-          </div>
+        {currentView === "hero-cms" ? (
+          <HeroCmsManager />
+        ) : currentView === "sections-cms" ? (
+          <SectionsCmsManager />
+        ) : (
+          <>
+            {/* KPI Cards Grid */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              {/* Card 1: Total Leads */}
+              <div className="p-5 sm:p-6 rounded-2xl bg-white border border-gray-200 shadow-sm flex items-center justify-between">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-gray-500 block mb-1">
+                    Total Leads
+                  </span>
+                  <span className="text-2xl sm:text-3xl font-black text-gray-950 font-sans">
+                    {stats.total}
+                  </span>
+                </div>
+                <div className="w-12 h-12 rounded-2xl bg-slate-100 text-gray-800 flex items-center justify-center shrink-0">
+                  <Users className="w-6 h-6" />
+                </div>
+              </div>
 
-          {/* Card 2: Visitor Passes */}
-          <div className="p-5 sm:p-6 rounded-2xl bg-white border border-gray-200 shadow-sm flex items-center justify-between">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#004aab] block mb-1">
-                Visitor Passes
-              </span>
-              <span className="text-2xl sm:text-3xl font-black text-gray-950 font-sans">
-                {stats.visitors}
-              </span>
-            </div>
-            <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#004aab] flex items-center justify-center shrink-0 border border-blue-100">
-              <Users className="w-6 h-6" />
-            </div>
-          </div>
+              {/* Card 2: Visitor Passes */}
+              <div className="p-5 sm:p-6 rounded-2xl bg-white border border-gray-200 shadow-sm flex items-center justify-between">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#004aab] block mb-1">
+                    Visitor Passes
+                  </span>
+                  <span className="text-2xl sm:text-3xl font-black text-gray-950 font-sans">
+                    {stats.visitors}
+                  </span>
+                </div>
+                <div className="w-12 h-12 rounded-2xl bg-blue-50 text-[#004aab] flex items-center justify-center shrink-0 border border-blue-100">
+                  <Users className="w-6 h-6" />
+                </div>
+              </div>
 
-          {/* Card 3: Stall Bookings */}
-          <div className="p-5 sm:p-6 rounded-2xl bg-white border border-gray-200 shadow-sm flex items-center justify-between">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#b85b06] block mb-1">
-                Booth Bookings
-              </span>
-              <span className="text-2xl sm:text-3xl font-black text-gray-950 font-sans">
-                {stats.stalls}
-              </span>
-            </div>
-            <div className="w-12 h-12 rounded-2xl bg-orange-50 text-[#ff9f43] flex items-center justify-center shrink-0 border border-orange-100">
-              <Store className="w-6 h-6" />
-            </div>
-          </div>
+              {/* Card 3: Stall Bookings */}
+              <div className="p-5 sm:p-6 rounded-2xl bg-white border border-gray-200 shadow-sm flex items-center justify-between">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#b85b06] block mb-1">
+                    Booth Bookings
+                  </span>
+                  <span className="text-2xl sm:text-3xl font-black text-gray-950 font-sans">
+                    {stats.stalls}
+                  </span>
+                </div>
+                <div className="w-12 h-12 rounded-2xl bg-orange-50 text-[#ff9f43] flex items-center justify-center shrink-0 border border-orange-100">
+                  <Store className="w-6 h-6" />
+                </div>
+              </div>
 
-          {/* Card 4: New Unactioned */}
-          <div className="p-5 sm:p-6 rounded-2xl bg-white border border-gray-200 shadow-sm flex items-center justify-between">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-700 block mb-1">
-                Pending / New
-              </span>
-              <span className="text-2xl sm:text-3xl font-black text-amber-600 font-sans">
-                {stats.newLeads}
-              </span>
-            </div>
-            <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 border border-amber-100">
-              <Clock className="w-6 h-6" />
-            </div>
-          </div>
-        </div>
-
-        {/* Filter & Search Bar Card */}
-        <div className="p-5 rounded-2xl bg-white border border-gray-200 shadow-sm space-y-4">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            {/* Tabs */}
-            <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-slate-100 border border-slate-200 text-xs font-bold">
-              <button
-                onClick={() => setActiveTab("all")}
-                className={`px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
-                  activeTab === "all"
-                    ? "bg-white text-gray-950 shadow-xs"
-                    : "text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                All Leads ({stats.total})
-              </button>
-              <button
-                onClick={() => setActiveTab("visitor")}
-                className={`px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
-                  activeTab === "visitor"
-                    ? "bg-white text-gray-950 shadow-xs"
-                    : "text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                Visitors ({stats.visitors})
-              </button>
-              <button
-                onClick={() => setActiveTab("stall")}
-                className={`px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
-                  activeTab === "stall"
-                    ? "bg-white text-gray-950 shadow-xs"
-                    : "text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                Booth Bookings ({stats.stalls})
-              </button>
-              <button
-                onClick={() => setActiveTab("contact")}
-                className={`px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
-                  activeTab === "contact"
-                    ? "bg-white text-gray-950 shadow-xs"
-                    : "text-gray-600 hover:text-gray-900"
-                }`}
-              >
-                Inquiries ({stats.contacts})
-              </button>
+              {/* Card 4: New Unactioned */}
+              <div className="p-5 sm:p-6 rounded-2xl bg-white border border-gray-200 shadow-sm flex items-center justify-between">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-700 block mb-1">
+                    Pending / New
+                  </span>
+                  <span className="text-2xl sm:text-3xl font-black text-amber-600 font-sans">
+                    {stats.newLeads}
+                  </span>
+                </div>
+                <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 border border-amber-100">
+                  <Clock className="w-6 h-6" />
+                </div>
+              </div>
             </div>
 
-            {/* Search & Status Controls */}
-            <div className="flex flex-wrap items-center gap-3">
-              {/* Search input */}
-              <div className="relative min-w-[240px] flex-1 sm:flex-initial">
-                <Search className="w-4 h-4 text-gray-400 absolute left-3.5 top-3 pointer-events-none" />
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search name, company, email..."
-                  className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-gray-200 rounded-xl text-xs text-gray-900 focus:bg-white focus:border-[#0c140f] focus:outline-none transition-all"
-                />
-                {searchQuery && (
+            {/* Filter & Search Bar Card */}
+            <div className="p-5 rounded-2xl bg-white border border-gray-200 shadow-sm space-y-4">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                {/* Tabs */}
+                <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-slate-100 border border-slate-200 text-xs font-bold">
                   <button
-                    onClick={() => setSearchQuery("")}
-                    className="absolute right-3 top-2.5 text-gray-400 hover:text-gray-600"
+                    onClick={() => setActiveTab("all")}
+                    className={`px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+                      activeTab === "all"
+                        ? "bg-white text-gray-950 shadow-xs"
+                        : "text-gray-600 hover:text-gray-900"
+                    }`}
                   >
-                    <X className="w-3.5 h-3.5" />
+                    All Leads ({stats.total})
                   </button>
-                )}
-              </div>
+                  <button
+                    onClick={() => setActiveTab("visitor")}
+                    className={`px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+                      activeTab === "visitor"
+                        ? "bg-white text-gray-950 shadow-xs"
+                        : "text-gray-600 hover:text-gray-900"
+                    }`}
+                  >
+                    Visitors ({stats.visitors})
+                  </button>
+                  <button
+                    onClick={() => setActiveTab("stall")}
+                    className={`px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+                      activeTab === "stall"
+                        ? "bg-white text-gray-950 shadow-xs"
+                        : "text-gray-600 hover:text-gray-900"
+                    }`}
+                  >
+                    Booth Bookings ({stats.stalls})
+                  </button>
+                  <button
+                    onClick={() => setActiveTab("contact")}
+                    className={`px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+                      activeTab === "contact"
+                        ? "bg-white text-gray-950 shadow-xs"
+                        : "text-gray-600 hover:text-gray-900"
+                    }`}
+                  >
+                    Inquiries ({stats.contacts})
+                  </button>
+                </div>
 
-              {/* Status filter */}
-              <div className="flex items-center gap-2">
-                <Filter className="w-3.5 h-3.5 text-gray-400" />
-                <select
-                  value={statusFilter}
-                  onChange={(e) => setStatusFilter(e.target.value)}
-                  className="px-3 py-2 bg-slate-50 border border-gray-200 rounded-xl text-xs text-gray-800 font-medium focus:outline-none focus:border-[#0c140f] cursor-pointer"
-                >
-                  <option value="all">All Status</option>
-                  <option value="New">New</option>
-                  <option value="Contacted">Contacted</option>
-                  <option value="Approved">Approved</option>
-                  <option value="Archived">Archived</option>
-                </select>
+                {/* Search & Status Controls */}
+                <div className="flex flex-wrap items-center gap-3">
+                  {/* Search input */}
+                  <div className="relative min-w-[240px] flex-1 sm:flex-initial">
+                    <Search className="w-4 h-4 text-gray-400 absolute left-3.5 top-3 pointer-events-none" />
+                    <input
+                      type="text"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder="Search name, company, email..."
+                      className="w-full pl-9 pr-4 py-2 bg-slate-50 border border-gray-200 rounded-xl text-xs text-gray-900 focus:bg-white focus:border-[#0c140f] focus:outline-none transition-all"
+                    />
+                    {searchQuery && (
+                      <button
+                        onClick={() => setSearchQuery("")}
+                        className="absolute right-3 top-2.5 text-gray-400 hover:text-gray-600"
+                      >
+                        <X className="w-3.5 h-3.5" />
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Status filter */}
+                  <div className="flex items-center gap-2">
+                    <Filter className="w-3.5 h-3.5 text-gray-400" />
+                    <select
+                      value={statusFilter}
+                      onChange={(e) => setStatusFilter(e.target.value)}
+                      className="px-3 py-2 bg-slate-50 border border-gray-200 rounded-xl text-xs text-gray-800 font-medium focus:outline-none focus:border-[#0c140f] cursor-pointer"
+                    >
+                      <option value="all">All Status</option>
+                      <option value="New">New</option>
+                      <option value="Contacted">Contacted</option>
+                      <option value="Approved">Approved</option>
+                      <option value="Archived">Archived</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Leads Table Card */}
+            {/* Leads Table Card */}
         <div className="rounded-2xl bg-white border border-gray-200 shadow-sm overflow-hidden">
           {isLoading ? (
             <div className="py-20 text-center text-gray-500 space-y-3">
@@ -537,6 +587,11 @@ export default function AdminDashboardPage() {
                             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200">
                               <Mail className="w-3 h-3" /> Inquiry
                             </span>
+                          )}
+                          {lead.data.registrationCode && (
+                            <div className="font-mono text-[10.5px] font-extrabold text-[#004aab] mt-1 bg-blue-50/80 px-2 py-0.5 rounded inline-block border border-blue-100">
+                              {lead.data.registrationCode}
+                            </div>
                           )}
                         </td>
 
@@ -649,6 +704,8 @@ export default function AdminDashboardPage() {
             </div>
           )}
         </div>
+          </>
+        )}
       </main>
 
       {/* Full Lead Details Modal Drawer */}
@@ -662,10 +719,15 @@ export default function AdminDashboardPage() {
             {/* Modal Header */}
             <div className="p-6 border-b border-gray-100 flex items-center justify-between sticky top-0 bg-white z-10">
               <div>
-                <div className="flex items-center gap-2 mb-1">
+                <div className="flex flex-wrap items-center gap-2 mb-1">
                   <span className="text-xs font-mono text-gray-400 font-bold uppercase">
                     ID: {selectedLead.id}
                   </span>
+                  {selectedLead.data.registrationCode && (
+                    <span className="text-xs font-mono font-extrabold uppercase bg-blue-50 text-[#004aab] px-2.5 py-0.5 rounded-md border border-blue-200">
+                      PASS: {selectedLead.data.registrationCode}
+                    </span>
+                  )}
                   <span
                     className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
                       selectedLead.type === "visitor"
@@ -722,6 +784,22 @@ export default function AdminDashboardPage() {
 
               {/* Data Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {selectedLead.data.registrationCode && (
+                  <div className="p-3.5 rounded-xl bg-blue-50/80 border border-blue-200 sm:col-span-2 flex items-center justify-between">
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#004aab] block mb-0.5">
+                        Official M-Badge Pass Code
+                      </span>
+                      <span className="font-mono text-base font-extrabold text-[#0c140f] tracking-wider">
+                        {selectedLead.data.registrationCode}
+                      </span>
+                    </div>
+                    <span className="px-3 py-1 rounded-lg bg-[#004aab] text-white text-[11px] font-bold uppercase tracking-wider shadow-xs">
+                      M-Badge Dispatched
+                    </span>
+                  </div>
+                )}
+
                 <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-100">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block mb-0.5">
                     Company / Organization

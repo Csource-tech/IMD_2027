@@ -1,0 +1,354 @@
+{
+  "exhibitors": {
+    "title": "Exhibitors",
+    "items": [
+      {
+        "id": "exh-1",
+        "name": "Agro Projects",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981884/imd2027/exhibitors/ckywyiaj7tose3s7swwp.webp",
+        "active": true,
+        "order": 0,
+        "publicId": "imd2027/exhibitors/ckywyiaj7tose3s7swwp"
+      },
+      {
+        "id": "exh-2",
+        "name": "Christiaens Group",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981885/imd2027/exhibitors/yzayy4iwhahpd3vomipg.webp",
+        "active": true,
+        "order": 1,
+        "publicId": "imd2027/exhibitors/yzayy4iwhahpd3vomipg"
+      },
+      {
+        "id": "exh-3",
+        "name": "Dr. Kurade's",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981886/imd2027/exhibitors/hoycvkhkzrp12sldgt6d.webp",
+        "active": true,
+        "order": 2,
+        "publicId": "imd2027/exhibitors/hoycvkhkzrp12sldgt6d"
+      },
+      {
+        "id": "exh-4",
+        "name": "Himalaya Mushrooms",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981887/imd2027/exhibitors/pti62jdkaxczeadeptvw.webp",
+        "active": true,
+        "order": 3,
+        "publicId": "imd2027/exhibitors/pti62jdkaxczeadeptvw"
+      },
+      {
+        "id": "exh-5",
+        "name": "Mushroom Exchange",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981888/imd2027/exhibitors/ug4mnnvrrfi2hod5uajr.webp",
+        "active": true,
+        "order": 4,
+        "publicId": "imd2027/exhibitors/ug4mnnvrrfi2hod5uajr"
+      },
+      {
+        "id": "exh-6",
+        "name": "B&W",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981889/imd2027/exhibitors/tjqkv4c2pmwsu4r9m6zr.webp",
+        "active": true,
+        "order": 5,
+        "publicId": "imd2027/exhibitors/tjqkv4c2pmwsu4r9m6zr"
+      },
+      {
+        "id": "exh-7",
+        "name": "Cheetah",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981890/imd2027/exhibitors/wpsynywkajmtjiuc2sus.webp",
+        "active": true,
+        "order": 6,
+        "publicId": "imd2027/exhibitors/wpsynywkajmtjiuc2sus"
+      },
+      {
+        "id": "exh-8",
+        "name": "Currywale",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981891/imd2027/exhibitors/jznq9fkrw0e2jo6mbohe.webp",
+        "active": true,
+        "order": 7,
+        "publicId": "imd2027/exhibitors/jznq9fkrw0e2jo6mbohe"
+      },
+      {
+        "id": "exh-9",
+        "name": "Grow Diesel",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981898/imd2027/exhibitors/fjayipi0zvyeac61acc9.webp",
+        "active": true,
+        "order": 8,
+        "publicId": "imd2027/exhibitors/fjayipi0zvyeac61acc9"
+      },
+      {
+        "id": "exh-10",
+        "name": "Milkyway Mushrooms",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981899/imd2027/exhibitors/sj7uzlf2qu1fakw7uqq9.webp",
+        "active": true,
+        "order": 9,
+        "publicId": "imd2027/exhibitors/sj7uzlf2qu1fakw7uqq9"
+      },
+      {
+        "id": "exh-11",
+        "name": "Mushroom Office",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981900/imd2027/exhibitors/bbfv7xtbpkxp5zexjcme.webp",
+        "active": true,
+        "order": 10,
+        "publicId": "imd2027/exhibitors/bbfv7xtbpkxp5zexjcme"
+      },
+      {
+        "id": "exh-12",
+        "name": "Navork",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981902/imd2027/exhibitors/esq4k9d1caud6to1luyr.webp",
+        "active": true,
+        "order": 11,
+        "publicId": "imd2027/exhibitors/esq4k9d1caud6to1luyr"
+      },
+      {
+        "id": "exh-13",
+        "name": "Omega",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981905/imd2027/exhibitors/gpl0gvzfwjemx38ytvbg.webp",
+        "active": true,
+        "order": 12,
+        "publicId": "imd2027/exhibitors/gpl0gvzfwjemx38ytvbg"
+      },
+      {
+        "id": "exh-14",
+        "name": "Ribbstyle",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981909/imd2027/exhibitors/axbbxbe0xgkekbeydiqs.webp",
+        "active": true,
+        "order": 13,
+        "publicId": "imd2027/exhibitors/axbbxbe0xgkekbeydiqs"
+      },
+      {
+        "id": "exh-15",
+        "name": "Satrise",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981910/imd2027/exhibitors/eu56l9xo1afxhxqfxgcp.webp",
+        "active": true,
+        "order": 14,
+        "publicId": "imd2027/exhibitors/eu56l9xo1afxhxqfxgcp"
+      },
+      {
+        "id": "exh-16",
+        "name": "MARG",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981913/imd2027/exhibitors/khon3tcubesdrvnxvety.png",
+        "active": true,
+        "order": 15,
+        "publicId": "imd2027/exhibitors/khon3tcubesdrvnxvety"
+      },
+      {
+        "id": "exh-17",
+        "name": "mushAI",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981914/imd2027/exhibitors/ba3jmvbblhx7oztaqluj.jpg",
+        "active": true,
+        "order": 16,
+        "publicId": "imd2027/exhibitors/ba3jmvbblhx7oztaqluj"
+      },
+      {
+        "id": "exh-18",
+        "name": "Mushtoons",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981915/imd2027/exhibitors/qfqufzfaqwmfpc2484kp.jpg",
+        "active": true,
+        "order": 17,
+        "publicId": "imd2027/exhibitors/qfqufzfaqwmfpc2484kp"
+      }
+    ]
+  },
+  "mediaPartners": {
+    "title": "Media Partners",
+    "subtitle": "Leading global trade publications and editorial coverage for the commercial mushroom industry",
+    "items": [
+      {
+        "id": "media-1",
+        "name": "Mushroom Business",
+        "image": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981916/imd2027/media/vdwrj3yywzznyfsut7vv.jpg",
+        "website": "https://mushroombusiness.com/",
+        "tagline": "International Trade Journal by Global Roel Media",
+        "bgColor": "#564531",
+        "active": true,
+        "order": 0,
+        "publicId": "imd2027/media/vdwrj3yywzznyfsut7vv"
+      },
+      {
+        "id": "media-2",
+        "name": "Mushroom Chronicle",
+        "image": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981917/imd2027/media/plzi07twddliqteipuit.jpg",
+        "website": "https://www.mushroomchronicle.com",
+        "tagline": "National Industry Magazine & Trade Chronicle",
+        "bgColor": "#313E37",
+        "active": true,
+        "order": 1,
+        "publicId": "imd2027/media/plzi07twddliqteipuit"
+      },
+      {
+        "id": "media-3",
+        "name": "Mushroom Growing News",
+        "image": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981918/imd2027/media/ty2xzsiggzywtblc1nim.jpg",
+        "website": "https://mgnews.org",
+        "tagline": "Global Digital Media & Cultivation News",
+        "bgColor": "#000000",
+        "active": true,
+        "order": 2,
+        "publicId": "imd2027/media/ty2xzsiggzywtblc1nim"
+      }
+    ]
+  },
+  "lineup": {
+    "title": "The Conference: The 2027 Line-up",
+    "subtitle": "Distinguished global thought leaders, commercial agronomists, and biotechnology innovators converging in New Delhi.",
+    "items": [
+      {
+        "id": "speaker-1",
+        "name": "Greg Seymour",
+        "role": "International Mushroom Expert & Consultant",
+        "country": "AUSTRALIA",
+        "countryCode": "AU",
+        "image": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981919/imd2027/speakers/ud8qhnmoqul5jtirw3zm.jpg",
+        "active": true,
+        "order": 0,
+        "publicId": "imd2027/speakers/ud8qhnmoqul5jtirw3zm"
+      },
+      {
+        "id": "speaker-2",
+        "name": "Dr. Manjit Singh",
+        "role": "President, Mushroom Society of India",
+        "country": "INDIA",
+        "countryCode": "IN",
+        "image": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981920/imd2027/speakers/yuvbpfdpy8xuxdrudzm3.jpg",
+        "active": true,
+        "order": 1,
+        "publicId": "imd2027/speakers/yuvbpfdpy8xuxdrudzm3"
+      },
+      {
+        "id": "speaker-3",
+        "name": "Magda Verfaillie",
+        "role": "Mycelia",
+        "country": "BELGIUM",
+        "countryCode": "BE",
+        "image": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981922/imd2027/speakers/dwkcwqo2wr61n0oobu5l.jpg",
+        "active": true,
+        "order": 2,
+        "publicId": "imd2027/speakers/dwkcwqo2wr61n0oobu5l"
+      },
+      {
+        "id": "speaker-4",
+        "name": "Daniel Motshwane",
+        "role": "Founder, Afrique Rising Trading",
+        "country": "SOUTH AFRICA",
+        "countryCode": "ZA",
+        "image": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981923/imd2027/speakers/f57od6j6ndupiwj49dvp.jpg",
+        "active": true,
+        "order": 3,
+        "publicId": "imd2027/speakers/f57od6j6ndupiwj49dvp"
+      },
+      {
+        "id": "speaker-5",
+        "name": "Diego Zied",
+        "role": "Mushroom science researcher",
+        "country": "BRAZIL",
+        "countryCode": "BR",
+        "image": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981924/imd2027/speakers/xe4k7gl1djys1btku58z.jpg",
+        "active": true,
+        "order": 4,
+        "publicId": "imd2027/speakers/xe4k7gl1djys1btku58z"
+      },
+      {
+        "id": "speaker-6",
+        "name": "Andre Marjanowski",
+        "role": "Owner, Crop Advice and Training",
+        "country": "USA",
+        "countryCode": "US",
+        "image": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981926/imd2027/speakers/yrg6gvnmylw7oksle9hm.jpg",
+        "active": true,
+        "order": 5,
+        "publicId": "imd2027/speakers/yrg6gvnmylw7oksle9hm"
+      },
+      {
+        "id": "speaker-7",
+        "name": "Daniel Dajewski",
+        "role": "Construction and mushroom industries",
+        "country": "POLAND",
+        "countryCode": "PL",
+        "image": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981928/imd2027/speakers/lgwbdlz4gyvjpygxwbji.jpg",
+        "active": true,
+        "order": 6,
+        "publicId": "imd2027/speakers/lgwbdlz4gyvjpygxwbji"
+      },
+      {
+        "id": "speaker-8",
+        "name": "Mustafa Soylu",
+        "role": "Researcher, ABKAE",
+        "country": "TURKEY",
+        "countryCode": "TR",
+        "image": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981929/imd2027/speakers/r5arxweaww0vft73umlu.jpg",
+        "active": true,
+        "order": 7,
+        "publicId": "imd2027/speakers/r5arxweaww0vft73umlu"
+      },
+      {
+        "id": "speaker-9",
+        "name": "Aert Bart",
+        "role": "International Area Sales Manager",
+        "country": "NETHERLANDS",
+        "countryCode": "NL",
+        "image": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981930/imd2027/speakers/qgigdea6vwckr9jaczo2.jpg",
+        "active": true,
+        "order": 8,
+        "publicId": "imd2027/speakers/qgigdea6vwckr9jaczo2"
+      },
+      {
+        "id": "speaker-10",
+        "name": "Ron Hegger",
+        "role": "Managing Director, Dutch Mushroom Projects",
+        "country": "NETHERLANDS",
+        "countryCode": "NL",
+        "image": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981931/imd2027/speakers/jwezq0v169cb3lgcvqxv.jpg",
+        "active": true,
+        "order": 9,
+        "publicId": "imd2027/speakers/jwezq0v169cb3lgcvqxv"
+      },
+      {
+        "id": "speaker-11",
+        "name": "Snehal Mane",
+        "role": "Marketing Manager, Manegrow",
+        "country": "INDIA",
+        "countryCode": "IN",
+        "image": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981932/imd2027/speakers/ci9uvgfyicl8hpyskfec.jpg",
+        "active": true,
+        "order": 10,
+        "publicId": "imd2027/speakers/ci9uvgfyicl8hpyskfec"
+      },
+      {
+        "id": "speaker-12",
+        "name": "Heera Gangadharan",
+        "role": "Assistant Professor and PI, AICRP on Mushrooms",
+        "country": "INDIA",
+        "countryCode": "IN",
+        "image": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981933/imd2027/speakers/wmt4aonxuc1rtmfqtvbw.jpg",
+        "active": true,
+        "order": 11,
+        "publicId": "imd2027/speakers/wmt4aonxuc1rtmfqtvbw"
+      }
+    ]
+  },
+  "sponsors": {
+    "title": "Partners & Sponsors",
+    "items": [
+      {
+        "id": "sponsor-1",
+        "name": "Milkyway Technologies Limited",
+        "category": "SPAWN & CULTIVATION PIONEER",
+        "desc": "Pioneering commercial spawn production and turn-key farm setup consulting since 1994, empowering thousands of high-yield growers across India.",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981934/imd2027/sponsors/ewi5rsukku8rrxiyrflv.webp",
+        "active": true,
+        "order": 0,
+        "publicId": "imd2027/sponsors/ewi5rsukku8rrxiyrflv"
+      },
+      {
+        "id": "sponsor-2",
+        "name": "Mushroom Exchange",
+        "category": "GLOBAL INDUSTRY VALUE-CHAIN PLATFORM",
+        "desc": "India's collaborative trade hub connecting commercial cultivators directly with certified biotech spawn labs, cold chains, and national retail buyers.",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981935/imd2027/sponsors/k9vqthcmrwux1ki2qtua.webp",
+        "active": true,
+        "order": 1,
+        "publicId": "imd2027/sponsors/k9vqthcmrwux1ki2qtua"
+      }
+    ]
+  },
+  "updatedAt": "2026-09-21T09:14:19.981Z"
+}

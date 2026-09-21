@@ -1,0 +1,141 @@
+{
+  "kicker": "Asia's Premier Edible & Medicinal Mushroom Summit",
+  "titlePart1": "India Mushroom Days",
+  "titlePart2": "2027",
+  "shroomConnect": "Shroom Connect",
+  "subtitlePart1": "India’s Biggest Mushroom Event On :",
+  "subtitlePart2": "Cultivation | Machinery | Value Addition",
+  "visitorBtnText": "Visitor Registration",
+  "boothBtnText": "Book Your Booth",
+  "images": [
+    {
+      "id": "default-1",
+      "url": "https://res.cloudinary.com/fygoexsq/image/upload/v1789971053/imd2027/hero/ojcz1zbyg6ikuosjtcic.jpg",
+      "caption": "India Mushroom Days Showcase 1",
+      "active": true,
+      "order": 0,
+      "publicId": "imd2027/hero/ojcz1zbyg6ikuosjtcic"
+    },
+    {
+      "id": "default-2",
+      "url": "https://res.cloudinary.com/fygoexsq/image/upload/v1789971055/imd2027/hero/armitjqoenntvvgnxtuh.jpg",
+      "caption": "India Mushroom Days Showcase 2",
+      "active": true,
+      "order": 1,
+      "publicId": "imd2027/hero/armitjqoenntvvgnxtuh"
+    },
+    {
+      "id": "default-3",
+      "url": "https://res.cloudinary.com/fygoexsq/image/upload/v1789971057/imd2027/hero/c9p2ahxtm3wkd9pstglf.jpg",
+      "caption": "India Mushroom Days Showcase 3",
+      "active": true,
+      "order": 2,
+      "publicId": "imd2027/hero/c9p2ahxtm3wkd9pstglf"
+    },
+    {
+      "id": "default-4",
+      "url": "https://res.cloudinary.com/fygoexsq/image/upload/v1789971060/imd2027/hero/purijzqdr6rfwn2mxayb.jpg",
+      "caption": "India Mushroom Days Showcase 4",
+      "active": true,
+      "order": 3,
+      "publicId": "imd2027/hero/purijzqdr6rfwn2mxayb"
+    },
+    {
+      "id": "default-5",
+      "url": "https://res.cloudinary.com/fygoexsq/image/upload/v1789971063/imd2027/hero/zojryimlwfbgyjm6mtov.jpg",
+      "caption": "India Mushroom Days Showcase 5",
+      "active": true,
+      "order": 4,
+      "publicId": "imd2027/hero/zojryimlwfbgyjm6mtov"
+    },
+    {
+      "id": "default-6",
+      "url": "https://res.cloudinary.com/fygoexsq/image/upload/v1789971067/imd2027/hero/dq1potczjfocnu6jusi9.jpg",
+      "caption": "India Mushroom Days Showcase 6",
+      "active": true,
+      "order": 5,
+      "publicId": "imd2027/hero/dq1potczjfocnu6jusi9"
+    },
+    {
+      "id": "default-7",
+      "url": "https://res.cloudinary.com/fygoexsq/image/upload/v1789971072/imd2027/hero/afqbegbzhvkfftapezxo.jpg",
+      "caption": "India Mushroom Days Showcase 7",
+      "active": true,
+      "order": 6,
+      "publicId": "imd2027/hero/afqbegbzhvkfftapezxo"
+    },
+    {
+      "id": "default-8",
+      "url": "https://res.cloudinary.com/fygoexsq/image/upload/v1789971073/imd2027/hero/kfq6nr244cmp5sy84xtn.jpg",
+      "caption": "India Mushroom Days Showcase 8",
+      "active": true,
+      "order": 7,
+      "publicId": "imd2027/hero/kfq6nr244cmp5sy84xtn"
+    },
+    {
+      "id": "default-9",
+      "url": "https://res.cloudinary.com/fygoexsq/image/upload/v1789971074/imd2027/hero/zgmfb2p959owuy5dieg9.jpg",
+      "caption": "India Mushroom Days Showcase 9",
+      "active": true,
+      "order": 8,
+      "publicId": "imd2027/hero/zgmfb2p959owuy5dieg9"
+    },
+    {
+      "id": "default-10",
+      "url": "https://res.cloudinary.com/fygoexsq/image/upload/v1789971074/imd2027/hero/osqfyn8fhucmxqgw3n50.jpg",
+      "caption": "India Mushroom Days Showcase 10",
+      "active": true,
+      "order": 9,
+      "publicId": "imd2027/hero/osqfyn8fhucmxqgw3n50"
+    },
+    {
+      "id": "default-11",
+      "url": "https://res.cloudinary.com/fygoexsq/image/upload/v1789971075/imd2027/hero/yjfuybpymcktdcvtzlj2.jpg",
+      "caption": "India Mushroom Days Showcase 11",
+      "active": true,
+      "order": 10,
+      "publicId": "imd2027/hero/yjfuybpymcktdcvtzlj2"
+    },
+    {
+      "id": "default-12",
+      "url": "https://res.cloudinary.com/fygoexsq/image/upload/v1789971076/imd2027/hero/bw1zahsrugi0ccf8hsd7.jpg",
+      "caption": "India Mushroom Days Showcase 12",
+      "active": true,
+      "order": 11,
+      "publicId": "imd2027/hero/bw1zahsrugi0ccf8hsd7"
+    },
+    {
+      "id": "default-13",
+      "url": "https://res.cloudinary.com/fygoexsq/image/upload/v1789971077/imd2027/hero/knarbful442woo2cc7nv.jpg",
+      "caption": "India Mushroom Days Showcase 13",
+      "active": true,
+      "order": 12,
+      "publicId": "imd2027/hero/knarbful442woo2cc7nv"
+    },
+    {
+      "id": "default-14",
+      "url": "https://res.cloudinary.com/fygoexsq/image/upload/v1789971077/imd2027/hero/apb0mfj4ezchtewpsgng.jpg",
+      "caption": "India Mushroom Days Showcase 14",
+      "active": true,
+      "order": 13,
+      "publicId": "imd2027/hero/apb0mfj4ezchtewpsgng"
+    },
+    {
+      "id": "default-15",
+      "url": "https://res.cloudinary.com/fygoexsq/image/upload/v1789971078/imd2027/hero/dlqjslumfby8ygxbampr.jpg",
+      "caption": "India Mushroom Days Showcase 15",
+      "active": true,
+      "order": 14,
+      "publicId": "imd2027/hero/dlqjslumfby8ygxbampr"
+    },
+    {
+      "id": "default-16",
+      "url": "https://res.cloudinary.com/fygoexsq/image/upload/v1789971079/imd2027/hero/i1lxlxwutbd2rplja0bm.jpg",
+      "caption": "India Mushroom Days Showcase 16",
+      "active": true,
+      "order": 15,
+      "publicId": "imd2027/hero/i1lxlxwutbd2rplja0bm"
+    }
+  ],
+  "updatedAt": "2026-09-21T07:28:44.532Z"
+}
