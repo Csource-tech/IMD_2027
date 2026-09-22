@@ -23,10 +23,7 @@ import {
   Loader2,
   ArrowRight,
   ShieldCheck,
-  Calendar,
-  Sparkles,
 } from "lucide-react";
-import { motion } from "framer-motion";
 
 const EXHIBITOR_CATEGORIES = [
   "Select Category",
@@ -206,68 +203,10 @@ export default function BookYourStallPage() {
       {/* 1. Navbar */}
       <Navbar />
 
-      {/* 2. Editorial Hero Header with Dark Website Theme */}
-      <section className="relative pt-36 sm:pt-44 pb-24 sm:pb-32 bg-[#0c140f] text-white overflow-hidden border-b border-white/10">
-        {/* Ambient Radial Glows */}
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#ff9f43]/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#004aab]/10 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#ff9f43]/20 border border-[#ff9f43]/35 text-xs font-bold text-[#ff9f43] uppercase tracking-wider mb-4 shadow-sm"
-          >
-            <Store className="w-3.5 h-3.5" />
-            <span>Commercial Exhibition Pavilion</span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight capitalize font-sans leading-[1.1]"
-          >
-            Book Your <br />
-            <span className="font-serif italic font-normal text-amber-200 capitalize">
-              Booth &amp; Pavilion
-            </span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-4 text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal"
-          >
-            Reserve your high-visibility commercial exhibition booth at India Mushroom Days 2027 in New Delhi, India. Direct engagement with 5,000+ national delegates, progressive farm operators, and global buyers.
-          </motion.p>
-
-          {/* Quick Perks Pill Strip */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm text-gray-300 font-medium"
-          >
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
-              <Sparkles className="w-3.5 h-3.5 text-[#ff9f43]" /> Prime Pavilion Positioning
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
-              <Calendar className="w-3.5 h-3.5 text-[#004aab]" /> 3 Full Exhibition Days
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
-              <ShieldCheck className="w-3.5 h-3.5 text-amber-300" /> Direct Secretariat Allotment
-            </span>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 3. Main Form Card Area */}
-      <main className="flex-1 -mt-12 sm:-mt-16 pb-20 px-4 sm:px-6 lg:px-8 relative z-20">
+      {/* 2. Priority Stall Booking Form Area */}
+      <main className="flex-1 pt-10 sm:pt-14 pb-20 px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-3xl border border-gray-200/90 shadow-2xl p-6 sm:p-10 lg:p-12 transition-all">
+          <div className="bg-white rounded-3xl border border-gray-200/90 shadow-xl p-6 sm:p-10 lg:p-12 transition-all">
             {isSuccess ? (
               /* Success Confirmation Card */
               <div className="py-12 text-center space-y-6">
@@ -346,17 +285,21 @@ export default function BookYourStallPage() {
               /* Professional Stall Booking Form */
               <form onSubmit={handleSubmit} noValidate className="space-y-8">
                 {/* Header & Required Label */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-6 border-b border-gray-100">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-6 border-b border-gray-100">
                   <div>
-                    <h2 className="text-xl sm:text-2xl font-black text-gray-950 tracking-tight">
-                      Exhibition Space Reservation
-                    </h2>
-                    <p className="text-xs text-gray-500 mt-1">
-                      Provide your organization and booth details to receive priority hall allocation.
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 text-xs font-bold text-[#ff9f43] uppercase tracking-wider mb-2">
+                      <Store className="w-3.5 h-3.5" />
+                      <span>Commercial Exhibition Space</span>
+                    </div>
+                    <h1 className="text-2xl sm:text-3xl font-black text-gray-950 tracking-tight">
+                      Book Your Booth &amp; Stall
+                    </h1>
+                    <p className="text-xs sm:text-sm text-gray-500 mt-1">
+                      India Mushroom Days 2027 • Fill out details below for priority commercial space allotment.
                     </p>
                   </div>
-                  <span className="text-xs font-bold text-[#ff9f43] bg-orange-50 border border-orange-200 px-3 py-1 rounded-full w-fit">
-                    * All mandatory fields
+                  <span className="text-xs font-bold text-[#ff9f43] bg-orange-50 border border-orange-200 px-3 py-1.5 rounded-full w-fit shrink-0 self-start">
+                    * All fields mandatory
                   </span>
                 </div>
 
@@ -390,11 +333,10 @@ export default function BookYourStallPage() {
                           onChange={(e) => handleChange("name", e.target.value)}
                           onBlur={() => handleBlur("name")}
                           placeholder="e.g. Ramesh Kumar"
-                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                            errors.name
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${errors.name
                               ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                               : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
-                          }`}
+                            }`}
                         />
                       </div>
                       {errors.name && (
@@ -415,11 +357,10 @@ export default function BookYourStallPage() {
                           onChange={(e) => handleChange("companyName", e.target.value)}
                           onBlur={() => handleBlur("companyName")}
                           placeholder="e.g. Agrotech Climate Systems Pvt Ltd"
-                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                            errors.companyName
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${errors.companyName
                               ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                               : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
-                          }`}
+                            }`}
                         />
                       </div>
                       {errors.companyName && (
@@ -440,11 +381,10 @@ export default function BookYourStallPage() {
                           value={formData.exhibitorCategory}
                           onChange={(e) => handleChange("exhibitorCategory", e.target.value)}
                           onBlur={() => handleBlur("exhibitorCategory")}
-                          className={`w-full pl-10 pr-3 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all cursor-pointer font-medium ${
-                            errors.exhibitorCategory
+                          className={`w-full pl-10 pr-3 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all cursor-pointer font-medium ${errors.exhibitorCategory
                               ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                               : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
-                          }`}
+                            }`}
                         >
                           {EXHIBITOR_CATEGORIES.map((cat) => (
                             <option key={cat} value={cat === "Select Category" ? "" : cat}>
@@ -471,11 +411,10 @@ export default function BookYourStallPage() {
                           onChange={(e) => handleChange("position", e.target.value)}
                           onBlur={() => handleBlur("position")}
                           placeholder="e.g. Sales Director / General Manager"
-                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                            errors.position
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${errors.position
                               ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                               : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
-                          }`}
+                            }`}
                         />
                       </div>
                       {errors.position && (
@@ -507,11 +446,10 @@ export default function BookYourStallPage() {
                         onChange={(e) => handleChange("address", e.target.value)}
                         onBlur={() => handleBlur("address")}
                         placeholder="Street, Industrial Area, Sector, Phase"
-                        className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                          errors.address
+                        className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${errors.address
                             ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                             : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
-                        }`}
+                          }`}
                       />
                     </div>
                     {errors.address && (
@@ -558,11 +496,10 @@ export default function BookYourStallPage() {
                           onChange={(e) => handleChange("city", e.target.value)}
                           onBlur={() => handleBlur("city")}
                           placeholder="e.g. New Delhi"
-                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                            errors.city
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${errors.city
                               ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                               : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
-                          }`}
+                            }`}
                         />
                       </div>
                       {errors.city && (
@@ -584,11 +521,10 @@ export default function BookYourStallPage() {
                           onChange={(e) => handleChange("pinCode", e.target.value)}
                           onBlur={() => handleBlur("pinCode")}
                           placeholder="110001"
-                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                            errors.pinCode
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${errors.pinCode
                               ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                               : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
-                          }`}
+                            }`}
                         />
                       </div>
                       {errors.pinCode && (
@@ -639,24 +575,21 @@ export default function BookYourStallPage() {
                         <div
                           key={item.id}
                           onClick={() => setFormData({ ...formData, requiredStallSpace: item.id })}
-                          className={`cursor-pointer rounded-2xl p-4 border-2 transition-all flex flex-col justify-between ${
-                            isSelected
+                          className={`cursor-pointer rounded-2xl p-4 border-2 transition-all flex flex-col justify-between ${isSelected
                               ? "border-[#ff9f43] bg-orange-50/40 text-gray-950 shadow-md scale-[1.02]"
                               : "border-gray-200 hover:border-gray-300 bg-white text-gray-700"
-                          }`}
+                            }`}
                         >
                           <div className="flex items-start justify-between gap-2 mb-3">
                             <div
-                              className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
-                                isSelected ? "bg-[#0c140f] text-[#ff9f43]" : "bg-gray-100 text-gray-500"
-                              }`}
+                              className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${isSelected ? "bg-[#0c140f] text-[#ff9f43]" : "bg-gray-100 text-gray-500"
+                                }`}
                             >
                               <Icon className="w-5 h-5" />
                             </div>
                             <span
-                              className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${
-                                isSelected ? "border-[#ff9f43] bg-[#ff9f43]" : "border-gray-300 bg-white"
-                              }`}
+                              className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${isSelected ? "border-[#ff9f43] bg-[#ff9f43]" : "border-gray-300 bg-white"
+                                }`}
                             >
                               {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-white" />}
                             </span>
@@ -702,26 +635,23 @@ export default function BookYourStallPage() {
                         <div
                           key={item.id}
                           onClick={() => setFormData({ ...formData, contactPreference: item.id })}
-                          className={`cursor-pointer rounded-xl px-4 py-3 border-2 transition-all flex items-center justify-between ${
-                            isSelected
+                          className={`cursor-pointer rounded-xl px-4 py-3 border-2 transition-all flex items-center justify-between ${isSelected
                               ? "border-[#0c140f] bg-slate-50 text-gray-950 shadow-xs"
                               : "border-gray-200 hover:border-gray-300 bg-white text-gray-700"
-                          }`}
+                            }`}
                         >
                           <div className="flex items-center gap-2.5 min-w-0">
                             <div
-                              className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
-                                isSelected ? "bg-[#0c140f] text-white" : "bg-gray-100 text-gray-500"
-                              }`}
+                              className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${isSelected ? "bg-[#0c140f] text-white" : "bg-gray-100 text-gray-500"
+                                }`}
                             >
                               <Icon className="w-4 h-4" />
                             </div>
                             <span className="font-bold text-xs truncate">{item.label}</span>
                           </div>
                           <span
-                            className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
-                              isSelected ? "border-[#0c140f] bg-[#0c140f]" : "border-gray-300 bg-white"
-                            }`}
+                            className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${isSelected ? "border-[#0c140f] bg-[#0c140f]" : "border-gray-300 bg-white"
+                              }`}
                           >
                             {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-white" />}
                           </span>
@@ -748,11 +678,10 @@ export default function BookYourStallPage() {
                           onChange={(e) => handleChange("phone", e.target.value)}
                           onBlur={() => handleBlur("phone")}
                           placeholder="9876543210"
-                          className={`w-full px-4 py-3 bg-slate-50/80 border rounded-r-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                            errors.phone
+                          className={`w-full px-4 py-3 bg-slate-50/80 border rounded-r-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${errors.phone
                               ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                               : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
-                          }`}
+                            }`}
                         />
                       </div>
                       {errors.phone && (
@@ -773,11 +702,10 @@ export default function BookYourStallPage() {
                           onChange={(e) => handleChange("email", e.target.value)}
                           onBlur={() => handleBlur("email")}
                           placeholder="representative@company.com"
-                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                            errors.email
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${errors.email
                               ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                               : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
-                          }`}
+                            }`}
                         />
                       </div>
                       {errors.email && (

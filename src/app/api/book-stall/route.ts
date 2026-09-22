@@ -1,6 +1,16 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import path from "path";
+import fs from "fs";
 import { saveLead } from "@/lib/leadsStore";
+import {
+  generateRegistrationCode,
+  generateQRCodeBuffer,
+  createVerificationPayload,
+  generateConfirmationEmailHtml,
+  generateStandaloneBadgeHtml,
+  BadgeAttendee,
+} from "@/lib/badgeGenerator";
 
 export async function POST(req: Request) {
   try {
@@ -65,13 +75,18 @@ export async function POST(req: Request) {
       );
     }
 
+    const registrationCode = generateRegistrationCode("stall");
+
     // Save lead to Admin Leads Store
     try {
       await saveLead("stall", {
+        registrationCode,
         name,
+        fullName: name,
         companyName,
         exhibitorCategory,
         position,
+        designation: position,
         email,
         phone: cleanedPhone,
         address,
@@ -112,7 +127,7 @@ export async function POST(req: Request) {
       from: fromEmail,
       to: toEmail,
       replyTo: email,
-      subject: `[IMD 2027 Booth Booking Request] ${companyName} (${requiredStallSpace}) - ${name}`,
+      subject: `[IMD 2027 Booth Booking - ${registrationCode}] ${companyName} (${requiredStallSpace}) - ${name}`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -140,9 +155,9 @@ export async function POST(req: Request) {
             </div>
 
             <div class="highlight-box">
-              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: #ff9f43;">Requested Stall Space</div>
-              <div style="font-size: 18px; font-weight: 800; color: #111;">${requiredStallSpace}</div>
-              <div style="font-size: 12px; color: #555; margin-top: 4px;">Preferred Contact: <strong>${contactPreference}</strong></div>
+              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: #ff9f43;">Issued Registration Code</div>
+              <div style="font-size: 18px; font-weight: 800; font-family: monospace; color: #111;">${registrationCode}</div>
+              <div style="font-size: 12px; color: #555; margin-top: 4px;">Space: <strong>${requiredStallSpace}</strong> &bull; Preferred Contact: <strong>${contactPreference}</strong></div>
             </div>
 
             <div class="field-row">
@@ -172,7 +187,7 @@ export async function POST(req: Request) {
 
             <div class="field-row">
               <div class="field-label">Phone Number</div>
-              <div class="field-value"><a href="tel:${phone}" style="color: #ff9f43;">${phone}</a></div>
+              <div class="field-value"><a href="tel:${cleanedPhone}" style="color: #ff9f43;">+91 ${cleanedPhone}</a></div>
             </div>
 
             <div class="field-row">
@@ -201,118 +216,72 @@ export async function POST(req: Request) {
 
     await transporter.sendMail(adminMailOptions);
 
-    // 2. Confirmation email to exhibitor
+    // 2. Generate Exhibitor M-Badge and Confirmation Email for the Applicant
     try {
+      const attendee: BadgeAttendee = {
+        fullName: name,
+        companyName,
+        designation: position,
+        city,
+        country,
+        type: "stall",
+        registrationCode,
+        mobileNumber: cleanedPhone,
+        email,
+      };
+
+      // Create QR code buffer and payload
+      const qrPayload = createVerificationPayload(attendee);
+      const qrBuffer = await generateQRCodeBuffer(qrPayload);
+      const qrBase64 = `data:image/png;base64,${qrBuffer.toString("base64")}`;
+
+      // Generate customized M-Badge email and standalone pass HTML
+      const { html: exhibitorEmailHtml, text: exhibitorEmailText, subject: exhibitorEmailSubject } =
+        generateConfirmationEmailHtml(attendee, "cid:badge-qrcode", "cid:imdlogo");
+
+      const standaloneBadgeHtml = generateStandaloneBadgeHtml(attendee, qrBase64);
+
+      // Prepare attachments with inline CID references
+      const logoPath = path.join(process.cwd(), "public", "reallogo.png");
+      const attachments: any[] = [
+        {
+          filename: "badge-qrcode.png",
+          content: qrBuffer,
+          cid: "badge-qrcode",
+        },
+        {
+          filename: `IMD2027-ExhibitorBadge-${registrationCode}.html`,
+          content: Buffer.from(standaloneBadgeHtml, "utf-8"),
+          contentType: "text/html",
+        },
+      ];
+
+      if (fs.existsSync(logoPath)) {
+        attachments.push({
+          filename: "logo.png",
+          path: logoPath,
+          cid: "imdlogo",
+        });
+      }
+
       const exhibitorMailOptions = {
         from: fromEmail,
         to: email,
-        subject: `Thank you for your Booth Booking Request! We will contact you soon - India Mushroom Days 2027`,
-        html: `
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <meta charset="utf-8">
-            <style>
-              body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #222; background-color: #f6f5f0; margin: 0; padding: 20px; }
-              .container { max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e0ded8; padding: 32px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-              .header { border-bottom: 2px solid #ff9f43; padding-bottom: 16px; margin-bottom: 20px; }
-              .thank-you-banner { background: #fff7ed; border-left: 4px solid #f97316; padding: 14px 18px; border-radius: 4px; margin: 18px 0; }
-              .thank-you-banner h3 { margin: 0 0 6px 0; color: #c2410c; font-size: 16px; }
-              .thank-you-banner p { margin: 0; color: #9a3412; font-size: 13.5px; }
-              .details-box { background: #fafafa; border: 1px solid #eaeaea; padding: 18px; border-radius: 6px; margin: 20px 0; }
-              .field-row { display: flex; border-bottom: 1px solid #eee; padding: 8px 0; font-size: 13.5px; }
-              .field-row:last-child { border-bottom: none; }
-              .field-label { width: 160px; color: #777; font-weight: 600; }
-              .field-val { flex: 1; color: #222; font-weight: 500; }
-              .footer { font-size: 12px; color: #888; border-top: 1px solid #eee; padding-top: 16px; margin-top: 24px; text-align: center; }
-            </style>
-          </head>
-          <body>
-            <div class="container">
-              <div class="header">
-                <h2 style="margin: 0; color: #111; font-size: 22px;">India Mushroom Days 2027</h2>
-                <div style="color: #ff9f43; font-weight: bold; font-size: 13px; text-transform: uppercase; margin-top: 4px;">Exhibitor Booth Booking Application</div>
-              </div>
-
-              <p style="font-size: 15px;">Dear <strong>${name}</strong>,</p>
-
-              <div class="thank-you-banner">
-                <h3>Thank you for your booth booking request!</h3>
-                <p>We have successfully received your booking request for <strong>${companyName}</strong>. Our exhibition management team will contact you soon via <strong>${contactPreference}</strong> with the stall layout floor plan, booth packages, and space allocation details.</p>
-              </div>
-
-              <p style="font-size: 14px; color: #444;">
-                Here is a summary of the booking details you submitted:
-              </p>
-
-              <div class="details-box">
-                <div class="field-row">
-                  <div class="field-label">Contact Person:</div>
-                  <div class="field-val">${name}</div>
-                </div>
-                <div class="field-row">
-                  <div class="field-label">Company Name:</div>
-                  <div class="field-val">${companyName}</div>
-                </div>
-                <div class="field-row">
-                  <div class="field-label">Position / Role:</div>
-                  <div class="field-val">${position}</div>
-                </div>
-                <div class="field-row">
-                  <div class="field-label">Category:</div>
-                  <div class="field-val">${exhibitorCategory}</div>
-                </div>
-                <div class="field-row">
-                  <div class="field-label">Required Space:</div>
-                  <div class="field-val"><strong>${requiredStallSpace}</strong></div>
-                </div>
-                <div class="field-row">
-                  <div class="field-label">Preferred Contact:</div>
-                  <div class="field-val">${contactPreference}</div>
-                </div>
-                <div class="field-row">
-                  <div class="field-label">Phone Number:</div>
-                  <div class="field-val">+91 ${phone}</div>
-                </div>
-                <div class="field-row">
-                  <div class="field-label">Email Address:</div>
-                  <div class="field-val">${email}</div>
-                </div>
-                <div class="field-row">
-                  <div class="field-label">Address & City:</div>
-                  <div class="field-val">${address}, ${city} – ${pinCode} (${country})</div>
-                </div>
-                <div class="field-row">
-                  <div class="field-label">Event Dates:</div>
-                  <div class="field-val">19 - 21 February 2027</div>
-                </div>
-                <div class="field-row">
-                  <div class="field-label">Venue:</div>
-                  <div class="field-val">New Delhi, India</div>
-                </div>
-              </div>
-
-              <p style="font-size: 13.5px; color: #555;">
-                For immediate space reservation assistance, you can also reach us directly at <a href="mailto:reachout@mushex.in" style="color: #ff9f43; font-weight: 600;">reachout@mushex.in</a> or call our helpline at <strong>+91 88601 15588</strong>.
-              </p>
-
-              <div class="footer">
-                <strong>Exhibitor Secretariat &bull; India Mushroom Days 2027</strong><br>
-                Official Email: reachout@mushex.in &bull; Helpline: +91 88601 15588 &bull; New Delhi, India
-              </div>
-            </div>
-          </body>
-          </html>
-        `,
+        subject: exhibitorEmailSubject,
+        text: exhibitorEmailText,
+        html: exhibitorEmailHtml,
+        attachments,
       };
+
       await transporter.sendMail(exhibitorMailOptions);
     } catch (confirmErr) {
-      console.error("Exhibitor confirmation email send error:", confirmErr);
+      console.error("Exhibitor M-Badge confirmation email send error:", confirmErr);
     }
 
     return NextResponse.json({
       success: true,
-      message: "Booth booking request received successfully!",
+      message: "Booth booking request received successfully! M-badge sent to email.",
+      registrationCode,
     });
   } catch (error: any) {
     console.error("Error in /api/book-stall:", error);

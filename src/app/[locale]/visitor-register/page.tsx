@@ -18,10 +18,7 @@ import {
   Loader2,
   ArrowRight,
   ShieldCheck,
-  Calendar,
-  Sparkles,
 } from "lucide-react";
-import { motion } from "framer-motion";
 
 const INDIAN_STATES = [
   "Andhra Pradesh",
@@ -221,68 +218,10 @@ export default function VisitorRegisterPage() {
       {/* 1. Navbar */}
       <Navbar />
 
-      {/* 2. Editorial Hero Header with Website Dark Theme */}
-      <section className="relative pt-36 sm:pt-44 pb-24 sm:pb-32 bg-[#0c140f] text-white overflow-hidden border-b border-white/10">
-        {/* Subtle Ambient Radial Glows */}
-        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#ff9f43]/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#004aab]/10 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#ff9f43]/20 border border-[#ff9f43]/35 text-xs font-bold text-[#ff9f43] uppercase tracking-wider mb-4 shadow-sm"
-          >
-            <Ticket className="w-3.5 h-3.5" />
-            <span>Complimentary Trade Pass</span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight capitalize font-sans leading-[1.1]"
-          >
-            Visitor <br />
-            <span className="font-serif italic font-normal text-amber-200 capitalize">
-              Registration
-            </span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-4 text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed font-normal"
-          >
-            Register for India Mushroom Days 2027 in New Delhi, India. Direct access to 100+ global commercial exhibitors, scientific conferences, and B2B buyer sessions.
-          </motion.p>
-
-          {/* Quick Perks Pill Strip */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm text-gray-300 font-medium"
-          >
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
-              <Sparkles className="w-3.5 h-3.5 text-[#ff9f43]" /> 100% Free Visitor Pass
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
-              <Calendar className="w-3.5 h-3.5 text-[#004aab]" /> 3-Day Exhibition Access
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15">
-              <ShieldCheck className="w-3.5 h-3.5 text-amber-300" /> Instant Digital E-Badge
-            </span>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 3. Main Form Card Area */}
-      <main className="flex-1 -mt-12 sm:-mt-16 pb-20 px-4 sm:px-6 lg:px-8 relative z-20">
+      {/* 2. Priority Visitor Registration Form Area */}
+      <main className="flex-1 pt-10 sm:pt-14 pb-20 px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-3xl border border-gray-200/90 shadow-2xl p-6 sm:p-10 lg:p-12 transition-all">
+          <div className="bg-white rounded-3xl border border-gray-200/90 shadow-xl p-6 sm:p-10 lg:p-12 transition-all">
             {isSuccess ? (
               /* Success Confirmation Card */
               <div className="py-12 text-center space-y-6">
@@ -356,18 +295,22 @@ export default function VisitorRegisterPage() {
             ) : (
               /* Professional Registration Form */
               <form onSubmit={handleSubmit} noValidate className="space-y-8">
-                {/* Top Section Headline & Instructions */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-6 border-b border-gray-100">
+                {/* Header & Required Label */}
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-6 border-b border-gray-100">
                   <div>
-                    <h2 className="text-xl sm:text-2xl font-black text-gray-950 tracking-tight">
-                      Visitor Verification Form
-                    </h2>
-                    <p className="text-xs text-gray-500 mt-1">
-                      Complete all fields below for instant electronic accreditation.
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-[#004aab] uppercase tracking-wider mb-2">
+                      <Ticket className="w-3.5 h-3.5" />
+                      <span>Complimentary Trade Pass</span>
+                    </div>
+                    <h1 className="text-2xl sm:text-3xl font-black text-gray-950 tracking-tight">
+                      Visitor Pass Registration
+                    </h1>
+                    <p className="text-xs sm:text-sm text-gray-500 mt-1">
+                      India Mushroom Days 2027 • Complete this form to receive your instant digital entry M-Badge.
                     </p>
                   </div>
-                  <span className="text-xs font-bold text-[#ff9f43] bg-orange-50 border border-orange-200 px-3 py-1 rounded-full w-fit">
-                    * All mandatory fields
+                  <span className="text-xs font-bold text-[#ff9f43] bg-orange-50 border border-orange-200 px-3.5 py-1.5 rounded-full w-fit shrink-0 self-start">
+                    * All fields mandatory
                   </span>
                 </div>
 
@@ -420,11 +363,10 @@ export default function VisitorRegisterPage() {
                           onChange={(e) => handleChange("firstName", e.target.value)}
                           onBlur={() => handleBlur("firstName")}
                           placeholder="e.g. Ramesh"
-                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                            errors.firstName
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${errors.firstName
                               ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                               : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
-                          }`}
+                            }`}
                         />
                       </div>
                       {errors.firstName && (
@@ -445,11 +387,10 @@ export default function VisitorRegisterPage() {
                           onChange={(e) => handleChange("lastName", e.target.value)}
                           onBlur={() => handleBlur("lastName")}
                           placeholder="e.g. Patel"
-                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                            errors.lastName
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${errors.lastName
                               ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                               : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
-                          }`}
+                            }`}
                         />
                       </div>
                       {errors.lastName && (
@@ -472,11 +413,10 @@ export default function VisitorRegisterPage() {
                           onChange={(e) => handleChange("designation", e.target.value)}
                           onBlur={() => handleBlur("designation")}
                           placeholder="e.g. Managing Director / Farm Owner"
-                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                            errors.designation
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${errors.designation
                               ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                               : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
-                          }`}
+                            }`}
                         />
                       </div>
                       {errors.designation && (
@@ -496,11 +436,10 @@ export default function VisitorRegisterPage() {
                           onChange={(e) => handleChange("companyName", e.target.value)}
                           onBlur={() => handleBlur("companyName")}
                           placeholder="e.g. Apex Mushroom Agro Industries"
-                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                            errors.companyName
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${errors.companyName
                               ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                               : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
-                          }`}
+                            }`}
                         />
                       </div>
                       {errors.companyName && (
@@ -571,11 +510,10 @@ export default function VisitorRegisterPage() {
                         value={formData.state}
                         onChange={(e) => handleChange("state", e.target.value)}
                         onBlur={() => handleBlur("state")}
-                        className={`w-full px-3 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all cursor-pointer font-medium ${
-                          errors.state
+                        className={`w-full px-3 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all cursor-pointer font-medium ${errors.state
                             ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                             : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
-                        }`}
+                          }`}
                       >
                         <option value="">Select State</option>
                         {INDIAN_STATES.map((s) => (
@@ -602,11 +540,10 @@ export default function VisitorRegisterPage() {
                           onChange={(e) => handleChange("city", e.target.value)}
                           onBlur={() => handleBlur("city")}
                           placeholder="e.g. New Delhi"
-                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                            errors.city
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${errors.city
                               ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                               : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
-                          }`}
+                            }`}
                         />
                       </div>
                       {errors.city && (
@@ -628,11 +565,10 @@ export default function VisitorRegisterPage() {
                           onChange={(e) => handleChange("postalCode", e.target.value)}
                           onBlur={() => handleBlur("postalCode")}
                           placeholder="110001"
-                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                            errors.postalCode
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${errors.postalCode
                               ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                               : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
-                          }`}
+                            }`}
                         />
                       </div>
                       {errors.postalCode && (
@@ -668,11 +604,10 @@ export default function VisitorRegisterPage() {
                           onChange={(e) => handleChange("mobileNumber", e.target.value)}
                           onBlur={() => handleBlur("mobileNumber")}
                           placeholder="9876543210"
-                          className={`w-full px-4 py-3 bg-slate-50/80 border rounded-r-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                            errors.mobileNumber
+                          className={`w-full px-4 py-3 bg-slate-50/80 border rounded-r-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${errors.mobileNumber
                               ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                               : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
-                          }`}
+                            }`}
                         />
                       </div>
                       {errors.mobileNumber && (
@@ -693,11 +628,10 @@ export default function VisitorRegisterPage() {
                           onChange={(e) => handleChange("email", e.target.value)}
                           onBlur={() => handleBlur("email")}
                           placeholder="name@company.com"
-                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${
-                            errors.email
+                          className={`w-full pl-10 pr-4 py-3 bg-slate-50/80 border rounded-xl text-sm text-gray-900 outline-none transition-all placeholder:text-gray-400 ${errors.email
                               ? "border-red-400 bg-red-50/30 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                               : "border-gray-200 focus:bg-white focus:border-[#0c140f] focus:ring-2 focus:ring-[#0c140f]/10"
-                          }`}
+                            }`}
                         />
                       </div>
                       {errors.email && (
