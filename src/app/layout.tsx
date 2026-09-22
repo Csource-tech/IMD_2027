@@ -59,13 +59,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth overflow-x-hidden max-w-full">
       <head>
         <link rel="icon" href="/reallogo.png" type="image/png" sizes="any" />
         <link rel="preload" href="/jingle.mp3" as="audio" type="audio/mpeg" />
       </head>
       <body
-        className={`${plusJakartaSans.variable} ${playfairDisplay.variable} font-sans antialiased text-[#151c17] bg-[#faf9f5] min-h-screen flex flex-col selection:bg-[#ff9f43] selection:text-white`}
+        className={`${plusJakartaSans.variable} ${playfairDisplay.variable} font-sans antialiased text-[#151c17] bg-[#faf9f5] min-h-screen flex flex-col selection:bg-[#ff9f43] selection:text-white overflow-x-hidden max-w-full w-full relative`}
       >
         {children}
         <WhatsAppFloatingButton />

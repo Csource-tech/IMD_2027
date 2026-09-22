@@ -105,7 +105,7 @@ export default function GallerySection() {
   const activeItem = GALLERY_ITEMS[currentIndex];
 
   return (
-    <section id="gallery" className="py-14 sm:py-20 bg-white border-b border-gray-200/80">
+    <section id="gallery" className="py-14 sm:py-20 bg-white border-b border-gray-200/80 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12">

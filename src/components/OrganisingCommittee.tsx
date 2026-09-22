@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import SectionDivider from "./SectionDivider";
 import { DEFAULT_SPEAKERS, SpeakerItem } from "@/lib/sectionsCmsTypes";
 
@@ -172,6 +172,8 @@ const SPEAKERS: Speaker[] = [
 
 export default function OrganisingCommittee() {
   const t = useTranslations("committee");
+  const locale = useLocale();
+  const isEnglish = locale === "en";
   const [speakers, setSpeakers] = useState<SpeakerItem[]>(DEFAULT_SPEAKERS);
   const [lineupTitle, setLineupTitle] = useState<string>("");
   const [lineupSubtitle, setLineupSubtitle] = useState<string>("");
@@ -270,7 +272,7 @@ export default function OrganisingCommittee() {
               transition={{ duration: 0.5 }}
               className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight capitalize"
             >
-              {lineupTitle || t("lineupTitle")}
+              {isEnglish && lineupTitle ? lineupTitle : t("lineupTitle")}
             </motion.h2>
 
             <motion.p
@@ -280,7 +282,7 @@ export default function OrganisingCommittee() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="mt-3 text-sm sm:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed font-normal"
             >
-              {lineupSubtitle || t("lineupSubtitle")}
+              {isEnglish && lineupSubtitle ? lineupSubtitle : t("lineupSubtitle")}
             </motion.p>
           </div>
 

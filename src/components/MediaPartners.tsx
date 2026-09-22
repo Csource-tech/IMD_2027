@@ -4,11 +4,13 @@ import { useState, useEffect } from "react";
 import { DEFAULT_MEDIA_PARTNERS, MediaPartnerItem } from "@/lib/sectionsCmsTypes";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import SectionDivider from "./SectionDivider";
 
 export default function MediaPartners() {
   const t = useTranslations("partners");
+  const locale = useLocale();
+  const isEnglish = locale === "en";
   const [partners, setPartners] = useState<MediaPartnerItem[]>(DEFAULT_MEDIA_PARTNERS);
   const [title, setTitle] = useState<string>("");
   const [subtitle, setSubtitle] = useState<string>("");
@@ -56,7 +58,7 @@ export default function MediaPartners() {
             transition={{ duration: 0.5 }}
             className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight capitalize"
           >
-            {title || t("mediaPartnersTitle")}
+            {isEnglish && title ? title : t("mediaPartnersTitle")}
           </motion.h2>
 
           <motion.p
@@ -66,7 +68,7 @@ export default function MediaPartners() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="mt-3 text-sm sm:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed font-normal"
           >
-            {subtitle || t("mediaPartnersSubtitle")}
+            {isEnglish && subtitle ? subtitle : t("mediaPartnersSubtitle")}
           </motion.p>
         </div>
 

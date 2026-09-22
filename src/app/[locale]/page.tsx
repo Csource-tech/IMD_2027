@@ -28,7 +28,7 @@ export default async function Home({
   setRequestLocale(locale);
 
   return (
-    <main className="min-h-screen flex flex-col bg-[#faf9f5] relative font-sans">
+    <main className="min-h-screen flex flex-col bg-[#faf9f5] relative font-sans w-full max-w-full overflow-x-hidden">
       <Navbar />
       <HeroVideo />
       <SummitPillars />

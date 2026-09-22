@@ -20,7 +20,7 @@ export default function FooterSection() {
   const tContact = useTranslations("contact");
 
   return (
-    <footer className="relative bg-[#070e0a] text-slate-300 pt-20 pb-10 border-t border-white/10 overflow-hidden">
+    <footer className="relative bg-[#070e0a] text-slate-300 pt-20 pb-10 border-t border-white/10 overflow-hidden w-full max-w-full">
       {/* Background mycelium texture */}
       <div className="absolute inset-0 mycelium-pattern opacity-15 pointer-events-none" />
 

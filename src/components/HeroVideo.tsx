@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import CountdownTimer from "@/components/CountdownTimer";
 
 const DEFAULT_CAROUSEL_IMAGES = [
@@ -40,6 +40,8 @@ interface HeroCmsState {
 
 export default function HeroVideo() {
   const t = useTranslations("hero");
+  const locale = useLocale();
+  const isEnglish = locale === "en";
   const [currentSlide, setCurrentSlide] = useState(0);
   const [cmsData, setCmsData] = useState<HeroCmsState | null>(null);
 
@@ -97,20 +99,21 @@ export default function HeroVideo() {
 
   const activeIndex = currentSlide % carouselImages.length;
 
-  // Text values: CMS override with fallback to next-intl translations
-  const kicker = cmsData?.kicker || t("kicker");
-  const titlePart1 = cmsData?.titlePart1 || t("titlePart1");
-  const titlePart2 = cmsData?.titlePart2 || t("titlePart2");
-  const shroomConnect = cmsData?.shroomConnect || t("shroomConnect");
-  const subtitlePart1 = cmsData?.subtitlePart1 || t("subtitlePart1");
-  const subtitlePart2 = cmsData?.subtitlePart2 || t("subtitlePart2");
-  const visitorBtn = cmsData?.visitorBtnText || t("visitorBtn");
-  const boothBtn = cmsData?.boothBtnText || t("boothBtn");
+  // Text values: If user is in a non-English language (hi, zh-CN, nl), use the translated strings from next-intl!
+  // If user is in English, allow CMS custom copy to override default copy.
+  const kicker = isEnglish && cmsData?.kicker ? cmsData.kicker : t("kicker");
+  const titlePart1 = isEnglish && cmsData?.titlePart1 ? cmsData.titlePart1 : t("titlePart1");
+  const titlePart2 = isEnglish && cmsData?.titlePart2 ? cmsData.titlePart2 : t("titlePart2");
+  const shroomConnect = isEnglish && cmsData?.shroomConnect ? cmsData.shroomConnect : t("shroomConnect");
+  const subtitlePart1 = isEnglish && cmsData?.subtitlePart1 ? cmsData.subtitlePart1 : t("subtitlePart1");
+  const subtitlePart2 = isEnglish && cmsData?.subtitlePart2 ? cmsData.subtitlePart2 : t("subtitlePart2");
+  const visitorBtn = isEnglish && cmsData?.visitorBtnText ? cmsData.visitorBtnText : t("visitorBtn");
+  const boothBtn = isEnglish && cmsData?.boothBtnText ? cmsData.boothBtnText : t("boothBtn");
 
   return (
     <section
       id="home"
-      className="relative w-full text-white pt-16 sm:pt-24 pb-14 sm:pb-20 flex flex-col justify-between"
+      className="relative w-full max-w-full text-white pt-16 sm:pt-24 pb-14 sm:pb-20 flex flex-col justify-between overflow-x-clip"
     >
       {/* 1. Full Page Background Image Carousel with Light Overlay */}
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0 bg-[#0f172a]">
@@ -157,7 +160,7 @@ export default function HeroVideo() {
         >
           <span
             style={{ textShadow: "0 2px 6px rgba(0,0,0,0.9)" }}
-            className="inline-flex items-center px-4 sm:px-5 py-1.5 rounded-full bg-black/65 backdrop-blur-md border border-amber-400/50 text-amber-300 font-extrabold text-xs sm:text-sm tracking-wider uppercase shadow-2xl"
+            className="inline-flex items-center text-center px-3.5 sm:px-5 py-1.5 rounded-full bg-black/65 backdrop-blur-md border border-amber-400/50 text-amber-300 font-extrabold text-[11px] sm:text-sm tracking-wider uppercase shadow-2xl max-w-full break-words"
           >
             {kicker}
           </span>
@@ -252,7 +255,7 @@ export default function HeroVideo() {
         initial={{ opacity: 0, y: 25 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.4 }}
-        className="relative z-30 max-w-6xl mx-auto px-4 -mb-18 sm:-mb-26 md:-mb-48 mt-10 sm:mt-14 flex justify-center w-full"
+        className="relative z-30 max-w-full sm:max-w-6xl mx-auto px-2 sm:px-4 -mb-18 sm:-mb-26 md:-mb-48 mt-10 sm:mt-14 flex justify-center w-full overflow-visible"
       >
         <CountdownTimer />
       </motion.div>

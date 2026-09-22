@@ -3,11 +3,13 @@
 import { useState, useEffect } from "react";
 import { DEFAULT_SPONSORS, SponsorItem } from "@/lib/sectionsCmsTypes";
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import SectionDivider from "./SectionDivider";
 
 export default function PastSponsorsSection() {
   const t = useTranslations("partners");
+  const locale = useLocale();
+  const isEnglish = locale === "en";
   const [sponsors, setSponsors] = useState<SponsorItem[]>(DEFAULT_SPONSORS);
   const [title, setTitle] = useState<string>("");
 
@@ -47,7 +49,7 @@ export default function PastSponsorsSection() {
             transition={{ duration: 0.5 }}
             className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight capitalize"
           >
-            {title || t("title")}
+            {isEnglish && title ? title : t("title")}
           </motion.h2>
         </div>
 

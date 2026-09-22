@@ -3,11 +3,13 @@
 import { useState, useEffect } from "react";
 import { DEFAULT_EXHIBITORS, ExhibitorItem } from "@/lib/sectionsCmsTypes";
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import SectionDivider from "./SectionDivider";
 
 export default function ExhibitorsSection() {
   const t = useTranslations("partners");
+  const locale = useLocale();
+  const isEnglish = locale === "en";
   const [exhibitors, setExhibitors] = useState<ExhibitorItem[]>(DEFAULT_EXHIBITORS);
   const [title, setTitle] = useState<string>("");
 
@@ -46,7 +48,7 @@ export default function ExhibitorsSection() {
           transition={{ duration: 0.5 }}
           className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight capitalize"
         >
-          {title || t("exhibitorsTitle")}
+          {isEnglish && title ? title : t("exhibitorsTitle")}
         </motion.h2>
       </div>
 

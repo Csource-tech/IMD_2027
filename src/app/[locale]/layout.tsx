@@ -24,12 +24,9 @@ export async function generateMetadata({
     keywords: t("keywords"),
     alternates: {
       canonical: `/${locale}`,
-      languages: {
-        en: "/en",
-        hi: "/hi",
-        "zh-CN": "/zh-CN",
-        nl: "/nl",
-      },
+      languages: Object.fromEntries(
+        routing.locales.map((loc) => [loc, `/${loc}`])
+      ),
     },
   };
 }
