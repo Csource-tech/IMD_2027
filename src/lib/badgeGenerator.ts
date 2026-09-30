@@ -1,6 +1,7 @@
 import QRCode from "qrcode";
 import path from "path";
 import fs from "fs";
+import PDFDocument from "pdfkit";
 
 export interface BadgeAttendee {
   fullName: string;
@@ -34,7 +35,7 @@ export function generateRegistrationCode(type: "visitor" | "stall"): string {
  */
 export async function generateQRCodeBuffer(payload: string): Promise<Buffer> {
   return QRCode.toBuffer(payload, {
-    width: 320,
+    width: 360,
     margin: 2,
     errorCorrectionLevel: "M",
     color: {
@@ -49,7 +50,7 @@ export async function generateQRCodeBuffer(payload: string): Promise<Buffer> {
  */
 export async function generateQRCodeDataURL(payload: string): Promise<string> {
   return QRCode.toDataURL(payload, {
-    width: 320,
+    width: 360,
     margin: 2,
     errorCorrectionLevel: "M",
     color: {
@@ -74,7 +75,302 @@ CATEGORY: ${category}
 VENUE: New Delhi, India
 DATES: 19-21 February 2027
 STATUS: CONFIRMED
-VERIFICATION: OFFICIAL SECRETIARAT PASS`;
+VERIFICATION: OFFICIAL SECRETARIAT PASS`;
+}
+
+/**
+ * Generate a print-ready, high-resolution PDF buffer of the Official M-Badge.
+ * Corrected layout with zero overlapping/coinciding text and proper proportional dimensions.
+ */
+export async function generateBadgePdfBuffer(
+  attendee: BadgeAttendee,
+  qrBuffer: Buffer,
+  logoPath?: string
+): Promise<Buffer> {
+  return new Promise((resolve, reject) => {
+    try {
+      const isVisitor = attendee.type === "visitor";
+      const categoryColor = isVisitor ? "#004aab" : "#ea580c";
+      const badgeCategoryLabel = isVisitor ? "OFFICIAL VISITOR PASS" : "OFFICIAL EXHIBITOR PASS";
+      const ribbonText = isVisitor ? "VISITOR" : "EXHIBITOR";
+
+      const doc = new PDFDocument({ size: "A4", margin: 20 });
+      const buffers: Buffer[] = [];
+
+      doc.on("data", (chunk: Buffer) => buffers.push(chunk));
+      doc.on("end", () => resolve(Buffer.concat(buffers)));
+      doc.on("error", (err: Error) => reject(err));
+
+      const pageWidth = doc.page.width;
+
+      // Header Notice on A4 page
+      doc
+        .fillColor("#64748b")
+        .fontSize(8.5)
+        .font("Helvetica")
+        .text("INDIA MUSHROOM DAYS 2027 & SHROOM CONNECT  •  OFFICIAL ENTRY PASS", 0, 24, {
+          width: pageWidth,
+          align: "center",
+        });
+      doc
+        .fillColor("#94a3b8")
+        .fontSize(7.5)
+        .font("Helvetica")
+        .text("Please print this pass or present the digital copy on your phone at the entrance desk.", 0, 36, {
+          width: pageWidth,
+          align: "center",
+        });
+
+      // Badge Card Dimensions (Proportionate A6 badge ratio centered on A4)
+      const cardWidth = 390;
+      const cardHeight = 560;
+      const cardX = (pageWidth - cardWidth) / 2;
+      const cardY = 50;
+
+      // Outer Card Border
+      doc.roundedRect(cardX, cardY, cardWidth, cardHeight, 16).lineWidth(1.5).strokeColor("#94a3b8").stroke();
+
+      // Top Micro-strip Inside Card
+      doc.save();
+      doc.roundedRect(cardX, cardY, cardWidth, 24, 16).clip();
+      doc.rect(cardX, cardY, cardWidth, 24).fillColor("#070d09").fill();
+      doc.restore();
+      doc.rect(cardX, cardY + 12, cardWidth, 12).fillColor("#070d09").fill();
+
+      doc.fillColor("#94a3b8").fontSize(6.5).font("Helvetica").text("SUPPORTED BY AGRO BODIES", cardX + 16, cardY + 8);
+      doc
+        .fillColor("#94a3b8")
+        .fontSize(6.5)
+        .font("Helvetica")
+        .text("IMD SECRETARIAT • NEW DELHI", cardX, cardY + 8, { width: cardWidth, align: "center" });
+      doc
+        .fillColor("#ff9f43")
+        .fontSize(6.5)
+        .font("Helvetica-Bold")
+        .text("EDITION 2027", cardX, cardY + 8, { width: cardWidth - 16, align: "right" });
+
+      // Main Header Background (Dark #0c140f)
+      const headerY = cardY + 24;
+      const headerHeight = 86;
+      doc.rect(cardX, headerY, cardWidth, headerHeight).fillColor("#0c140f").fill();
+
+      // Real Logo on Left
+      const effectiveLogoPath = logoPath || path.join(process.cwd(), "public", "reallogo.png");
+      const logoSize = 68;
+      const logoX = cardX + 16;
+      const logoY = headerY + (headerHeight - logoSize) / 2;
+      if (fs.existsSync(effectiveLogoPath)) {
+        try {
+          doc.image(effectiveLogoPath, logoX, logoY, { width: logoSize, height: logoSize });
+        } catch {
+          // Fallback gracefully if image cannot be decoded
+        }
+      }
+
+      // Header Typography on Right of Logo (Zero Overlap)
+      const textX = logoX + logoSize + 14;
+      const textWidth = cardWidth - (textX - cardX) - 14;
+      let textY = headerY + 11;
+
+      doc
+        .fillColor("#ffffff")
+        .fontSize(14)
+        .font("Helvetica-Bold")
+        .text("INDIA MUSHROOM DAYS ", textX, textY, { continued: true });
+      doc.fillColor("#ff9f43").text("2027");
+
+      textY += 18;
+      doc
+        .fillColor("#38bdf8")
+        .fontSize(9)
+        .font("Helvetica-Bold")
+        .text("SHROOM CONNECT B2B CONCLAVE", textX, textY, { width: textWidth });
+
+      textY += 14;
+      doc
+        .fillColor("#9ca3af")
+        .fontSize(7.5)
+        .font("Helvetica")
+        .text("Asia's Premier Edible & Medicinal Mushroom Summit", textX, textY, { width: textWidth });
+
+      textY += 13;
+      doc
+        .fillColor("#e2e8f0")
+        .fontSize(7.5)
+        .font("Helvetica-Bold")
+        .text("19 – 21 February, 2027  •  New Delhi, India", textX, textY, { width: textWidth });
+
+      // Category Ribbon (Full Width of Card, Directly below header)
+      const ribbonY = headerY + headerHeight;
+      const ribbonHeight = 28;
+      doc.rect(cardX, ribbonY, cardWidth, ribbonHeight).fillColor(categoryColor).fill();
+      doc
+        .fillColor("#ffffff")
+        .fontSize(11)
+        .font("Helvetica-Bold")
+        .text(badgeCategoryLabel, cardX, ribbonY + 8, { width: cardWidth, align: "center" });
+
+      // Attendee Details (Cleanly spaced and centered)
+      let currY = ribbonY + ribbonHeight + 12;
+      doc
+        .fillColor(categoryColor)
+        .fontSize(17)
+        .font("Helvetica-Bold")
+        .text(attendee.fullName.toUpperCase(), cardX + 14, currY, { width: cardWidth - 28, align: "center" });
+      currY += 21;
+
+      if (attendee.designation && attendee.designation.trim()) {
+        doc
+          .fillColor("#1f2937")
+          .fontSize(10.5)
+          .font("Helvetica-Bold")
+          .text(attendee.designation.trim(), cardX + 14, currY, { width: cardWidth - 28, align: "center" });
+        currY += 14;
+      }
+
+      if (attendee.companyName && attendee.companyName.trim()) {
+        doc
+          .fillColor("#4b5563")
+          .fontSize(11.5)
+          .font("Helvetica-Bold")
+          .text(attendee.companyName.trim(), cardX + 14, currY, { width: cardWidth - 28, align: "center" });
+        currY += 15;
+      }
+
+      const locParts = [attendee.city, attendee.state, attendee.country].filter(Boolean);
+      if (locParts.length > 0) {
+        doc
+          .fillColor("#6b7280")
+          .fontSize(8.5)
+          .font("Helvetica")
+          .text(locParts.join(", "), cardX + 14, currY, { width: cardWidth - 28, align: "center" });
+        currY += 14;
+      }
+
+      // Divider Line
+      currY += 4;
+      doc
+        .moveTo(cardX + 24, currY)
+        .lineTo(cardX + cardWidth - 24, currY)
+        .lineWidth(0.75)
+        .strokeColor("#e2e8f0")
+        .stroke();
+      currY += 10;
+
+      // QR Code Container & Verification Image
+      const qrSize = 142;
+      const qrBoxSize = qrSize + 14;
+      const qrBoxX = cardX + (cardWidth - qrBoxSize) / 2;
+      const qrBoxY = currY;
+
+      doc
+        .roundedRect(qrBoxX, qrBoxY, qrBoxSize, qrBoxSize, 8)
+        .fillColor("#ffffff")
+        .strokeColor("#cbd5e1")
+        .lineWidth(1)
+        .fillAndStroke();
+      doc.image(qrBuffer, qrBoxX + 7, qrBoxY + 7, { width: qrSize, height: qrSize });
+      currY += qrBoxSize + 8;
+
+      // Registration Code Pill
+      const pillW = 190;
+      const pillH = 22;
+      const pillX = cardX + (cardWidth - pillW) / 2;
+      doc
+        .roundedRect(pillX, currY, pillW, pillH, 11)
+        .fillColor("#f1f5f9")
+        .strokeColor("#cbd5e1")
+        .lineWidth(0.75)
+        .fillAndStroke();
+      doc
+        .fillColor("#0f172a")
+        .fontSize(11)
+        .font("Helvetica-Bold")
+        .text(attendee.registrationCode, cardX, currY + 5, { width: cardWidth, align: "center" });
+      currY += pillH + 4;
+
+      doc
+        .fillColor("#64748b")
+        .fontSize(7)
+        .font("Helvetica")
+        .text("OFFICIAL VERIFICATION QR • PRESENT AT KIOSK DESK", cardX, currY, {
+          width: cardWidth,
+          align: "center",
+        });
+      currY += 14;
+
+      // Event Info Box (Dates, Venue, Visiting Hours)
+      const eventBoxHeight = 36;
+      doc
+        .roundedRect(cardX + 20, currY, cardWidth - 40, eventBoxHeight, 6)
+        .fillColor("#f8fafc")
+        .strokeColor("#e2e8f0")
+        .lineWidth(0.75)
+        .fillAndStroke();
+      doc
+        .fillColor("#0f172a")
+        .fontSize(9.5)
+        .font("Helvetica-Bold")
+        .text("19 – 21 FEBRUARY, 2027", cardX, currY + 7, { width: cardWidth, align: "center" });
+      doc
+        .fillColor("#475569")
+        .fontSize(8)
+        .font("Helvetica")
+        .text("New Delhi, India  •  Visiting Hours: 10:00 AM – 6:00 PM", cardX, currY + 20, {
+          width: cardWidth,
+          align: "center",
+        });
+
+      // Bottom Category Ribbon (Clipped to Card's Bottom Rounded Corners)
+      const bottomStripHeight = 36;
+      const bottomStripY = cardY + cardHeight - bottomStripHeight;
+      doc.save();
+      doc.roundedRect(cardX, bottomStripY, cardWidth, bottomStripHeight, 16).clip();
+      doc.rect(cardX, bottomStripY, cardWidth, bottomStripHeight).fillColor(categoryColor).fill();
+      doc.restore();
+      doc.rect(cardX, bottomStripY, cardWidth, 14).fillColor(categoryColor).fill();
+
+      doc
+        .fillColor("#ffffff")
+        .fontSize(13)
+        .font("Helvetica-Bold")
+        .text(ribbonText, cardX, bottomStripY + 6, { width: cardWidth, align: "center" });
+      doc
+        .fillColor("#dbeafe")
+        .fontSize(6.5)
+        .font("Helvetica")
+        .text("BARCODE SCANNABLE ACCESS • NON-TRANSFERABLE PASS", cardX, bottomStripY + 22, {
+          width: cardWidth,
+          align: "center",
+        });
+
+      // Outer Page Cut Guide & Secretariat Contact
+      doc
+        .fillColor("#94a3b8")
+        .fontSize(7.5)
+        .font("Helvetica")
+        .text(
+          "[ - - - Cut along outer border and insert into standard badge holder (100mm x 150mm) - - - ]",
+          0,
+          cardY + cardHeight + 14,
+          { width: pageWidth, align: "center" }
+        );
+      doc
+        .fillColor("#94a3b8")
+        .fontSize(7.5)
+        .font("Helvetica")
+        .text(
+          "India Mushroom Days 2027 Secretariat • reachout@mushex.in • Helpline: +91 88601 15588",
+          0,
+          cardY + cardHeight + 26,
+          { width: pageWidth, align: "center" }
+        );
+
+      doc.end();
+    } catch (err) {
+      reject(err);
+    }
+  });
 }
 
 /**
@@ -89,7 +385,6 @@ export function generateConfirmationEmailHtml(
   const categoryTitle = isVisitor ? "Visitor" : "Exhibitor";
   const badgeCategoryLabel = isVisitor ? "VISITOR" : "EXHIBITOR";
   const categoryColor = isVisitor ? "#004aab" : "#ea580c";
-  const headerBgColor = isVisitor ? "#0c140f" : "#1a2820";
 
   const subject = isVisitor
     ? `Your Official M-Badge & Registration Confirmation: India Mushroom Days 2027 [${attendee.registrationCode}]`
@@ -103,7 +398,7 @@ We are pleased to confirm your registration for India Mushroom Days 2027 & Shroo
 The Exhibition & Visiting timings are 10.00 A.M. to 6.00 P.M.
 Your Unique Registration code: ${attendee.registrationCode}
 
-Attached is your M-badge for the event.
+Attached is your official printable PDF M-badge for the event.
 
 Please present this M-badge and your Government ID / Business Card at the entrance upon your arrival.
 
@@ -193,7 +488,7 @@ Secretariat Email: reachout@mushex.in | Helpline: +91 88601 15588
               </table>
 
               <p style="margin: 0 0 8px 0; font-weight: 600; color: #0c140f;">
-                Attached is your official M-badge for the event:
+                Attached to this email is your official print-ready PDF M-Badge. You can print it directly or carry it on your mobile device:
               </p>
             </td>
           </tr>
@@ -203,7 +498,7 @@ Secretariat Email: reachout@mushex.in | Helpline: +91 88601 15588
             <td align="center" style="padding: 0 24px 30px 24px;">
               <table role="presentation" width="100%" style="max-width: 360px; background-color: #ffffff; border: 3px solid #0c140f; border-radius: 20px; overflow: hidden; box-shadow: 0 12px 36px rgba(12,20,15,0.18); margin: 0 auto;" cellpadding="0" cellspacing="0">
                 
-                <!-- Badge Top Strip: Institutional Recognition -->
+                <!-- Badge Top Strip -->
                 <tr>
                   <td style="background: linear-gradient(135deg, #f8f6f0 0%, #ede8dc 100%); padding: 10px 14px; border-bottom: 2px solid #0c140f;">
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size: 9px; color: #5a655c; text-align: center; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">
@@ -264,7 +559,6 @@ Secretariat Email: reachout@mushex.in | Helpline: +91 88601 15588
                       <img src="${qrCid}" alt="Entry QR Code" width="180" height="180" style="display: block; width: 180px; height: 180px; margin: 0 auto;" />
                     </div>
                     
-                    <!-- Registration Code string directly under QR -->
                     <div style="font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 14px; font-weight: 800; color: #0c140f; letter-spacing: 2px; margin-top: 8px;">
                       ${attendee.registrationCode}
                     </div>
@@ -303,7 +597,7 @@ Secretariat Email: reachout@mushex.in | Helpline: +91 88601 15588
             <td style="padding: 0 30px 24px 30px; font-size: 14px; line-height: 1.6; color: #374151;">
               <div style="background-color: #fef8ee; border-left: 4px solid #ff9f43; padding: 12px 16px; border-radius: 6px; margin-bottom: 18px;">
                 <p style="margin: 0; font-size: 13.5px; color: #92400e;">
-                  📌 <strong>Arrival Instruction:</strong> Please present this M-badge (on your smartphone or printed) along with a valid Government Photo ID / Business Card at the reception counter for express entry wristband / lanyard issuance.
+                  📌 <strong>Arrival Instruction:</strong> Please print the attached PDF M-badge or keep it ready on your smartphone along with a valid Government Photo ID / Business Card at the reception counter for express entry wristband issuance.
                 </p>
               </div>
 
@@ -534,8 +828,8 @@ export function generateStandaloneBadgeHtml(
     </div>
 
     <div class="brand-header">
-      <div class="brand-title">India Mushroom Days</div>
-      <div class="brand-year">2027</div>
+      ${logoBase64 ? `<img src="${logoBase64}" alt="IMD 2027" width="130" style="display: block; margin: 0 auto 10px auto; max-width: 130px; height: auto;" />` : ""}
+      <div class="brand-title">India Mushroom Days <span class="brand-year">2027</span></div>
       <div class="brand-sub">Shroom Connect B2B Conclave</div>
     </div>
 
@@ -569,4 +863,11 @@ export function generateStandaloneBadgeHtml(
   </div>
 </body>
 </html>`;
+}
+
+/**
+ * Generate complete standalone HTML badge (used for in-browser view and fallback printing).
+ */
+export function generateBadgeHTML(attendee: BadgeAttendee, qrBase64: string): string {
+  return generateStandaloneBadgeHtml(attendee, qrBase64);
 }

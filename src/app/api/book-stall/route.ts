@@ -9,6 +9,7 @@ import {
   createVerificationPayload,
   generateConfirmationEmailHtml,
   generateStandaloneBadgeHtml,
+  generateBadgePdfBuffer,
   BadgeAttendee,
 } from "@/lib/badgeGenerator";
 
@@ -235,19 +236,26 @@ export async function POST(req: Request) {
       const qrBuffer = await generateQRCodeBuffer(qrPayload);
       const qrBase64 = `data:image/png;base64,${qrBuffer.toString("base64")}`;
 
-      // Generate customized M-Badge email and standalone pass HTML
+      // Generate customized M-Badge email, standalone pass HTML, and print-ready PDF
       const { html: exhibitorEmailHtml, text: exhibitorEmailText, subject: exhibitorEmailSubject } =
         generateConfirmationEmailHtml(attendee, "cid:badge-qrcode", "cid:imdlogo");
 
       const standaloneBadgeHtml = generateStandaloneBadgeHtml(attendee, qrBase64);
 
-      // Prepare attachments with inline CID references
       const logoPath = path.join(process.cwd(), "public", "reallogo.png");
+      const pdfBuffer = await generateBadgePdfBuffer(attendee, qrBuffer, logoPath);
+
+      // Prepare attachments with printable PDF M-Badge & inline CID references
       const attachments: any[] = [
         {
           filename: "badge-qrcode.png",
           content: qrBuffer,
           cid: "badge-qrcode",
+        },
+        {
+          filename: `IMD2027-ExhibitorBadge-${registrationCode}.pdf`,
+          content: pdfBuffer,
+          contentType: "application/pdf",
         },
         {
           filename: `IMD2027-ExhibitorBadge-${registrationCode}.html`,
@@ -280,7 +288,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       success: true,
-      message: "Booth booking request received successfully! M-badge sent to email.",
+      message: "Booth booking request received successfully! M-badge PDF sent to email.",
       registrationCode,
     });
   } catch (error: any) {

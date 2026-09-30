@@ -53,7 +53,7 @@
       {
         "id": "exh-7",
         "name": "Cheetah",
-        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981890/imd2027/exhibitors/wpsynywkajmtjiuc2sus.webp",
+        "logo": "https://res.cloudinary.com/fygoexsq/image/upload/v1789981990/imd2027/exhibitors/wpsynywkajmtjiuc2sus.webp",
         "active": true,
         "order": 6,
         "publicId": "imd2027/exhibitors/wpsynywkajmtjiuc2sus"
@@ -188,8 +188,8 @@
     ]
   },
   "lineup": {
-    "title": "The Conference: The 2027 Line-up",
-    "subtitle": "Distinguished global thought leaders, commercial agronomists, and biotechnology innovators converging in New Delhi.",
+    "title": "The 2027 line-up",
+    "subtitle": "25+ speakers from 20+ countries. Names are being confirmed now. Here is who took the stage last time.",
     "items": [
       {
         "id": "speaker-1",
@@ -350,5 +350,5 @@
       }
     ]
   },
-  "updatedAt": "2026-09-21T09:14:19.981Z"
+  "updatedAt": "2026-09-30T17:31:00.000Z"
 }

@@ -9,6 +9,7 @@ import {
   createVerificationPayload,
   generateConfirmationEmailHtml,
   generateStandaloneBadgeHtml,
+  generateBadgePdfBuffer,
   BadgeAttendee,
 } from "@/lib/badgeGenerator";
 
@@ -148,14 +149,13 @@ export async function POST(req: Request) {
           <div class="container">
             <div class="header">
               <span class="badge">Visitor Pass Registration</span>
-              <h2>India Mushroom Days 2027 (IMD 2027)</h2>
-              <p style="margin: 4px 0 0; color: #666; font-size: 13px;">Received: ${formattedTime}</p>
+              <h2>New Visitor Registration Confirmed</h2>
+              <div style="font-size: 13px; color: #666; margin-top: 4px;">Registered on: ${formattedTime} (IST)</div>
             </div>
 
             <div class="reg-box">
-              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: #004aab;">Issued Registration Code</div>
-              <div style="font-size: 18px; font-weight: 800; font-family: monospace; color: #0f172a;">${registrationCode}</div>
-              <div style="font-size: 12px; color: #555; margin-top: 2px;">Category: <strong>Visitor</strong></div>
+              <div style="font-size: 11px; font-weight: 700; color: #004aab; text-transform: uppercase; letter-spacing: 0.5px;">Issued Unique M-Badge Code</div>
+              <div style="font-size: 18px; font-weight: 800; color: #004aab; font-family: monospace; margin-top: 2px;">${registrationCode}</div>
             </div>
 
             <div class="field-row">
@@ -164,12 +164,12 @@ export async function POST(req: Request) {
             </div>
 
             <div class="field-row">
-              <div class="field-label">Designation / Role</div>
+              <div class="field-label">Designation</div>
               <div class="field-value">${designation}</div>
             </div>
 
             <div class="field-row">
-              <div class="field-label">Company / Farm</div>
+              <div class="field-label">Company Name</div>
               <div class="field-value">${companyName}</div>
             </div>
 
@@ -229,19 +229,26 @@ export async function POST(req: Request) {
       const qrBuffer = await generateQRCodeBuffer(qrPayload);
       const qrBase64 = `data:image/png;base64,${qrBuffer.toString("base64")}`;
 
-      // Generate customized M-Badge email and standalone pass HTML
+      // Generate customized M-Badge email, standalone pass HTML, and print-ready PDF
       const { html: visitorEmailHtml, text: visitorEmailText, subject: visitorEmailSubject } =
         generateConfirmationEmailHtml(attendee, "cid:badge-qrcode", "cid:imdlogo");
 
       const standaloneBadgeHtml = generateStandaloneBadgeHtml(attendee, qrBase64);
 
-      // Prepare attachments with inline CID references
       const logoPath = path.join(process.cwd(), "public", "reallogo.png");
+      const pdfBuffer = await generateBadgePdfBuffer(attendee, qrBuffer, logoPath);
+
+      // Prepare attachments with printable PDF M-Badge & inline CID references
       const attachments: any[] = [
         {
           filename: "badge-qrcode.png",
           content: qrBuffer,
           cid: "badge-qrcode",
+        },
+        {
+          filename: `IMD2027-MBadge-${registrationCode}.pdf`,
+          content: pdfBuffer,
+          contentType: "application/pdf",
         },
         {
           filename: `IMD2027-MBadge-${registrationCode}.html`,
@@ -274,7 +281,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       success: true,
-      message: "Visitor pass registered successfully! M-badge sent to email.",
+      message: "Visitor pass registered successfully! M-badge PDF sent to email.",
       registrationCode,
     });
   } catch (error: any) {

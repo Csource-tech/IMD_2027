@@ -28,7 +28,6 @@ export const DEFAULT_CAROUSEL_IMAGES: string[] = [
   "/carousel/3U3A5077.JPG",
   "/carousel/3U3A5264.JPG",
   "/carousel/3U3A5523.JPG",
-  "/carousel/image1.jpeg",
   "/carousel/image2.jpeg",
   "/carousel/image3.jpeg",
   "/carousel/image4.jpeg",

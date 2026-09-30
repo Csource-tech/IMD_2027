@@ -274,8 +274,8 @@ export const DEFAULT_SECTIONS_CMS_DATA: SectionsCmsData = {
     items: DEFAULT_MEDIA_PARTNERS,
   },
   lineup: {
-    title: "The Conference: The 2027 Line-up",
-    subtitle: "Distinguished global thought leaders, commercial agronomists, and biotechnology innovators converging in New Delhi.",
+    title: "The 2027 line-up",
+    subtitle: "25+ speakers from 20+ countries. Names are being confirmed now. Here is who took the stage last time.",
     items: DEFAULT_SPEAKERS,
   },
   sponsors: {

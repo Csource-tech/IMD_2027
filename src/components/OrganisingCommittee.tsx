@@ -202,6 +202,13 @@ export default function OrganisingCommittee() {
   const activeSpeakers = speakers.filter((s) => s.active !== false);
   const displaySpeakers = activeSpeakers.length > 0 ? activeSpeakers : DEFAULT_SPEAKERS;
 
+  // Clean title to match reference mockup: "— THE CONFERENCE" eyebrow + "The 2027 line-up"
+  const rawTitle = (isEnglish && lineupTitle ? lineupTitle : t("lineupTitle")) || "The 2027 line-up";
+  const cleanTitle = rawTitle.replace(/^The Conference\s*[:\-–—]\s*/i, "").trim() || "The 2027 line-up";
+  const displaySubtitle =
+    (isEnglish && lineupSubtitle ? lineupSubtitle : t("lineupSubtitle")) ||
+    "25+ speakers from 20+ countries. Names are being confirmed now. Here is who took the stage last time.";
+
   return (
     <section
       id="organising-committee"
@@ -263,26 +270,42 @@ export default function OrganisingCommittee() {
 
         {/* The Conference: The 2027 Line-up */}
         <div id="conference-lineup" className="relative">
-          {/* Section Heading */}
-          <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12">
+          {/* Section Heading - Matches reference mockup UI */}
+          <div className="text-left max-w-3xl mb-10 sm:mb-12">
+            {/* Eyebrow: — THE CONFERENCE */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              className="flex items-center gap-2.5 mb-2.5"
+            >
+              <span className="w-6 h-[2px] bg-gray-500 inline-block" />
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-gray-600 font-sans">
+                THE CONFERENCE
+              </span>
+            </motion.div>
+
+            {/* Title: The 2027 line-up */}
             <motion.h2
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight capitalize"
+              transition={{ duration: 0.5, delay: 0.05 }}
+              className="text-3xl sm:text-4xl md:text-5xl font-black font-sans text-gray-950 tracking-tight"
             >
-              {isEnglish && lineupTitle ? lineupTitle : t("lineupTitle")}
+              {cleanTitle}
             </motion.h2>
 
+            {/* Subtitle: 25+ speakers from 20+ countries... */}
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-3 text-sm sm:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed font-normal"
+              className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed font-normal"
             >
-              {isEnglish && lineupSubtitle ? lineupSubtitle : t("lineupSubtitle")}
+              {displaySubtitle}
             </motion.p>
           </div>
 
