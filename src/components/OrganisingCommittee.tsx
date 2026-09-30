@@ -270,15 +270,15 @@ export default function OrganisingCommittee() {
 
         {/* The Conference: The 2027 Line-up */}
         <div id="conference-lineup" className="relative">
-          {/* Section Heading - Matches reference mockup UI */}
-          <div className="text-left max-w-3xl mb-10 sm:mb-12">
+          {/* Section Heading - Centered with reference UI styling */}
+          <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
             {/* Eyebrow: — THE CONFERENCE */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="flex items-center gap-2.5 mb-2.5"
+              className="inline-flex items-center justify-center gap-2.5 mb-2.5"
             >
               <span className="w-6 h-[2px] bg-gray-500 inline-block" />
               <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-gray-600 font-sans">
@@ -303,7 +303,7 @@ export default function OrganisingCommittee() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed font-normal"
+              className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed font-normal max-w-2xl mx-auto"
             >
               {displaySubtitle}
             </motion.p>
