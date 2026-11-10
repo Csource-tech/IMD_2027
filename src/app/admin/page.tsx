@@ -65,7 +65,7 @@ export default function AdminLoginPage() {
 
   const handleQuickFill = () => {
     setUsername("admin");
-    setPassword("admin123");
+    setPassword("Imdadmin2027");
     setError("");
   };
 
@@ -205,7 +205,7 @@ export default function AdminLoginPage() {
               <span>Click to auto-fill default admin credentials</span>
             </button>
             <p className="text-[11px] text-gray-400 mt-1">
-              Username: <code className="text-gray-200">admin</code> &bull; Password: <code className="text-gray-200">admin123</code>
+              Username: <code className="text-gray-200">admin</code> &bull; Password: <code className="text-gray-200">Imdadmin2027</code>
             </p>
           </div>
         </motion.div>
