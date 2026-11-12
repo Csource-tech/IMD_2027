@@ -65,7 +65,7 @@ export default function AdminLoginPage() {
 
   const handleQuickFill = () => {
     setUsername("admin");
-    setPassword("Imdadmin2027");
+    setPassword("ImdAdmin2027@@");
     setError("");
   };
 

@@ -5,7 +5,7 @@ export async function POST(req: Request) {
     const { username, password } = await req.json();
 
     const validUsernames = ["admin", "admin@imd2027.com", "secretariat@imd2027.com"];
-    const validPasswords = ["Imdadmin2027"];
+    const validPasswords = ["ImdAdmin2027@@"];
 
     const isUserValid = validUsernames.includes(String(username).trim().toLowerCase());
     const isPassValid = validPasswords.includes(String(password).trim());
