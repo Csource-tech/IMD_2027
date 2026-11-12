@@ -12,7 +12,6 @@ import {
   ArrowRight,
   Loader2,
   AlertCircle,
-  Sparkles,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -48,9 +47,6 @@ export default function AdminLoginPage() {
         throw new Error(data.error || "Authentication failed. Check your credentials.");
       }
 
-      // Store in localStorage for quick client-side hydration check
-      localStorage.setItem("imd_admin_session", "true");
-
       // Redirect to Admin Dashboard
       router.push("/admin-dashboard");
       setTimeout(() => {
@@ -61,12 +57,6 @@ export default function AdminLoginPage() {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleQuickFill = () => {
-    setUsername("admin");
-    setPassword("ImdAdmin2027@@");
-    setError("");
   };
 
   return (

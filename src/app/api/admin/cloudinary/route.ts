@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 import { isCloudinaryConfigured, uploadBufferToCloudinary } from "@/lib/cloudinary";
+import { isAdminRequest } from "@/lib/adminAuth";
 
 export async function GET() {
+  if (!(await isAdminRequest())) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const configured = isCloudinaryConfigured();
   return NextResponse.json({
     success: true,
@@ -11,6 +13,7 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
+  if (!(await isAdminRequest())) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   try {
     if (!isCloudinaryConfigured()) {
       return NextResponse.json(

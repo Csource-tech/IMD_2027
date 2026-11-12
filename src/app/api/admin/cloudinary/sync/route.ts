@@ -3,8 +3,10 @@ import path from "path";
 import fs from "fs";
 import { isCloudinaryConfigured, uploadLocalFileToCloudinary } from "@/lib/cloudinary";
 import { getHeroData, saveHeroData } from "@/lib/heroCmsStore";
+import { isAdminRequest } from "@/lib/adminAuth";
 
 export async function POST() {
+  if (!(await isAdminRequest())) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   try {
     if (!isCloudinaryConfigured()) {
       return NextResponse.json(

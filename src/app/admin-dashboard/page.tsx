@@ -80,7 +80,6 @@ export default function AdminDashboardPage() {
   const handleLogout = async () => {
     try {
       await fetch("/api/admin/logout", { method: "POST" });
-      localStorage.removeItem("imd_admin_session");
       router.push("/admin");
       setTimeout(() => {
         window.location.href = "/admin";

@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 import { getLeads, updateLeadStatus, deleteLead, LeadStatus } from "@/lib/leadsStore";
+import { isAdminRequest } from "@/lib/adminAuth";
 
 export async function GET(req: Request) {
+  if (!(await isAdminRequest())) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   try {
     const leads = await getLeads();
 
@@ -27,6 +29,7 @@ export async function GET(req: Request) {
 }
 
 export async function PATCH(req: Request) {
+  if (!(await isAdminRequest())) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   try {
     const body = await req.json();
     const { id, status } = body;
@@ -59,6 +62,7 @@ export async function PATCH(req: Request) {
 }
 
 export async function DELETE(req: Request) {
+  if (!(await isAdminRequest())) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   try {
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");

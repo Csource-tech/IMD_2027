@@ -3,10 +3,12 @@ import path from "path";
 import fs from "fs";
 import { isCloudinaryConfigured, uploadLocalFileToCloudinary } from "@/lib/cloudinary";
 import { getSectionsCmsData, saveSectionsCmsData } from "@/lib/sectionsCmsStore";
+import { isAdminRequest } from "@/lib/adminAuth";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
+  if (!(await isAdminRequest())) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   try {
     if (!isCloudinaryConfigured()) {
       return NextResponse.json(
