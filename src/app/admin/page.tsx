@@ -194,20 +194,7 @@ export default function AdminLoginPage() {
             </button>
           </form>
 
-          {/* Quick Demo Fill Helper */}
-          <div className="mt-6 pt-5 border-t border-white/10 text-center">
-            <button
-              type="button"
-              onClick={handleQuickFill}
-              className="inline-flex items-center gap-1.5 text-xs text-[#ff9f43] hover:underline cursor-pointer font-medium"
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Click to auto-fill default admin credentials</span>
-            </button>
-            <p className="text-[11px] text-gray-400 mt-1">
-              Username: <code className="text-gray-200">admin</code> &bull; Password: <code className="text-gray-200">Imdadmin2027</code>
-            </p>
-          </div>
+
         </motion.div>
       </main>
 
